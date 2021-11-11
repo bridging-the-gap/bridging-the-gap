@@ -1,4 +1,3 @@
-![ci-badge](https://github.com/bowfolios/bowfolios/workflows/ci-bowfolios/badge.svg)
+Bridging the Gap
 
-
-For details, please see http://bowfolios.github.io.
+For details, please see https://bridging-the-gap.github.io/.
