@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, FormTextArea, FormButton, Grid, Header, List, ListItem } from 'semantic-ui-react';
+import { Container, FormTextArea, FormButton, Grid, Header, Image, List, ListItem } from 'semantic-ui-react';
 
 /** Renders a color-blocked static landing page. */
 class Landing extends React.Component {
@@ -8,9 +8,7 @@ class Landing extends React.Component {
       <div id="landing-page">
         <div className='landing-blue-background'>
           <Container textAlign='center'>
-            <Header style={{ paddingTop: '100px', paddingBottom: '100px', color: 'white', fontSize: '40pt', fontFamily: 'roboto' }} as='h1'>
-                Bridging The Gap
-            </Header>
+            <Image src='images/BTG_logo.png' size='big' centered/>
           </Container>
         </div>
         <div className='landing-white-background'>
