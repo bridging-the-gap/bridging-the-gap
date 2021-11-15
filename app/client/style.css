@@ -4,19 +4,29 @@
   color:  #376551;
 }
 
-.landing-green-background {
-  background-color: #376551;
+.landing-blue-background {
+  background-color: blue;
   color: white;
   padding-top: 20px;
 }
 
 .landing-white-background {
   background-color: white;
-  color: #376551;
+  color: black;
   padding-top: 20px;
 }
 
 .reset-margins {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.text-spacing {
+  margin-bottom: 40px;
+}
+
+textarea::placeholder {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 15px;
 }
