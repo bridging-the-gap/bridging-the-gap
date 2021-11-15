@@ -13,9 +13,7 @@ class Landing extends React.Component {
             </Header>
           </Container>
         </div>
-
         <div className='landing-white-background'>
-
           <Container textAlign='center' style={{ width: '700px' }}>
             <Header style={{ paddingTop: '50px', paddingBottom: '50px', color: '#376551', fontSize: '20px' }} as='h3'>
               <List>
@@ -30,7 +28,7 @@ class Landing extends React.Component {
                 </ListItem>
                 <ListItem className='text-spacing'>
                   <p>
-                    To get started, click the sign up link in the top right.
+                    To get started, click the login link in the top right and then click sign up.
                   </p>
                 </ListItem>
               </List>
@@ -51,7 +49,6 @@ class Landing extends React.Component {
           </Container>
         </div>
       </div>
-
     );
   }
 }
