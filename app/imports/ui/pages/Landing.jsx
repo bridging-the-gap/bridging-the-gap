@@ -6,9 +6,9 @@ class Landing extends React.Component {
   render() {
     return (
       <div id="landing-page">
-        <div className='landing-blue-background'>
+        <div className='landing-blue-background' style={{ marginBottom: '-250px' }}>
           <Container textAlign='center'>
-            <Image src='images/BTG_logo.png' size='big' centered/>
+            <Image src='images/bridge-logo.png' size='massive' centered/>
           </Container>
         </div>
         <div className='landing-white-background'>
