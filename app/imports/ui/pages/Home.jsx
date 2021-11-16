@@ -8,6 +8,7 @@ import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Roles } from 'meteor/alanning:roles';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { Interests } from '../../api/interests/Interests';
 import { Profiles } from '../../api/profiles/Profiles';
@@ -68,11 +69,15 @@ class Home extends React.Component {
           <Header as="h2" textAlign="center">Your Profile</Header>
           <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
-              <Form.Group widths={'equal'}>
-                <TextField id='firstName' name='firstName' showInlineError={true} placeholder={'First Name'}/>
-                <TextField id='lastName' name='lastName' showInlineError={true} placeholder={'Last Name'}/>
-                <TextField name='email' showInlineError={true} placeholder={'email'} disabled/>
-              </Form.Group>
+
+              { Roles.userIsInRole(Meteor.userId(), 'company') ?
+                <Form.Group widths={'equal'}>
+                  <TextField id='firstName' name='firstName' showInlineError={true} placeholder={'First Name'}/>
+                  <TextField id='lastName' name='lastName' showInlineError={true} placeholder={'Last Name'}/>
+                  <TextField name='email' showInlineError={true} placeholder={'email'} disabled/>
+                </Form.Group> : ''
+              }
+
               <LongTextField id='bio' name='bio' placeholder='Write a little bit about yourself.'/>
               <Form.Group widths={'equal'}>
                 <TextField name='title' showInlineError={true} placeholder={'Title'}/>
