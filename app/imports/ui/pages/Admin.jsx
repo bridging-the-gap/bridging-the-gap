@@ -57,16 +57,16 @@ class Admin extends React.Component {
           </Table></div>
 
         <Header as="h2" textAlign="center">Send Email to Clients</Header>
-        <Container className='landing-green-background' style={{ height: '400px' }}>
+        <Container className='blue-background' style={{ height: '400px' }}>
           <Label ribbon style={{ marginLeft: '20px' }}><Icon name='mail'/></Label>
           <AutoForm schema={bridge}>
             <Form.Group>
               <TextArea showInlineError={true} placeholder='Email Description...' style={{
                 width:
-                        '500px', height: '300px', marginLeft: '220px',
+                        '500px', height: '300px', marginLeft: '320px',
               }}/>
             </Form.Group>
-            <SubmitField id='submit' value='Send' style={{ marginLeft: '620px' }} />
+            <SubmitField id='submit' value='Send' style={{ marginLeft: '740px' }} />
             <ErrorsField/>
           </AutoForm>
         </Container>
