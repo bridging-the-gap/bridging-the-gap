@@ -8,6 +8,7 @@
   background-color: blue;
   color: white;
   padding-top: 20px;
+  margin-top: -25px
 }
 
 .landing-white-background {
@@ -29,4 +30,8 @@ textarea::placeholder {
   text-align: center;
   padding-top: 10px;
   font-size: 15px;
+}
+
+.white-text {
+  color: white;
 }
