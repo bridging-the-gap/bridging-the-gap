@@ -1,1 +1,37 @@
+/* Custom site-wide CSS */
 
+.bowfolio-green {
+  color:  #376551;
+}
+
+.landing-blue-background {
+  background-color: blue;
+  color: white;
+  padding-top: 20px;
+  margin-top: -25px
+}
+
+.landing-white-background {
+  background-color: white;
+  color: black;
+  padding-top: 20px;
+}
+
+.reset-margins {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.text-spacing {
+  margin-bottom: 40px;
+}
+
+textarea::placeholder {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.white-text {
+  color: white;
+}
