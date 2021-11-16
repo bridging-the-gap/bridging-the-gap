@@ -1,114 +1,98 @@
 import React from 'react';
-import { Grid, Segment, Header, Form, Loader } from 'semantic-ui-react';
-import { AutoForm, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
-import swal from 'sweetalert';
+import { Container, Form, Label, Icon, Table, TextArea, Header, Segment } from 'semantic-ui-react';
+import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
-import { _ } from 'meteor/underscore';
-import { withTracker } from 'meteor/react-meteor-data';
-import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
-import { Interests } from '../../api/interests/Interests';
-import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
-import { updateProfileMethod } from '../../startup/both/Methods';
 
-/** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests, allProjects) => new SimpleSchema({
-  email: { type: String, label: 'Email', optional: true },
-  firstName: { type: String, label: 'First', optional: true },
-  lastName: { type: String, label: 'Last', optional: true },
-  bio: { type: String, label: 'Biographical statement', optional: true },
-  title: { type: String, label: 'Title', optional: true },
-  picture: { type: String, label: 'Picture URL', optional: true },
-  interests: { type: Array, label: 'Interests', optional: true },
-  'interests.$': { type: String, allowedValues: allInterests },
-  projects: { type: Array, label: 'Projects', optional: true },
-  'projects.$': { type: String, allowedValues: allProjects },
+// Create a schema to specify the structure of the data to appear in the form.
+// For admin page: create new category section.
+const formSchema1 = new SimpleSchema({
+  name: String,
+  description: String,
 });
 
-/** Renders the Home Page: what appears after the user logs in. */
+// Create a schema to specify the structure of the data to appear in the form.
+// For admin page: email section.
+const formSchema2 = new SimpleSchema({
+  description: String,
+});
+
+const bridge = new SimpleSchema2Bridge(formSchema1);
+
+const bridge2 = new SimpleSchema2Bridge(formSchema2);
+
 class Home extends React.Component {
+  // Implement On submit, insert the data.
 
-  /** On submit, insert the data. */
-  submit(data) {
-    Meteor.call(updateProfileMethod, data, (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
-      } else {
-        swal('Success', 'Profile updated successfully', 'success');
-      }
-    });
-  }
-
-  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
-  }
-
-  /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
-  renderPage() {
-    const email = Meteor.user().username;
-    // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
-    const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
-    const allProjects = _.pluck(Projects.collection.find().fetch(), 'name');
-    const formSchema = makeSchema(allInterests, allProjects);
-    const bridge = new SimpleSchema2Bridge(formSchema);
-    // Now create the model with all the user information.
-    const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-    const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
-    const profile = Profiles.collection.findOne({ email });
-    const model = _.extend({}, profile, { interests, projects });
+    let fRef = null;
     return (
-      <Grid id="home-page" container centered>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Your Profile</Header>
-          <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
-            <Segment>
+      <Container id='home-page' centered>
+        {/* Start of admin page */}
+        { Roles.userIsInRole(Meteor.userId(), 'admin') ?
+          <div id='admin-page'>
+            <div style={{ paddingBottom: '50px' }}>
+              <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Create New Categories</Header>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}
+                style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
+                <Segment>
+                  <Form.Group widths={'equal'}>
+                    <TextField id='name' name='name' showInlineError={true} placeholder='Category name'/>
+                  </Form.Group>
+                  <Form.Group widths={'equal'}>
+                    <LongTextField id='description' name='description' showInlineError={true} placeholder='Describe the new category here'/>
+                  </Form.Group>
+                  <SubmitField id='submit' value='Submit' style={{ float: 'right', marginTop: '20px', marginRight: '-15px' }}/>
+                  <ErrorsField/>
+                </Segment>
+              </AutoForm>
+            </div>
+            <div style={{ paddingBottom: '50px' }}>
+              <Header as="h2" textAlign="center" style={{ color: 'red' }}>Inappropriate Content Reports</Header>
+              <Table celled color='red' inverted>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>From</Table.HeaderCell>
+                    <Table.HeaderCell>About</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell width={5}>johnson@hawaii.edu</Table.Cell>
+                    <Table.Cell>student1@hawaii.edu has included vulgar and explicit content in their profile page.</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell width={5}>leighj@hawaii.edu</Table.Cell>
+                    <Table.Cell>fake-company@hawaii.edu is masquerading as my company on the site.</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table></div>
 
-              { Roles.userIsInRole(Meteor.userId(), 'company') ?
-                <Form.Group widths={'equal'}>
-                  <TextField id='firstName' name='firstName' showInlineError={true} placeholder={'First Name'}/>
-                  <TextField id='lastName' name='lastName' showInlineError={true} placeholder={'Last Name'}/>
-                  <TextField name='email' showInlineError={true} placeholder={'email'} disabled/>
-                </Form.Group> : ''
-              }
-
-              <LongTextField id='bio' name='bio' placeholder='Write a little bit about yourself.'/>
-              <Form.Group widths={'equal'}>
-                <TextField name='title' showInlineError={true} placeholder={'Title'}/>
-                <TextField name='picture' showInlineError={true} placeholder={'URL to picture'}/>
-              </Form.Group>
-              <Form.Group widths={'equal'}>
-                <MultiSelectField name='interests' showInlineError={true} placeholder={'Interests'}/>
-                <MultiSelectField name='projects' showInlineError={true} placeholder={'Projects'}/>
-              </Form.Group>
-              <SubmitField id='home-page-submit' value='Update'/>
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
+            <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Send Email to Clients</Header>
+            <Container style={{ height: '400px', backgroundColor: 'blue' }}>
+              <Label ribbon style={{ marginLeft: '20px' }}><Icon name='mail'/></Label>
+              <AutoForm schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
+                <Form.Group>
+                  <TextArea showInlineError={true} placeholder='Email Description...' style={{
+                    width:
+                      '500px', height: '300px', marginLeft: '320px',
+                  }}/>
+                </Form.Group>
+                <SubmitField id='submit' value='Send' style={{ marginLeft: '740px' }}/>
+                <ErrorsField/>
+              </AutoForm>
+            </Container>
+          </div> : '' }
+        {/* End of admin page */}
+        {/* Start of student page */}
+        {/* End of student page */}
+        {/* Start of company page */}
+        {/* End of company page */}
+      </Container>
     );
   }
 }
 
-Home.propTypes = {
-  ready: PropTypes.bool.isRequired,
-};
-
-/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(() => {
-  // Ensure that minimongo is populated with all collections prior to running render().
-  const sub1 = Meteor.subscribe(Interests.userPublicationName);
-  const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-  const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Projects.userPublicationName);
-  return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
-  };
-})(Home);
+export default Home;
