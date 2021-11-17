@@ -29,7 +29,7 @@ class Home extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Container id='home-page' centered>
+      <Container id='home-page'>
         {/* Start of admin page */}
         { Roles.userIsInRole(Meteor.userId(), 'admin') ?
           <div id='admin-page'>

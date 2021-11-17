@@ -1,8 +1,14 @@
+import { Container, Grid, Header, Image, List, ListItem } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+import { withRouter } from 'react-router-dom';
 import React from 'react';
-import { Container, FormTextArea, FormButton, Grid, Header, Image, List, ListItem } from 'semantic-ui-react';
+import Feedback from '../components/Feedback';
 
 /** Renders a color-blocked static landing page. */
 class Landing extends React.Component {
+
   render() {
     return (
       <div id="landing-page">
@@ -39,10 +45,7 @@ class Landing extends React.Component {
             Have feedback?
             </Header>
             <Grid centered columns='1'>
-              <Grid.Row >
-                <FormTextArea id='feedback' name='feedback' placeholder='Let us know what you think!' style={{ width: '500px' }}/>
-                <FormButton type='submit' size='huge' style={{ float: 'right' }}>Send</FormButton>
-              </Grid.Row>
+              <Feedback/>
             </Grid>
           </Container>
         </div>
@@ -51,4 +54,15 @@ class Landing extends React.Component {
   }
 }
 
-export default Landing;
+/** Declare the types of all properties. */
+Landing.propTypes = {
+  currentUser: PropTypes.string,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+const LandingContainer = withTracker(() => ({
+  currentUser: Meteor.user() ? Meteor.user().username : '',
+}))(Landing);
+
+/** Enable ReactRouter so that links work. */
+export default withRouter(LandingContainer);
