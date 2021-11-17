@@ -1,4 +1,4 @@
-import { Container, Grid, Header, Image, List, ListItem, Message } from 'semantic-ui-react';
+import { Container, Grid, Header, Image, List, ListItem } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
