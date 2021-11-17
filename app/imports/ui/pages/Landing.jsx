@@ -1,4 +1,4 @@
-import { Container, Grid, Header, Image, List, ListItem } from 'semantic-ui-react';
+import { Container, Grid, Header, Image, List, ListItem, Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
@@ -22,7 +22,7 @@ class Landing extends React.Component {
             <Header style={{ paddingTop: '50px', paddingBottom: '50px', color: '#376551', fontSize: '20px' }} as='h3'>
               <List>
                 <ListItem className='text-spacing'>
-                  <p>The Company Connector web application provides a new way for local and non-local
+                  <p>Bridging the Gap provides a new way for local and non-local
                     companies who want to recruit students from UH to make their (potential)
                     opportunities known to students.</p>
                 </ListItem>
