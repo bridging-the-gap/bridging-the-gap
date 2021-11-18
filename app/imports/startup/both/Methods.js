@@ -2,8 +2,10 @@ import { Meteor } from 'meteor/meteor';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
+import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
+import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -37,11 +39,13 @@ const updateProfileMethod = 'Profiles.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Profiles.update'({ email, firstName, lastName, bio, title, picture, locations, projects, role }) {
+  'Profiles.update'({ email, firstName, lastName, bio, title, picture, locations, skills, projects, role }) {
     Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, picture, role } });
     ProfilesLocations.collection.remove({ profile: email });
+    ProfilesSkills.collection.remove({ profile: email });
     ProfilesProjects.collection.remove({ profile: email });
     locations.map((location) => ProfilesLocations.collection.insert({ profile: email, location }));
+    skills.map((skill) => ProfilesSkills.collection.insert({ profile: email, skill }));
     projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
   },
 });
@@ -50,14 +54,20 @@ const addProjectMethod = 'Projects.add';
 
 /** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
 Meteor.methods({
-  'Projects.add'({ name, description, picture, locations, participants, homepage, role }) {
+  'Projects.add'({ name, description, picture, locations, skills, participants, homepage, role }) {
     Projects.collection.insert({ name, description, picture, homepage, role });
     ProfilesProjects.collection.remove({ project: name });
     ProjectsLocations.collection.remove({ project: name });
+    ProjectsSkills.collection.remove({ project: name });
     if (locations) {
       locations.map((location) => ProjectsLocations.collection.insert({ project: name, location }));
     } else {
       throw new Meteor.Error('At least one location is required.');
+    }
+    if (skills) {
+      skills.map((skill) => ProjectsSkills.collection.insert({ project: name, skill }));
+    } else {
+      throw new Meteor.Error('At least one skill is required.');
     }
     if (participants) {
       participants.map((participant) => ProfilesProjects.collection.insert({ project: name, profile: participant }));

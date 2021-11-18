@@ -12,6 +12,7 @@ import Profiles from '../pages/Profiles';
 import AddProject from '../pages/AddProject';
 import Projects from '../pages/Projects';
 import BrowseCompanies from '../pages/BrowseCompanies';
+import BrowseStudents from '../pages/BrowseStudents';
 import Locations from '../pages/Locations';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -29,11 +30,12 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/home" component={Home}/>
-              <Route path="/profiles" component={Profiles}/>
-              <Route path="/projects" component={Projects}/>
-              <Route path="/locations" component={Locations}/>
+              <ProtectedRoute path="/profiles" component={Profiles}/>
+              <ProtectedRoute path="/projects" component={Projects}/>
+              <ProtectedRoute path="/locations" component={Locations}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
-              <ProtectedRoute path="/browsecompanies" component={BrowseCompanies}/>
+              <ProtectedRoute path="/browseCompanies" component={BrowseCompanies}/>
+              <ProtectedRoute path="/browseStudents" component={BrowseStudents}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>

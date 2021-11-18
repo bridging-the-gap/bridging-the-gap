@@ -1,19 +1,25 @@
 import { Meteor } from 'meteor/meteor';
 import { Locations } from '../../api/locations/Locations';
+import { Skills } from '../../api/skills/Skills';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
+import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
+import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
 
 /** Define a publication to publish all locations. */
 Meteor.publish(Locations.userPublicationName, () => Locations.collection.find());
 
+Meteor.publish(Skills.userPublicationName, () => Skills.collection.find());
 /** Define a publication to publish all profiles. */
 Meteor.publish(Profiles.userPublicationName, () => Profiles.collection.find());
 
 /** Define a publication to publish this collection. */
 Meteor.publish(ProfilesLocations.userPublicationName, () => ProfilesLocations.collection.find());
+
+Meteor.publish(ProfilesSkills.userPublicationName, () => ProfilesSkills.collection.find());
 
 /** Define a publication to publish this collection. */
 Meteor.publish(ProfilesProjects.userPublicationName, () => ProfilesProjects.collection.find());
@@ -23,6 +29,8 @@ Meteor.publish(Projects.userPublicationName, () => Projects.collection.find());
 
 /** Define a publication to publish this collection. */
 Meteor.publish(ProjectsLocations.userPublicationName, () => ProjectsLocations.collection.find());
+
+Meteor.publish(ProjectsSkills.userPublicationName, () => ProjectsSkills.collection.find());
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.
