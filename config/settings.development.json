@@ -136,5 +136,18 @@
       "picture": "https://www.hawaii.edu/its/wp-content/uploads/sites/2/2019/01/LAVAlogo-300x192-300x192.png"
     }
   ],
+  "defaultCompany": [
+    {
+      "companyName": "Default",
+      "location": "Earth",
+      "contactInfo": "john@foo.com",
+      "image": "https://manoa.hawaii.edu/wp/wp-content/uploads/2018/04/manoa-lowercampus-hero-1024x576.jpg",
+      "industry": [
+        "Liberal Arts",
+        "Software Engineering"
+      ],
+      "description": "Add Description"
+    }
+  ],
   "loadAssetsFile":  false
 }

@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
+import { Companies } from '../../api/company/Companies.js';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Profiles } from '../../api/profiles/Profiles';
@@ -64,6 +65,19 @@ if (Meteor.users.find().count() === 0) {
     Meteor.settings.defaultProjects.map(project => addProject(project));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
+  }
+}
+
+function addCompany(data) {
+  console.log(`  Adding: ${data.companyName} (${data.owner})`);
+  Companies.collection.insert(data);
+}
+
+// Adds default info to company collection if empty
+if (Companies.collection.find().count() === 0) {
+  if (Meteor.settings.defaultContacts) {
+    console.log('Creating default contacts.');
+    Meteor.settings.defaultCompany.map(data => addCompany(data));
   }
 }
 
