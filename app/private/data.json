@@ -5,7 +5,7 @@
       "lastName": "Leong",
       "bio": "I am a professor of Educational Technology",
       "title": "Professor",
-      "interests": [
+      "locations": [
         "Online Learning"
       ],
       "projects":[
@@ -21,7 +21,7 @@
       "name": "UH Online",
       "homepage": "https://www.uhonline.hawaii.edu/",
       "description": "Online learning opportunities at the University of Hawaii.",
-      "interests": [
+      "locations": [
         "Online Learning"
       ],
       "picture": "http://www.hawaii.edu/wp/wp-content/uploads/2015/12/system-seal.jpg"

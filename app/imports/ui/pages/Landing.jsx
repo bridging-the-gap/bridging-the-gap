@@ -28,7 +28,7 @@ class Landing extends React.Component {
                 </ListItem>
                 <ListItem className='text-spacing'>
                   <p>At the same time, students can create profiles on the site with their
-                    interests. The site can match students to employers and vice-versa.</p>
+                    skills. The site can match students to employers and vice-versa.</p>
                 </ListItem>
                 <ListItem className='text-spacing'>
                   <p>
