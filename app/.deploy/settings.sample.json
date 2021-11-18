@@ -328,8 +328,8 @@
     }
   ],
 
-    "monti": {
-      "appId": "RYDZ2yyBee5sm3XjM",
-      "appSecret": "24493bb8-efa4-424d-8628-f856a754a95f"
-}
+  "monti": {
+    "appId": "changeme",
+    "appSecret": "changeme"
+  }
 }
