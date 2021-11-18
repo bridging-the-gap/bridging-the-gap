@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Label, Icon, Table, TextArea, Header, Segment } from 'semantic-ui-react';
+import { Container, Form, Table, TextArea, Header, Segment, Grid } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -39,10 +39,10 @@ class Home extends React.Component {
                 style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
                 <Segment>
                   <Form.Group widths={'equal'}>
-                    <TextField id='name' name='name' showInlineError={true} placeholder='Category name'/>
+                    <TextField id='name' name='name' placeholder='Category name'/>
                   </Form.Group>
                   <Form.Group widths={'equal'}>
-                    <LongTextField id='description' name='description' showInlineError={true} placeholder='Describe the new category here'/>
+                    <LongTextField id='description' name='description' placeholder='Describe the new category here'/>
                   </Form.Group>
                   <SubmitField id='submit' value='Submit' style={{ float: 'right', marginTop: '20px', marginRight: '-15px' }}/>
                   <ErrorsField/>
@@ -71,19 +71,18 @@ class Home extends React.Component {
               </Table></div>
 
             <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Send Email to Clients</Header>
-            <Container style={{ height: '400px', backgroundColor: 'blue' }}>
-              <Label ribbon style={{ marginLeft: '20px' }}><Icon name='mail'/></Label>
+            <Grid style={{ height: '400px', backgroundColor: 'blue' }} centered columns={1}>
               <AutoForm schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
                 <Form.Group>
-                  <TextArea showInlineError={true} placeholder='Email Description...' style={{
+                  <TextArea placeholder='Email Description...' style={{
                     width:
-                      '500px', height: '300px', marginLeft: '320px',
+                      '600px', height: '300px', marginTop: '20px',
                   }}/>
                 </Form.Group>
-                <SubmitField id='submit' value='Send' style={{ marginLeft: '740px' }}/>
+                <SubmitField id='submit' value='Send' style={{ float: 'right', marginRight: '-5px' }}/>
                 <ErrorsField/>
               </AutoForm>
-            </Container>
+            </Grid>
           </div> : '' }
         {/* End of admin page */}
         {/* Start of student page */}

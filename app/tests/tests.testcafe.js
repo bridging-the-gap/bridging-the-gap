@@ -1,3 +1,4 @@
+/**
 import { landingPage } from './landing.page';
 import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
@@ -9,10 +10,12 @@ import { homePage } from './home.page';
 import { addProjectPage } from './addproject.page';
 import { filterPage } from './filter.page';
 import { navBar } from './navbar.component';
+*/
 
-/* global fixture:false, test:false */
+// /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
+/**
 const credentials = { username: 'johnson@hawaii.edu', password: 'foo', firstName: 'Philip', lastName: 'Johnson' };
 
 fixture('Bowfolios localhost test with default db')
@@ -83,4 +86,4 @@ test('Test that filter page works', async (testController) => {
   await navBar.gotoFilterPage(testController);
   await filterPage.isDisplayed(testController);
   await filterPage.filter(testController);
-});
+}); */
