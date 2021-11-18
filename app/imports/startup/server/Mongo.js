@@ -3,10 +3,13 @@ import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
+import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
+import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { Locations } from '../../api/locations/Locations';
+import { Skills } from '../../api/skills/Skills';
 
 /* eslint-disable no-console */
 
@@ -32,8 +35,12 @@ function addLocation(location) {
   Locations.collection.update({ name: location }, { $set: { name: location } }, { upsert: true });
 }
 
+function addSkill(skill) {
+  Skills.collection.update({ name: skill }, { $set: { name: skill } }, { upsert: true });
+}
+
 /** Defines a new user and associated profile. Error if user already exists. */
-function addProfile({ firstName, lastName, bio, title, locations, projects, picture, email, role }) {
+function addProfile({ firstName, lastName, bio, title, locations, skills, projects, picture, email, role }) {
   console.log(`Defining profile ${email}`);
   // Define the user in the Meteor accounts package.
   createUser(email, role);
@@ -41,18 +48,22 @@ function addProfile({ firstName, lastName, bio, title, locations, projects, pict
   Profiles.collection.insert({ firstName, lastName, bio, title, picture, email, role });
   // Add locations and projects.
   locations.map(location => ProfilesLocations.collection.insert({ profile: email, location }));
+  skills.map(skill => ProfilesSkills.collection.insert({ profile: email, skill }));
   projects.map(project => ProfilesProjects.collection.insert({ profile: email, project }));
   // Make sure locations are defined in the Locations collection if they weren't already.
   locations.map(location => addLocation(location));
+  skills.map(skill => addSkill(skill));
 }
 
 /** Define a new project. Error if project already exists.  */
-function addProject({ name, homepage, description, locations, picture, role }) {
+function addProject({ name, homepage, description, locations, skills, picture, role }) {
   console.log(`Defining project ${name}`);
   Projects.collection.insert({ name, homepage, description, picture, role });
   locations.map(location => ProjectsLocations.collection.insert({ project: name, location }));
+  skills.map(skill => ProjectsSkills.collection.insert({ project: name, skill }));
   // Make sure locations are defined in the Locations collection if they weren't already.
   locations.map(location => addLocation(location));
+  skills.map(skill => addSkill(skill));
 }
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */

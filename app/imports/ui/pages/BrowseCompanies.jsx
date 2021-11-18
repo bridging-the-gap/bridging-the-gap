@@ -42,6 +42,7 @@ const MakeCard = (props) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
+      <Header as='h5'>Locations</Header>
       {_.map(props.profile.locations,
         (location, index) => <Label key={index} size='tiny' color='teal'>{location}</Label>)}
     </Card.Content>
