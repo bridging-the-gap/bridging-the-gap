@@ -10,20 +10,20 @@ import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { addProjectMethod } from '../../startup/both/Methods';
-import { Interests } from '../../api/interests/Interests';
+import { Locations } from '../../api/locations/Locations';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests, allParticipants) => new SimpleSchema({
+const makeSchema = (allLocations, allParticipants) => new SimpleSchema({
   name: String,
   description: String,
   homepage: String,
   picture: String,
-  interests: { type: Array, label: 'Interests', optional: false },
-  'interests.$': { type: String, allowedValues: allInterests },
+  locations: { type: Array, label: 'Locations', optional: false },
+  'locations.$': { type: String, allowedValues: allLocations },
   participants: { type: Array, label: 'Participants', optional: true },
   'participants.$': { type: String, allowedValues: allParticipants },
 });
@@ -45,9 +45,9 @@ class AddProject extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
-    const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
+    const allLocations = _.pluck(Locations.collection.find().fetch(), 'name');
     const allParticipants = _.pluck(Profiles.collection.find().fetch(), 'email');
-    const formSchema = makeSchema(allInterests, allParticipants);
+    const formSchema = makeSchema(allLocations, allParticipants);
     const bridge = new SimpleSchema2Bridge(formSchema);
     return (
       <Grid id="add-project-page" container centered>
@@ -62,7 +62,7 @@ class AddProject extends React.Component {
               </Form.Group>
               <LongTextField id='description' name='description' placeholder='Describe the project here'/>
               <Form.Group widths={'equal'}>
-                <MultiSelectField id='interests' name='interests' showInlineError={true} placeholder={'Interests'}/>
+                <MultiSelectField id='locations' name='locations' showInlineError={true} placeholder={'Locations'}/>
                 <MultiSelectField id='participants' name='participants' showInlineError={true} placeholder={'Participants'}/>
               </Form.Group>
               <SubmitField id='submit' value='Submit'/>
@@ -82,9 +82,9 @@ AddProject.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
-  const sub1 = Meteor.subscribe(Interests.userPublicationName);
+  const sub1 = Meteor.subscribe(Locations.userPublicationName);
   const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
+  const sub3 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
   const sub5 = Meteor.subscribe(Projects.userPublicationName);
   return {

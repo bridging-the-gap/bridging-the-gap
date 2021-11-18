@@ -5,18 +5,18 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 
-/** Returns the Profile and associated Projects and Interests associated with the passed user email. */
+/** Returns the Profile and associated Projects and Locations associated with the passed user email. */
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
-  const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
+  const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
   const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  // console.log(_.extend({ }, data, { interests, projects: projectPictures }));
-  return _.extend({ }, data, { interests, projects: projectPictures });
+  // console.log(_.extend({ }, data, { locations, projects: projectPictures }));
+  return _.extend({ }, data, { locations, projects: projectPictures });
 }
 
 /** Component for layout out a Profile Card. */
@@ -33,8 +33,8 @@ const MakeCard = (props) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      {_.map(props.profile.interests,
-        (interest, index) => <Label key={index} size='tiny' color='teal'>{interest}</Label>)}
+      {_.map(props.profile.locations,
+        (location, index) => <Label key={index} size='tiny' color='teal'>{location}</Label>)}
     </Card.Content>
     <Card.Content extra>
       <Header as='h5'>Projects</Header>
@@ -77,7 +77,7 @@ ProfilesPage.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
+  const sub2 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   const sub3 = Meteor.subscribe(ProfilesProjects.userPublicationName);
   const sub4 = Meteor.subscribe(Projects.userPublicationName);
   return {

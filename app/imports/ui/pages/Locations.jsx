@@ -4,42 +4,42 @@ import { Container, Loader, Card, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import { Interests } from '../../api/interests/Interests';
+import { Locations } from '../../api/locations/Locations';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
-import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
 
-/** Returns the Profiles and Projects associated with the passed Interest. */
-function getInterestData(name) {
-  const profiles = _.pluck(ProfilesInterests.collection.find({ interest: name }).fetch(), 'profile');
+/** Returns the Profiles and Projects associated with the passed Location. */
+function getLocationData(name) {
+  const profiles = _.pluck(ProfilesLocations.collection.find({ location: name }).fetch(), 'profile');
   const profilePictures = profiles.map(profile => Profiles.collection.findOne({ email: profile }).picture);
-  const projects = _.pluck(ProjectsInterests.collection.find({ interest: name }).fetch(), 'project');
+  const projects = _.pluck(ProjectsLocations.collection.find({ location: name }).fetch(), 'project');
   const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  // console.log(_.extend({ }, data, { interests, projects: projectPictures }));
+  // console.log(_.extend({ }, data, { locations, projects: projectPictures }));
   return _.extend({ }, { name, profiles: profilePictures, projects: projectPictures });
 }
 
-/** Component for layout out an Interest Card. */
+/** Component for layout out an Location Card. */
 const MakeCard = (props) => (
   <Card>
     <Card.Content>
-      <Card.Header style={{ marginTop: '0px' }}>{props.interest.name}</Card.Header>
+      <Card.Header style={{ marginTop: '0px' }}>{props.location.name}</Card.Header>
     </Card.Content>
     <Card.Content extra>
-      {_.map(props.interest.profiles, (p, index) => <Image key={index} circular size='mini' src={p}/>)}
-      {_.map(props.interest.projects, (p, index) => <Image key={index} circular size='mini' src={p}/>)}
+      {_.map(props.location.profiles, (p, index) => <Image key={index} circular size='mini' src={p}/>)}
+      {_.map(props.location.projects, (p, index) => <Image key={index} circular size='mini' src={p}/>)}
     </Card.Content>
   </Card>
 );
 
 MakeCard.propTypes = {
-  interest: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
-/** Renders the Interests as a set of Cards. */
-class InterestsPage extends React.Component {
+/** Renders the Locations as a set of Cards. */
+class LocationsPage extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -48,19 +48,19 @@ class InterestsPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const interests = _.pluck(Interests.collection.find().fetch(), 'name');
-    const interestData = interests.map(interest => getInterestData(interest));
+    const locations = _.pluck(Locations.collection.find().fetch(), 'name');
+    const locationData = locations.map(location => getLocationData(location));
     return (
-      <Container id="interests-page">
+      <Container id="locations-page">
         <Card.Group>
-          {_.map(interestData, (interest, index) => <MakeCard key={index} interest={interest}/>)}
+          {_.map(locationData, (location, index) => <MakeCard key={index} location={location}/>)}
         </Card.Group>
       </Container>
     );
   }
 }
 
-InterestsPage.propTypes = {
+LocationsPage.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 
@@ -69,11 +69,11 @@ export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(ProfilesProjects.userPublicationName);
   const sub2 = Meteor.subscribe(Projects.userPublicationName);
-  const sub3 = Meteor.subscribe(ProjectsInterests.userPublicationName);
+  const sub3 = Meteor.subscribe(ProjectsLocations.userPublicationName);
   const sub4 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub5 = Meteor.subscribe(Interests.userPublicationName);
-  const sub6 = Meteor.subscribe(ProfilesInterests.userPublicationName);
+  const sub5 = Meteor.subscribe(Locations.userPublicationName);
+  const sub6 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   return {
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
   };
-})(InterestsPage);
+})(LocationsPage);

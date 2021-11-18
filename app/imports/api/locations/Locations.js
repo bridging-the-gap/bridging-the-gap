@@ -3,7 +3,7 @@ import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /** Encapsulates state and variable values for this collection. */
-class InterestsCollection {
+class LocationsCollection {
   constructor() {
     // The name of this collection.
     this.name = 'InterestsCollection';
@@ -21,4 +21,4 @@ class InterestsCollection {
   }
 }
 
-export const Interests = new InterestsCollection();
+export const Locations = new LocationsCollection();

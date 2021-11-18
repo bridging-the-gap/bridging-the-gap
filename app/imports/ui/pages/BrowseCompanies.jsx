@@ -7,25 +7,25 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { AutoForm, SubmitField } from 'uniforms-semantic';
-import { Interests } from '../../api/interests/Interests';
+import { Locations } from '../../api/locations/Locations';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests) => new SimpleSchema({
-  interests: { type: Array, label: 'Interests', optional: true },
-  'interests.$': { type: String, allowedValues: allInterests },
+const makeSchema = (allLocations) => new SimpleSchema({
+  locations: { type: Array, label: 'Locations', optional: true },
+  'locations.$': { type: String, allowedValues: allLocations },
 });
 
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
-  const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
+  const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
   const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  return _.extend({ }, data, { interests, projects: projectPictures });
+  return _.extend({ }, data, { locations, projects: projectPictures });
 }
 
 /** Component for layout out a Profile Card. */
@@ -42,12 +42,8 @@ const MakeCard = (props) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      {_.map(props.profile.interests,
-        (interest, index) => <Label key={index} size='tiny' color='teal'>{interest}</Label>)}
-    </Card.Content>
-    <Card.Content extra>
-      <Header as='h5'>Projects</Header>
-      {_.map(props.profile.projects, (project, index) => <Image key={index} size='mini' src={project}/>)}
+      {_.map(props.profile.locations,
+        (location, index) => <Label key={index} size='tiny' color='teal'>{location}</Label>)}
     </Card.Content>
   </Card>
 );
@@ -58,15 +54,15 @@ MakeCard.propTypes = {
 };
 
 /** Renders the Profile Collection as a set of Cards. */
-class Filter extends React.Component {
+class BrowseCompanies extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { interests: [] };
+    this.state = { locations: [] };
   }
 
   submit(data) {
-    this.setState({ interests: data.interests || [] });
+    this.setState({ locations: data.locations || [] });
   }
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -76,21 +72,25 @@ class Filter extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
-    const formSchema = makeSchema(allInterests);
+    const allLocations = _.pluck(Locations.collection.find().fetch(), 'name');
+    const formSchema = makeSchema(allLocations);
     const bridge = new SimpleSchema2Bridge(formSchema);
-    const emails = _.pluck(ProfilesInterests.collection.find({ interest: { $in: this.state.interests } }).fetch(), 'profile');
+    const emails = _.pluck(ProfilesLocations.collection.find({ location: { $in: this.state.locations } }).fetch(), 'profile');
     const profileData = _.uniq(emails).map(email => getProfileData(email));
+    const companyData = _.filter(profileData, function(oneprofile) {
+      console.log(oneprofile);
+      return oneprofile.role === 'company';
+    });
     return (
       <Container id="filter-page">
         <AutoForm schema={bridge} onSubmit={data => this.submit(data)} >
           <Segment>
-            <MultiSelectField id='interests' name='interests' showInlineError={true} placeholder={'Interests'}/>
+            <MultiSelectField id='locations' name='locations' showInlineError={true} placeholder={'Choose locations'}/>
             <SubmitField id='submit' value='Submit'/>
           </Segment>
         </AutoForm>
         <Card.Group style={{ paddingTop: '10px' }}>
-          {_.map(profileData, (profile, index) => <MakeCard key={index} profile={profile}/>)}
+          {_.map(companyData, (profile, index) => <MakeCard key={index} profile={profile}/>)}
         </Card.Group>
       </Container>
     );
@@ -98,7 +98,7 @@ class Filter extends React.Component {
 }
 
 /** Require an array of Stuff documents in the props. */
-Filter.propTypes = {
+BrowseCompanies.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 
@@ -106,11 +106,11 @@ Filter.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
+  const sub2 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   const sub3 = Meteor.subscribe(ProfilesProjects.userPublicationName);
   const sub4 = Meteor.subscribe(Projects.userPublicationName);
-  const sub5 = Meteor.subscribe(Interests.userPublicationName);
+  const sub5 = Meteor.subscribe(Locations.userPublicationName);
   return {
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
   };
-})(Filter);
+})(BrowseCompanies);

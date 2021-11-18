@@ -7,15 +7,15 @@ import { _ } from 'meteor/underscore';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
-import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
 
-/** Gets the Project data as well as Profiles and Interests associated with the passed Project name. */
+/** Gets the Project data as well as Profiles and Locations associated with the passed Project name. */
 function getProjectData(name) {
   const data = Projects.collection.findOne({ name });
-  const interests = _.pluck(ProjectsInterests.collection.find({ project: name }).fetch(), 'interest');
+  const locations = _.pluck(ProjectsLocations.collection.find({ project: name }).fetch(), 'location');
   const profiles = _.pluck(ProfilesProjects.collection.find({ project: name }).fetch(), 'profile');
   const profilePictures = profiles.map(profile => Profiles.collection.findOne({ email: profile }).picture);
-  return _.extend({ }, data, { interests, participants: profilePictures });
+  return _.extend({ }, data, { locations, participants: profilePictures });
 }
 
 /** Component for layout out a Project Card. */
@@ -32,8 +32,8 @@ const MakeCard = (props) => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      {_.map(props.project.interests,
-        (interest, index) => <Label key={index} size='tiny' color='teal'>{interest}</Label>)}
+      {_.map(props.project.locations,
+        (location, index) => <Label key={index} size='tiny' color='teal'>{location}</Label>)}
     </Card.Content>
     <Card.Content extra>
       {_.map(props.project.participants, (p, index) => <Image key={index} circular size='mini' src={p}/>)}
@@ -76,7 +76,7 @@ export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(ProfilesProjects.userPublicationName);
   const sub2 = Meteor.subscribe(Projects.userPublicationName);
-  const sub3 = Meteor.subscribe(ProjectsInterests.userPublicationName);
+  const sub3 = Meteor.subscribe(ProjectsLocations.userPublicationName);
   const sub4 = Meteor.subscribe(Profiles.userPublicationName);
   return {
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),

@@ -11,8 +11,8 @@ import Home from '../pages/Home';
 import Profiles from '../pages/Profiles';
 import AddProject from '../pages/AddProject';
 import Projects from '../pages/Projects';
-import Filter from '../pages/Filter';
-import Interests from '../pages/Interests';
+import BrowseCompanies from '../pages/BrowseCompanies';
+import Locations from '../pages/Locations';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -31,9 +31,9 @@ class App extends React.Component {
               <ProtectedRoute path="/home" component={Home}/>
               <Route path="/profiles" component={Profiles}/>
               <Route path="/projects" component={Projects}/>
-              <Route path="/interests" component={Interests}/>
+              <Route path="/locations" component={Locations}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
-              <ProtectedRoute path="/filter" component={Filter}/>
+              <ProtectedRoute path="/browsecompanies" component={BrowseCompanies}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>

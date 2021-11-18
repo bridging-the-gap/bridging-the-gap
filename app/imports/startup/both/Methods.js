@@ -1,9 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
+import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -33,31 +33,31 @@ const updateProfileMethod = 'Profiles.update';
 
 /**
  * The server-side Profiles.update Meteor Method is called by the client-side Home page after pushing the update button.
- * Its purpose is to update the Profiles, ProfilesInterests, and ProfilesProjects collections to reflect the
+ * Its purpose is to update the Profiles, ProfilesLocations, and ProfilesProjects collections to reflect the
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Profiles.update'({ email, firstName, lastName, bio, title, picture, interests, projects }) {
-    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, picture } });
-    ProfilesInterests.collection.remove({ profile: email });
+  'Profiles.update'({ email, firstName, lastName, bio, title, picture, locations, projects, role }) {
+    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, picture, role } });
+    ProfilesLocations.collection.remove({ profile: email });
     ProfilesProjects.collection.remove({ profile: email });
-    interests.map((interest) => ProfilesInterests.collection.insert({ profile: email, interest }));
+    locations.map((location) => ProfilesLocations.collection.insert({ profile: email, location }));
     projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
   },
 });
 
 const addProjectMethod = 'Projects.add';
 
-/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsInterests. */
+/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
 Meteor.methods({
-  'Projects.add'({ name, description, picture, interests, participants, homepage }) {
-    Projects.collection.insert({ name, description, picture, homepage });
+  'Projects.add'({ name, description, picture, locations, participants, homepage, role }) {
+    Projects.collection.insert({ name, description, picture, homepage, role });
     ProfilesProjects.collection.remove({ project: name });
-    ProjectsInterests.collection.remove({ project: name });
-    if (interests) {
-      interests.map((interest) => ProjectsInterests.collection.insert({ project: name, interest }));
+    ProjectsLocations.collection.remove({ project: name });
+    if (locations) {
+      locations.map((location) => ProjectsLocations.collection.insert({ project: name, location }));
     } else {
-      throw new Meteor.Error('At least one interest is required.');
+      throw new Meteor.Error('At least one location is required.');
     }
     if (participants) {
       participants.map((participant) => ProfilesProjects.collection.insert({ project: name, profile: participant }));
