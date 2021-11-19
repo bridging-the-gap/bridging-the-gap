@@ -1,9 +1,9 @@
 module.exports = {
   servers: {
     one: {
-      host: '165.227.66.50',
+      host: '64.225.52.13',
       username: 'root',
-      password: 'Helene-98Hh'
+      password: 'Guri66Truls'
     }
   },
   app: {
@@ -14,7 +14,7 @@ module.exports = {
     servers: { one: {}, },
     buildOptions: { serverOnly: true },
     env: {
-      ROOT_URL: 'http://165.227.66.50',
+      ROOT_URL: 'http://64.225.52.13',
       MONGO_URL: 'mongodb://mongodb/meteor',
       MONGO_OPLOG_URL: 'mongodb://mongodb/local',
     },
