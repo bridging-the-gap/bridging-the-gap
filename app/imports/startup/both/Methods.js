@@ -6,6 +6,7 @@ import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
 import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
+import { Events } from '../../api/events/Events';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making

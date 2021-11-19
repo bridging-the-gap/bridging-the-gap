@@ -81,7 +81,7 @@ class BrowseStudents extends React.Component {
     const bridge = new SimpleSchema2Bridge(formSchema);
     const emails = _.pluck(ProfilesSkills.collection.find({ skill: { $in: this.state.skills } }).fetch(), 'profile');
     const profileData = _.uniq(emails).map(email => getProfileData(email));
-    const studentData = _.filter(profileData, function(oneprofile) {
+    const studentData = _.filter(profileData, function (oneprofile) {
       console.log(oneprofile);
       return oneprofile.role === 'student';
     });

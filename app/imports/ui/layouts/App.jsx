@@ -14,6 +14,7 @@ import Projects from '../pages/Projects';
 import BrowseCompanies from '../pages/BrowseCompanies';
 import BrowseStudents from '../pages/BrowseStudents';
 import Locations from '../pages/Locations';
+import Events from '../pages/Events';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -33,6 +34,7 @@ class App extends React.Component {
               <ProtectedRoute path="/profiles" component={Profiles}/>
               <ProtectedRoute path="/projects" component={Projects}/>
               <ProtectedRoute path="/locations" component={Locations}/>
+              <ProtectedRoute path="/events" component={Events}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
               <ProtectedRoute path="/browseCompanies" component={BrowseCompanies}/>
               <ProtectedRoute path="/browseStudents" component={BrowseStudents}/>

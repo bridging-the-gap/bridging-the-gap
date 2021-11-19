@@ -9,6 +9,7 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { Locations } from '../../api/locations/Locations';
+import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
 
 /* eslint-disable no-console */
@@ -66,13 +67,21 @@ function addProject({ name, homepage, description, locations, skills, picture, r
   skills.map(skill => addSkill(skill));
 }
 
+/** Define a new event. Error if event already exists.  */
+function addEvent({ eventName, company, date, location, description, picture }) {
+  console.log(`Defining event ${eventName}`);
+  Events.collection.insert({ eventName, company, date, location, description, picture });
+}
+
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
-  if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles) {
+  if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
     console.log('Creating the default projects');
     Meteor.settings.defaultProjects.map(project => addProject(project));
+    console.log('Creating the default events');
+    Meteor.settings.defaultEvents.map(event => addEvent(event));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }

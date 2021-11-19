@@ -78,7 +78,7 @@ class BrowseCompanies extends React.Component {
     const bridge = new SimpleSchema2Bridge(formSchema);
     const emails = _.pluck(ProfilesLocations.collection.find({ location: { $in: this.state.locations } }).fetch(), 'profile');
     const profileData = _.uniq(emails).map(email => getProfileData(email));
-    const companyData = _.filter(profileData, function(oneprofile) {
+    const companyData = _.filter(profileData, function (oneprofile) {
       console.log(oneprofile);
       return oneprofile.role === 'company';
     });

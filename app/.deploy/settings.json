@@ -1,4 +1,22 @@
 {
+  "defaultEvents": [
+    {
+      "eventName": "Hackathon with Google",
+      "company": "Google",
+      "date": "2021-12-10",
+      "location": "UH Campus",
+      "description": "Come meet us in the cafeteria for a chat and hackathon with the possibility to win a summer internship in Silicon Valley. Google is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware.",
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png"
+    },
+    {
+      "eventName": "Brunch with Samsung",
+      "company": "Samsung",
+      "date": "2021-10-10",
+      "location": "Heavenly, Waikiki",
+      "description": "Lets eat brunch and talk about electronics! Everyone who attends this event will receive a free brunch from Heavenly.",
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png"
+    }
+  ],
   "defaultProfiles": [
     {
       "firstName": "Google",
