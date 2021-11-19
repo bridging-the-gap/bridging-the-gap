@@ -8,11 +8,13 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Home from '../pages/Home';
-import Profiles from '../pages/Profiles';
+import Profile from '../pages/Profile';
 import AddProject from '../pages/AddProject';
 import Projects from '../pages/Projects';
 import BrowseCompanies from '../pages/BrowseCompanies';
 import BrowseStudents from '../pages/BrowseStudents';
+import StudentProfilePage from '../pages/StudentProfilePage';
+import StudentHomePage from '../pages/StudentHomePage';
 import Locations from '../pages/Locations';
 import Events from '../pages/Events';
 import NotFound from '../pages/NotFound';
@@ -31,13 +33,15 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/home" component={Home}/>
-              <ProtectedRoute path="/profiles" component={Profiles}/>
+              <ProtectedRoute path="/profile" component={Profile}/>
               <ProtectedRoute path="/projects" component={Projects}/>
               <ProtectedRoute path="/locations" component={Locations}/>
               <ProtectedRoute path="/events" component={Events}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
               <ProtectedRoute path="/browseCompanies" component={BrowseCompanies}/>
               <ProtectedRoute path="/browseStudents" component={BrowseStudents}/>
+              <ProtectedRoute path="/studentHomePage" component={StudentHomePage}/>
+              <ProtectedRoute path="/studentProfilePage" component={StudentProfilePage}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>
