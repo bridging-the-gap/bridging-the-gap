@@ -116,7 +116,7 @@ class Home extends React.Component {
                 </Segment>
               </AutoForm>
             </Grid.Column>
-            <Grid.Column width={10} style={{ backgroundColor: 'grey' }}>
+            <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
               <Button primary>Add Job Listing</Button>
               <Segment>
                 <Item.Group divided>
