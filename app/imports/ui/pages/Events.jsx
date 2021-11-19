@@ -7,15 +7,15 @@ import { _ } from 'meteor/underscore';
 import { Events } from '../../api/events/Events';
 
 /** Gets the Event-data. */
-function getEventData(name) {
-  const data = Events.collection.findOne({ name });
+function getEventData(eventName) {
+  const data = Events.collection.findOne({ eventName });
   return _.extend({ }, data);
 }
 
 const MakeItem = (props) => (
   <Item>
-    <Item.Image src={props.event.picture}/>
-    <Item.Content>
+    <Item.Image size="small" src={props.event.picture}/>
+    <Item.Content verticalAlign='middle'>
       <Item.Header as='a'>{props.event.eventName}</Item.Header>
       <Item.Meta>
         <span className='date'>{props.event.date} {'at'} {props.event.location}</span>
@@ -45,7 +45,7 @@ class EventsPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const events = _.pluck(Events.collection.find().fetch(), 'name');
+    const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
     return (
       <Container id="events-page">

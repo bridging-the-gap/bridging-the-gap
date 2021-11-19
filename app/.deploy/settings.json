@@ -1,6 +1,14 @@
 {
   "defaultEvents": [
     {
+      "eventName": "The Future Of Technology conference",
+      "company": "Apple",
+      "date": "2021-06-12",
+      "location": "Hilton Waikiki",
+      "description": "What is the future of technology? AI? Death? Come join us for a seminar with the heads of Apple stationed in Hawaii..",
+      "picture": "https://miro.medium.com/max/348/0*Q1oTOLWGbSnl9aXC.png"
+    },
+    {
       "eventName": "Hackathon with Google",
       "company": "Google",
       "date": "2021-12-10",
