@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Table, TextArea, Header, Segment, Grid } from 'semantic-ui-react';
+import { Container, Form, Table, TextArea, Header, Segment, Grid, Button } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -19,9 +19,21 @@ const formSchema2 = new SimpleSchema({
   description: String,
 });
 
+// For company homepage
+const companySchema = new SimpleSchema({
+  companyName: String,
+  location: String,
+  contact: String,
+  industry: String,
+  image: String,
+  description: String,
+});
+
 const bridge = new SimpleSchema2Bridge(formSchema1);
 
 const bridge2 = new SimpleSchema2Bridge(formSchema2);
+
+const bridge3 = new SimpleSchema2Bridge(companySchema);
 
 class Home extends React.Component {
   // Implement On submit, insert the data.
@@ -88,6 +100,26 @@ class Home extends React.Component {
         {/* Start of student page */}
         {/* End of student page */}
         {/* Start of company page */}
+        { Roles.userIsInRole(Meteor.userId(), 'company') ?
+          <Grid id='company-home' columns={2}>
+            <Grid.Column width={6} color={'blue'}>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge3} onSubmit={data => this.submit(data, fRef)}>
+                <Segment>
+                  <TextField name='companyName'/>
+                  <TextField name='location'/>
+                  <TextField name='contact'/>
+                  <TextField name='industry'/>
+                  <TextField name='image'/>
+                  <LongTextField name='description'/>
+                  <SubmitField value='Submit'/>
+                  <ErrorsField/>
+                </Segment>
+              </AutoForm>
+            </Grid.Column>
+            <Grid.Column width={10} color={'grey'}>
+              <Button primary>Add Job Listing</Button>
+            </Grid.Column>
+          </Grid> : '' }
         {/* End of company page */}
       </Container>
     );
