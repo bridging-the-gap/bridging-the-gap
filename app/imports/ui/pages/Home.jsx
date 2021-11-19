@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Table, TextArea, Header, Segment, Grid, Button } from 'semantic-ui-react';
+import { Container, Form, Table, TextArea, Header, Segment, Grid, Button, Item, Label } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -43,12 +43,12 @@ class Home extends React.Component {
     return (
       <Container id='home-page'>
         {/* Start of admin page */}
-        { Roles.userIsInRole(Meteor.userId(), 'admin') ?
+        {Roles.userIsInRole(Meteor.userId(), 'admin') ?
           <div id='admin-page'>
             <div style={{ paddingBottom: '50px' }}>
               <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Create New Categories</Header>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}
-                style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
+              {/* eslint-disable-next-line max-len */}
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
                 <Segment>
                   <Form.Group widths={'equal'}>
                     <TextField id='name' name='name' placeholder='Category name'/>
@@ -95,14 +95,14 @@ class Home extends React.Component {
                 <ErrorsField/>
               </AutoForm>
             </Grid>
-          </div> : '' }
+          </div> : ''}
         {/* End of admin page */}
         {/* Start of student page */}
         {/* End of student page */}
         {/* Start of company page */}
-        { Roles.userIsInRole(Meteor.userId(), 'company') ?
+        {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
-            <Grid.Column width={6} color={'blue'}>
+            <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
               <AutoForm ref={ref => { fRef = ref; }} schema={bridge3} onSubmit={data => this.submit(data, fRef)}>
                 <Segment>
                   <TextField name='companyName'/>
@@ -116,10 +116,50 @@ class Home extends React.Component {
                 </Segment>
               </AutoForm>
             </Grid.Column>
-            <Grid.Column width={10} color={'grey'}>
+            <Grid.Column width={10} style={{ backgroundColor: 'grey' }}>
               <Button primary>Add Job Listing</Button>
+              <Segment>
+                <Item.Group divided>
+                  <Item>
+                    <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
+
+                    <Item.Content>
+                      <Item.Header>Public Safety</Item.Header>
+                      <Item.Meta>
+                        <span className='price'>$1200</span>
+                        <span className='stay'>Semester</span>
+                      </Item.Meta>
+                      <Item.Extra>
+                        <Label>Hawaii</Label>
+                      </Item.Extra>
+                      <Item.Extra>
+                        <Label>Liberal Arts</Label>
+                      </Item.Extra>
+                      <Item.Description> Walk around and look intimidating </Item.Description>
+                    </Item.Content>
+                  </Item>
+
+                  <Item>
+                    <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
+
+                    <Item.Content>
+                      <Item.Header> Dorm RA </Item.Header>
+                      <Item.Meta>
+                        <span className='price'>$1000</span>
+                        <span className='stay'>Semester</span>
+                      </Item.Meta>
+                      <Item.Extra>
+                        <Label>Hawaii</Label>
+                      </Item.Extra>
+                      <Item.Extra>
+                        <Label>Psychology</Label>
+                      </Item.Extra>
+                      <Item.Description>Deal with drunk students</Item.Description>
+                    </Item.Content>
+                  </Item>
+                </Item.Group></Segment>
             </Grid.Column>
-          </Grid> : '' }
+          </Grid> : ''}
         {/* End of company page */}
       </Container>
     );
