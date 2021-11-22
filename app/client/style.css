@@ -38,3 +38,9 @@ textarea::placeholder {
 .white-text {
   color: white;
 }
+
+.home-background {
+  background: url("/images/1.jpg") no-repeat;
+  background-size: cover;
+  font-size: 20px;
+}
