@@ -1,8 +1,11 @@
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import swal from 'sweetalert';
 import { Accounts } from 'meteor/accounts-base';
+import { addRoleMethod } from '../../startup/both/Methods';
 import { Profiles } from '../../api/profiles/Profiles';
 
 /**
@@ -12,7 +15,7 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+    this.state = { email: '', password: '', role: '', error: '', redirectToReferer: false };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -20,20 +23,34 @@ class Signup extends React.Component {
     this.setState({ [name]: value });
   }
 
+  /** Update the form controls each time the user interacts with them.
+   *   Used for the radio buttons. */
+  handleChange2 = (e, { value }) => {
+    this.setState({ value });
+    this.setState({ role: value });
+  }
+
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
-    const { email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    const { email, password, role } = this.state;
+    Accounts.createUser({ username: email, email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Profiles.insert({ email }, (err2) => {
+        Profiles.collection.insert({ email, role }, (err2) => {
           if (err2) {
             this.setState({ error: err2.reason });
           } else {
             this.setState({ error: '', redirectToReferer: true });
           }
         });
+      }
+    });
+    Meteor.call(addRoleMethod, this.state, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('You have registered successfully.', 'Welcome to Bridging the Gap!', 'success');
       }
     });
   }
@@ -74,6 +91,23 @@ class Signup extends React.Component {
                   type="password"
                   onChange={this.handleChange}
                 />
+                <Form.Group inline id="signup-form-roles">
+                  <label>Role</label>
+                  <Form.Radio
+                    label='Student'
+                    name='role'
+                    value='student'
+                    checked={this.state.value === 'student'}
+                    onChange={this.handleChange2}
+                  />
+                  <Form.Radio
+                    label='Company'
+                    name='role'
+                    value='company'
+                    checked={this.state.value === 'company'}
+                    onChange={this.handleChange2}
+                  />
+                </Form.Group>
                 <Form.Button id="signup-form-submit" content="Submit"/>
               </Segment>
             </Form>

@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
@@ -6,7 +7,6 @@ import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
 import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
-import { Events } from '../../api/events/Events';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -76,4 +76,23 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod };
+const addRoleMethod = 'Roles.add';
+
+/**
+ * The server-side Roles.add Meteor Method is called by the client-side Signup page after pushing the submit button.
+ * Its purpose is to give the user the role they specified in the registration form (either student or company).
+ */
+Meteor.methods({
+  'Roles.add'({ role }) {
+    if (role === 'student') {
+      Roles.createRole(role, { unlessExists: true });
+      Roles.addUsersToRoles([Meteor.userId()], 'student', null);
+    }
+    if (role === 'company') {
+      Roles.createRole(role, { unlessExists: true });
+      Roles.addUsersToRoles([Meteor.userId()], 'company', null);
+    }
+  },
+});
+
+export { updateProfileMethod, addProjectMethod, addRoleMethod };
