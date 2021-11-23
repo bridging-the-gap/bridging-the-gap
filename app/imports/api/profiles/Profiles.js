@@ -16,6 +16,7 @@ class ProfilesCollection {
       lastName: { type: String, optional: true },
       bio: { type: String, optional: true },
       title: { type: String, optional: true },
+      webpage: { type: String, optional: true },
       picture: { type: String, optional: true },
       role: { type: String, optional: true },
     }, { tracker: Tracker });

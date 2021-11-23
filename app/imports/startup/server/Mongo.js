@@ -40,30 +40,39 @@ function addSkill(skill) {
 }
 
 /** Defines a new user and associated profile. Error if user already exists. */
-function addProfile({ firstName, lastName, bio, title, locations, skills, projects, picture, email, role }) {
+function addProfile({ firstName, lastName, bio, title, webpage, locations, skills, projects, picture, email, role }) {
   console.log(`Defining profile ${email}`);
   // Define the user in the Meteor accounts package.
   createUser(email, role);
   // Create the profile.
-  Profiles.collection.insert({ firstName, lastName, bio, title, picture, email, role });
+  Profiles.collection.insert({ firstName, lastName, bio, title, webpage, picture, email, role });
   // Add locations and projects.
-  locations.map(location => ProfilesLocations.collection.insert({ profile: email, location }));
-  skills.map(skill => ProfilesSkills.collection.insert({ profile: email, skill }));
-  projects.map(project => ProfilesProjects.collection.insert({ profile: email, project }));
-  // Make sure locations are defined in the Locations collection if they weren't already.
-  locations.map(location => addLocation(location));
-  skills.map(skill => addSkill(skill));
+  if (typeof skills !== 'undefined') {
+    console.log(typeof skills);
+    skills.map(skill => ProfilesSkills.collection.insert({ profile: email, skill }));
+    skills.map(skill => addSkill(skill));
+  }
+  if (typeof projects !== 'undefined') {
+    projects.map(project => ProfilesProjects.collection.insert({ profile: email, project }));
+  }
+  if (typeof locations !== 'undefined') {
+    locations.map(location => ProfilesLocations.collection.insert({ profile: email, location }));
+    locations.map(location => addLocation(location));
+  }
 }
 
 /** Define a new project. Error if project already exists.  */
 function addProject({ name, homepage, description, locations, skills, picture, role }) {
   console.log(`Defining project ${name}`);
   Projects.collection.insert({ name, homepage, description, picture, role });
-  locations.map(location => ProjectsLocations.collection.insert({ project: name, location }));
-  skills.map(skill => ProjectsSkills.collection.insert({ project: name, skill }));
-  // Make sure locations are defined in the Locations collection if they weren't already.
-  locations.map(location => addLocation(location));
-  skills.map(skill => addSkill(skill));
+  if (typeof skills !== 'undefined') {
+    skills.map(skill => ProjectsSkills.collection.insert({ project: name, skill }));
+    skills.map(skill => addSkill(skill));
+  }
+  if (typeof locations !== 'undefined') {
+    locations.map(location => ProjectsLocations.collection.insert({ project: name, location }));
+    locations.map(location => addLocation(location));
+  }
 }
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
