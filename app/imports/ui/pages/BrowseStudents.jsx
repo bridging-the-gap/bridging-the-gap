@@ -40,6 +40,9 @@ const MakeCard = (props) => (
       <Card.Meta>
         <span className='date'>{props.profile.title}</span>
       </Card.Meta>
+      <Card.Meta>
+        <a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a>
+      </Card.Meta>
       <Card.Description>
         {props.profile.bio}
       </Card.Description>
@@ -47,6 +50,11 @@ const MakeCard = (props) => (
     <Card.Content extra>
       <Header as='h5'>Skills</Header>
       {_.map(props.profile.skills,
+        (skill, index) => <Label key={index} size='tiny' color='teal'>{skill}</Label>)}
+    </Card.Content>
+    <Card.Content extra>
+      <Header as='h5'>Preferred Locations</Header>
+      {_.map(props.profile.locations,
         (skill, index) => <Label key={index} size='tiny' color='teal'>{skill}</Label>)}
     </Card.Content>
   </Card>
