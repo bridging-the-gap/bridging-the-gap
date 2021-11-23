@@ -29,7 +29,7 @@ class AddEvent extends React.Component {
     let fRef = null;
     const formSchema = new SimpleSchema({
       eventName: { type: String },
-      company: { type: String },
+      company: { type: String, defaultValue: 'Company' },
       date: { type: String },
       location: { type: String },
       description: { type: String },
@@ -40,7 +40,7 @@ class AddEvent extends React.Component {
       <Grid id="add-project-page" container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Add Event</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
             <Segment>
               <Form.Group widths={'equal'}>
                 <TextField id='eventName' name='eventName' showInlineError={true} placeholder='Event name'/>

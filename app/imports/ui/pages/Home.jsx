@@ -1,10 +1,43 @@
 import React from 'react';
-import { Container, Form, Table, TextArea, Header, Segment, Grid, Button, Item, Label } from 'semantic-ui-react';
+import { Container, Form, Table, TextArea, Header, Segment, Grid, Button, Item, Label, Icon } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { _ } from 'meteor/underscore';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Events } from '../../api/events/Events';
+
+function getEventData(eventName) {
+  const data = Events.collection.findOne({ eventName });
+  return _.extend({ }, data);
+}
+
+const MakeItem = (props) => (
+  <Item>
+    <Item.Image size="small" src={props.event.picture}/>
+    <Item.Content verticalAlign='middle'>
+      <Item.Header as='a'>{props.event.eventName}</Item.Header>
+      <Item.Meta>
+        <span className='date'>{props.event.date} {'at'} {props.event.location}</span>
+      </Item.Meta>
+      <Item.Description>{props.event.description}</Item.Description>
+      <Item.Extra>
+        <Button primary floated='right'>
+          Register for event
+          <Icon name='right chevron' />
+        </Button>
+      </Item.Extra>
+    </Item.Content>
+  </Item>
+);
+
+MakeItem.propTypes = {
+  event: PropTypes.object.isRequired,
+};
 
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: create new category section.
@@ -40,6 +73,8 @@ class Home extends React.Component {
 
   render() {
     let fRef = null;
+    const events = _.pluck(Events.collection.find().fetch(), 'eventName');
+    const eventData = events.map(event => getEventData(event));
     return (
       <Container id='home-page'>
         {/* Start of admin page */}
@@ -116,8 +151,9 @@ class Home extends React.Component {
                 </Segment>
               </AutoForm>
             </Grid.Column>
-            <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
+            <Grid.Column width={10}>
               <Button primary>Add Job Listing</Button>
+              <Header as="h2" textAlign="center" inverted>Your job listings</Header>
               <Segment>
                 <Item.Group divided>
                   <Item>
@@ -158,6 +194,11 @@ class Home extends React.Component {
                     </Item.Content>
                   </Item>
                 </Item.Group></Segment>
+              <Button primary as={Link} to='/addEvent'>Add Event</Button>
+              <Header as="h2" textAlign="center" inverted>Your upcoming events</Header>
+              <Item.Group divided>
+                {_.map(eventData, (event, index) => <MakeItem key={index} event={event}/>)}
+              </Item.Group>
             </Grid.Column>
           </Grid> : ''}
         {/* End of company page */}
@@ -165,5 +206,11 @@ class Home extends React.Component {
     );
   }
 }
-
-export default Home;
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Ensure that minimongo is populated with all collections prior to running render().
+  const sub = Meteor.subscribe(Events.userPublicationName);
+  return {
+    ready: sub.ready(),
+  };
+})(Home);
