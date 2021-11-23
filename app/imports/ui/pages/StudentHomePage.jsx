@@ -30,6 +30,9 @@ const MakeCard = (props) => (
       <Card.Meta>
         <span className='date'>{props.profile.title}</span>
       </Card.Meta>
+      <Card.Meta>
+        <a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a>
+      </Card.Meta>
       <Card.Description>
         {props.profile.bio}
       </Card.Description>
