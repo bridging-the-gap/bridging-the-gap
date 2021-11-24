@@ -57,7 +57,7 @@ export default class Signin extends React.Component {
                   iconPosition="left"
                   name="email"
                   type="email"
-                  autoComplete='on'
+                  autoComplete="on"
                   placeholder="E-mail address"
                   onChange={this.handleChange}
                 />
@@ -69,7 +69,7 @@ export default class Signin extends React.Component {
                   name="password"
                   placeholder="Password"
                   type="password"
-                  autoComplete='on'
+                  autoComplete="on"
                   onChange={this.handleChange}
                 />
                 <Form.Button id="signin-form-submit" content="Submit"/>

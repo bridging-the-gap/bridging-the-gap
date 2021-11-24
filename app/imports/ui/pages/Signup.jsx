@@ -97,17 +97,17 @@ class Signup extends React.Component {
                 <Form.Group inline id="signup-form-roles">
                   <label>Role</label>
                   <Form.Radio
-                    label='Student'
-                    name='role'
-                    value='student'
+                    label="Student"
+                    name="role"
+                    value="student"
                     autoComplete="on"
                     checked={this.state.value === 'student'}
                     onChange={this.handleChange2}
                   />
                   <Form.Radio
-                    label='Company'
-                    name='role'
-                    value='company'
+                    label="Company"
+                    name="role"
+                    value="company"
                     checked={this.state.value === 'company'}
                     autoComplete="on"
                     onChange={this.handleChange2}
