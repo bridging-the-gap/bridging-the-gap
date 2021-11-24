@@ -12,7 +12,7 @@ class ProfilesSkillsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       profile: String,
-      skill: String,
+      skill: { type: String, optional: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

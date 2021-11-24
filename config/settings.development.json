@@ -31,15 +31,10 @@
       "lastName": "",
       "bio": "Google is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware.",
       "title": "Company",
+      "webpage": "https://google.com",
       "locations": [
         "US",
         "California"
-      ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "WRENCH"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
       "email": "google@google.com",
@@ -50,15 +45,10 @@
       "lastName": "Electronics",
       "bio": "Samsung is a major manufacturer of electronic components such as lithium-ion batteries, semiconductors, image sensors, camera modules and displays for clients such as Apple, Sony, HTC and Nokia. It is the world's largest manufacturer of mobile phones and smartphones, started with the original Samsung Solstice and later, the popularity of its Samsung Galaxy line of devices.",
       "title": "Company",
+      "webpage": "https://samsung.com",
       "locations": [
         "South Korea",
         "Seoul"
-      ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "WRENCH"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png",
       "email": "samsung@samsung.com",
@@ -69,14 +59,9 @@
       "lastName": "Inc.",
       "bio": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software and online services.",
       "title": "Company",
+      "webpage": "https://apple.com",
       "locations": [
         "US"
-      ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "WRENCH"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png",
       "email": "apple@apple.com",
@@ -127,6 +112,7 @@
       "lastName": "Moore",
       "bio": "Every summer, I enjoy visiting Portland, Oregon.",
       "title": "",
+      "webpage": "https://cammoore.github.io",
       "locations": [
         "US",
         "Hawaii"
@@ -147,6 +133,7 @@
       "lastName": "Christe",
       "bio": "I enjoy competitive bicycle racing.",
       "title": "Ph.D. (2020))",
+      "webpage": "https://anthonyjchriste.github.io",
       "locations": [
         "US"
       ],
@@ -164,7 +151,6 @@
       "firstName": "Jason",
       "lastName": "Leigh",
       "bio": "I escaped from Chicago and moved to Hawaii in 2014.",
-      "title": "",
       "locations": [
         "Hawaii"
       ],
@@ -186,6 +172,7 @@
       "locations": [
         "US"
       ],
+      "webpage": "https://sergey-negrashov.github.io",
       "skills": [
         "Programming"
       ],
@@ -204,6 +191,7 @@
       "locations": [
         "Hawaii"
       ],
+      "webpage": "https://heleeha.github.io",
       "skills": [
         "Programming",
         "Software Engineering",
@@ -225,6 +213,7 @@
       "locations": [
         "Hawaii"
       ],
+      "webpage": "https://ninanye.github.io",
       "skills": [
         "Programming",
         "Software Engineering",
@@ -246,6 +235,7 @@
       "locations": [
         "Hawaii"
       ],
+      "webpage": "https://martkaa.github.io",
       "skills": [
         "Programming",
         "Software Engineering",
@@ -267,6 +257,7 @@
       "locations": [
         "Hawaii"
       ],
+      "webpage": "https://leilani-reich.github.io",
       "skills": [
         "Programming",
         "Software Engineering",
@@ -308,48 +299,24 @@
       "name": "Open Power Quality",
       "homepage": "https://openpowerquality.org",
       "description": "Open source hardware and software for distributed power quality data collection, analysis, and visualization.",
-      "locations": [
-        "US"
-      ],
-      "skills": [
-        "Programming"
-      ],
       "picture": "https://avatars0.githubusercontent.com/u/4641939"
     },
     {
       "name": "RadGrad",
       "homepage": "https://radgrad.org",
       "description": "Growing awesome computer scientists, one graduate at a time.",
-      "locations": [
-        "US"
-      ],
-      "skills": [
-        "Programming"
-      ],
       "picture": "https://www.radgrad.org/img/radgrad_logo.png"
     },
     {
       "name": "WRENCH",
       "homepage": "https://wrench-project.org",
       "description": "WRENCH is an open-source library for developing simulators for large-scale scientific computation",
-      "locations": [
-        "US"
-      ],
-      "skills": [
-        "Programming"
-      ],
       "picture": "https://wrench-project.org/images/logo-vertical.png"
     },
     {
       "name": "Cyber Canoe",
       "homepage": "http://lava.manoa.hawaii.edu/blog/2014/07/11/cyber-canoe-cyber-infrastructure-enabled-collaborative-analysis-navigation-and-observation-environment/",
       "description": "Software for Unity projects involving stereoscopic resolution driven by 9 PCs with a GeForce 980 graphics card.",
-      "locations": [
-        "US"
-      ],
-      "skills": [
-        "Programming"
-      ],
       "picture": "https://www.hawaii.edu/its/wp-content/uploads/sites/2/2019/01/LAVAlogo-300x192-300x192.png"
     }
   ],

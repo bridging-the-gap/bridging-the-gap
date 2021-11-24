@@ -11,7 +11,7 @@ class SkillsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      name: { type: String, index: true, unique: true },
+      name: { type: String, index: true, unique: true, optional: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
