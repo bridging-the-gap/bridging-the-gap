@@ -41,7 +41,6 @@ class Signup extends React.Component {
           if (err2) {
             this.setState({ error: err2.reason });
           } else {
-            this.setState({ error: '', redirectToReferer: true });
             /** Calling the addRoleMethod to give the new user their specified role if there are no errors with registration. */
             Meteor.call(addRoleMethod, this.state, (error) => {
               if (error) {
@@ -50,6 +49,7 @@ class Signup extends React.Component {
                 swal('You have registered successfully.', 'Welcome to Bridging the Gap!', 'success');
               }
             });
+            this.setState({ error: '', redirectToReferer: true });
           }
         });
       }
