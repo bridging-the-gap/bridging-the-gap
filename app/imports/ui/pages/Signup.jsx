@@ -42,15 +42,16 @@ class Signup extends React.Component {
             this.setState({ error: err2.reason });
           } else {
             this.setState({ error: '', redirectToReferer: true });
+            /** Calling the addRoleMethod to give the new user their specified role if there are no errors with registration. */
+            Meteor.call(addRoleMethod, this.state, (error) => {
+              if (error) {
+                swal('Error', error.message, 'error');
+              } else {
+                swal('You have registered successfully.', 'Welcome to Bridging the Gap!', 'success');
+              }
+            });
           }
         });
-      }
-    });
-    Meteor.call(addRoleMethod, this.state, (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
-      } else {
-        swal('You have registered successfully.', 'Welcome to Bridging the Gap!', 'success');
       }
     });
   }
@@ -78,6 +79,7 @@ class Signup extends React.Component {
                   iconPosition="left"
                   name="email"
                   type="email"
+                  autoComplete="on"
                   placeholder="E-mail address"
                   onChange={this.handleChange}
                 />
@@ -89,6 +91,7 @@ class Signup extends React.Component {
                   name="password"
                   placeholder="Password"
                   type="password"
+                  autoComplete="on"
                   onChange={this.handleChange}
                 />
                 <Form.Group inline id="signup-form-roles">
@@ -97,6 +100,7 @@ class Signup extends React.Component {
                     label='Student'
                     name='role'
                     value='student'
+                    autoComplete="on"
                     checked={this.state.value === 'student'}
                     onChange={this.handleChange2}
                   />
@@ -105,6 +109,7 @@ class Signup extends React.Component {
                     name='role'
                     value='company'
                     checked={this.state.value === 'company'}
+                    autoComplete="on"
                     onChange={this.handleChange2}
                   />
                 </Form.Group>
