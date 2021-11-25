@@ -1,10 +1,12 @@
 import React from 'react';
-import { Container, Form, Table, TextArea, Header, Segment, Grid, Button, Item, Label } from 'semantic-ui-react';
+import { Container, Form, Table, TextArea, Header, Segment, Grid, Button, Item, Label, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: create new category section.
@@ -36,9 +38,14 @@ const bridge2 = new SimpleSchema2Bridge(formSchema2);
 const bridge3 = new SimpleSchema2Bridge(companySchema);
 
 class Home extends React.Component {
-  // Implement On submit, insert the data.
 
+  /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
+    return (this.props.ready ? this.renderPage() : <Loader active>Getting data</Loader>);
+  }
+
+  /** Render the page once subscriptions have been received. */
+  renderPage() {
     let fRef = null;
     return (
       <Container id='home-page'>
@@ -166,4 +173,15 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+Home.propTypes = {
+  ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Ensure that minimongo is populated with all collections prior to running render().
+  const sub = Roles.subscription;
+  return {
+    ready: sub.ready(),
+  };
+})(Home);
