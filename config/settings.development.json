@@ -294,6 +294,28 @@
       "role": "student"
     }
   ],
+  "defaultReports": [
+    {
+      "reportName": "Inappropriate student",
+      "email": "johnson@hawaii.edu",
+      "description": "fake-person@hawaii.edu has included vulgar content in her profile page."
+    },
+    {
+      "reportName": "A bad apple",
+      "email": "apple@apple.com",
+      "description": "app1e@app1e.com is masquerading as my company on the site. They are posting events that do not exist and are slandering my company's name on the page they've made. Please take them down."
+    },
+    {
+      "reportName": "Spongebob impersonator",
+      "email": "reichld@hawaii.edu",
+      "description": "I came across a user (sbob@gmail.com) who seems to be impersonating Spongebob. I don't think I need to say much more."
+    },
+    {
+      "reportName": "Suspicious link",
+      "email": "samsung@samsung.com",
+      "description": "While searching through students' profiles for potential job candidates, I came across a user by the name Jason Leigh (leighj@hawaii.edu). When I clicked the link to his portfolio page, I was sent somewhere unexpected and I think I may have downloaded a virus. Please look into the matter and contact us when you know more."
+    }
+  ],
   "defaultProjects": [
     {
       "name": "Open Power Quality",

@@ -7,6 +7,9 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Reports } from '../../api/reports/Reports';
+import ReportItem from '../components/ReportItem';
+import { Profiles } from '../../api/profiles/Profiles';
 
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: create new category section.
@@ -47,6 +50,7 @@ class Home extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     let fRef = null;
+    console.log('What is the report name?', this.props.reports.name);
     return (
       <Container id='home-page'>
         {/* Start of admin page */}
@@ -54,8 +58,8 @@ class Home extends React.Component {
           <div id='admin-page'>
             <div style={{ paddingBottom: '50px' }}>
               <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Create New Categories</Header>
-              {/* eslint-disable-next-line max-len */}
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}
+                style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
                 <Segment>
                   <Form.Group widths={'equal'}>
                     <TextField id='name' name='name' placeholder='Category name'/>
@@ -70,24 +74,21 @@ class Home extends React.Component {
             </div>
             <div style={{ paddingBottom: '50px' }}>
               <Header as="h2" textAlign="center" style={{ color: 'red' }}>Inappropriate Content Reports</Header>
-              <Table celled color='red' inverted>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>From</Table.HeaderCell>
-                    <Table.HeaderCell>About</Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                  <Table.Row>
-                    <Table.Cell width={5}>johnson@hawaii.edu</Table.Cell>
-                    <Table.Cell>student1@hawaii.edu has included vulgar and explicit content in their profile page.</Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell width={5}>leighj@hawaii.edu</Table.Cell>
-                    <Table.Cell>fake-company@hawaii.edu is masquerading as my company on the site.</Table.Cell>
-                  </Table.Row>
-                </Table.Body>
-              </Table></div>
+              <div style={{ maxHeight: '400px', overflowX: 'scroll' }}>
+                <Table celled color='red' inverted>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>From</Table.HeaderCell>
+                      <Table.HeaderCell>About</Table.HeaderCell>
+                      <Table.HeaderCell>Description</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                  <Table.Body>
+                    {this.props.reports.map((report) => <ReportItem key={report._id} report={report}/>)}
+                  </Table.Body>
+                </Table>
+              </div>
+            </div>
 
             <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Send Email to Clients</Header>
             <Grid style={{ height: '400px', backgroundColor: 'blue' }} centered columns={1}>
@@ -174,14 +175,20 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
+  reports: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
-  const sub = Roles.subscription;
+  const sub1 = Roles.subscription;
+  const sub2 = Meteor.subscribe(Reports.userPublicationName);
+  const sub3 = Meteor.subscribe(Profiles.userPublicationName);
+  // Get the Reports documents
+  const reports = Reports.collection.find({}).fetch();
   return {
-    ready: sub.ready(),
+    reports,
+    ready: sub1.ready() && sub2.ready() && sub3.ready(),
   };
 })(Home);

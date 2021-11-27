@@ -11,6 +11,7 @@ import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
+import { Reports } from '../../api/reports/Reports';
 
 /* eslint-disable no-console */
 
@@ -82,6 +83,13 @@ function addEvent({ eventName, company, date, location, description, picture }) 
   Events.collection.insert({ eventName, company, date, location, description, picture });
 }
 
+/** Define a new report. Error if report already exists.  */
+function addReport({ reportName, email, description }) {
+  console.log(`Defining report ${reportName}`);
+  // Create the report.
+  Reports.collection.insert({ reportName, email, description });
+}
+
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
@@ -91,6 +99,8 @@ if (Meteor.users.find().count() === 0) {
     Meteor.settings.defaultProjects.map(project => addProject(project));
     console.log('Creating the default events');
     Meteor.settings.defaultEvents.map(event => addEvent(event));
+    console.log('Creating the default reports');
+    Meteor.settings.defaultReports.map(report => addReport(report));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
