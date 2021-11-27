@@ -43,6 +43,8 @@ class NavBar extends React.Component {
               <Dropdown.Menu>
                 <Dropdown.Item id="navbar-student-profile" icon="user" text="My Profile" as={NavLink} exact to="/studentProfilePage"
                   style={{ color: 'white' }}/>
+                <Dropdown.Item id="navbar-report" icon="exclamation" text="Report Inappropriate Content" as={NavLink}
+                  exact to="/addReport" style={{ color: 'white' }}/>
                 <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact to="/signout" style={{ color: 'white' }}/>
               </Dropdown.Menu>
             </Dropdown>

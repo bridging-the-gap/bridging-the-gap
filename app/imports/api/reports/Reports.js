@@ -12,7 +12,7 @@ class ReportsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       reportName: { type: String, index: true },
-      email: { type: String, index: true, unique: true },
+      email: { type: String, index: true },
       description: { type: String, index: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.

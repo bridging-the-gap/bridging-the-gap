@@ -50,7 +50,6 @@ class Home extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     let fRef = null;
-    console.log('What is the report name?', this.props.reports.name);
     return (
       <Container id='home-page'>
         {/* Start of admin page */}
@@ -81,16 +80,19 @@ class Home extends React.Component {
                       <Table.HeaderCell>From</Table.HeaderCell>
                       <Table.HeaderCell>About</Table.HeaderCell>
                       <Table.HeaderCell>Description</Table.HeaderCell>
+                      <Table.HeaderCell>Delete</Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
-                    {this.props.reports.map((report) => <ReportItem key={report._id} report={report}/>)}
+                    {this.props.reports.map((report) => <ReportItem key={report._id} report={report}
+                      Reports={Reports}/>)}
                   </Table.Body>
                 </Table>
               </div>
             </div>
 
-            <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Send Email to Clients</Header>
+            <Header as="h2" textAlign="center" style={{ color: 'blue', paddingBottom: '15px' }}>
+              Send Email to Clients</Header>
             <Grid style={{ height: '400px', backgroundColor: 'blue' }} centered columns={1}>
               <AutoForm schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
                 <Form.Group>
