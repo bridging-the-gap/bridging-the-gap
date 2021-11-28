@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Table, TextArea, Header, Segment, Grid, Button, Item, Label, Loader } from 'semantic-ui-react';
+import { Container, Form, Table, Header, Segment, Grid, Button, Item, Label, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -10,17 +10,12 @@ import PropTypes from 'prop-types';
 import { Reports } from '../../api/reports/Reports';
 import ReportItem from '../components/ReportItem';
 import { Profiles } from '../../api/profiles/Profiles';
+import Email from '../components/Email';
 
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: create new category section.
 const formSchema1 = new SimpleSchema({
   name: String,
-  description: String,
-});
-
-// Create a schema to specify the structure of the data to appear in the form.
-// For admin page: email section.
-const formSchema2 = new SimpleSchema({
   description: String,
 });
 
@@ -34,11 +29,9 @@ const companySchema = new SimpleSchema({
   description: String,
 });
 
-const bridge = new SimpleSchema2Bridge(formSchema1);
+const bridge1 = new SimpleSchema2Bridge(formSchema1);
 
-const bridge2 = new SimpleSchema2Bridge(formSchema2);
-
-const bridge3 = new SimpleSchema2Bridge(companySchema);
+const bridge2 = new SimpleSchema2Bridge(companySchema);
 
 class Home extends React.Component {
 
@@ -57,7 +50,7 @@ class Home extends React.Component {
           <div id='admin-page'>
             <div style={{ paddingBottom: '50px' }}>
               <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Create New Categories</Header>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge1} onSubmit={data => this.submit(data, fRef)}
                 style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
                 <Segment>
                   <Form.Group widths={'equal'}>
@@ -90,21 +83,8 @@ class Home extends React.Component {
                 </Table>
               </div>
             </div>
-
-            <Header as="h2" textAlign="center" style={{ color: 'blue', paddingBottom: '15px' }}>
-              Send Email to Clients</Header>
-            <Grid style={{ height: '400px', backgroundColor: 'blue' }} centered columns={1}>
-              <AutoForm schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
-                <Form.Group>
-                  <TextArea placeholder='Email Description...' style={{
-                    width:
-                      '600px', height: '300px', marginTop: '20px',
-                  }}/>
-                </Form.Group>
-                <SubmitField id='submit' value='Send' style={{ float: 'right', marginRight: '-5px' }}/>
-                <ErrorsField/>
-              </AutoForm>
-            </Grid>
+            <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Send Email to Clients</Header>
+            <Email/>
           </div> : ''}
         {/* End of admin page */}
         {/* Start of student page */}
@@ -113,7 +93,7 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge3} onSubmit={data => this.submit(data, fRef)}>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
                 <Segment>
                   <TextField name='companyName'/>
                   <TextField name='location'/>
