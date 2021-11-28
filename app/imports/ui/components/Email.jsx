@@ -39,10 +39,9 @@ function Email() {
             title: 'Message Sent',
             text: 'Email was successfully sent.',
             icon: 'success',
-          });
-          setToSend({
+          }).then(() => setToSend({
             to_name: '',
-            description: '' });
+            description: '' }));
         })
         .catch((err) => {
           console.log('FAILED...', err);
@@ -65,7 +64,7 @@ function Email() {
         <Form.Group>
           <TextArea id='description' name='description' placeholder='Email Description...' style={{
             width:
-              '600px', height: '300px', marginTop: '20px',
+              '600px', height: '300px', maxHeight: '300px', marginTop: '20px',
           }} value={toSend.description} onChange={handleChange}/>
         </Form.Group>
         <Form.Group>

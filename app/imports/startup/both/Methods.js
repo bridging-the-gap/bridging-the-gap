@@ -51,6 +51,25 @@ Meteor.methods({
   },
 });
 
+const deleteProfileMethod = 'Profiles.delete';
+
+/**
+ * The server-side Profiles.delete Meteor Method is called by the client-side Admin Home page (in Home.jsx) after
+ * pushing the "Delete User" button.
+ * Its purpose is to update the Profiles, ProfilesLocations, and ProfilesProjects collections to reflect the
+ * the deletion of the user specified by the admin.
+ */
+Meteor.methods({
+  'Profiles.delete'({ email, role }) {
+    Roles.removeUsersFromRoles([email], [role]);
+    Profiles.collection.remove({ email });
+    ProfilesLocations.collection.remove({ profile: email });
+    ProfilesSkills.collection.remove({ profile: email });
+    ProfilesProjects.collection.remove({ profile: email });
+    Meteor.users.remove({ username: email });
+  },
+});
+
 const addProjectMethod = 'Projects.add';
 
 /** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
@@ -92,7 +111,8 @@ Meteor.methods({
       Roles.createRole(role, { unlessExists: true });
       Roles.addUsersToRoles([Meteor.userId()], 'company', null);
     }
+    console.log('role of registered user:', role);
   },
 });
 
-export { updateProfileMethod, addProjectMethod, addRoleMethod };
+export { updateProfileMethod, deleteProfileMethod, addProjectMethod, addRoleMethod };

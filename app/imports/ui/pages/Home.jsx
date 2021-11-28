@@ -11,6 +11,7 @@ import { Reports } from '../../api/reports/Reports';
 import ReportItem from '../components/ReportItem';
 import { Profiles } from '../../api/profiles/Profiles';
 import Email from '../components/Email';
+import DeleteUser from '../components/DeleteUser';
 
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: create new category section.
@@ -82,6 +83,9 @@ class Home extends React.Component {
                   </Table.Body>
                 </Table>
               </div>
+              <Grid container style={{ border: '1px solid red', width: '510px', paddingTop: '30px', marginTop: '-10px' }} centered>
+                <Header as="h3" style={{ paddingTop: '10px' }}>Delete Offending User</Header>
+                <DeleteUser/></Grid>
             </div>
             <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Send Email to Clients</Header>
             <Email/>
@@ -158,6 +162,7 @@ class Home extends React.Component {
 
 Home.propTypes = {
   reports: PropTypes.array.isRequired,
+  profiles: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -169,8 +174,11 @@ export default withTracker(() => {
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
   // Get the Reports documents
   const reports = Reports.collection.find({}).fetch();
+  // Get the Profiles documents
+  const profiles = Profiles.collection.find({}).fetch();
   return {
     reports,
+    profiles,
     ready: sub1.ready() && sub2.ready() && sub3.ready(),
   };
 })(Home);
