@@ -33,27 +33,31 @@ class Signup extends React.Component {
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
     const { email, password, role } = this.state;
-    Accounts.createUser({ username: email, email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        Profiles.collection.insert({ email, role }, (err2) => {
-          if (err2) {
-            this.setState({ error: err2.reason });
-          } else {
+    if (role.trim() === '') {
+      swal('Error', 'You must choose a role to sign up', 'error');
+    } else {
+      Accounts.createUser({ username: email, email, password }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          Profiles.collection.insert({ email, role }, (err2) => {
+            if (err2) {
+              this.setState({ error: err2.reason });
+            } else {
             /** Calling the addRoleMethod to give the new user their specified role if there are no errors with registration. */
-            Meteor.call(addRoleMethod, this.state, (error) => {
-              if (error) {
-                swal('Error', error.message, 'error');
-              } else {
-                swal('You have registered successfully.', 'Welcome to Bridging the Gap!', 'success');
-              }
-            });
-            this.setState({ error: '', redirectToReferer: true });
-          }
-        });
-      }
-    });
+              Meteor.call(addRoleMethod, this.state, (error) => {
+                if (error) {
+                  swal('Error', error.message, 'error');
+                } else {
+                  swal('You have registered successfully.', 'Welcome to Bridging the Gap!', 'success');
+                }
+              });
+              this.setState({ error: '', redirectToReferer: true });
+            }
+          });
+        }
+      });
+    }
   }
 
   /** Display the signup form. */
