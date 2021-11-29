@@ -38,15 +38,15 @@ class AddReport extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered>
+      <Grid container centered id='add-report-page'>
         <Grid.Column>
           <Header as="h2" textAlign="center">Report Inappropriate Content</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='reportName' placeholder='Give a descriptive title for your report.'/>
-              <LongTextField name='description' placeholder='Write your report here.
+              <TextField id='reportName' name='reportName' placeholder='Give a descriptive title for your report.'/>
+              <LongTextField id='reportDescription' name='description' placeholder='Write your report here.
               If there is a particular offender, be sure to mention their email and/or name in your message.'/>
-              <SubmitField value='Submit'/>
+              <SubmitField id='reportSubmit' value='Submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

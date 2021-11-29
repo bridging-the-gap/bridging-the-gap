@@ -102,6 +102,7 @@ class Signup extends React.Component {
                   <label>Role</label>
                   <Form.Radio
                     label="Student"
+                    id='student-button'
                     name="role"
                     value="student"
                     autoComplete="on"
@@ -110,6 +111,7 @@ class Signup extends React.Component {
                   />
                   <Form.Radio
                     label="Company"
+                    id='company-button'
                     name="role"
                     value="company"
                     checked={this.state.value === 'company'}

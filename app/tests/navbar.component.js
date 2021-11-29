@@ -17,6 +17,11 @@ class NavBar {
     await testController.click('#login-dropdown-sign-in');
   }
 
+  async gotoAddReportPage(testController) {
+    await testController.click('#navbar-current-user');
+    await testController.click('#navbar-report');
+  }
+
   async gotoProfilesPage(testController) {
     await testController.click('#profilesMenuItem');
   }

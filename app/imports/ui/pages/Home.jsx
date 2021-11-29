@@ -85,7 +85,8 @@ class Home extends React.Component {
               </div>
               <Grid container style={{ border: '1px solid red', width: '510px', paddingTop: '30px', marginTop: '-10px' }} centered>
                 <Header as="h3" style={{ paddingTop: '10px' }}>Delete Offending User</Header>
-                <DeleteUser/></Grid>
+                <DeleteUser/>
+              </Grid>
             </div>
             <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Send Email to Clients</Header>
             <Email/>

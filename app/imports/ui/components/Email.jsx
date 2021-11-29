@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
+import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 
 function Email() {
@@ -16,7 +17,7 @@ function Email() {
     to_name: '',
     description: '',
   });
-  /** Sends the user's message to the bridgingthegap email if it is valid. */
+  /** Sends bridgingthegap's message to the specified user's email if it is valid. */
   const onSubmit = (e) => {
     /** Conditions to check that the content of the fields is not just blank spaces. */
     if (toSend.to_name.trim() === '' || toSend.description.trim() === '') {
@@ -35,21 +36,21 @@ function Email() {
       )
         .then((response) => {
           console.log('SUCCESS!', response.status, response.text);
-          Swal.fire({
-            title: 'Message Sent',
-            text: 'Email was successfully sent.',
-            icon: 'success',
-          }).then(() => setToSend({
+          swal(
+            'Message Sent',
+            'Email was successfully sent.',
+            'success',
+          ).then(() => setToSend({
             to_name: '',
             description: '' }));
         })
         .catch((err) => {
           console.log('FAILED...', err);
-          Swal.fire({
-            title: 'Failed to Receive Message',
-            text: 'You may have found a bug.',
-            icon: 'error',
-          });
+          swal(
+            'Failed to Receive Message',
+            'You may have found a bug.',
+            'error',
+          );
         });
     }
   };
@@ -62,16 +63,17 @@ function Email() {
     <Grid style={{ height: '400px', backgroundColor: 'blue' }} centered columns={1}>
       <Form onSubmit={onSubmit}>
         <Form.Group>
-          <TextArea id='description' name='description' placeholder='Email Description...' style={{
+          <TextArea id='email-client-description' name='description' placeholder='Email Description...' style={{
             width:
               '600px', height: '300px', maxHeight: '300px', marginTop: '20px',
           }} value={toSend.description} onChange={handleChange}/>
         </Form.Group>
         <Form.Group>
-          <Form.Input id='to_name' name='to_name' placeholder='email of recipient'
+          <Form.Input id='email-client-email' name='to_name' placeholder='email of recipient'
             style={{ width: '485px', marginLeft: '-5px' }} value={toSend.to_name}
             onChange={handleChange}/>
-          <Form.Button type='submit' size='large' style={{ float: 'right' }}>Submit</Form.Button>
+          <Form.Button id='email-client-button' type='submit' size='large'
+            style={{ float: 'right' }}>Submit</Form.Button>
         </Form.Group>
       </Form>
     </Grid>

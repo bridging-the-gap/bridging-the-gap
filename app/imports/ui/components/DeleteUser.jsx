@@ -24,15 +24,15 @@ class DeleteUser extends React.Component {
   }
 
   submit = () => {
-    console.log('current email', this.state.email);
-    console.log('roles from user', this.state.role);
+    // console.log('current email', this.state.email);
+    // console.log('roles from user', this.state.role);
     const isStudent = _.findWhere(this.props.profiles, { email: this.state.email, role: 'student' });
-    console.log('isStudent', isStudent);
+    // console.log('isStudent', isStudent);
     const isCompany = _.findWhere(this.props.profiles, { email: this.state.email, role: 'company' });
-    console.log('isCompany', isCompany);
+    // console.log('isCompany', isCompany);
     const match = ((isStudent !== undefined && this.state.role === isStudent.role) ||
       (isCompany !== undefined && this.state.role === isCompany.role));
-    console.log('match', match);
+    // console.log('match', match);
     if (this.state.role === '' ||
       (this.props.profiles.find(({ email }) => email === this.state.email) === undefined || match === false)) {
       Swal.fire({
@@ -59,16 +59,17 @@ class DeleteUser extends React.Component {
 
   render() {
     const mainRoles = [
-      { text: 'student', value: 'student' },
-      { text: 'company', value: 'company' },
+      { text: 'student', value: 'student', id: 'studentR' },
+      { text: 'company', value: 'company', id: 'companyR' },
     ];
     return (
       <Form id='deleteUserForm' onSubmit={this.submit}>
         <Form.Group>
-          <Form.Input required placeholder='email of user to delete' id='email'
+          <Form.Input required placeholder='email of user to delete' id='email-delete'
             name='email' type='email' onChange={this.handleChange}/>
-          <Form.Dropdown placeholder='role of user to delete' id='role' name='role' selection options={mainRoles} onChange={this.handleChange}/>
-          <Form.Button type='submit'>DELETE</Form.Button>
+          <Form.Dropdown placeholder='role of user to delete' id='role-delete' name='role'
+            selection options={mainRoles} onChange={this.handleChange}/>
+          <Form.Button id='button-delete' type='submit'>DELETE</Form.Button>
         </Form.Group>
       </Form>
     );
