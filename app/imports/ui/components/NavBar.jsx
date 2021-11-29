@@ -25,9 +25,6 @@ class NavBar extends React.Component {
           key='browseStudents' style={{ color: 'white' }}>Browse Students</Menu.Item>
         <Menu.Item as={NavLink} id="browseCompaniesItem" activeClassName="green active" exact to="/browseCompanies"
           key='browseCompanies' style={{ color: 'white' }}>Browse Companies</Menu.Item>
-        {this.props.currentUser && (Roles.userIsInRole(Meteor.userId(), 'company') === true) ? (
-          // eslint-disable-next-line max-len
-          <Menu.Item as={NavLink} id="addEventItem" activeClassName="green active" exact to="/addEvent" key='addEvent' style={{ color: 'white' }}>Add Event</Menu.Item>) : '' }
         {this.props.currentUser && (Roles.userIsInRole(Meteor.userId(), 'admin') === false) ? (
           <Menu.Item as={NavLink} id="profileMenuItem" activeClassName="green active" exact to="/profile" key='profile'
             style={{ color: 'white' }}>Profile</Menu.Item>) : '' }

@@ -1,4 +1,4 @@
-name: ci-bridging-the-gap
+name: ci-bowfolios
 
 on:
   push:

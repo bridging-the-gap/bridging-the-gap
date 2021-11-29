@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
-import AddEvent from '../pages/AddEvent';
+import AddProject from '../pages/AddProject';
 import Projects from '../pages/Projects';
 import BrowseCompanies from '../pages/BrowseCompanies';
 import BrowseStudents from '../pages/BrowseStudents';
@@ -40,7 +40,6 @@ class App extends React.Component {
               <ProtectedRoute path="/events" component={Events}/>
               <ProtectedRoute path="/addReport" component={AddReport}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
-              <ProtectedRoute path="/addEvent" component={AddEvent}/>
               <ProtectedRoute path="/browseCompanies" component={BrowseCompanies}/>
               <ProtectedRoute path="/browseStudents" component={BrowseStudents}/>
               <ProtectedRoute path="/studentHomePage" component={StudentHomePage}/>
