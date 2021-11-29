@@ -13,6 +13,7 @@ class CompaniesCollection {
       industry: String,
       image: String,
       description: String,
+      owner: { type: String, unique: true },
     }, { tracker: Tracker });
     this.collection.attachSchema(this.schema);
     this.userPublicationName = `${this.name}.publication.user`;

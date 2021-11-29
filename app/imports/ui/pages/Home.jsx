@@ -12,6 +12,8 @@ import ReportItem from '../components/ReportItem';
 import { Profiles } from '../../api/profiles/Profiles';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
+import { Companies } from '../../api/company/Companies';
+import Company from '../components/Company';
 
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: create new category section.
@@ -20,19 +22,7 @@ const formSchema1 = new SimpleSchema({
   description: String,
 });
 
-// For company homepage
-const companySchema = new SimpleSchema({
-  companyName: String,
-  location: String,
-  contact: String,
-  industry: String,
-  image: String,
-  description: String,
-});
-
 const bridge1 = new SimpleSchema2Bridge(formSchema1);
-
-const bridge2 = new SimpleSchema2Bridge(companySchema);
 
 class Home extends React.Component {
 
@@ -98,18 +88,9 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
-                <Segment>
-                  <TextField name='companyName'/>
-                  <TextField name='location'/>
-                  <TextField name='contact'/>
-                  <TextField name='industry'/>
-                  <TextField name='image'/>
-                  <LongTextField name='description'/>
-                  <SubmitField value='Submit'/>
-                  <ErrorsField/>
-                </Segment>
-              </AutoForm>
+              <Segment>
+                {this.props.companies.map((company, index) => <Company key={index} company={company} />)}
+              </Segment>
             </Grid.Column>
             <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
               <Button primary>Add Job Listing</Button>
@@ -164,6 +145,7 @@ class Home extends React.Component {
 Home.propTypes = {
   reports: PropTypes.array.isRequired,
   profiles: PropTypes.array.isRequired,
+  companies: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -173,13 +155,17 @@ export default withTracker(() => {
   const sub1 = Roles.subscription;
   const sub2 = Meteor.subscribe(Reports.userPublicationName);
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
+  const sub4 = Meteor.subscribe(Companies.userPublicationName);
   // Get the Reports documents
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
+  // Get access to Companies documents
+  const companies = Companies.collection.find({}).fetch();
   return {
     reports,
     profiles,
-    ready: sub1.ready() && sub2.ready() && sub3.ready(),
+    companies,
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
   };
 })(Home);
