@@ -12,6 +12,7 @@ import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
 import { Reports } from '../../api/reports/Reports';
+import { Companies } from '../../api/company/Companies';
 
 /* eslint-disable no-console */
 
@@ -88,6 +89,19 @@ function addReport({ reportName, email, description }) {
   console.log(`Defining report ${reportName}`);
   // Create the report.
   Reports.collection.insert({ reportName, email, description });
+}
+
+/** Initialize the database with default company info  */
+function addCompany(companyData) {
+  console.log(` Adding: ${companyData.companyName}`);
+  Companies.collection.insert(companyData);
+}
+/** Initialize company database if empty */
+if (Companies.collection.find().count() === 0) {
+  if (Meteor.settings.defaultCompany) {
+    console.log('Creating default company.');
+    Meteor.settings.defaultCompany.map(companyData => addCompany(companyData));
+  }
 }
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
