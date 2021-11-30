@@ -15,7 +15,12 @@ const formSchema1 = new SimpleSchema({
 
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: email section.
-const formSchema2 = new SimpleSchema({
+const studentSchema = new SimpleSchema({
+  studentName: String,
+  location: String,
+  contact: String,
+  industry: String,
+  image: String,
   description: String,
 });
 
@@ -31,7 +36,7 @@ const companySchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema1);
 
-const bridge2 = new SimpleSchema2Bridge(formSchema2);
+const bridge2 = new SimpleSchema2Bridge(studentSchema);
 
 const bridge3 = new SimpleSchema2Bridge(companySchema);
 
@@ -98,6 +103,66 @@ class Home extends React.Component {
           </div> : ''}
         {/* End of admin page */}
         {/* Start of student page */}
+        {Roles.userIsInRole(Meteor.userId(), 'student') ?
+          <Grid id='student-home' columns={2}>
+            <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
+                <Segment>
+                  <TextField name='studentName'/>
+                  <TextField name='location'/>
+                  <TextField name='contact'/>
+                  <TextField name='industry'/>
+                  <TextField name='image'/>
+                  <LongTextField name='description'/>
+                  <SubmitField value='Submit'/>
+                  <ErrorsField/>
+                </Segment>
+              </AutoForm>
+            </Grid.Column>
+            <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
+              <Button primary>Add Job Listing</Button>
+              <Segment>
+                <Item.Group divided>
+                  <Item>
+                    <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
+
+                    <Item.Content>
+                      <Item.Header>Public Safety</Item.Header>
+                      <Item.Meta>
+                        <span className='price'>$1200</span>
+                        <span className='stay'>Semester</span>
+                      </Item.Meta>
+                      <Item.Extra>
+                        <Label>Hawaii</Label>
+                      </Item.Extra>
+                      <Item.Extra>
+                        <Label>Liberal Arts</Label>
+                      </Item.Extra>
+                      <Item.Description> Walk around and look intimidating </Item.Description>
+                    </Item.Content>
+                  </Item>
+
+                  <Item>
+                    <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
+
+                    <Item.Content>
+                      <Item.Header> Dorm RA </Item.Header>
+                      <Item.Meta>
+                        <span className='price'>$1000</span>
+                        <span className='stay'>Semester</span>
+                      </Item.Meta>
+                      <Item.Extra>
+                        <Label>Hawaii</Label>
+                      </Item.Extra>
+                      <Item.Extra>
+                        <Label>Psychology</Label>
+                      </Item.Extra>
+                      <Item.Description>Deal with drunk students</Item.Description>
+                    </Item.Content>
+                  </Item>
+                </Item.Group></Segment>
+            </Grid.Column>
+          </Grid> : ''}
         {/* End of student page */}
         {/* Start of company page */}
         {Roles.userIsInRole(Meteor.userId(), 'company') ?

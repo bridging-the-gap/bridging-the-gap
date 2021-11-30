@@ -69,6 +69,95 @@ class ProfilesPage extends React.Component {
     // const profileData = emails.map(email => getProfileData(email));
     return (
       <Container>
+        {/* Start of student page */}
+        {Roles.userIsInRole(Meteor.userId(), 'student') ?
+          <div className={'home-background'}>
+            <Grid stackable columns={3}>
+              <Grid.Row/>
+              <Grid.Row/>
+              <Grid.Row/>
+              <Grid.Row/>
+              <Grid.Row>
+                <Grid.Column/>
+                <Grid.Column textAlign={'center'}>Student profile page</Grid.Column>
+                <Grid.Column/>
+              </Grid.Row>
+            </Grid>
+            <Grid columns={2}>
+              <Grid.Column width={6} style={{ backgroundColor: 'light blue' }}>
+                <Segment>
+                  <Header as={'h3'}>Location</Header>
+                  <p>Hawaii</p>
+                  <Divider section />
+                  <Header as={'h3'}>Description</Header>
+                  <p> The student attends UH Manoa as a Software engineer student. </p>
+                  <Divider section />
+                  <Header as={'h3'}>Industry</Header>
+                  <Label as='a' color='teal' tag>
+                    Software engineering
+                  </Label>
+                  <Label as='a' color='teal' tag>
+                    Psychology
+                  </Label>
+                  <Divider section />
+                  <Header as={'h3'}>Contact Info</Header>
+                  <p>ContactStudent@hawaii.edu</p>
+                  <Divider section />
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={10} style={{ backgroundColor: 'blue' }}>
+                <Segment>
+                  <Header as={'h3'}>Listings recomended for you</Header>
+                  <Item.Group divided>
+                    <Item>
+                      <Item.Image size='tiny' src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png'/>
+                      <Item.Content>
+                        <Item.Header>Apple</Item.Header>
+                        <Item.Meta>
+                          <span className='price'>$1200</span>
+                          <span className='stay'>Semester</span>
+                        </Item.Meta>
+                        <Item.Extra>
+                          <Label>Hawaii company</Label>
+                        </Item.Extra>
+                        <Item.Extra>
+                          <Label>Liberal Arts</Label>
+                        </Item.Extra>
+                        <Item.Description> Walk around and look intimidating </Item.Description>
+                        <Button primary floated='right'>
+                          Apply
+                          <Icon name='right chevron' />
+                        </Button>
+                      </Item.Content>
+                    </Item>
+
+                    <Item>
+                      <Item.Image size='tiny' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png'/>
+
+                      <Item.Content>
+                        <Item.Header> Google </Item.Header>
+                        <Item.Meta>
+                          <span className='price'>$1000</span>
+                          <span className='stay'>Semester</span>
+                        </Item.Meta>
+                        <Item.Extra>
+                          <Label>Hawaii</Label>
+                        </Item.Extra>
+                        <Item.Extra>
+                          <Label>Psychology</Label>
+                        </Item.Extra>
+                        <Item.Description>Deal with drunk students</Item.Description>
+                        <Button primary floated='right'>
+                          Apply
+                          <Icon name='right chevron' />
+                        </Button>
+                      </Item.Content>
+                    </Item>
+                  </Item.Group></Segment>
+              </Grid.Column>
+            </Grid>
+          </div> : ''}
+        {/* End of student page */}
         {/* Start of company page */}
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <div className={'home-background'}>
