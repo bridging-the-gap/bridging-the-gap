@@ -3,12 +3,9 @@ import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { signupPage } from './signup.page';
 import { addReportPage } from './addreport.page';
-import { profilesPage } from './profiles.page';
-import { projectsPage } from './projects.page';
-import { interestsPage } from './interests.page';
 import { homePage } from './home.page';
-import { addProjectPage } from './addproject.page';
-import { filterPage } from './filter.page';
+import { addEventPage } from './addevent.page';
+import { eventsPage } from './events.page';
 import { navBar } from './navbar.component';
 import { browseCompaniesPage } from './browsecompanies.page';
 import { browseStudentsPage } from './browsestudents.page';
@@ -106,6 +103,25 @@ test('Test that addReport page works', async (testController) => {
   await addReportPage.isDisplayed(testController);
   await addReportPage.addReport(testController);
 });
+
+test('Test that addEvent page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await homePage.goToAddEventPage(testController);
+  await addEventPage.isDisplayed(testController);
+  await addEventPage.addEvent(testController);
+});
+
+test('Test that event page displays', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.goToEventsPage(testController);
+  await eventsPage.isDisplayed(testController);
+  await eventsPage.hasDefaultEvents(testController);
+});
+
 // For the Bridging The Gap BrowseCompanies page.
 test('Test that browse companies page works', async (testController) => {
   await navBar.ensureLogout(testController);

@@ -6,6 +6,9 @@ class HomePage {
     this.pageSelector = Selector(this.pageId);
   }
 
+  async goToAddEventPage(testController) {
+    await testController.click('#home-addEvent');
+  }
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
@@ -83,5 +86,6 @@ class HomePage {
     await testController.expect(Selector('#firstName').value).eql(firstName);
   }
 }
+
 
 export const homePage = new HomePage();

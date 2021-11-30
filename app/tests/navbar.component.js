@@ -42,6 +42,10 @@ class NavBar {
     await testController.click('#filterMenuItem');
   }
 
+  async goToEventsPage(testController) {
+    await testController.click('#eventItem');
+  }
+
   async gotoBrowseCompaniesPage(testController) {
     await testController.click('#browseCompaniesItem');
   }

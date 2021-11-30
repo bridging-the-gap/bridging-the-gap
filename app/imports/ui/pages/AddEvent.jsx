@@ -37,7 +37,7 @@ class AddEvent extends React.Component {
     });
     const bridge = new SimpleSchema2Bridge(formSchema);
     return (
-      <Grid id="add-project-page" container centered>
+      <Grid id="add-event-page" container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Add Event</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>

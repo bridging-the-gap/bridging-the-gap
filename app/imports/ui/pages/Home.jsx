@@ -187,7 +187,7 @@ class Home extends React.Component {
                   {this.props.jobs.map((job, index2) => <Job key={index2} job={job} />)}
                 </Card.Group>
               </Segment>
-              <Button attached={'top'}><Link to={'/addEvent'}>Add Event</Link></Button>
+              <Button attached={'top'} id="home-addEvent"><Link to={'/addEvent'}>Add Event</Link></Button>
               <Header as="h2" textAlign="center" inverted>Your upcoming events</Header>
               <Item.Group divided>
                 {_.map(eventData, (event, index) => <MakeItem key={index} event={event}/>)}
