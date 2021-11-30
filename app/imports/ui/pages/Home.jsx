@@ -16,12 +16,15 @@ const formSchema1 = new SimpleSchema({
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: email section.
 const studentSchema = new SimpleSchema({
-  studentName: String,
-  location: String,
-  contact: String,
-  industry: String,
-  image: String,
-  description: String,
+  firstName: String,
+  lastName: String,
+  email: String,
+  title: String,
+  locations: String,
+  skills: String,
+  projects: String,
+  picture: String,
+  bio: String,
 });
 
 // For company homepage
@@ -105,27 +108,30 @@ class Home extends React.Component {
         {/* Start of student page */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           <Grid id='student-home' columns={2}>
-            <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
+            <Grid.Column width={6} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Make Student Profile</Header>
               <AutoForm ref={ref => { fRef = ref; }} schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
                 <Segment>
-                  <TextField name='studentName'/>
-                  <TextField name='location'/>
-                  <TextField name='contact'/>
-                  <TextField name='industry'/>
-                  <TextField name='image'/>
-                  <LongTextField name='description'/>
+                  <TextField name='firstName'/>
+                  <TextField name='lastName'/>
+                  <TextField name='email'/>
+                  <TextField name='title'/>
+                  <TextField name='locations'/>
+                  <TextField name='skills'/>
+                  <TextField name='projects'/>
+                  <TextField name='picture'/>
+                  <LongTextField name='bio'/>
                   <SubmitField value='Submit'/>
                   <ErrorsField/>
                 </Segment>
               </AutoForm>
             </Grid.Column>
-            <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
-              <Button primary>Add Job Listing</Button>
+            <Grid.Column width={10} style={{ backgroundColor: 'blue' }}>
+              <Header as="h3" textAlign="center">Submit CV</Header>
               <Segment>
                 <Item.Group divided>
                   <Item>
                     <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
-
                     <Item.Content>
                       <Item.Header>Public Safety</Item.Header>
                       <Item.Meta>
