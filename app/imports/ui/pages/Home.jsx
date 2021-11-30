@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Table, Header, Segment, Grid, Button, Card, Loader, Label, Item } from 'semantic-ui-react';
+import { Container, Form, Table, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -69,21 +69,9 @@ const studentSchema = new SimpleSchema({
   bio: String,
 });
 
-// For company homepage
-const companySchema = new SimpleSchema({
-  companyName: String,
-  location: String,
-  contact: String,
-  industry: String,
-  image: String,
-  description: String,
-});
-
-const bridge = new SimpleSchema2Bridge(formSchema1);
+const bridge1 = new SimpleSchema2Bridge(formSchema1);
 
 const bridge2 = new SimpleSchema2Bridge(studentSchema);
-
-const bridge3 = new SimpleSchema2Bridge(companySchema);
 
 class Home extends React.Component {
 
@@ -199,7 +187,7 @@ class Home extends React.Component {
                   {this.props.jobs.map((job, index2) => <Job key={index2} job={job} />)}
                 </Card.Group>
               </Segment>
-              <Button primary as={Link} to='/addEvent'>Add Event</Button>
+              <Button attached={'top'}><Link to={'/addEvent'}>Add Event</Link></Button>
               <Header as="h2" textAlign="center" inverted>Your upcoming events</Header>
               <Item.Group divided>
                 {_.map(eventData, (event, index) => <MakeItem key={index} event={event}/>)}
@@ -246,4 +234,3 @@ export default withTracker(() => {
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
   };
 })(Home);
-

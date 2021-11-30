@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
@@ -67,7 +68,6 @@ Meteor.methods({
   },
 });
 
-const addProjectMethod = 'Projects.add';
 const addEventMethod = 'Events.add';
 
 /** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
@@ -97,5 +97,4 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, deleteProfileMethod, addProjectMethod, addRoleMethod };
-export { updateProfileMethod, addEventMethod };
+export { updateProfileMethod, deleteProfileMethod, addEventMethod, addRoleMethod };
