@@ -25,7 +25,35 @@ const formSchema1 = new SimpleSchema({
   description: String,
 });
 
-const bridge1 = new SimpleSchema2Bridge(formSchema1);
+// Create a schema to specify the structure of the data to appear in the form.
+// For admin page: email section.
+const studentSchema = new SimpleSchema({
+  firstName: String,
+  lastName: String,
+  email: String,
+  title: String,
+  locations: String,
+  skills: String,
+  projects: String,
+  picture: String,
+  bio: String,
+});
+
+// For company homepage
+const companySchema = new SimpleSchema({
+  companyName: String,
+  location: String,
+  contact: String,
+  industry: String,
+  image: String,
+  description: String,
+});
+
+const bridge = new SimpleSchema2Bridge(formSchema1);
+
+const bridge2 = new SimpleSchema2Bridge(studentSchema);
+
+const bridge3 = new SimpleSchema2Bridge(companySchema);
 
 class Home extends React.Component {
 
@@ -86,6 +114,41 @@ class Home extends React.Component {
           </div> : ''}
         {/* End of admin page */}
         {/* Start of student page */}
+        {Roles.userIsInRole(Meteor.userId(), 'student') ?
+          <Grid id='student-home' columns={2}>
+            <Grid.Column width={6} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Make Student Profile</Header>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
+                <Segment>
+                  <TextField name='firstName'/>
+                  <TextField name='lastName'/>
+                  <TextField name='email'/>
+                  <TextField name='title'/>
+                  <TextField name='locations'/>
+                  <TextField name='skills'/>
+                  <TextField name='projects'/>
+                  <TextField name='picture'/>
+                  <LongTextField name='bio'/>
+                  <SubmitField value='Submit'/>
+                  <ErrorsField/>
+                </Segment>
+              </AutoForm>
+            </Grid.Column>
+            <Grid.Column width={10} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Suggested for you</Header>
+              <Segment>
+                <Item.Group divided>
+                  <Item>
+                    <Item.Content>
+                      <Item.Header>Create Job Agent</Item.Header>
+                      <Item.Meta>
+                        <Button primary>Submit CV</Button>
+                      </Item.Meta>
+                    </Item.Content>
+                  </Item>
+                </Item.Group></Segment>
+            </Grid.Column>
+          </Grid> : ''}
         {/* End of student page */}
         {/* Start of company page */}
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
