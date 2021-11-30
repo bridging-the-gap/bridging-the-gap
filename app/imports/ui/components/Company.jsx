@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Button, Table } from 'semantic-ui-react';
+import { Header, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
@@ -22,8 +22,6 @@ class Company extends React.Component {
         </Table.Row>
         <Table.Row>
           <Table.Cell><Header as={'h4'}>Industry:</Header> </Table.Cell>
-        </Table.Row>
-        <Table.Row>
           <Table.Cell>{this.props.company.industry}</Table.Cell>
         </Table.Row>
         <Table.Row>

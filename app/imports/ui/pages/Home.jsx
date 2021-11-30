@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Table, Header, Segment, Grid, Button, Item, Label, Loader } from 'semantic-ui-react';
+import { Container, Form, Table, Header, Segment, Grid, Button, Card, Loader } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -15,6 +15,8 @@ import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
 import { Companies } from '../../api/company/Companies';
 import Company from '../components/Company';
+import { Jobs } from '../../api/job/Jobs';
+import Job from '../components/Job';
 
 // Create a schema to specify the structure of the data to appear in the form.
 // For admin page: create new category section.
@@ -91,51 +93,16 @@ class Home extends React.Component {
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
               <Button attached='top'><Link to={'/addCompany'}>Create Profile</Link></Button>
               <Segment>
-                {this.props.companies.map((company, index) => <Company key={index} company={company} />)}
+                {this.props.companies.map((company, index1) => <Company key={index1} company={company} />)}
               </Segment>
             </Grid.Column>
             <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
               <Button attached={'top'}><Link to={'/addJob'}>Add Job Listing</Link></Button>
               <Segment>
-                <Item.Group divided>
-                  <Item>
-                    <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
-
-                    <Item.Content>
-                      <Item.Header>Public Safety</Item.Header>
-                      <Item.Meta>
-                        <span className='price'>$1200</span>
-                        <span className='stay'>Semester</span>
-                      </Item.Meta>
-                      <Item.Extra>
-                        <Label>Hawaii</Label>
-                      </Item.Extra>
-                      <Item.Extra>
-                        <Label>Liberal Arts</Label>
-                      </Item.Extra>
-                      <Item.Description> Walk around and look intimidating </Item.Description>
-                    </Item.Content>
-                  </Item>
-
-                  <Item>
-                    <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
-
-                    <Item.Content>
-                      <Item.Header> Dorm RA </Item.Header>
-                      <Item.Meta>
-                        <span className='price'>$1000</span>
-                        <span className='stay'>Semester</span>
-                      </Item.Meta>
-                      <Item.Extra>
-                        <Label>Hawaii</Label>
-                      </Item.Extra>
-                      <Item.Extra>
-                        <Label>Psychology</Label>
-                      </Item.Extra>
-                      <Item.Description>Deal with drunk students</Item.Description>
-                    </Item.Content>
-                  </Item>
-                </Item.Group></Segment>
+                <Card.Group>
+                  {this.props.jobs.map((job, index2) => <Job key={index2} job={job} />)}
+                </Card.Group>
+              </Segment>
             </Grid.Column>
           </Grid> : ''}
         {/* End of company page */}
@@ -148,6 +115,7 @@ Home.propTypes = {
   reports: PropTypes.array.isRequired,
   profiles: PropTypes.array.isRequired,
   companies: PropTypes.array.isRequired,
+  jobs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -158,16 +126,20 @@ export default withTracker(() => {
   const sub2 = Meteor.subscribe(Reports.userPublicationName);
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
   const sub4 = Meteor.subscribe(Companies.userPublicationName);
+  const sub5 = Meteor.subscribe(Jobs.userPublicationName);
   // Get the Reports documents
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
   // Get access to Companies documents
   const companies = Companies.collection.find({}).fetch();
+  // Get access to Jobs documents
+  const jobs = Jobs.collection.find({}).fetch();
   return {
     reports,
     profiles,
     companies,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
+    jobs,
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
   };
 })(Home);

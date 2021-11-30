@@ -353,6 +353,17 @@
       "owner": "apple@apple.com"
     }
   ],
+  "defaultJob": [
+    {
+      "jobTitle": "Default Title",
+      "location": "Earth",
+      "salary": "$50,000",
+      "industry": "Default Industry",
+      "image": "http://www.photos-public-domain.com/wp-content/uploads/2016/02/cirrus-clouds.jpg",
+      "description": "Default Description",
+      "owner": "apple@apple.com"
+    }
+  ],
   "monti": {
     "appId": "cuewYiJgaJFc8HXk2",
     "appSecret": "ea8bd55f-f8c2-47d1-b3a0-a7e743d26836"
