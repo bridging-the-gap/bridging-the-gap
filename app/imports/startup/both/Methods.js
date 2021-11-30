@@ -1,12 +1,9 @@
 import { Meteor } from 'meteor/meteor';
-import { Roles } from 'meteor/alanning:roles';
-import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
-import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
+import { Events } from '../../api/events/Events';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -71,27 +68,12 @@ Meteor.methods({
 });
 
 const addProjectMethod = 'Projects.add';
+const addEventMethod = 'Events.add';
 
 /** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
 Meteor.methods({
-  'Projects.add'({ name, description, picture, locations, skills, participants, homepage, role }) {
-    Projects.collection.insert({ name, description, picture, homepage, role });
-    ProfilesProjects.collection.remove({ project: name });
-    ProjectsLocations.collection.remove({ project: name });
-    ProjectsSkills.collection.remove({ project: name });
-    if (locations) {
-      locations.map((location) => ProjectsLocations.collection.insert({ project: name, location }));
-    } else {
-      throw new Meteor.Error('At least one location is required.');
-    }
-    if (skills) {
-      skills.map((skill) => ProjectsSkills.collection.insert({ project: name, skill }));
-    } else {
-      throw new Meteor.Error('At least one skill is required.');
-    }
-    if (participants) {
-      participants.map((participant) => ProfilesProjects.collection.insert({ project: name, profile: participant }));
-    }
+  'Events.add'({ eventName, company, date, location, description, picture }) {
+    Events.collection.insert({ eventName, company, date, location, description, picture });
   },
 });
 
@@ -116,3 +98,4 @@ Meteor.methods({
 });
 
 export { updateProfileMethod, deleteProfileMethod, addProjectMethod, addRoleMethod };
+export { updateProfileMethod, addEventMethod };
