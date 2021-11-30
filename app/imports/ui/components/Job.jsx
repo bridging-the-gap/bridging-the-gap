@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Container, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Job extends React.Component {
@@ -9,12 +9,15 @@ class Job extends React.Component {
     return (
       <Card fluid color={'blue'}>
         <Card.Content>
-          <Image floated={'left'} size={'small'} src={this.props.job.image} />
+          <Image floated={'left'} size={'small'} src={this.props.job.image}/>
           <Card.Header>{this.props.job.jobTitle}</Card.Header>
-          <Card.Meta>{this.props.job.location}</Card.Meta>
-          <Card.Meta>{this.props.job.salary}</Card.Meta>
-          <Card.Meta>{this.props.job.industry}</Card.Meta>
+          <Card.Meta>Location: {this.props.job.location}</Card.Meta>
+          <Card.Meta>Salary:  {this.props.job.salary}</Card.Meta>
+          <Card.Meta>Industry: {this.props.job.industry}</Card.Meta>
           <Card.Description>{this.props.job.description}</Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <Link to={`/editJob/${this.props.job._id}`}>Edit</Link>
         </Card.Content>
       </Card>
     );
