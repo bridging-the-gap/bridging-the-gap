@@ -342,9 +342,27 @@
       "picture": "https://www.hawaii.edu/its/wp-content/uploads/sites/2/2019/01/LAVAlogo-300x192-300x192.png"
     }
   ],
-  "monti": {
-    "appId": "cuewYiJgaJFc8HXk2",
-    "appSecret": "ea8bd55f-f8c2-47d1-b3a0-a7e743d26836"
-  },
+  "defaultCompany": [
+    {
+      "companyName": "Default Name",
+      "location": "Location",
+      "contact": "apple@apple.com",
+      "industry": "Default industry",
+      "image": "http://www.photos-public-domain.com/wp-content/uploads/2016/02/cirrus-clouds.jpg",
+      "description": "Default description",
+      "owner": "apple@apple.com"
+    }
+  ],
+  "defaultJob": [
+    {
+      "jobTitle": "Default Title",
+      "location": "Earth",
+      "salary": "$50,000",
+      "industry": "Default Industry",
+      "image": "http://www.photos-public-domain.com/wp-content/uploads/2016/02/cirrus-clouds.jpg",
+      "description": "Default Description",
+      "owner": "apple@apple.com"
+    }
+  ],
   "loadAssetsFile":  false
 }
