@@ -7,6 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Reports } from '../../api/reports/Reports';
 import ReportItem from '../components/ReportItem';
 import { Profiles } from '../../api/profiles/Profiles';
@@ -88,12 +89,13 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
+              <Button attached='top'><Link to={'/addCompany'}>Edit Profile</Link></Button>
               <Segment>
                 {this.props.companies.map((company, index) => <Company key={index} company={company} />)}
               </Segment>
             </Grid.Column>
             <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
-              <Button primary>Add Job Listing</Button>
+              <Button color={'white'}><Link to={'/addJob'}>Add Job Listing</Link></Button>
               <Segment>
                 <Item.Group divided>
                   <Item>

@@ -347,9 +347,9 @@
       "companyName": "Default Name",
       "location": "Location",
       "contact": "apple@apple.com",
-      "industry": "Industry",
+      "industry": "Default industry",
       "image": "http://www.photos-public-domain.com/wp-content/uploads/2016/02/cirrus-clouds.jpg",
-      "description": "Description",
+      "description": "Default description",
       "owner": "apple@apple.com"
     }
   ],

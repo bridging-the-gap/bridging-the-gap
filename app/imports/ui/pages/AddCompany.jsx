@@ -5,13 +5,13 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Jobs } from '../../api/job/Jobs';
+import { Companies } from '../../api/company/Companies';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  jobTitle: String,
+  companyName: { type: String, unique: true },
   location: String,
-  salary: String,
+  contact: { type: String, unique: true },
   industry: String,
   image: { type: String, optional: true },
   description: String,
@@ -20,13 +20,13 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
-class AddJob extends React.Component {
+class AddCompany extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { jobTitle, location, salary, industry, image, description } = data;
+    const { companyName, location, contact, industry, image, description } = data;
     const owner = Meteor.user().username;
-    Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, owner },
+    Companies.collection.insert({ companyName, location, contact, industry, image, description, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -43,12 +43,12 @@ class AddJob extends React.Component {
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Add Job</Header>
+          <Header as="h2" textAlign="center">Company Information</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='jobTitle'/>
+              <TextField name='companyName'/>
               <TextField name='location'/>
-              <TextField name='salary'/>
+              <TextField name='contact'/>
               <TextField name='industry'/>
               <TextField name='image'/>
               <LongTextField name='description'/>
@@ -62,4 +62,4 @@ class AddJob extends React.Component {
   }
 }
 
-export default AddJob;
+export default AddCompany;

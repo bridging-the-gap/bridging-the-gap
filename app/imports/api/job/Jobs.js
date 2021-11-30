@@ -2,22 +2,27 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
-class CompaniesCollection {
+class JobsCollection {
   constructor() {
-    this.name = 'CompaniesCollection';
+    // The name of this collection.
+    this.name = 'JobsCollection';
+    // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
+    // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      companyName: { type: String, unique: true },
+      jobTitle: String,
       location: String,
-      contact: { type: String, unique: true },
+      salary: String,
       industry: String,
       image: { type: String, optional: true },
       description: String,
-      owner: { type: String, unique: true },
+      owner: String,
     }, { tracker: Tracker });
+    // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
+    // Define names for publications and subscriptions
     this.userPublicationName = `${this.name}.publication.user`;
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
-export const Companies = new CompaniesCollection();
+export const Contacts = new JobsCollection();
