@@ -23,8 +23,9 @@ const admin = { username: 'sin8@hawaii.edu', password: 'foo', role: 'admin',
 fixture('Bridging the Gap localhost test with default db')
   .page('http://localhost:3000');
 
-test('Test that landing page shows up', async (testController) => {
+test('Test that landing page shows up and works', async (testController) => {
   await landingPage.isDisplayed(testController);
+  await landingPage.sendFeedback(testController, company);
 });
 
 test('Test that signin and signout work', async (testController) => {
@@ -33,7 +34,7 @@ test('Test that signin and signout work', async (testController) => {
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
-/*
+
 test('Test that signup page, then logout works', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
   const newUser = `user-${new Date().getTime()}@foo.com`;
@@ -44,7 +45,7 @@ test('Test that signup page, then logout works', async (testController) => {
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
-
+/*
 test('Test that profiles page displays', async (testController) => {
   await navBar.gotoProfilesPage(testController);
   await profilesPage.isDisplayed(testController);
@@ -86,8 +87,8 @@ test('Test that home page displays and works for users in student, company, and 
     await homePage.deleteUser(testController, newUser);
     // Checking if email component works.
     // User to send email to (uncomment later)
-    // const emailUser = { username: 'reichld@hawaii.edu', role: 'student', password: 'foo' };
-    // await homePage.sendEmail(testController, emailUser);
+    const emailUser = { username: 'reichld@hawaii.edu', role: 'student', password: 'foo' };
+    await homePage.sendEmail(testController, emailUser);
     // Log out of admin account after finished.
     await navBar.ensureLogout(testController);
 
