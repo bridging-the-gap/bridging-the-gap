@@ -94,7 +94,7 @@ class BrowseStudents extends React.Component {
       return oneprofile.role === 'student';
     });
     return (
-      <Container id="filter-page">
+      <Container id="browse-students-page">
         <AutoForm schema={bridge} onSubmit={data => this.submit(data)} >
           <Segment>
             <MultiSelectField id='skills' name='skills' showInlineError={true} placeholder={'Choose skills'}/>
