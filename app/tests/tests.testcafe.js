@@ -65,8 +65,9 @@ test('Test that projects page displays', async (testController) => {
   await projectsPage.isDisplayed(testController);
   await projectsPage.hasDefaultProjects(testController);
 });
+*/
 // For the Bridging The Gap Home page (separate for student, company, and admin).
-test.only('Test that home page displays and works for users in student, company, and admin roles',
+test('Test that home page displays and works for users in student, company, and admin roles',
   async (testController) => {
     // For admin section.
     // Create new user to test delete user section on.
@@ -96,7 +97,6 @@ test.only('Test that home page displays and works for users in student, company,
     // For company section.
     // For student section.
   });
-  */
 // For the Bridging The Gap AddReport page.
 test('Test that addReport page works', async (testController) => {
   await navBar.ensureLogout(testController);
@@ -106,7 +106,7 @@ test('Test that addReport page works', async (testController) => {
   await addReportPage.isDisplayed(testController);
   await addReportPage.addReport(testController);
 });
-
+// For the Bridging The Gap BrowseCompanies page.
 test('Test that browse companies page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
@@ -115,7 +115,7 @@ test('Test that browse companies page works', async (testController) => {
   await browseCompaniesPage.isDisplayed(testController);
   await browseCompaniesPage.filter(testController);
 });
-
+// For the Bridging The Gap BrowseStudents page.
 test('Test that browse students page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
