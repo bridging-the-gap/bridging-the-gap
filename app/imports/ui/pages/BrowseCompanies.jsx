@@ -90,7 +90,7 @@ class BrowseCompanies extends React.Component {
       return oneprofile.role === 'company';
     });
     return (
-      <Container id="filter-page">
+      <Container id="browse-companies-page">
         <AutoForm schema={bridge} onSubmit={data => this.submit(data)} >
           <Segment>
             <MultiSelectField id='locations' name='locations' showInlineError={true} placeholder={'Choose locations'}/>
