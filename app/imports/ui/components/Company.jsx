@@ -1,7 +1,7 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Header, Button, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Company extends React.Component {
@@ -9,29 +9,30 @@ class Company extends React.Component {
     return (
       <Table.Body>
         <Table.Row>
-          <Table.Cell>Company: </Table.Cell>
+          <Table.Cell><Header as={'h4'}>Company: </Header></Table.Cell>
           <Table.Cell textAlign='center'> {this.props.company.companyName}</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>Location: </Table.Cell>
+          <Table.Cell><Header as={'h4'}>Location:</Header> </Table.Cell>
           <Table.Cell textAlign='center'> {this.props.company.location}</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>Contact: </Table.Cell>
+          <Table.Cell><Header as={'h4'}>Contact:</Header> </Table.Cell>
           <Table.Cell textAlign='center'> {this.props.company.contact}</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>Industry: </Table.Cell>
+          <Table.Cell><Header as={'h4'}>Industry:</Header> </Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell> {this.props.company.industry}</Table.Cell>
+          <Table.Cell>{this.props.company.industry}</Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell>Description: </Table.Cell>
+          <Table.Cell><Header as={'h4'}>Description:</Header> </Table.Cell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell> {this.props.company.description}</Table.Cell>
+          <Table.Cell verticalAlign='bottom'> {this.props.company.description}</Table.Cell>
         </Table.Row>
+        <Link to={`/editCompany/${this.props.company._id}`}>Edit</Link>
       </Table.Body>
     );
   }
