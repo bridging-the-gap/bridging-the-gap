@@ -25,4 +25,4 @@ class JobsCollection {
     this.adminPublicationName = `${this.name}.publication.admin`;
   }
 }
-export const Contacts = new JobsCollection();
+export const Jobs = new JobsCollection();

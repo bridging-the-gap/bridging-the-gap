@@ -89,13 +89,13 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              <Button attached='top'><Link to={'/addCompany'}>Edit Profile</Link></Button>
+              <Button attached='top'><Link to={'/addCompany'}>Create Profile</Link></Button>
               <Segment>
                 {this.props.companies.map((company, index) => <Company key={index} company={company} />)}
               </Segment>
             </Grid.Column>
             <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
-              <Button color={'white'}><Link to={'/addJob'}>Add Job Listing</Link></Button>
+              <Button attached={'top'}><Link to={'/addJob'}>Add Job Listing</Link></Button>
               <Segment>
                 <Item.Group divided>
                   <Item>

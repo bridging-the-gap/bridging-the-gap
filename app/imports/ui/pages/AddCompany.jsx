@@ -9,9 +9,9 @@ import { Companies } from '../../api/company/Companies';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  companyName: { type: String, unique: true },
+  companyName: String,
   location: String,
-  contact: { type: String, unique: true },
+  contact: String,
   industry: String,
   image: { type: String, optional: true },
   description: String,
