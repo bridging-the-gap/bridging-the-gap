@@ -126,44 +126,16 @@ class Home extends React.Component {
                 </Segment>
               </AutoForm>
             </Grid.Column>
-            <Grid.Column width={10} style={{ backgroundColor: 'blue' }}>
-              <Header as="h3" textAlign="center">Submit CV</Header>
+            <Grid.Column width={10} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Suggested for you</Header>
               <Segment>
                 <Item.Group divided>
                   <Item>
-                    <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
                     <Item.Content>
-                      <Item.Header>Public Safety</Item.Header>
+                      <Item.Header>Create Job Agent</Item.Header>
                       <Item.Meta>
-                        <span className='price'>$1200</span>
-                        <span className='stay'>Semester</span>
+                        <Button primary>Submit CV</Button>
                       </Item.Meta>
-                      <Item.Extra>
-                        <Label>Hawaii</Label>
-                      </Item.Extra>
-                      <Item.Extra>
-                        <Label>Liberal Arts</Label>
-                      </Item.Extra>
-                      <Item.Description> Walk around and look intimidating </Item.Description>
-                    </Item.Content>
-                  </Item>
-
-                  <Item>
-                    <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
-
-                    <Item.Content>
-                      <Item.Header> Dorm RA </Item.Header>
-                      <Item.Meta>
-                        <span className='price'>$1000</span>
-                        <span className='stay'>Semester</span>
-                      </Item.Meta>
-                      <Item.Extra>
-                        <Label>Hawaii</Label>
-                      </Item.Extra>
-                      <Item.Extra>
-                        <Label>Psychology</Label>
-                      </Item.Extra>
-                      <Item.Description>Deal with drunk students</Item.Description>
                     </Item.Content>
                   </Item>
                 </Item.Group></Segment>

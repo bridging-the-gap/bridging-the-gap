@@ -71,7 +71,7 @@ class ProfilesPage extends React.Component {
       <Container>
         {/* Start of student page */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
-          <div className={'home-background'}>
+          <div className={'landing-white-background'}>
             <Grid stackable columns={3}>
               <Grid.Row/>
               <Grid.Row/>
