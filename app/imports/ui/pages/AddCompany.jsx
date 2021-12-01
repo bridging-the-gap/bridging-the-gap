@@ -29,7 +29,7 @@ class AddCompany extends React.Component {
     Companies.collection.insert({ companyName, location, contact, industry, image, description, owner },
       (error) => {
         if (error) {
-          swal('Error', error.message, 'error');
+          swal('Error', 'Company name or contact info (or both) is already taken and cannot be used.', 'error');
         } else {
           swal('Success', 'Item added successfully', 'success');
           formRef.reset();

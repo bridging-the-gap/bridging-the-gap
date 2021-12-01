@@ -174,7 +174,10 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              <Button attached='top'><Link to={'/addCompany'}>Create Profile</Link></Button>
+              {Companies.collection.find({ owner: Meteor.user().username }).fetch().length === 0 ?
+                <Button attached='top'><Link to={'/addCompany'}>Create Profile</Link></Button> :
+                <Button attached='top'>Profile</Button>
+              }
               <Segment>
                 {this.props.companies.map((company, index1) => <Company key={index1} company={company} />)}
               </Segment>
