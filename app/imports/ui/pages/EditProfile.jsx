@@ -14,6 +14,19 @@ const bridge = new SimpleSchema2Bridge(Profiles.schema);
 const bridge2 = new SimpleSchema2Bridge(ProfilesLocations.schema);
 const bridge3 = new SimpleSchema2Bridge(ProfilesSkills.schema);
 
+const makeSchema = (allInterests, allProjects) => new SimpleSchema2Bridge({
+  email: { type: String, label: 'Email', optional: true },
+  firstName: { type: String, label: 'First', optional: true },
+  lastName: { type: String, label: 'Last', optional: true },
+  bio: { type: String, label: 'Biographical statement', optional: true },
+  title: { type: String, label: 'Title', optional: true },
+  picture: { type: String, label: 'Picture URL', optional: true },
+  interests: { type: Array, label: 'Interests', optional: true },
+  'interests.$': { type: String, allowedValues: allInterests },
+  projects: { type: Array, label: 'Projects', optional: true },
+  'projects.$': { type: String, allowedValues: allProjects },
+});
+
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
 
