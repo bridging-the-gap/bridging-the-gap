@@ -141,6 +141,20 @@ test('Test that browse students page works', async (testController) => {
   await browseStudentsPage.filter(testController);
 });
 
+test('Test that student profile page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.gotoStudentProfilePage(testController);
+});
+
+test('Test that student home page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.gotoStudentHomePage(testController);
+});
+
 /*
 test('Test that addProject page works', async (testController) => {
   await navBar.ensureLogout(testController);
