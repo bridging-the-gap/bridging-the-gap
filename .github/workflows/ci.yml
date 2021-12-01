@@ -38,5 +38,6 @@ jobs:
         run: |
           meteor npm install
           meteor npm run lint
-          meteor npm run testcafe
+          meteor npm run test-unit
+          meteor npm run testcafe-ci
 
