@@ -1,4 +1,5 @@
 import { Selector } from 'testcafe';
+import { navBar } from './navbar.component';
 
 class Company {
   constructor() {
@@ -42,7 +43,7 @@ class Company {
   }
 
   /** Asserts if add Company works */
-  /* async addCompany(testController) {
+  async addCompany(testController) {
     const title = 'fireworksRus';
     const location = 'North Pole';
     const contact = 'santa@foo.com';
@@ -58,7 +59,17 @@ class Company {
     await testController.typeText('#description', description);
     await testController.click('#submit');
     await testController.click(Selector('.swal-button--confirm'));
-  } */
+  }
+
+  /** Creates new company account */
+  async signupCompany(testController, username, role, password) {
+    await testController.typeText('#signup-form-email', username);
+    await testController.typeText('#signup-form-password', password);
+    await testController.click('#company-button');
+    await testController.click('#signup-form-submit');
+    await navBar.isLoggedIn(testController, username);
+    await testController.click(Selector('.swal-button--confirm'));
+  }
 
   /** Asserts if edit Company works */
   async editCompany(testController) {

@@ -195,6 +195,18 @@ test('Test that the company profile works', async (testController) => {
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyProfilePage(testController);
 });
+
+test.only('Test that add company works', async (testController) => {
+  // Create a new user email address that's guaranteed to be unique.
+  const newUser = `user-${new Date().getTime()}@foo.com`;
+  await navBar.gotoSignupPage(testController);
+  await signupPage.isDisplayed(testController);
+  await companyPage.signupCompany(testController, newUser, company.role, company.password);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.addCompany(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
 /*
 test('Test that addProject page works', async (testController) => {
   await navBar.ensureLogout(testController);
