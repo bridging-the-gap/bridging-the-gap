@@ -10,6 +10,7 @@ import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
+import { Link } from 'react-router-dom';
 
 /** Returns the Profile and associated Projects and Locations associated with the passed user email. */
 // function getProfileData(email) {
@@ -21,23 +22,30 @@ import { Projects } from '../../api/projects/Projects';
 // console.log(_.extend({ }, data, { locations, projects: projectPictures }));
 // return _.extend({}, data, { locations, skills, projects: projectPictures });}
 
+function getProfileData(email) {
+  const data = Profiles.collection.findOne({ email });
+  const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
+  const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
+  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
+  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
+  return _.extend({ }, data, { locations, skills, projects: projectPictures });
+}
+
 /** Component for layout out a Profile Card. */
 const MakeCard = (props) => (
-  <Card>
+  <Card centered>
     <Card.Content>
-      <Image floated='right' size='mini' src={props.profile.picture}/>
+      <Image floated='center' size='big' src={props.profile.picture} />
       <Card.Header>{props.profile.firstName} {props.profile.lastName}</Card.Header>
       <Card.Meta>
         <span className='date'>{props.profile.title}</span>
       </Card.Meta>
+      <Card.Meta>
+        <a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a>
+      </Card.Meta>
       <Card.Description>
         {props.profile.bio}
       </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <Header as='h5'>Locations</Header>
-      {_.map(props.profile.locations,
-        (location, index) => <Label key={index} size='tiny' color='teal'>{location}</Label>)}
     </Card.Content>
     <Card.Content extra>
       <Header as='h5'>Skills</Header>
@@ -45,8 +53,9 @@ const MakeCard = (props) => (
         (skill, index) => <Label key={index} size='tiny' color='teal'>{skill}</Label>)}
     </Card.Content>
     <Card.Content extra>
-      <Header as='h5'>Projects</Header>
-      {_.map(props.profile.projects, (project, index) => <Image key={index} size='mini' src={project}/>)}
+      <Header as='h5'>Preferred Locations</Header>
+      {_.map(props.profile.locations,
+        (skill, index) => <Label key={index} size='tiny' color='teal'>{skill}</Label>)}
     </Card.Content>
   </Card>
 );
@@ -67,100 +76,19 @@ class ProfilesPage extends React.Component {
   renderPage() {
     // const emails = _.pluck(Profiles.collection.find().fetch(), 'email');
     // const profileData = emails.map(email => getProfileData(email));
+    const email = Meteor.user().username;
+    // const profileData = Profiles.collection.findOne({ email });
+    const profileData = getProfileData(email);
+    console.log(profileData);
     return (
       <Container>
         {/* Start of student page */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
-          <div className={'landing-white-background'}>
-            <Grid stackable columns={3}>
-              <Grid.Row/>
-              <Grid.Row/>
-              <Grid.Row/>
-              <Grid.Row/>
-              <Grid.Row>
-                <Grid.Column/>
-                <Grid.Column textAlign={'center'}>Student profile page</Grid.Column>
-                <Grid.Column/>
-              </Grid.Row>
-            </Grid>
-            <Grid columns={2}>
-              <Grid.Column width={6} style={{ backgroundColor: 'light blue' }}>
-                <Segment>
-                  <Header as={'h3'}>Location</Header>
-                  <p>Hawaii</p>
-                  <Divider section />
-                  <Header as={'h3'}>Description</Header>
-                  <p> The student attends UH Manoa as a Software engineer student. </p>
-                  <Divider section />
-                  <Header as={'h3'}>Industry</Header>
-                  <Label as='a' color='teal' tag>
-                    Software engineering
-                  </Label>
-                  <Label as='a' color='teal' tag>
-                    Psychology
-                  </Label>
-                  <Divider section />
-                  <Header as={'h3'}>Contact Info</Header>
-                  <p>ContactStudent@hawaii.edu</p>
-                  <Divider section />
-                </Segment>
-              </Grid.Column>
-              <Grid.Column width={10} style={{ backgroundColor: 'blue' }}>
-                <Segment>
-                  <Header as={'h3'}>Listings recomended for you</Header>
-                  <Item.Group divided>
-                    <Item>
-                      <Item.Image
-                        size='tiny'
-                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png'/>
-                      <Item.Content>
-                        <Item.Header>Apple</Item.Header>
-                        <Item.Meta>
-                          <span className='price'>$1200</span>
-                          <span className='stay'>Semester</span>
-                        </Item.Meta>
-                        <Item.Extra>
-                          <Label>Hawaii company</Label>
-                        </Item.Extra>
-                        <Item.Extra>
-                          <Label>Liberal Arts</Label>
-                        </Item.Extra>
-                        <Item.Description> Walk around and look intimidating </Item.Description>
-                        <Button primary floated='right'>
-                          Apply
-                          <Icon name='right chevron' />
-                        </Button>
-                      </Item.Content>
-                    </Item>
-
-                    <Item>
-                      <Item.Image
-                        size='tiny'
-                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png'/>
-
-                      <Item.Content>
-                        <Item.Header> Google </Item.Header>
-                        <Item.Meta>
-                          <span className='price'>$1000</span>
-                          <span className='stay'>Semester</span>
-                        </Item.Meta>
-                        <Item.Extra>
-                          <Label>Hawaii</Label>
-                        </Item.Extra>
-                        <Item.Extra>
-                          <Label>Psychology</Label>
-                        </Item.Extra>
-                        <Item.Description>Deal with drunk students</Item.Description>
-                        <Button primary floated='right'>
-                          Apply
-                          <Icon name='right chevron' />
-                        </Button>
-                      </Item.Content>
-                    </Item>
-                  </Item.Group></Segment>
-              </Grid.Column>
-            </Grid>
-          </div> : ''}
+          // const profileData = emails.map(email => getProfileData(email));
+          <Container id="profiles-page">
+            <MakeCard profile={profileData}/>
+            <Link to={`/editProfile/${profileData._id}`}>Edit</Link>
+          </Container> : ''}
         {/* End of student page */}
         {/* Start of company page */}
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
@@ -260,6 +188,7 @@ class ProfilesPage extends React.Component {
 
 ProfilesPage.propTypes = {
   ready: PropTypes.bool.isRequired,
+  // profile: PropTypes.object.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
