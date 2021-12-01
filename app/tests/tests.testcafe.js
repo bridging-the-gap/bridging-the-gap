@@ -170,7 +170,7 @@ test.only('Test Add jobs works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyHomePage(testController);
-  await companyPage.addJob(testController);
+  await companyPage.gotoAddJob(testController);
 });
 
 test('Test Edit jobs works', async (testController) => {

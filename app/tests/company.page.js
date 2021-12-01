@@ -12,22 +12,8 @@ class Company {
   }
 
   /** Asserts if add job works */
-  async addJob(testController) {
-    /* const title = 'default name';
-    const location = 'Earth';
-    const pay = '$50,000';
-    const industry = 'Software Engineering ';
-    const image = 'http://www.photos-public-domain.com/wp-content/uploads/2016/02/cirrus-clouds.jpg';
-    const description = 'This is a job'; */
-    await testController.click('#addJob');
-    /* await testController.typeText('#jobTitle', title);
-    await testController.typeText('#location', location);
-    await testController.typeText('#salary', pay);
-    await testController.typeText('#industry', industry);
-    await testController.typeText('#image', image);
-    await testController.typeText('#description', description);
-    await testController.click('#submit');
-    await testController.click(Selector('.swal-button--confirm')); */
+  async gotoAddJob(testController) {
+    await testController.wait(25000).click('#addJob');
   }
 
   /** Asserts if edit Job works */
