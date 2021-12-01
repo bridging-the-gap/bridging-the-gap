@@ -164,7 +164,7 @@ class ProfilesPage extends React.Component {
         {/* End of student page */}
         {/* Start of company page */}
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
-          <div className={'home-background'}>
+          <div className={'home-background'} id="company-profile" >
             <Grid stackable columns={3}>
               <Grid.Row/>
               <Grid.Row/>

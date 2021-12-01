@@ -32,7 +32,7 @@ class Company extends React.Component {
             <List.Item><p>{this.props.company.description}</p></List.Item>
           </List>
           <List>
-            <List.Item><Link to={`/editCompany/${this.props.company._id}`}>Edit</Link></List.Item>
+            <List.Item><Link to={`/editCompany/${this.props.company._id}`} id="editCompany" >Edit</Link></List.Item>
           </List>
         </Grid.Column>
       </Grid>

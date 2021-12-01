@@ -17,7 +17,7 @@ class Job extends React.Component {
           <Card.Description>{this.props.job.description}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/editJob/${this.props.job._id}`}>Edit</Link>
+          <Link to={`/editJob/${this.props.job._id}`} id="editJob" >Edit</Link>
         </Card.Content>
       </Card>
     );

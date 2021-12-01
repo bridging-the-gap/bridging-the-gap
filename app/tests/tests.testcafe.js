@@ -9,6 +9,7 @@ import { eventsPage } from './events.page';
 import { navBar } from './navbar.component';
 import { browseCompaniesPage } from './browsecompanies.page';
 import { browseStudentsPage } from './browsestudents.page';
+import { companyPage } from './company.page';
 
 /* global fixture:false, test:false */
 
@@ -156,6 +157,44 @@ test('Test that student home page works', async (testController) => {
   await navBar.gotoStudentHomePage(testController);
 });
 
+test('Test that the company homepage works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.isDisplayed(testController);
+});
+
+test.only('Test Add jobs works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.addJob(testController);
+});
+
+test('Test Edit jobs works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.editJob(testController);
+});
+
+test('Test Edit company works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.editCompany(testController);
+});
+
+test('Test that the company profile works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.gotoCompanyProfilePage(testController);
+});
 /*
 test('Test that addProject page works', async (testController) => {
   await navBar.ensureLogout(testController);

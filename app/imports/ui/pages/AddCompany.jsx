@@ -41,7 +41,7 @@ class AddCompany extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered>
+      <Grid container centered id="addCompanyPage">
         <Grid.Column>
           <Header as="h2" textAlign="center">Company Information</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >

@@ -29,18 +29,18 @@ class EditJob extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
     return (
-      <Grid container centered>
+      <Grid container centered id="editJobPage">
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Job</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='jobTitle'/>
-              <TextField name='location'/>
-              <TextField name='salary'/>
-              <TextField name='industry'/>
-              <TextField name='image'/>
-              <LongTextField name='description'/>
-              <SubmitField value='Submit'/>
+              <TextField id="jobTitle" name='jobTitle'/>
+              <TextField id="location" name='location'/>
+              <TextField id="salary" name='salary'/>
+              <TextField id="industry" name='industry'/>
+              <TextField id="image" name='image'/>
+              <LongTextField id="description" name='description'/>
+              <SubmitField id="submit" value='Submit'/>
               <ErrorsField/>
               <HiddenField name='owner' />
             </Segment>

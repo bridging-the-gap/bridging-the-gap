@@ -29,18 +29,18 @@ class EditCompany extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
     return (
-      <Grid container centered>
+      <Grid container centered id="editCompanyPage" >
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Company Info</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='companyName' unique='true'/>
-              <TextField name='location'/>
-              <TextField name='contact' unique='true'/>
-              <TextField name='industry'/>
-              <TextField name='image'/>
-              <LongTextField name='description'/>
-              <SubmitField value='Submit'/>
+              <TextField id="companyName" name='companyName' unique='true'/>
+              <TextField id="location" name='location'/>
+              <TextField id="contact" name='contact' unique='true'/>
+              <TextField id="industry" name='industry'/>
+              <TextField id="image" name='image'/>
+              <LongTextField id="description" name='description'/>
+              <SubmitField id="submit" value='Submit'/>
               <ErrorsField/>
               <HiddenField name='owner' unique='true'/>
             </Segment>
