@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Table } from 'semantic-ui-react';
+import { Header, Grid, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
@@ -7,31 +7,35 @@ import { withRouter, Link } from 'react-router-dom';
 class Company extends React.Component {
   render() {
     return (
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell><Header as={'h4'}>Company: </Header></Table.Cell>
-          <Table.Cell textAlign='center'> {this.props.company.companyName}</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell><Header as={'h4'}>Location:</Header> </Table.Cell>
-          <Table.Cell textAlign='center'> {this.props.company.location}</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell><Header as={'h4'}>Contact:</Header> </Table.Cell>
-          <Table.Cell textAlign='center'> {this.props.company.contact}</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell><Header as={'h4'}>Industry:</Header> </Table.Cell>
-          <Table.Cell>{this.props.company.industry}</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell><Header as={'h4'}>Description:</Header> </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell verticalAlign='bottom'> {this.props.company.description}</Table.Cell>
-        </Table.Row>
-        <Link to={`/editCompany/${this.props.company._id}`}>Edit</Link>
-      </Table.Body>
+      <Grid container columns={1} style={{ backgroundColor: 'white', marginTop: '10px' }}>
+        <Grid.Column>
+          <List>
+            <List.Item><Header as={'h4'}>Company:</Header></List.Item>
+            <List.Item>{this.props.company.companyName}</List.Item>
+          </List>
+          <List>
+            <List.Item><Header as={'h4'}>Location:</Header></List.Item>
+            <List.Item>{this.props.company.location}</List.Item>
+          </List>
+          <List>
+            <List.Item><Header as={'h4'}>Contact:</Header> </List.Item>
+            <List.Item>{this.props.company.contact}</List.Item>
+          </List>
+          <List>
+            <List.Item><Header as={'h4'}>Industry:</Header> </List.Item>
+            <List.Item>{this.props.company.industry}</List.Item>
+          </List>
+          <List>
+            <List.Item><Header as={'h4'}>Description:</Header></List.Item>
+          </List>
+          <List>
+            <List.Item><p>{this.props.company.description}</p></List.Item>
+          </List>
+          <List>
+            <List.Item><Link to={`/editCompany/${this.props.company._id}`}>Edit</Link></List.Item>
+          </List>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

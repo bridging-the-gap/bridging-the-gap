@@ -34,15 +34,15 @@ class EditCompany extends React.Component {
           <Header as="h2" textAlign="center">Edit Company Info</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='companyName'/>
+              <TextField name='companyName' unique='true'/>
               <TextField name='location'/>
-              <TextField name='contact'/>
+              <TextField name='contact' unique='true'/>
               <TextField name='industry'/>
               <TextField name='image'/>
               <LongTextField name='description'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
-              <HiddenField name='owner' />
+              <HiddenField name='owner' unique='true'/>
             </Segment>
           </AutoForm>
         </Grid.Column>

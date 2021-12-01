@@ -178,9 +178,7 @@ class Home extends React.Component {
                 <Button attached='top'><Link to={'/addCompany'}>Create Profile</Link></Button> :
                 <Button attached='top'>Profile</Button>
               }
-              <Segment>
-                {this.props.companies.map((company, index1) => <Company key={index1} company={company} />)}
-              </Segment>
+              {this.props.companies.map((company, index1) => <Company key={index1} company={company} />)}
             </Grid.Column>
             <Grid.Column width={10}>
               <Button attached={'top'}><Link to={'/addJob'}>Add Job Listing</Link></Button>
