@@ -196,7 +196,7 @@ test('Test that the company profile works', async (testController) => {
   await navBar.gotoCompanyProfilePage(testController);
 });
 
-test.only('Test that add company works', async (testController) => {
+test('Test that add company works', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
   const newUser = `user-${new Date().getTime()}@foo.com`;
   await navBar.gotoSignupPage(testController);
