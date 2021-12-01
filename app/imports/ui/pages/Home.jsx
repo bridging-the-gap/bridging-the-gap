@@ -85,6 +85,8 @@ class Home extends React.Component {
     let fRef = null;
     const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
+    // const email = Meteor.user().username;
+    // const profile = Profiles.collection.findOne({ email });
     return (
       <Container id='home-page'>
         {/* Start of admin page */}
