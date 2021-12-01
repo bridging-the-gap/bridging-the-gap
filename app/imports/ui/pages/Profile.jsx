@@ -10,6 +10,7 @@ import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
+import { Link } from 'react-router-dom';
 
 /** Returns the Profile and associated Projects and Locations associated with the passed user email. */
 // function getProfileData(email) {
@@ -85,9 +86,8 @@ class ProfilesPage extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           // const profileData = emails.map(email => getProfileData(email));
           <Container id="profiles-page">
-            <Card.Group>
-              <MakeCard profile={profileData}/>
-            </Card.Group>
+            <MakeCard profile={profileData}/>
+            <Link to={`/editProfile/${profileData._id}`}>Edit</Link>
           </Container> : ''}
         {/* End of student page */}
         {/* Start of company page */}
@@ -188,6 +188,7 @@ class ProfilesPage extends React.Component {
 
 ProfilesPage.propTypes = {
   ready: PropTypes.bool.isRequired,
+  // profile: PropTypes.object.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */

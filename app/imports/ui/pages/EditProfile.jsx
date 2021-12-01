@@ -7,16 +7,20 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Profiles } from '../../api/profiles/Profiles';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
+import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 
 const bridge = new SimpleSchema2Bridge(Profiles.schema);
+const bridge2 = new SimpleSchema2Bridge(ProfilesLocations.schema);
+const bridge3 = new SimpleSchema2Bridge(ProfilesSkills.schema);
 
 /** Renders the Page for editing a single document. */
 class EditProfile extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { firstName, lastName, email, skills, image, description, _id } = data;
-    Profiles.collection.update(_id, { $set: { firstName, lastName, email, skills, image, description } }, (error) => (error ?
+    const { email, firstName, lastName, bio, title, webpage, picture, locations, skills, projects, role, _id } = data;
+    Profiles.collection.update(_id, { $set: { email, firstName, lastName, bio, title, webpage, picture, locations, skills, projects, role } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -34,18 +38,30 @@ class EditProfile extends React.Component {
           <Header as="h2" textAlign="center">Edit Student Info</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
+              <TextField name='email'/>
               <TextField name='firstName'/>
               <TextField name='lastName'/>
-              <TextField name='email'/>
+              <TextField name='bio'/>
               <TextField name='title'/>
-              <TextField name='locations'/>
-              <TextField name='skills'/>
-              <TextField name='projects'/>
+              <TextField name='webpage'/>
               <TextField name='picture'/>
-              <LongTextField name='bio'/>
+              <TextField name='role'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
-              <HiddenField name='owner' />
+            </Segment>
+          </AutoForm>
+          <AutoForm schema={bridge2} onSubmit={data => this.submit(data)} model={this.props.doc}>
+            <Segment>
+              <TextField name='location'/>
+              <SubmitField value='Submit'/>
+              <ErrorsField/>
+            </Segment>
+          </AutoForm>
+          <AutoForm schema={bridge3} onSubmit={data => this.submit(data)} model={this.props.doc}>
+            <Segment>
+              <TextField name='skill'/>
+              <SubmitField value='Submit'/>
+              <ErrorsField/>
             </Segment>
           </AutoForm>
         </Grid.Column>
