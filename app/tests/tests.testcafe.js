@@ -165,7 +165,7 @@ test('Test that the company homepage works', async (testController) => {
   await companyPage.isDisplayed(testController);
 });
 
-test.only('Test Add jobs works', async (testController) => {
+test('Test Add jobs works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
