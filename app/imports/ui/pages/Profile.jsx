@@ -110,7 +110,9 @@ class ProfilesPage extends React.Component {
                   <Header as={'h3'}>Listings recomended for you</Header>
                   <Item.Group divided>
                     <Item>
-                      <Item.Image size='tiny' src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png'/>
+                      <Item.Image
+                        size='tiny'
+                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png'/>
                       <Item.Content>
                         <Item.Header>Apple</Item.Header>
                         <Item.Meta>
@@ -132,7 +134,9 @@ class ProfilesPage extends React.Component {
                     </Item>
 
                     <Item>
-                      <Item.Image size='tiny' src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png'/>
+                      <Item.Image
+                        size='tiny'
+                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png'/>
 
                       <Item.Content>
                         <Item.Header> Google </Item.Header>
