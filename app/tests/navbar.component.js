@@ -62,6 +62,14 @@ class NavBar {
     await testController.click('#profileMenuItem');
   }
 
+  async gotoCompanyHomePage(testController) {
+    await testController.click('#homeMenuItem');
+  }
+
+  async gotoCompanyProfilePage(testController) {
+    await testController.click('#profileMenuItem');
+  }
+
   /** Check that the specified user is currently logged in. */
   async isLoggedIn(testController, username) {
     await testController.expect(Selector('#navbar-current-user').innerText).eql(username);

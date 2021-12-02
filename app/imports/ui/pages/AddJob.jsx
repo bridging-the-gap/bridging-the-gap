@@ -41,18 +41,18 @@ class AddJob extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered>
+      <Grid container centered id="addJobPage">
         <Grid.Column>
           <Header as="h2" textAlign="center">Add Job</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='jobTitle'/>
-              <TextField name='location'/>
-              <TextField name='salary'/>
-              <TextField name='industry'/>
-              <TextField name='image'/>
-              <LongTextField name='description'/>
-              <SubmitField value='Submit'/>
+              <TextField id="jobTitle" name='jobTitle'/>
+              <TextField id="location" name='location'/>
+              <TextField id="salary" name='salary'/>
+              <TextField id="industry" name='industry'/>
+              <TextField id="image" name='image'/>
+              <LongTextField id="description" name='description'/>
+              <SubmitField id="submit" value='Submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>
