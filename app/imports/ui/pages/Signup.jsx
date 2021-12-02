@@ -15,7 +15,7 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', role: '', error: '', redirectToReferer: false };
+    this.state = { email: '', password: '', role: '', firstname: '', error: '', redirectToReferer: false };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -32,7 +32,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
-    const { email, password, role } = this.state;
+    const { email, password, role, firstname } = this.state;
     if (role.trim() === '') {
       swal('Error', 'You must choose a role to sign up', 'error');
     } else {
@@ -40,7 +40,7 @@ class Signup extends React.Component {
         if (err) {
           this.setState({ error: err.reason });
         } else {
-          Profiles.collection.insert({ email, role }, (err2) => {
+          Profiles.collection.insert({ email, role, firstname }, (err2) => {
             if (err2) {
               this.setState({ error: err2.reason });
             } else {
@@ -97,6 +97,17 @@ class Signup extends React.Component {
                   type="password"
                   autoComplete="on"
                   onChange={this.handleChange}
+                />
+                <Form.Input
+                    label="Email"
+                    id="signup-form-email"
+                    icon="user"
+                    iconPosition="left"
+                    name="email"
+                    type="email"
+                    autoComplete="on"
+                    placeholder="E-mail address"
+                    onChange={this.handleChange}
                 />
                 <Form.Group inline id="signup-form-roles">
                   <label>Role</label>
