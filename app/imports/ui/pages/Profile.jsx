@@ -60,7 +60,35 @@ const MakeCard = (props) => (
   </Card>
 );
 
+const MakeProfile = (props) => (
+  <div className="ui celled grid">
+    <div className="row">
+      <div className="two wide column">
+        <Image floated='center' size='big' src={props.profile.picture} />
+      </div>
+      <div className="thirteen wide column">
+        <h2>{props.profile.firstName} {props.profile.lastName}</h2>
+        <p><span className='date'>{props.profile.title}</span></p>
+        <p><a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a></p>
+      </div>
+    </div>
+    <div className="row">
+      <div className="three wide column">
+      </div>
+      <div className="ten wide column">
+        <p></p>
+      </div>
+      <div className="three wide column">
+      </div>
+    </div>
+  </div>
+);
+
 MakeCard.propTypes = {
+  profile: PropTypes.object.isRequired,
+};
+
+MakeProfile.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
@@ -87,6 +115,7 @@ class ProfilesPage extends React.Component {
           // const profileData = emails.map(email => getProfileData(email));
           <Container id="profiles-page">
             <MakeCard profile={profileData}/>
+            <MakeProfile profile={profileData}/>
             <Link to={`/editProfile/${profileData._id}`}>Edit</Link>
           </Container> : ''}
         {/* End of student page */}
