@@ -5,10 +5,10 @@ import { AutoForm, SubmitField, TextField, LongTextField } from 'uniforms-semant
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
