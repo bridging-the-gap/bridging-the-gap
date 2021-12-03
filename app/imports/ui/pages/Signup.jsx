@@ -139,12 +139,12 @@ class Signup extends React.Component {
                   />
                 </Form.Group>
                 <Form.Input
-                  label="Biographical statement"
+                  label="About you"
                   id="signup-form-bio"
                   name="bio"
                   type="bio"
                   autoComplete="on"
-                  placeholder="Bio"
+                  placeholder="Description"
                   onChange={this.handleChange}
                 />
                 <Form.Input
