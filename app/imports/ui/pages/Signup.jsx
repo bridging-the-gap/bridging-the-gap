@@ -15,7 +15,8 @@ class Signup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', role: '', firstName: '', lastName: '', error: '', redirectToReferer: false };
+    this.state = { email: '', password: '', role: '', firstName: '', lastName: '', webpage: '', picture: '', bio: '',
+      error: '', redirectToReferer: false };
   }
 
   /** Update the form controls each time the user interacts with them. */
@@ -32,7 +33,7 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
-    const { email, password, role, firstName, lastName } = this.state;
+    const { email, password, role, firstName, lastName, bio, webpage, picture } = this.state;
     if (role.trim() === '') {
       swal('Error', 'You must choose a role to sign up', 'error');
     } else {
@@ -40,7 +41,7 @@ class Signup extends React.Component {
         if (err) {
           this.setState({ error: err.reason });
         } else {
-          Profiles.collection.insert({ email, role, firstName, lastName }, (err2) => {
+          Profiles.collection.insert({ email, role, firstName, lastName, bio, webpage, picture }, (err2) => {
             if (err2) {
               this.setState({ error: err2.reason });
             } else {
@@ -137,6 +138,33 @@ class Signup extends React.Component {
                     onChange={this.handleChange2}
                   />
                 </Form.Group>
+                <Form.Input
+                  label="Biographical statement"
+                  id="signup-form-bio"
+                  name="bio"
+                  type="bio"
+                  autoComplete="on"
+                  placeholder="Bio"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  label="Webpage"
+                  id="signup-form-webpage"
+                  name="webpage"
+                  type="webpage"
+                  autoComplete="on"
+                  placeholder="Webpage"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  label="Picture"
+                  id="signup-form-picture"
+                  name="picture"
+                  type="picture"
+                  autoComplete="on"
+                  placeholder="Link to picture"
+                  onChange={this.handleChange}
+                />
                 <Form.Button id="signup-form-submit" content="Submit"/>
               </Segment>
             </Form>
