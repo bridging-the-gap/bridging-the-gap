@@ -82,7 +82,8 @@ function Feedback() {
         </Form.Group>
         <Form.Group>
           <TextArea required id='feedback' name='feedback' placeholder='Let us know what you think!'
-            style={{ width: '500px' }} type='text' value={toSend.feedback} onChange={handleChange} onKeyPress={keypress} />
+            style={{ width: '500px', maxHeight: '200px', minHeight: '100px' }}
+            type='text' value={toSend.feedback} onChange={handleChange} onKeyPress={keypress} />
           <Button id='feedback-button' type='submit' size='huge' style={{ float: 'right' }}>Send</Button>
         </Form.Group>
       </Form>

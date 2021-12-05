@@ -53,15 +53,15 @@ class AddReport extends React.Component {
       <Grid container centered id='add-report-page'>
         <Grid.Column>
           <Header as="h2" textAlign="center">Report A Problem</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
-            <Segment>
+          <Segment style={{ paddingBottom: '50px' }}>
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
               <SelectField id='reportType' name='reportType' options={reportTypes}/>
               <LongTextField id='reportDescription' name='description' placeholder='Write your report here.
-              If there is a particular offender, be sure to mention their email and/or name in your message.'/>
-              <SubmitField id='reportSubmit' value='Submit' />
+              If there is a particular offender, be sure to mention their email and/or name in your message.' />
+              <SubmitField id='reportSubmit' value='Submit' style={{ float: 'right' }}/>
               <ErrorsField/>
-            </Segment>
-          </AutoForm>
+            </AutoForm>
+          </Segment>
         </Grid.Column>
       </Grid>
     );
