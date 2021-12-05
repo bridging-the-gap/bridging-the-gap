@@ -21,13 +21,6 @@ const formSchema1 = new SimpleSchema({
 
 const bridge1 = new SimpleSchema2Bridge(formSchema1);
 
-const categories = [
-  { label: 'Skills',
-    value: 'new_skill' },
-  { label: 'Locations',
-    value: 'new_location' },
-];
-
 /** Renders a single row in the Report table in the admin page. See pages/Home.jsx. */
 class NewCategory extends React.Component {
 
@@ -44,6 +37,10 @@ class NewCategory extends React.Component {
 
   render() {
     let fRef = null;
+    const categories = [
+      { label: 'Skills', value: 'new_skill' },
+      { label: 'Locations', value: 'new_location' },
+    ];
     return (
       <AutoForm ref={ref => { fRef = ref; }} schema={bridge1} onSubmit={data => this.submit(data, fRef)}
         style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
@@ -54,7 +51,7 @@ class NewCategory extends React.Component {
           <Form.Group widths={'equal'}>
             <TextField id='category-name' name='category_name' label='Category Name' placeholder='Name of new category'/>
           </Form.Group>
-          <SubmitField id='submit' value='Submit' style={{ float: 'right', marginTop: '20px', marginRight: '-15px' }}/>
+          <SubmitField id='add-cat-button' value='Submit' style={{ float: 'right', marginTop: '20px', marginRight: '-15px' }}/>
           <ErrorsField/>
         </Segment>
       </AutoForm>

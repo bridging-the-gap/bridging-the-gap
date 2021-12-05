@@ -87,11 +87,12 @@ test('Test that home page displays and works for users in student, company, and 
     await homePage.hasDefaultReports(testController);
     // Checking if delete user component works.
     await homePage.deleteUser(testController, newUser);
-    // Checking if email component works.
-    // User to send email to
-    // Comment out for now because EmailJS limits emails
+    // Checking if email component works:
+    // Comment out for now because EmailJS limits emails.
     // const emailUser = { username: 'reichld@hawaii.edu', role: 'student', password: 'foo' };
     // await homePage.sendEmail(testController, emailUser);
+    await homePage.addCategories(testController);
+    await homePage.filterReportType(testController);
     // Log out of admin account after finished.
     await navBar.ensureLogout(testController);
 

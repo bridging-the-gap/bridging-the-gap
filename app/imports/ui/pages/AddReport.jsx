@@ -22,9 +22,9 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 const reportTypes = [
-  { label: 'Bug', value: 'bug', id: 'bug' },
-  { label: 'User Abuse', value: 'user-abuse', id: 'user-abuse' },
-  { label: 'Other', value: 'other', id: 'other' },
+  { label: 'Bug', value: 'bug' },
+  { label: 'User Abuse', value: 'user-abuse' },
+  { label: 'Other', value: 'other' },
 ];
 
 /** Renders the Page for adding a document. */

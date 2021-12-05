@@ -27,16 +27,63 @@ class HomePage {
   /** Deletes the new user that was created. In the test, the user is a student. */
   async deleteUser(testController, user) {
     await testController.typeText('#email-delete', user.username);
-    const roleSelector = Selector('#role-delete');
-    const studentOption = roleSelector.find('#studentR');
-    // const companyOption = roleSelector.find('#companyR');
-    await testController.click(roleSelector);
-    // await testController.click(companyOption);
-    // await testController.click(roleSelector);
-    await testController.click(studentOption);
-    await testController.click(roleSelector);
     await testController.click('#button-delete');
     await testController.click(Selector('.swal-button--confirm'));
+  }
+
+  async addCategories(testController) {
+    const newSkillName = `skill-${new Date().getTime()}`.toString();
+    const newLocationName = `location-${new Date().getTime()}`.toString();
+    const catTypeSelector = Selector('#skill-or-location');
+    // Checking addition of new skill category.
+    const skillOption = catTypeSelector.child().withExactText('Skills');
+    await testController.click(catTypeSelector);
+    await testController.click(skillOption);
+    await testController.click(catTypeSelector);
+    await testController.typeText('#category-name', newSkillName);
+    await testController.click('#add-cat-button');
+    await testController.click(Selector('.swal-button--confirm'));
+    await testController.click('#browseStudentsItem');
+    const browseStudentsSelector = Selector('#skills');
+    const skillSelector = browseStudentsSelector.find(`#${newSkillName}`);
+    await testController.click(browseStudentsSelector);
+    await testController.click(skillSelector);
+    await testController.click(browseStudentsSelector);
+    await testController.click('#submit');
+    // Check that no card is displayed.
+    const cardCount1 = Selector('.ui .card').count;
+    await testController.expect(cardCount1).eql(0);
+
+    // Checking addition of new location category.
+    await testController.click('#homeMenuItem');
+    const locationOption = catTypeSelector.child().withExactText('Locations');
+    await testController.click(catTypeSelector);
+    await testController.click(locationOption);
+    await testController.click(catTypeSelector);
+    await testController.typeText('#category-name', newLocationName);
+    await testController.click('#add-cat-button');
+    await testController.click(Selector('.swal-button--confirm'));
+    await testController.click('#browseCompaniesItem');
+    const browseCompaniesSelector = Selector('#locations');
+    const locationSelector = browseCompaniesSelector.find(`#${newLocationName}`);
+    await testController.click(browseCompaniesSelector);
+    await testController.click(locationSelector);
+    await testController.click(browseCompaniesSelector);
+    await testController.click('#submit');
+    // Check that no card is displayed.
+    const cardCount2 = Selector('.ui .card').count;
+    await testController.expect(cardCount2).eql(0);
+  }
+
+  async filterReportType(testController) {
+    // Go back to home page to test report filter.
+    await testController.click('#homeMenuItem');
+    const reportTypeSelector = Selector('#report-filter-dropdown');
+    const bugOption = reportTypeSelector.find('#bug');
+    await testController.click(reportTypeSelector);
+    await testController.click(bugOption);
+    const rowCount = Selector('tr').count; // select <tr>
+    await testController.expect(rowCount).eql(3);
   }
 
   // For Bridging the Gap Admin section of Home page.

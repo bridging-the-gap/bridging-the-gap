@@ -7,9 +7,9 @@ import ReportItem from './ReportItem';
 import { Reports } from '../../api/reports/Reports';
 
 const filters = [
-  { key: 'Bug', text: 'Bug', value: 'bug' },
-  { key: 'User Abuse', text: 'User Abuse', value: 'user-abuse' },
-  { key: 'Other', text: 'Other', value: 'other' },
+  { key: 'Bug', text: 'Bug', value: 'bug', id: 'bug' },
+  { key: 'User Abuse', text: 'User Abuse', value: 'user-abuse', id: 'user-abuse' },
+  { key: 'Other', text: 'Other', value: 'other', id: 'other' },
 ];
 
 /** Renders a single row in the Report table in the admin page. See pages/Home.jsx. */
@@ -38,8 +38,8 @@ class ReportFilter extends React.Component {
     });
     return (
       <div>
-        <Dropdown clearable placeholder={'Filter problems by'} name='reportKind' selection options={filters}
-          onChange={this.handleChange}/>
+        <Dropdown clearable id='report-filter-dropdown' placeholder={'Filter problems by'} name='reportKind'
+          selection options={filters} onChange={this.handleChange}/>
         <div style={{ maxHeight: '400px', overflowX: 'scroll' }}>
           <Table celled color='red' inverted>
             <Table.Header>
