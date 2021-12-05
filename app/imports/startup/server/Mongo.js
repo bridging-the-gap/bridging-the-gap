@@ -87,7 +87,7 @@ function addEvent({ eventName, company, date, location, description, picture }) 
 
 /** Define a new report. Error if report already exists.  */
 function addReport({ reportType, email, description }) {
-  console.log(`Defining report ${reportType}`);
+  console.log(`Defining report from ${email} of type ${reportType}`);
   // Create the report.
   Reports.collection.insert({ reportType, email, description });
 }
