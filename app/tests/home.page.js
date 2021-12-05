@@ -79,11 +79,11 @@ class HomePage {
     // Go back to home page to test report filter.
     await testController.click('#homeMenuItem');
     const reportTypeSelector = Selector('#report-filter-dropdown');
-    const bugOption = reportTypeSelector.find('#bug');
+    const otherOption = reportTypeSelector.find('#other');
     await testController.click(reportTypeSelector);
-    await testController.click(bugOption);
+    await testController.click(otherOption);
     const rowCount = Selector('tr').count; // select <tr>
-    await testController.expect(rowCount).eql(3);
+    await testController.expect(rowCount).eql(2);
   }
 
   // For Bridging the Gap Admin section of Home page.
