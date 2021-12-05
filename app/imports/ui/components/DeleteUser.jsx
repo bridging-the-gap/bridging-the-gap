@@ -15,42 +15,45 @@ class DeleteUser extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', role: '', error: '' };
+    this.state = { email: '', error: '' };
   }
 
   /** Update the form controls each time the user interacts with them. */
-  handleChange= (e, { name, value }) => {
-    this.setState({ [name]: value });
-  }
+   handleChange= (e, { name, value }) => {
+     this.setState({ [name]: value });
+   }
 
   submit = () => {
-    // console.log('current email', this.state.email);
-    // console.log('roles from user', this.state.role);
     const isStudent = _.findWhere(this.props.profiles, { email: this.state.email, role: 'student' });
-    // console.log('isStudent', isStudent);
     const isCompany = _.findWhere(this.props.profiles, { email: this.state.email, role: 'company' });
-    // console.log('isCompany', isCompany);
-    const match = ((isStudent !== undefined && this.state.role === isStudent.role) ||
-      (isCompany !== undefined && this.state.role === isCompany.role));
+    const isAdmin = _.findWhere(this.props.profiles, { email: this.state.email, role: 'admin' });
+    const userRole = (isStudent !== undefined) ? 'student' : 'company';
+    const data = { email: this.state.email, role: userRole, error: '' };
+    const match = ((isStudent !== undefined && userRole === isStudent.role) ||
+      (isCompany !== undefined && userRole === isCompany.role));
     // console.log('match', match);
-    if (this.state.role === '' ||
-      (this.props.profiles.find(({ email }) => email === this.state.email) === undefined || match === false)) {
+    if (isAdmin) {
+      Swal.fire({
+        title: 'Cannot delete an admin!',
+        icon: 'error',
+      });
+    } else if (this.props.profiles.find(({ email }) => email === this.state.email) === undefined
+      || match === false) {
       Swal.fire({
         title: 'Cannot delete user.',
         text: 'Your attempt to delete the user likely failed for one of the following reasons: ' +
-          'you tried to delete a user that does not exist, you did not choose the role for the user,' +
-          ' you put the wrong role for the user, or you entered an invalid email.',
+          'you tried to delete a user that does not exist or you entered an invalid email.',
         icon: 'error',
       });
     } else {
-      Meteor.call(deleteProfileMethod, this.state, (error) => {
+      Meteor.call(deleteProfileMethod, data, (error) => {
         if (error) {
           swal('Error', 'Your attempt to delete the user likely failed for one of the following reasons: ' +
-          'you tried to delete a user that does not exist, you put the wrong role for the user, or you entered an invalid email.', 'error');
+          'you tried to delete a user that does not exist or you entered an invalid email.', 'error');
         } else {
           swal('User was deleted successfully.', 'This action cannot be undone.',
             'success').then(() => this.setState({ email: '', error: '' }, () => {
-            console.log('current role should be empty:', this.state);
+            // console.log('current role should be empty:', this.state);
           }));
         }
       });
@@ -58,17 +61,11 @@ class DeleteUser extends React.Component {
   }
 
   render() {
-    const mainRoles = [
-      { text: 'student', value: 'student', id: 'studentR' },
-      { text: 'company', value: 'company', id: 'companyR' },
-    ];
     return (
       <Form id='deleteUserForm' onSubmit={this.submit}>
         <Form.Group>
           <Form.Input required placeholder='email of user to delete' id='email-delete'
             name='email' type='email' onChange={this.handleChange}/>
-          <Form.Dropdown placeholder='role of user to delete' id='role-delete' name='role'
-            selection options={mainRoles} onChange={this.handleChange}/>
           <Form.Button id='button-delete' type='submit'>DELETE</Form.Button>
         </Form.Group>
       </Form>
