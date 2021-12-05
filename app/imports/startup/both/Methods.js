@@ -4,6 +4,8 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
+import { Skills } from '../../api/skills/Skills';
+import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
 
 /**
@@ -97,4 +99,25 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, deleteProfileMethod, addEventMethod, addRoleMethod };
+const addCategoryMethod = 'Categories.add';
+
+/**
+ * The server-side Categories.add Meteor Method is called by NewCategory.jsx in the client-side Home page
+ * after pushing the submit button to create a new category.
+ * Its purpose is to update the Skills and Locations collections to reflect the
+ * updated situation specified by the admin.
+ */
+Meteor.methods({
+  'Categories.add'({ category_type, category_name }) {
+    if (category_type === 'new_skill') {
+      // console.log('New skill:', category_name);
+      Skills.collection.insert({ name: category_name });
+    }
+    if (category_type === 'new_location') {
+      // console.log('New location:', category_name);
+      Locations.collection.insert({ name: category_name });
+    }
+  },
+});
+
+export { updateProfileMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod };

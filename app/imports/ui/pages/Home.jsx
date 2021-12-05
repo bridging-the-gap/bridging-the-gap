@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Table, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
+import { Container, Table, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -19,6 +19,7 @@ import { Companies } from '../../api/company/Companies';
 import Company from '../components/Company';
 import { Jobs } from '../../api/job/Jobs';
 import Job from '../components/Job';
+import NewCategory from '../components/NewCategory';
 
 function getEventData(eventName) {
   const data = Events.collection.findOne({ eventName });
@@ -49,13 +50,6 @@ MakeItem.propTypes = {
 };
 
 // Create a schema to specify the structure of the data to appear in the form.
-// For admin page: create new category section.
-const formSchema1 = new SimpleSchema({
-  name: String,
-  description: String,
-});
-
-// Create a schema to specify the structure of the data to appear in the form.
 // For admin page: email section.
 const studentSchema = new SimpleSchema({
   firstName: String,
@@ -69,9 +63,7 @@ const studentSchema = new SimpleSchema({
   bio: String,
 });
 
-const bridge1 = new SimpleSchema2Bridge(formSchema1);
-
-const bridge2 = new SimpleSchema2Bridge(studentSchema);
+const bridge1 = new SimpleSchema2Bridge(studentSchema);
 
 class Home extends React.Component {
 
@@ -94,19 +86,7 @@ class Home extends React.Component {
           <div id='admin-page'>
             <div style={{ paddingBottom: '50px' }}>
               <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Create New Categories</Header>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge1} onSubmit={data => this.submit(data, fRef)}
-                style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
-                <Segment>
-                  <Form.Group widths={'equal'}>
-                    <TextField id='name' name='name' placeholder='Category name'/>
-                  </Form.Group>
-                  <Form.Group widths={'equal'}>
-                    <LongTextField id='description' name='description' placeholder='Describe the new category here'/>
-                  </Form.Group>
-                  <SubmitField id='submit' value='Submit' style={{ float: 'right', marginTop: '20px', marginRight: '-15px' }}/>
-                  <ErrorsField/>
-                </Segment>
-              </AutoForm>
+              <NewCategory/>
             </div>
             <div style={{ paddingBottom: '50px' }}>
               <Header as="h2" textAlign="center" style={{ color: 'red' }}>Inappropriate Content Reports</Header>
@@ -140,7 +120,7 @@ class Home extends React.Component {
           <Grid id='student-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'white' }}>
               <Header as="h3" textAlign="center">Make Student Profile</Header>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
+              <AutoForm ref={ref => { fRef = ref; }} schema={bridge1} onSubmit={data => this.submit(data, fRef)}>
                 <Segment>
                   <TextField name='firstName'/>
                   <TextField name='lastName'/>
