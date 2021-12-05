@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
+import { Container, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
-import ReportItem from '../components/ReportItem';
 import { Profiles } from '../../api/profiles/Profiles';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
@@ -20,6 +19,7 @@ import Company from '../components/Company';
 import { Jobs } from '../../api/job/Jobs';
 import Job from '../components/Job';
 import NewCategory from '../components/NewCategory';
+import ReportFilter from '../components/ReportFilter';
 
 function getEventData(eventName) {
   const data = Events.collection.findOne({ eventName });
@@ -89,23 +89,8 @@ class Home extends React.Component {
               <NewCategory/>
             </div>
             <div style={{ paddingBottom: '50px' }}>
-              <Header as="h2" textAlign="center" style={{ color: 'red' }}>Inappropriate Content Reports</Header>
-              <div style={{ maxHeight: '400px', overflowX: 'scroll' }}>
-                <Table celled color='red' inverted>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>From</Table.HeaderCell>
-                      <Table.HeaderCell>About</Table.HeaderCell>
-                      <Table.HeaderCell>Description</Table.HeaderCell>
-                      <Table.HeaderCell>Delete</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {this.props.reports.map((report) => <ReportItem key={report._id} report={report}
-                      Reports={Reports}/>)}
-                  </Table.Body>
-                </Table>
-              </div>
+              <Header as="h2" textAlign="center" style={{ color: 'red' }}>User Problem Reports</Header>
+              <ReportFilter Reports={Reports}/>
               <Grid container style={{ border: '1px solid red', width: '510px', paddingTop: '30px', marginTop: '-10px' }} centered>
                 <Header as="h3" style={{ paddingTop: '10px' }}>Delete Offending User</Header>
                 <DeleteUser/>

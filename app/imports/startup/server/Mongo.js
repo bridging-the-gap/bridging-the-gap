@@ -86,10 +86,10 @@ function addEvent({ eventName, company, date, location, description, picture }) 
 }
 
 /** Define a new report. Error if report already exists.  */
-function addReport({ reportName, email, description }) {
-  console.log(`Defining report ${reportName}`);
+function addReport({ reportType, email, description }) {
+  console.log(`Defining report ${reportType}`);
   // Create the report.
-  Reports.collection.insert({ reportName, email, description });
+  Reports.collection.insert({ reportType, email, description });
 }
 
 /** Initialize the database with default company info  */

@@ -41,7 +41,7 @@ class NavBar extends React.Component {
           ) : (
             <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'} style={{ color: 'white' }}>
               <Dropdown.Menu>
-                <Dropdown.Item id="navbar-report" icon="exclamation" text="Report Inappropriate Content" as={NavLink}
+                <Dropdown.Item id="navbar-report" icon="exclamation" text="Report A Problem" as={NavLink}
                   exact to="/addReport" style={{ color: 'white' }}/>
                 <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact to="/signout" style={{ color: 'white' }}/>
               </Dropdown.Menu>

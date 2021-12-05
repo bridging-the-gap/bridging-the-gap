@@ -11,8 +11,11 @@ class ReportsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      reportName: { type: String, index: true },
-      email: { type: String },
+      reportType: {
+        type: String,
+        allowedValues: ['bug', 'user-abuse', 'other'],
+      },
+      email: { type: String, index: true },
       description: { type: String },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.

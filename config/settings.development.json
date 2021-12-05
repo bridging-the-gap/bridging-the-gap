@@ -296,22 +296,22 @@
   ],
   "defaultReports": [
     {
-      "reportName": "Inappropriate student",
+      "reportType": "user-abuse",
       "email": "johnson@hawaii.edu",
       "description": "fake-person@hawaii.edu has included vulgar content in her profile page."
     },
     {
-      "reportName": "A bad apple",
+      "reportType": "user-abuse",
       "email": "apple@apple.com",
       "description": "app1e@app1e.com is masquerading as my company on the site. They are posting events that do not exist and are slandering my company's name on the page they've made. Please take them down."
     },
     {
-      "reportName": "Offensive User",
+      "reportType": "user-abuse",
       "email": "reichld@hawaii.edu",
       "description": "I came across the user (fake-person2@gmail.com) who has put rather offensive content in their profile description."
     },
     {
-      "reportName": "Suspicious link",
+      "reportType": "other",
       "email": "samsung@samsung.com",
       "description": "While searching through students' profiles for potential job candidates, I came across a user by the name Jason Leigh (leighj@hawaii.edu). When I clicked the link to his portfolio page, I was sent somewhere unexpected and I think I may have downloaded a virus. Please look into the matter and contact us when you know more."
     }
