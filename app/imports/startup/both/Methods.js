@@ -51,6 +51,17 @@ Meteor.methods({
   },
 });
 
+const updateCompanyMethod = 'Company.update';
+Meteor.methods({
+  'Company.update'({ email, firstName, lastName, bio, title, webpage, picture, locations, role }) {
+    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, webpage, picture, role } });
+    ProfilesLocations.collection.remove({ profile: email });
+    ProfilesSkills.collection.remove({ profile: email });
+    // ProfilesProjects.collection.remove({ profile: email });
+    locations.map((location) => ProfilesLocations.collection.insert({ profile: email, location }));
+    // projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
+  },
+});
 const deleteProfileMethod = 'Profiles.delete';
 
 /**
@@ -120,4 +131,4 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod };
+export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod };
