@@ -10,9 +10,7 @@ import { Profiles } from '../../api/profiles/Profiles';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   firstName: String,
-  location: String,
   email: String,
-  industry: String,
   picture: { type: String, optional: true },
   bio: String,
 });
@@ -24,9 +22,9 @@ class AddCompany extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { firstName, email, industry, picture, bio } = data;
+    const { firstName, email, picture, bio } = data;
     const owner = Meteor.user().username;
-    Profiles.collection.insert({ firstName, email, industry, picture, bio, owner },
+    Profiles.collection.insert({ firstName, email, picture, bio, owner },
       (error) => {
         if (error) {
           swal('Error', 'Company name or contact info (or both) is already taken and cannot be used.', 'error');
@@ -47,9 +45,7 @@ class AddCompany extends React.Component {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <TextField id="companyName" name='firstName'/>
-              <TextField id="location" name='location'/>
               <TextField id="contact" name='email'/>
-              <TextField id="industry" name='industry'/>
               <TextField id="image" name='picture'/>
               <LongTextField id="description" name='bio'/>
               <SubmitField id="submit" value='Submit'/>
