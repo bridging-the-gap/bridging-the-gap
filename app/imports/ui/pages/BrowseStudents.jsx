@@ -45,7 +45,9 @@ const MakeCard = (props) => (
       </Card.Description>
       <Card.Meta>
         <span>Contact email:</span>
-        <a style={{ color: 'blue' }} href={props.profile.email}>{props.profile.email} </a>
+        {/* If I split the lines up, there is extra space between the word 'user' and the e-mailer's username. */ }
+        {/* eslint-disable-next-line max-len */}
+        <a style={{ color: 'blue' }} href={`mailto:${props.profile.email}?subject=Message from BTG user ${Meteor.user().username}`}>{props.profile.email} </a>
       </Card.Meta>
       <Card.Meta>
         <span>Webpage:</span>
