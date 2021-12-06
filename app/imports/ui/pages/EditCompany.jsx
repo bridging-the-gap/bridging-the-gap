@@ -15,8 +15,8 @@ class EditCompany extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { firstName, location, email, industry, picture, bio, _id } = data;
-    Profiles.collection.update(_id, { $set: { firstName, location, email, industry, picture, bio } }, (error) => (error ?
+    const { firstName, email, picture, bio, _id } = data;
+    Profiles.collection.update(_id, { $set: { firstName, email, picture, bio } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -35,9 +35,7 @@ class EditCompany extends React.Component {
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
               <TextField id="companyName" name='firstName' unique='true'/>
-              <TextField id="location" name='location'/>
               <TextField id="contact" name='email' unique='true'/>
-              <TextField id="industry" name='industry'/>
               <TextField id="image" name='picture'/>
               <LongTextField id="description" name='bio'/>
               <SubmitField id="submit" value='Submit'/>

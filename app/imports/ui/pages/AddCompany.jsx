@@ -24,9 +24,9 @@ class AddCompany extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { firstName, location, email, industry, picture, bio } = data;
+    const { firstName, email, industry, picture, bio } = data;
     const owner = Meteor.user().username;
-    Profiles.collection.insert({ firstName, location, email, industry, picture, bio, owner },
+    Profiles.collection.insert({ firstName, email, industry, picture, bio, owner },
       (error) => {
         if (error) {
           swal('Error', 'Company name or contact info (or both) is already taken and cannot be used.', 'error');
