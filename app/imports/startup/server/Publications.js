@@ -10,7 +10,6 @@ import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
 import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
-import { Companies } from '../../api/company/Companies';
 import { Jobs } from '../../api/job/Jobs';
 
 /** Define a publication to publish all locations. */
@@ -42,13 +41,14 @@ Meteor.publish(Events.userPublicationName, () => Events.collection.find());
 Meteor.publish(Reports.userPublicationName, () => Reports.collection.find());
 
 /** If logged in, publish documents owned by this company. */
+/**
 Meteor.publish(Companies.userPublicationName, function () {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Companies.collection.find({ owner: username });
   }
   return this.ready();
-});
+}); */
 
 /** If logged in, publish documents of jobs. */
 Meteor.publish(Jobs.userPublicationName, function () {

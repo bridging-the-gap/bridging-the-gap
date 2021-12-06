@@ -14,7 +14,6 @@ import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
-import { Companies } from '../../api/company/Companies';
 import Company from '../components/Company';
 import { Jobs } from '../../api/job/Jobs';
 import Job from '../components/Job';
@@ -141,11 +140,11 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              {Companies.collection.find({ owner: Meteor.user().username }).fetch().length === 0 ?
+              {Profiles.collection.find({ owner: Meteor.user().username }).fetch().length === 0 ?
                 <Button attached='top' id="addCompany" ><Link to={'/addCompany'}>Create Profile</Link></Button> :
                 <Button attached='top'>Profile</Button>
               }
-              {this.props.companies.map((company, index1) => <Company key={index1} company={company} />)}
+              {this.props.profiles.map((company, index1) => <Company key={index1} company={company} />)}
             </Grid.Column>
             <Grid.Column width={10}>
               <Button attached={'top'} id="addJob" ><Link to={'/addJob'}>Add Job Listing</Link></Button>
@@ -171,7 +170,6 @@ class Home extends React.Component {
 Home.propTypes = {
   reports: PropTypes.array.isRequired,
   profiles: PropTypes.array.isRequired,
-  companies: PropTypes.array.isRequired,
   jobs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -182,7 +180,6 @@ export default withTracker(() => {
   const sub1 = Roles.subscription;
   const sub2 = Meteor.subscribe(Reports.userPublicationName);
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub4 = Meteor.subscribe(Companies.userPublicationName);
   const sub5 = Meteor.subscribe(Jobs.userPublicationName);
   const sub6 = Meteor.subscribe(Events.userPublicationName);
 
@@ -190,15 +187,12 @@ export default withTracker(() => {
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
-  // Get access to Companies documents
-  const companies = Companies.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
   return {
     reports,
     profiles,
-    companies,
     jobs,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready(),
   };
 })(Home);

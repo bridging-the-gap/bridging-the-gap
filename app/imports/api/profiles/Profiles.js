@@ -19,6 +19,7 @@ class ProfilesCollection {
       webpage: { type: String, optional: true },
       picture: { type: String, optional: true },
       role: { type: String, optional: true },
+      owner: { type: String, unique: true, optional: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
