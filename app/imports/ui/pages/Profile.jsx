@@ -79,7 +79,7 @@ class ProfilesPage extends React.Component {
     const email = Meteor.user().username;
     // const profileData = Profiles.collection.findOne({ email });
     const profileData = getProfileData(email);
-    console.log(profileData);
+    // console.log(profileData);
     return (
       <Container>
         {/* Start of student page */}

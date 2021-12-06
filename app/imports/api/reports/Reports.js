@@ -15,8 +15,8 @@ class ReportsCollection {
         type: String,
         allowedValues: ['bug', 'user-abuse', 'other'],
       },
-      email: { type: String, index: true },
-      description: { type: String },
+      email: { type: String },
+      description: { type: String, index: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
