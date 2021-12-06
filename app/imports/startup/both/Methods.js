@@ -7,6 +7,7 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Skills } from '../../api/skills/Skills';
 import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
+import { Jobs } from '../../api/job/Jobs';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -90,6 +91,15 @@ Meteor.methods({
   },
 });
 
+const addJobMethod = 'Jobs.add';
+
+/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
+Meteor.methods({
+  'Jobs.add'({ jobTitle, location, salary, industry, image, description, owner }) {
+    Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, owner });
+  },
+});
+
 const addRoleMethod = 'Roles.add';
 
 /**
@@ -131,4 +141,4 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod };
+export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod, addJobMethod };

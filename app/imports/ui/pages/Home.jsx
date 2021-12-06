@@ -167,7 +167,7 @@ class Home extends React.Component {
               <Header as="h2" textAlign="center" inverted>Your job listings</Header>
               <Segment>
                 <Card.Group>
-                  {this.props.jobs.map((job, index2) => <Job key={index2} job={job} />)}
+                  {this.props.jobs.map((job, index2) => { if (job.owner === email) { return <Job key={index2} job={job} />; } })}
                 </Card.Group>
               </Segment>
               <Button attached={'top'} id="home-addEvent"><Link to={'/addEvent'}>Add Event</Link></Button>

@@ -2,37 +2,29 @@ import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
+import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import PropTypes from 'prop-types';
+import { addJobMethod } from '../../startup/both/Methods';
 import { Jobs } from '../../api/job/Jobs';
 
-// Create a schema to specify the structure of the data to appear in the form.
-const formSchema = new SimpleSchema({
-  jobTitle: String,
-  location: String,
-  salary: String,
-  industry: String,
-  image: { type: String, optional: true },
-  description: String,
-});
 
-const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
 class AddJob extends React.Component {
-
   // On submit, insert the data.
   submit(data, formRef) {
     const { jobTitle, location, salary, industry, image, description } = data;
     const owner = Meteor.user().username;
     Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, owner },
       (error) => {
+      // Meteor.call(addJobMethod, data, (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
+          swal('Success', 'Job added successfully', 'success').then(() => formRef.reset());
         }
       });
   }
@@ -40,6 +32,17 @@ class AddJob extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
     let fRef = null;
+    // Create a schema to specify the structure of the data to appear in the form.
+    const formSchema = new SimpleSchema({
+      jobTitle: String,
+      location: String,
+      salary: String,
+      industry: String,
+      image: { type: String, optional: true },
+      description: String,
+    });
+
+    const bridge = new SimpleSchema2Bridge(formSchema);
     return (
       <Grid container centered id="addJobPage">
         <Grid.Column>
@@ -61,5 +64,15 @@ class AddJob extends React.Component {
     );
   }
 }
+AddJob.propTypes = {
+  ready: PropTypes.bool.isRequired,
+};
 
-export default AddJob;
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+  // Ensure that minimongo is populated with all collections prior to running render().
+  const sub = Meteor.subscribe(Jobs.userPublicationName);
+  return {
+    ready: sub.ready(),
+  };
+})(AddJob);

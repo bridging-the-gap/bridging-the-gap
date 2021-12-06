@@ -36,6 +36,7 @@ Meteor.publish(ProjectsLocations.userPublicationName, () => ProjectsLocations.co
 Meteor.publish(ProjectsSkills.userPublicationName, () => ProjectsSkills.collection.find());
 
 Meteor.publish(Events.userPublicationName, () => Events.collection.find());
+Meteor.publish(Jobs.userPublicationName, () => Jobs.collection.find());
 
 /** Define a publication to publish all reports. */
 Meteor.publish(Reports.userPublicationName, () => Reports.collection.find());
@@ -50,14 +51,7 @@ Meteor.publish(Companies.userPublicationName, function () {
   return this.ready();
 }); */
 
-/** If logged in, publish documents of jobs. */
-Meteor.publish(Jobs.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Jobs.collection.find({ owner: username });
-  }
-  return this.ready();
-});
+
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.
