@@ -39,11 +39,6 @@ textarea::placeholder {
   color: white;
 }
 
-.home-background {
-  background: url("/images/1.jpg") no-repeat;
-  background-size: cover;
-  font-size: 20px;
-}
 .home-background-student {
   background-color: white;
   background-size: cover;
