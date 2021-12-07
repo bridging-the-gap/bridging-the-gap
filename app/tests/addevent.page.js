@@ -14,7 +14,6 @@ class AddEventPage {
   /** Checks this page is displayed, then adds a new project */
   async addEvent(testController) {
     const eventName = `my-new-event-${new Date().getTime()}`;
-    const company = 'Test company';
     const date = `${new Date().getTime()}`;
     const location = 'Test location';
     const description = 'This is a new event used for testing purposes.';
@@ -22,7 +21,6 @@ class AddEventPage {
     await this.isDisplayed(testController);
     // Define the new report.
     await testController.typeText('#eventName', eventName);
-    await testController.typeText('#company', company);
     await testController.typeText('#date', date);
     await testController.typeText('#location', location);
     await testController.typeText('#description', description);
