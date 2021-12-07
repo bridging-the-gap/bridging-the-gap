@@ -11,25 +11,17 @@ class Company extends React.Component {
         <Grid.Column>
           <List>
             <List.Item><Header as={'h4'}>Company:</Header></List.Item>
-            <List.Item>{this.props.company.companyName}</List.Item>
-          </List>
-          <List>
-            <List.Item><Header as={'h4'}>Location:</Header></List.Item>
-            <List.Item>{this.props.company.location}</List.Item>
+            <List.Item>{this.props.company.firstName}</List.Item>
           </List>
           <List>
             <List.Item><Header as={'h4'}>Contact:</Header> </List.Item>
-            <List.Item>{this.props.company.contact}</List.Item>
-          </List>
-          <List>
-            <List.Item><Header as={'h4'}>Industry:</Header> </List.Item>
-            <List.Item>{this.props.company.industry}</List.Item>
+            <List.Item>{this.props.company.email}</List.Item>
           </List>
           <List>
             <List.Item><Header as={'h4'}>Description:</Header></List.Item>
           </List>
           <List>
-            <List.Item><p>{this.props.company.description}</p></List.Item>
+            <List.Item><p>{this.props.company.bio}</p></List.Item>
           </List>
           <List>
             <List.Item><Link to={`/editCompany/${this.props.company._id}`} id="editCompany" >Edit</Link></List.Item>

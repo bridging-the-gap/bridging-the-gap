@@ -51,6 +51,17 @@ Meteor.methods({
   },
 });
 
+const updateCompanyMethod = 'Company.update';
+Meteor.methods({
+  'Company.update'({ email, firstName, lastName, bio, title, webpage, picture, locations, role }) {
+    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, webpage, picture, role } });
+    ProfilesLocations.collection.remove({ profile: email });
+    ProfilesSkills.collection.remove({ profile: email });
+    // ProfilesProjects.collection.remove({ profile: email });
+    locations.map((location) => ProfilesLocations.collection.insert({ profile: email, location }));
+    // projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
+  },
+});
 const deleteProfileMethod = 'Profiles.delete';
 
 /**
@@ -99,6 +110,26 @@ Meteor.methods({
   },
 });
 
+const addSpecificInfoMethod = 'SpecificInfo.add';
+
+/**
+ * The server-side SpecificInfo.add Meteor Method is called by the client-side Signup page after pushing the submit button.
+ * Its purpose is to add the user's skill/location info to the ProfilesSkills and/or ProfilesLocations collections,
+ * which is needed for the BrowseCompanies and BrowseStudents pages.
+ */
+Meteor.methods({
+  'SpecificInfo.add'({ role, email, skills, locations }) {
+    if (role === 'student') {
+      ProfilesSkills.collection.insert({ profile: email, skill: skills });
+      ProfilesLocations.collection.insert({ profile: email, location: locations });
+    }
+    if (role === 'company') {
+      ProfilesLocations.collection.insert({ profile: email, location: locations });
+    }
+    console.log('role of registered user:', role);
+  },
+});
+
 const addCategoryMethod = 'Categories.add';
 
 /**
@@ -120,4 +151,4 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod };
+export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod, addSpecificInfoMethod };

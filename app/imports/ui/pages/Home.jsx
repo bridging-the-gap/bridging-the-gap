@@ -14,16 +14,28 @@ import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
-import { Companies } from '../../api/company/Companies';
 import Company from '../components/Company';
 import { Jobs } from '../../api/job/Jobs';
 import Job from '../components/Job';
 import NewCategory from '../components/NewCategory';
 import ReportFilter from '../components/ReportFilter';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
+import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
+import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
+import { Projects } from '../../api/projects/Projects';
 
 function getEventData(eventName) {
   const data = Events.collection.findOne({ eventName });
   return _.extend({ }, data);
+}
+
+function getProfileData(email) {
+  const data = Profiles.collection.findOne({ email });
+  const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
+  const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
+  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
+  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
+  return _.extend({ }, data, { locations, skills, projects: projectPictures });
 }
 
 const MakeItem = (props) => (
@@ -77,6 +89,9 @@ class Home extends React.Component {
     let fRef = null;
     const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
+    const email = Meteor.user().username;
+    // const profileData = Profiles.collection.findOne({ email });
+    const companyData = getProfileData(email);
     // const email = Meteor.user().username;
     // const profile = Profiles.collection.findOne({ email });
     return (
@@ -141,18 +156,18 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              {Companies.collection.find({ owner: Meteor.user().username }).fetch().length === 0 ?
+              {Profiles.collection.find({ owner: Meteor.user().username }).fetch().length === 0 ?
                 <Button attached='top' id="addCompany" ><Link to={'/addCompany'}>Create Profile</Link></Button> :
                 <Button attached='top'>Profile</Button>
               }
-              {this.props.companies.map((company, index1) => <Company key={index1} company={company} />)}
+              <Company company={companyData} />)
             </Grid.Column>
             <Grid.Column width={10}>
               <Button attached={'top'} id="addJob" ><Link to={'/addJob'}>Add Job Listing</Link></Button>
               <Header as="h2" textAlign="center" inverted>Your job listings</Header>
               <Segment>
                 <Card.Group>
-                  {this.props.jobs.map((job, index2) => <Job key={index2} job={job} />)}
+                  {this.props.jobs.map((job, index2) => { if (job.owner === email) { return <Job key={index2} job={job} />; } })}
                 </Card.Group>
               </Segment>
               <Button attached={'top'} id="home-addEvent"><Link to={'/addEvent'}>Add Event</Link></Button>
@@ -171,7 +186,6 @@ class Home extends React.Component {
 Home.propTypes = {
   reports: PropTypes.array.isRequired,
   profiles: PropTypes.array.isRequired,
-  companies: PropTypes.array.isRequired,
   jobs: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -182,7 +196,6 @@ export default withTracker(() => {
   const sub1 = Roles.subscription;
   const sub2 = Meteor.subscribe(Reports.userPublicationName);
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub4 = Meteor.subscribe(Companies.userPublicationName);
   const sub5 = Meteor.subscribe(Jobs.userPublicationName);
   const sub6 = Meteor.subscribe(Events.userPublicationName);
 
@@ -190,15 +203,12 @@ export default withTracker(() => {
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
-  // Get access to Companies documents
-  const companies = Companies.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
   return {
     reports,
     profiles,
-    companies,
     jobs,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready(),
   };
 })(Home);

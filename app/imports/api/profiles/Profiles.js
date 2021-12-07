@@ -12,13 +12,16 @@ class ProfilesCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       email: { type: String, index: true, unique: true },
-      firstName: { type: String, optional: true },
+      firstName: { type: String },
       lastName: { type: String, optional: true },
       title: { type: String, optional: true },
-      bio: { type: String, optional: true },
+      bio: { type: String },
       webpage: { type: String, optional: true },
       picture: { type: String, optional: true },
-      role: { type: String, optional: true },
+      role: { type: String },
+      owner: { type: String, unique: true, optional: true },
+      skills: { type: String, optional: true },
+      locations: { type: String, optional: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

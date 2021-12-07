@@ -38,7 +38,8 @@
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
       "email": "google@google.com",
-      "role": "company"
+      "role": "company",
+      "owner": "https://google.com"
     },
     {
       "firstName": "Samsung",
@@ -52,7 +53,8 @@
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png",
       "email": "samsung@samsung.com",
-      "role": "company"
+      "role": "company",
+      "owner": "samsung@samsung.com"
     },
     {
       "firstName": "Apple",
@@ -65,7 +67,8 @@
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png",
       "email": "apple@apple.com",
-      "role": "company"
+      "role": "company",
+      "owner": "apple@apple.com"
     },
     {
       "firstName": "Philip",

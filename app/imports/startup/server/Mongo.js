@@ -12,7 +12,6 @@ import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
 import { Reports } from '../../api/reports/Reports';
-import { Companies } from '../../api/company/Companies';
 import { Jobs } from '../../api/job/Jobs';
 
 /* eslint-disable no-console */
@@ -85,6 +84,11 @@ function addEvent({ eventName, company, date, location, description, picture }) 
   Events.collection.insert({ eventName, company, date, location, description, picture });
 }
 
+function addJob({ jobTitle, location, salary, industry, image, description, owner }) {
+  console.log(`Defining job ${jobTitle}`);
+  Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, owner });
+}
+
 /** Define a new report. Error if report already exists.  */
 function addReport({ reportType, email, description }) {
   console.log(`Defining report from ${email} of type ${reportType}`);
@@ -93,23 +97,21 @@ function addReport({ reportType, email, description }) {
 }
 
 /** Initialize the database with default company info  */
-function addCompany(companyData) {
+/** function addCompany(companyData) {
   console.log(` Adding: ${companyData.companyName}`);
   Companies.collection.insert(companyData);
 }
 /** Initialize company database if empty */
+/**
 if (Companies.collection.find().count() === 0) {
   if (Meteor.settings.defaultCompany) {
     console.log('Creating default company.');
     Meteor.settings.defaultCompany.map(companyData => addCompany(companyData));
   }
-}
+} */
 
 /** Initialize the database with default Job info  */
-function addJob(jobData) {
-  console.log(` Adding: ${jobData.jobTitle}`);
-  Jobs.collection.insert(jobData);
-}
+
 /** Initialize company database if empty */
 if (Jobs.collection.find().count() === 0) {
   if (Meteor.settings.defaultJob) {

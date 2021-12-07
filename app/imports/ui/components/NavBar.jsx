@@ -19,6 +19,8 @@ class NavBar extends React.Component {
           <Menu.Item as={NavLink} id="homeMenuItem" activeClassName="green active" exact to="/home" key='home'
             style={{ color: 'white' }}>Home</Menu.Item>
         ) : ''}
+        <Menu.Item as={NavLink} id="jobItem" activeClassName="green active" exact to="/jobs" key='jobs'
+          style={{ color: 'white' }}>Jobs</Menu.Item>
         <Menu.Item as={NavLink} id="eventItem" activeClassName="green active" exact to="/events" key='events'
           style={{ color: 'white' }}>Events</Menu.Item>
         <Menu.Item as={NavLink} id="browseStudentsItem" activeClassName="green active" exact to="/browseStudents"
