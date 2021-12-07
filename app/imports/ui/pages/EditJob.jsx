@@ -15,8 +15,8 @@ class EditJob extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { companyName, location, contact, industry, image, description, _id } = data;
-    Jobs.collection.update(_id, { $set: { companyName, location, contact, industry, image, description } }, (error) => (error ?
+    const { companyName, location, contact, industry, image, description, _id, salary, jobTitle } = data;
+    Jobs.collection.update(_id, { $set: { companyName, location, contact, industry, image, description, salary, jobTitle } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
