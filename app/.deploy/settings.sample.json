@@ -275,6 +275,31 @@
       "picture": "",
       "email": "bryanyagi@hawaii.edu",
       "role": "student"
+    },
+    {
+      "firstName": "Ola",
+      "lastName": "Nordmann",
+      "bio": "I am a MIX exchange student from Norway. My major is Nanotechnology I expect to graduate in Spring, 2021.",
+      "title": "Student",
+      "locations": [
+        "Hawaii",
+        "Oslo"
+      ],
+      "skills": [
+        "Programming",
+        "Software Engineering",
+        "Machine Learning",
+        "Data Science",
+        "Mathematics",
+        "Physics",
+        "Nanotechnology"
+      ],
+      "projects":[
+        "Open Power Quality"
+      ],
+      "picture": "",
+      "email": "olanordmann@ntnu.no",
+      "role": "student"
     }
   ],
   "defaultProjects": [
