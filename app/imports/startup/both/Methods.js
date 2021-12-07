@@ -7,7 +7,6 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Skills } from '../../api/skills/Skills';
 import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
-import { Jobs } from '../../api/job/Jobs';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -91,15 +90,6 @@ Meteor.methods({
   },
 });
 
-const addJobMethod = 'Jobs.add';
-
-/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
-Meteor.methods({
-  'Jobs.add'({ jobTitle, location, salary, industry, image, description, owner }) {
-    Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, owner });
-  },
-});
-
 const addRoleMethod = 'Roles.add';
 
 /**
@@ -115,6 +105,26 @@ Meteor.methods({
     if (role === 'company') {
       Roles.createRole(role, { unlessExists: true });
       Roles.addUsersToRoles([Meteor.userId()], 'company', null);
+    }
+    console.log('role of registered user:', role);
+  },
+});
+
+const addSpecificInfoMethod = 'SpecificInfo.add';
+
+/**
+ * The server-side SpecificInfo.add Meteor Method is called by the client-side Signup page after pushing the submit button.
+ * Its purpose is to add the user's skill/location info to the ProfilesSkills and/or ProfilesLocations collections,
+ * which is needed for the BrowseCompanies and BrowseStudents pages.
+ */
+Meteor.methods({
+  'SpecificInfo.add'({ role, email, skills, locations }) {
+    if (role === 'student') {
+      ProfilesSkills.collection.insert({ profile: email, skill: skills });
+      ProfilesLocations.collection.insert({ profile: email, location: locations });
+    }
+    if (role === 'company') {
+      ProfilesLocations.collection.insert({ profile: email, location: locations });
     }
     console.log('role of registered user:', role);
   },
@@ -141,4 +151,4 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod, addJobMethod };
+export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod, addSpecificInfoMethod };

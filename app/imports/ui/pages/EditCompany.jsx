@@ -1,21 +1,18 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
+import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { _ } from 'meteor/underscore';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { Profiles } from '../../api/profiles/Profiles';
 import { updateCompanyMethod } from '../../startup/both/Methods';
 import { Locations } from '../../api/locations/Locations';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
-import { Skills } from '../../api/skills/Skills';
-import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-
-//const bridge = new SimpleSchema2Bridge(Profiles.schema);
 
 const makeSchema = (allLocations) => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
