@@ -26,6 +26,7 @@ import AddJob from '../pages/AddJob';
 import AddCompany from '../pages/AddCompany';
 import EditCompany from '../pages/EditCompany';
 import EditProfile from '../pages/EditProfile';
+import EditEvent from '../pages/EditEvent';
 import EditJob from '../pages/EditJob';
 import JobListings from '../pages/JobListings';
 
@@ -56,6 +57,7 @@ class App extends React.Component {
               <ProtectedRoute path="/editCompany/:_id" component={EditCompany}/>
               <ProtectedRoute path="/editProfile/:_id" component={EditProfile}/>
               <ProtectedRoute path="/editJob/:_id" component={EditJob}/>
+              <ProtectedRoute path="/editEvent/:_id" component={EditEvent}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>

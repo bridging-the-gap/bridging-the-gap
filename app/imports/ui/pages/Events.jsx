@@ -23,7 +23,7 @@ const MakeItem = (props) => (
       <Item.Description>{props.event.description}</Item.Description>
       <Item.Extra>
         <Button primary floated='right'>
-            Register for event
+          Register for event
           <Icon name='right chevron' />
         </Button>
       </Item.Extra>
@@ -47,6 +47,7 @@ class EventsPage extends React.Component {
   renderPage() {
     const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
+    console.log(eventData);
     return (
       <Container id="events-page">
         <Item.Group>
