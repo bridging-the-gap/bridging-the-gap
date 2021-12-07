@@ -26,8 +26,10 @@ const MakeItem = (props) => (
     <Item.Content verticalAlign='middle'>
       <Item.Header as='a'>{props.job.jobTitle}</Item.Header>
       <Item.Meta>
-        <span className='date'>{props.job.industry} {'at'} {props.job.location}</span>
+        <span className='owner'>{props.job.owner}{' - '}{props.job.industry}</span>
       </Item.Meta>
+      <Item><span className='salary'>{'Salary: '}{props.job.salary}</span></Item>
+      <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
       <Item.Description>{props.job.description}</Item.Description>
       <Item.Extra>
         <Button primary floated='right'>
