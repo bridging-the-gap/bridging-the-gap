@@ -16,8 +16,8 @@ import { companyPage } from './company.page';
 /** Credentials for one of the sample users defined in settings.development.json. */
 const student = { username: 'johnson@hawaii.edu', password: 'foo', role: 'student',
   firstName: 'Philip', lastName: 'Johnson' };
-const company = { username: 'apple@apple.com', password: 'foo', role: 'company',
-  firstName: 'Apple', lastName: 'Inc.' };
+const company = { username: 'hr@google.com', password: 'foo', role: 'company',
+  firstName: 'Google', lastName: '' };
 const admin = { username: 'sin8@hawaii.edu', password: 'foo', role: 'admin',
   firstName: 'Serge', lastName: 'Negrashov' };
 
@@ -190,6 +190,14 @@ test('Test Edit company works', async (testController) => {
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyHomePage(testController);
   await companyPage.editCompany(testController);
+});
+
+test('Test Edit event works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.editEvent(testController);
 });
 
 test('Test that the company profile works', async (testController) => {
