@@ -112,26 +112,19 @@ class Home extends React.Component {
         {/* Start of student page */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           <Grid id='student-home' columns={2}>
-            <Grid.Column width={6} style={{ backgroundColor: 'white' }}>
-              <Header as="h3" textAlign="center">Make Student Profile</Header>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge1} onSubmit={data => this.submit(data, fRef)}>
-                <Segment>
-                  <TextField name='firstName'/>
-                  <TextField name='lastName'/>
-                  <TextField name='email'/>
-                  <TextField name='title'/>
-                  <TextField name='locations'/>
-                  <TextField name='skills'/>
-                  <TextField name='projects'/>
-                  <TextField name='picture'/>
-                  <LongTextField name='bio'/>
-                  <SubmitField value='Submit'/>
-                  <ErrorsField/>
-                </Segment>
-              </AutoForm>
+            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Your Events</Header>
+              <Segment>
+                <Item.Group divided>
+                  <Item>
+                    <Item.Content>
+                      <Item.Header>Favorite event</Item.Header>
+                    </Item.Content>
+                  </Item>
+                </Item.Group></Segment>
             </Grid.Column>
-            <Grid.Column width={10} style={{ backgroundColor: 'white' }}>
-              <Header as="h3" textAlign="center">Suggested for you</Header>
+            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Your Job Listings</Header>
               <Segment>
                 <Item.Group divided>
                   <Item>
