@@ -739,7 +739,7 @@
       "industry": "Tech Industry",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png",
       "description": "Imagine what you could do here. At Apple, extraordinary ideas have a way of becoming phenomenal products, services, and customer experiences very quickly. Bring passion and dedication to your job and there's no telling what you could accomplish. Apple’s University Recruiting team is looking for a highly motivated, engineering students with a strong background in Back-End Engineering, Core OS, and Web Development to join its team of highly skilled software engineers.",
-      "owner": "apple@apple.com",
+      "owner": "humanrelations@apple.com",
       "link": "https://jobs.apple.com/en-us/details/200253195/software-engineering-internship?team=STDNT"
     },
     {
@@ -749,7 +749,7 @@
       "industry": "Technology",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
       "description": "Google is invested in increasing the number of future computer scientists and software developers, particularly those who are historically underrepresented in the field. Many aspiring computer scientists could benefit from a program that bridges the gap between academic study and a professional internship. Google aims to inspire these underrepresented students to continue in the field with such a program. With this in mind, Google is pleased to announce the 2022 STEP internship in China. It will be open to under-represented groups who will be in the second year of their university studies by the Summer of 2022 and are studying Computer Science or a related subject. This program includes three main components: a software project, skills-based training, and professional development.",
-      "owner": "google@google.com",
+      "owner": "hr@google.com",
       "link": "https://careers.google.com/jobs/results/79899759344526022-student-training-in-engineering-program-step-intern-2022/?category=DATA_CENTER_OPERATIONS&category=DEVELOPER_RELATIONS&category=HARDWARE_ENGINEERING&category=INFORMATION_TECHNOLOGY&category=MANUFACTURING_SUPPLY_CHAIN&category=NETWORK_ENGINEERING&category=PRODUCT_MANAGEMENT&category=PROGRAM_MANAGEMENT&category=SOFTWARE_ENGINEERING&category=TECHNICAL_INFRASTRUCTURE_ENGINEERING&category=TECHNICAL_SOLUTIONS&category=TECHNICAL_WRITING&category=USER_EXPERIENCE&company=Google&distance=50&employment_type=INTERN&jex=ENTRY_LEVEL"
     },
     {
@@ -759,7 +759,7 @@
       "industry": "Business",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
       "description": "Google invites you to join us for a unique summer experience in a 10-week paid internship for MBA students. Our MBA interns work on projects handling some of the most cutting-edge business challenges in the tech industry. Our graduate interns have joined us in areas across the business, such as Marketing, Advertising Sales and Operations, Cloud and more.",
-      "owner": "google@google.com",
+      "owner": "hr@google.com",
       "link": "https://careers.google.com/jobs/results/96290980056965830-mba-intern-2022/?category=ADMINISTRATIVE&category=BUSINESS_STRATEGY&category=FINANCE&category=LEGAL&category=MARKETING&category=PARTNERSHIPS&category=PEOPLEOPS&category=PRODUCT_SUPPORT&category=PROGRAM_MANAGEMENT&category=REAL_ESTATE&category=SALES&category=SALES_OPERATIONS&company=Google&company=YouTube&employment_type=INTERN&jex=ENTRY_LEVEL"
     },
     {
@@ -769,7 +769,7 @@
       "industry": "Tech Industry",
       "image": "https://jobs.cisco.com/portal/4/images/logo.svg",
       "description": "Summer Internship (May - August 2022), full-time work schedule, Monday- Friday 40 hours per week.  As a Full Stack Engineer at Meraki, you will help craft and build features for Meraki's Dashboard - the window to the entire Meraki experience. From Dashboard, our customers can control their entire Meraki stack: access points, switches, firewalls, client devices, cameras, and more. You will work across the stack with other developers, UX designers, and product management to build and improve the Dashboard web application. Meraki engineers put the customer experience first, own projects from beginning to end, and are empowered to make impactful decisions.",
-      "owner": "cisco@cisco.com",
+      "owner": "anna_b@cisco.com",
       "link": "https://jobs.cisco.com/jobs/ProjectDetail/Full-Stack-Engineer-Summer-2022-Internship-Bachelors-Meraki/1353180"
     },
     {
@@ -779,7 +779,7 @@
       "industry": "Banking",
       "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
       "description": "Frequently consults with portfolio clients via needs based, financial planning conversations.  Solves clients problems and achieves their goal by applying knowledge of bank products.  Leverages financial acumen to refer prospects to Private Banking, Business Banking, Wealth Management, and Mortgage Department/Teams.  Responsible for retention and growth of assigned Personal Banker portfolio.",
-      "owner": "fhb@fhb.com",
+      "owner": "alex.m@fhb.com",
       "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4046"
     },
     {
@@ -789,7 +789,7 @@
       "industry": "Banking",
       "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
       "description": "Under the direction of the Retail Banking Regional Manager, Business Banking Market Manager or Team Leader, provide client servicing, credit support for the Business Banking Team including the preparation of client correspondence, credit requests, financial analysis and loan administration.  Assist in credit administration, along with the sale and servicing of related products and services.  Emphasis on learning credit skills including financial analysis of business and personal income statements, balance sheets, and cash flow, risk ratings, and compliance.",
-      "owner": "fhb@fhb.com",
+      "owner": "alex.m@fhb.com",
       "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4136"
     },
     {
@@ -799,7 +799,7 @@
       "industry": "Banking",
       "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
       "description": "Responsible for providing technical phone support while monitoring and maintaining FHB systems (e.g., ATM, Servers, Backups, etc.) in a 24x7x365 high availability production environment. Troubleshoot issues and failures related to hardware, services, and network.",
-      "owner": "fhb@fhb.com",
+      "owner": "alex.m@fhb.com",
       "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4292"
     },
     {
