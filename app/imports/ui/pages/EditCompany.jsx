@@ -63,7 +63,7 @@ class EditCompany extends React.Component {
               <TextField id="contact" name='email' unique='true'/>
               <TextField id="image" name='picture'/>
               <LongTextField id="description" name='bio'/>
-              <MultiSelectField name='locations' showInlineError={true} placeholder={'Locations'}/>
+              <MultiSelectField name='locations' id='multi-select-locations' showInlineError={true} placeholder={'Locations'}/>
               <SubmitField id="submit" value='Submit'/>
               <ErrorsField/>
             </Segment>

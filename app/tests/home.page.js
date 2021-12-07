@@ -16,11 +16,11 @@ class HomePage {
   }
 
   // For Bridging the Gap Admin section of Home page.
-  /** Asserts that this page has a table with at least four rows,
-   * one for the header and three for the default reports. */
+  /** Asserts that this page has a table with at least 21 rows,
+   * one for the header and 20 for the default reports. */
   async hasDefaultReports(testController) {
     const rowCount = Selector('tr').count; // select <tr>
-    await testController.expect(rowCount).gte(4);
+    await testController.expect(rowCount).gte(21);
   }
 
   // For Bridging the Gap Admin section of Home page.
@@ -83,7 +83,7 @@ class HomePage {
     await testController.click(reportTypeSelector);
     await testController.click(otherOption);
     const rowCount = Selector('tr').count; // select <tr>
-    await testController.expect(rowCount).eql(2);
+    await testController.expect(rowCount).eql(7);
   }
 
   // For Bridging the Gap Admin section of Home page.

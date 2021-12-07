@@ -38,11 +38,25 @@ test('Test that signin and signout work', async (testController) => {
 });
 
 test('Test that signup page, then logout works', async (testController) => {
+  // For student user:
   // Create a new user email address that's guaranteed to be unique.
-  const newUser = `user-${new Date().getTime()}@foo.com`;
+  const newUserFirstName = `user-${new Date().getTime()}`;
+  const newUserLastName = 'Test lastname';
+  const newUser = `${newUserFirstName}@foo.com`;
   await navBar.gotoSignupPage(testController);
   await signupPage.isDisplayed(testController);
-  await signupPage.signupUser(testController, newUser, student.role, student.password);
+  await signupPage.signupUser(testController, newUser, newUserFirstName, newUserLastName, student.role, student.password);
+  // New user has successfully logged in, so now let's logout.
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+  // For company user:
+  // Create a new user email address that's guaranteed to be unique.
+  // First name acts as company name for company user.
+  const newUserFirstName2 = `user-${new Date().getTime()}`;
+  const newUser2 = `${newUserFirstName2}@foo.com`;
+  await navBar.gotoSignupPage(testController);
+  await signupPage.isDisplayed(testController);
+  await signupPage.signupUser(testController, newUser2, newUserFirstName2, '', company.role, company.password);
   // New user has successfully logged in, so now let's logout.
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
@@ -70,11 +84,13 @@ test('Test that projects page displays', async (testController) => {
 test('Test that home page displays and works for users in student, company, and admin roles',
   async (testController) => {
     // For admin section.
-    // Create new user to test delete user section on.
-    const newUser = { username: `person-${new Date().getTime()}@foo.com`, role: 'student', password: 'foo' };
+    // Create new student user to test delete user section on.
+    const newUserFirstName = `user-${new Date().getTime()}`;
+    const newUserLastName = 'Test lastname 2';
+    const newUser = { username: `${newUserFirstName}@foo.com`, role: 'student', password: 'foo' };
     await navBar.gotoSignupPage(testController);
     await signupPage.isDisplayed(testController);
-    await signupPage.signupUser(testController, newUser.username, newUser.role, newUser.password);
+    await signupPage.signupUser(testController, newUser.username, newUserFirstName, newUserLastName, newUser.role, newUser.password);
     // New user has successfully logged in, so now let's logout.
     await navBar.logout(testController);
     await signoutPage.isDisplayed(testController);
@@ -199,17 +215,19 @@ test('Test that the company profile works', async (testController) => {
   await navBar.gotoCompanyProfilePage(testController);
 });
 
-test('Test that add company works', async (testController) => {
+// Shouldn't be necessary now since signup page takes care of adding company profile.
+/* test.only('Test that add company works', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
-  const newUser = `user-${new Date().getTime()}@foo.com`;
+  const newUserCompanyName = `user-${new Date().getTime()}`;
+  const newUser = `${newUserCompanyName}@foo.com`;
   await navBar.gotoSignupPage(testController);
   await signupPage.isDisplayed(testController);
-  await companyPage.signupCompany(testController, newUser, company.role, company.password);
+  await signupPage.signupUser(testController, newUser, newUserCompanyName, '', company.role, company.password);
   await navBar.gotoCompanyHomePage(testController);
   await companyPage.addCompany(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
-});
+}); */
 /*
 test('Test that addProject page works', async (testController) => {
   await navBar.ensureLogout(testController);

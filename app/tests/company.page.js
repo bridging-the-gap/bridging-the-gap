@@ -1,5 +1,4 @@
 import { Selector } from 'testcafe';
-import { navBar } from './navbar.component';
 
 class Company {
   constructor() {
@@ -42,8 +41,9 @@ class Company {
     await testController.click(Selector('.swal-button--confirm'));
   }
 
+  // Not necessary now that signup page takes care of making profile.
   /** Asserts if add Company works */
-  async addCompany(testController) {
+  /* async addCompany(testController) {
     const title = 'fireworksRus';
     const location = 'North Pole';
     const contact = 'santa@foo.com';
@@ -59,35 +59,41 @@ class Company {
     await testController.typeText('#description', description);
     await testController.click('#submit');
     await testController.click(Selector('.swal-button--confirm'));
-  }
+  } */
 
+  // Not needed, can use signup test page method.
   /** Creates new company account */
-  async signupCompany(testController, username, role, password) {
+  /* async signupCompany(testController, username, role, password) {
     await testController.typeText('#signup-form-email', username);
     await testController.typeText('#signup-form-password', password);
     await testController.click('#company-button');
     await testController.click('#signup-form-submit');
     await navBar.isLoggedIn(testController, username);
     await testController.click(Selector('.swal-button--confirm'));
-  }
+  } */
 
   /** Asserts if edit Company works */
   async editCompany(testController) {
     const title = 'cafe';
     const location = 'Hawaii';
     const contact = 'bob@foo.com';
-    const industry = 'Liberal Arts';
+    // Add back later
+    // const industry = 'Liberal Arts';
     const image = 'https://www.pbs.org/wnet/nature/files/2017/07/fish-1534844_1920.jpg';
     const description = 'This is not a company';
     await testController.click('#editCompany');
     await testController.selectText('#companyName').pressKey('delete');
     await testController.typeText('#companyName', title);
-    await testController.selectText('#location').pressKey('delete');
-    await testController.typeText('#location', location);
+    const locationSelector = Selector('#multi-select-locations');
+    const locationOptionToAdd = locationSelector.find(`#${location}`);
+    await testController.click(locationSelector);
+    await testController.click(locationOptionToAdd);
+    await testController.click(locationSelector);
     await testController.selectText('#contact').pressKey('delete');
     await testController.typeText('#contact', contact);
-    await testController.selectText('#industry').pressKey('delete');
-    await testController.typeText('#industry', industry);
+    // Add back later
+    // await testController.selectText('#industry').pressKey('delete');
+    // await testController.typeText('#industry', industry);
     await testController.selectText('#image').pressKey('delete');
     await testController.typeText('#image', image);
     await testController.selectText('#description').pressKey('delete');

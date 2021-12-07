@@ -81,19 +81,19 @@ class Signup extends React.Component {
     const { from } = this.props.location.state || { from: { pathname: '/home' } };
     // if correct authentication, redirect to from: page instead of signup screen
     const locationChoices = [
-      { text: 'Hawaii', key: 'Hawaii', value: 'Hawaii' },
-      { text: 'US', key: 'US', value: 'US' },
-      { text: 'California', key: 'California', value: 'California' },
-      { text: 'South Korea', key: 'South Korea', value: 'South Korea' },
-      { text: 'Seoul', key: 'Seoul', value: 'Seoul' },
+      { text: 'Hawaii', key: 'Hawaii', value: 'Hawaii', id: 'Hawaii' },
+      { text: 'US', key: 'US', value: 'US', id: 'US' },
+      { text: 'California', key: 'California', value: 'California', id: 'California' },
+      { text: 'South Korea', key: 'South Korea', value: 'South Korea', id: 'South Korea' },
+      { text: 'Seoul', key: 'Seoul', value: 'Seoul', id: 'Seoul' },
     ];
     const skillChoices = [
-      { text: 'Programming', key: 'Programming', value: 'Programming' },
-      { text: 'Software Engineering', key: 'Software Engineering', value: 'Software Engineering' },
-      { text: 'Machine Learning', key: 'Machine Learning', value: 'Machine Learning' },
-      { text: 'Robotics', key: 'Robotics', value: 'Robotics' },
-      { text: 'Data Science', key: 'Data Science', value: 'Data Science' },
-      { text: 'Mathematics', key: 'Mathematics', value: 'Mathematics' },
+      { text: 'Programming', key: 'Programming', value: 'Programming', id: 'Programming' },
+      { text: 'Software Engineering', key: 'Software Engineering', value: 'Software Engineering', id: 'Software Engineering' },
+      { text: 'Machine Learning', key: 'Machine Learning', value: 'Machine Learning', id: 'Machine Learning' },
+      { text: 'Robotics', key: 'Robotics', value: 'Robotics', id: 'Robotics' },
+      { text: 'Data Science', key: 'Data Science', value: 'Data Science', id: 'Data Science' },
+      { text: 'Mathematics', key: 'Mathematics', value: 'Mathematics', id: 'Mathematics' },
     ];
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
@@ -174,7 +174,7 @@ class Signup extends React.Component {
                     />,
                     <Form.Select required
                       label="Location"
-                      id="signup-form-locations"
+                      id="input-company-locations"
                       name="locations"
                       type="locations"
                       autoComplete="on"
