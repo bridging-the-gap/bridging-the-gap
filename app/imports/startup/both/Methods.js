@@ -19,7 +19,7 @@ import { Jobs } from '../../api/job/Jobs';
  *   2. For update and removal, we can only provide a docID as the selector on the client-side, making bulk deletes
  *      hard to do via nested callbacks.
  *
- * A simple solution to this is to use Meteor Methods (https://guide.meteor.com/methods.html). By defining and
+ * A simple solution to this is to use Meteor Methods (httpsx://guide.meteor.com/methods.html). By defining and
  * calling a Meteor Method, we can specify code to be run on the server-side but invoked by clients. We don't need
  * to use callbacks, because any errors are thrown and sent back to the client. Also, the restrictions on the selectors
  * are removed for server-side code.
@@ -82,14 +82,6 @@ Meteor.methods({
   },
 });
 
-const addEventMethod = 'Events.add';
-
-/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
-Meteor.methods({
-  'Events.add'({ eventName, company, date, location, description, picture }) {
-    Events.collection.insert({ eventName, company, date, location, description, picture });
-  },
-});
 
 const addJobMethod = 'Jobs.add';
 
@@ -161,5 +153,5 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod,
+export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addRoleMethod,
   addCategoryMethod, addSpecificInfoMethod, addJobMethod };

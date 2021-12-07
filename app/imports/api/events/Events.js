@@ -12,11 +12,11 @@ class EventsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       eventName: { type: String, index: true, unique: true },
-      company: { type: String },
       date: { type: String },
       location: { type: String },
       description: { type: String, optional: true },
       picture: { type: String, optional: true },
+      owner: String,
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

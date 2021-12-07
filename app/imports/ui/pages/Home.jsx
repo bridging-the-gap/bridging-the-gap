@@ -17,17 +17,13 @@ import DeleteUser from '../components/DeleteUser';
 import Company from '../components/Company';
 import { Jobs } from '../../api/job/Jobs';
 import Job from '../components/Job';
+import Event from '../components/Event';
 import NewCategory from '../components/NewCategory';
 import ReportFilter from '../components/ReportFilter';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
-
-function getEventData(eventName) {
-  const data = Events.collection.findOne({ eventName });
-  return _.extend({ }, data);
-}
 
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
@@ -87,8 +83,6 @@ class Home extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     let fRef = null;
-    const events = _.pluck(Events.collection.find().fetch(), 'eventName');
-    const eventData = events.map(event => getEventData(event));
     const email = Meteor.user().username;
     // const profileData = Profiles.collection.findOne({ email });
     const companyData = getProfileData(email);
@@ -172,9 +166,11 @@ class Home extends React.Component {
               </Segment>
               <Button attached={'top'} id="home-addEvent"><Link to={'/addEvent'}>Add Event</Link></Button>
               <Header as="h2" textAlign="center" inverted>Your upcoming events</Header>
-              <Item.Group divided>
-                {_.map(eventData, (event, index) => <MakeItem key={index} event={event}/>)}
-              </Item.Group>
+              <Segment>
+                <Card.Group>
+                  {this.props.events.map((event, index2) => { if (event.owner === email) { return <Event key={index2} event={event} />; } })}
+                </Card.Group>
+              </Segment>
             </Grid.Column>
           </Grid> : ''}
         {/* End of company page */}
@@ -187,6 +183,7 @@ Home.propTypes = {
   reports: PropTypes.array.isRequired,
   profiles: PropTypes.array.isRequired,
   jobs: PropTypes.array.isRequired,
+  events: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -205,10 +202,12 @@ export default withTracker(() => {
   const profiles = Profiles.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
+  const events = Events.collection.find({}).fetch();
   return {
     reports,
     profiles,
     jobs,
+    events,
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready(),
   };
 })(Home);

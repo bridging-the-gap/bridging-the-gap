@@ -79,9 +79,9 @@ function addProject({ name, homepage, description, locations, skills, picture, r
 }
 
 /** Define a new event. Error if event already exists.  */
-function addEvent({ eventName, company, date, location, description, picture }) {
+function addEvent({ eventName, company, date, location, description, picture, owner }) {
   console.log(`Defining event ${eventName}`);
-  Events.collection.insert({ eventName, company, date, location, description, picture });
+  Events.collection.insert({ eventName, company, date, location, description, picture, owner });
 }
 
 function addJob({ jobTitle, location, salary, industry, image, description, link, owner }) {
