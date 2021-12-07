@@ -153,5 +153,5 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod,
+export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addRoleMethod,
   addCategoryMethod, addSpecificInfoMethod, addJobMethod };
