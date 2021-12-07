@@ -37,9 +37,9 @@
         "California"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
-      "email": "google@google.com",
+      "email": "hr@google.com",
       "role": "company",
-      "owner": "google@google.com"
+      "owner": "hr@google.com"
     },
     {
       "firstName": "Cisco",
@@ -53,9 +53,9 @@
         "San Jose"
       ],
       "picture": "https://jobs.cisco.com/portal/4/images/logo.svg",
-      "email": "cisco@cisco.com",
+      "email": "anna_b@cisco.com",
       "role": "company",
-      "owner": "cisco@cisco.com"
+      "owner": "anna_b@cisco.com"
     },
     {
       "firstName": "First Hawaiian Bank",
@@ -68,9 +68,9 @@
         "Hawaii"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/First_Hawaiian_Bank_logo.svg/440px-First_Hawaiian_Bank_logo.svg.png",
-      "email": "fhb@fhb.com",
+      "email": "alex.m@fhb.com",
       "role": "company",
-      "owner": "fhb@fhb.com"
+      "owner": "alex.m@fhb.com"
     },
     {
       "firstName": "Samsung",
@@ -83,9 +83,9 @@
         "Seoul"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png",
-      "email": "samsung@samsung.com",
+      "email": "yin.k@samsung.com",
       "role": "company",
-      "owner": "samsung@samsung.com"
+      "owner": "yin.k@samsung.com"
     },
     {
       "firstName": "Apple",
@@ -97,9 +97,204 @@
         "US"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png",
-      "email": "apple@apple.com",
+      "email": "humanrelations@apple.com",
       "role": "company",
-      "owner": "apple@apple.com"
+      "owner": "humanrelations@apple.com"
+    },
+    {
+      "firstName": "Walmart",
+      "lastName": "Inc. ",
+      "bio": "Walmart Inc is an American multinational retail corporation that operates a chain of hypermarkets (also called supercenters), discount department stores, and grocery stores from the United States, headquartered in Bentonville, Arkansas.",
+      "title": "Company",
+      "webpage": "https://walmart.com",
+      "locations": [
+        "US",
+        "Arkansas"
+      ],
+      "picture": "https://www.freepnglogos.com/uploads/walmart-logo-24.jpg",
+      "email": "jenny.hr@walmart.com",
+      "role": "company",
+      "owner": "jenny.hr@walmart.com"
+    },
+    {
+      "firstName": "Amazon",
+      "lastName": "",
+      "bio": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+      "title": "Company",
+      "webpage": "https://amazon.com",
+      "locations": [
+        "US",
+        "Seattle"
+      ],
+      "picture": "https://1000logos.net/wp-content/uploads/2016/10/Amazon-logo-meaning.jpg",
+      "email": "management@amazon.com",
+      "role": "company",
+      "owner": "management@amazon.com"
+    },
+    {
+      "firstName": "Netflix",
+      "lastName": "",
+      "bio": "Netflix, Inc. is an American subscription streaming service and production company",
+      "title": "Company",
+      "webpage": "https://netflix.com",
+      "locations": [
+        "US",
+        "California"
+      ],
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Netflix_2015_N_logo.svg/1200px-Netflix_2015_N_logo.svg.png",
+      "email": "info@netflix.com",
+      "role": "company",
+      "owner": "info@netflix.com"
+    },
+    {
+      "firstName": "Target",
+      "lastName": "Cooperation",
+      "bio": "Target Corporation is an American retail corporation.",
+      "title": "Company",
+      "webpage": "https://target.com",
+      "locations": [
+        "US",
+        "Minneapolis"
+      ],
+      "picture": "https://logos-world.net/wp-content/uploads/2020/10/Target-Logo.png",
+      "email": "hr@target.com",
+      "role": "company",
+      "owner": "hr@target.com"
+    },
+    {
+      "firstName": "TMobile",
+      "lastName": "",
+      "bio": "T-Mobile is the brand name used by the mobile communications subsidiaries of the German telecommunications company Deutsche Telekom AG.",
+      "title": "Company",
+      "webpage": "https://t-mobile.com",
+      "locations": [
+        "US",
+        "Germany"
+      ],
+      "picture": "https://www.t-mobile.com/news/_admin/uploads/2020/04/T-Mobile20logo20single20T20magenta20on20white.png",
+      "email": "contact@tmobile.com",
+      "role": "company",
+      "owner": "contact@tmobile.com"
+    },
+    {
+      "firstName": "Toyota",
+      "lastName": "",
+      "bio": "Toyota Motor Corporation, commonly known as simply Toyota) is a Japanese multinational automotive manufacturer headquartered in Toyota City, Aichi, Japan.",
+      "title": "Company",
+      "webpage": "https://toyota.com",
+      "locations": [
+        "US",
+        "Japan"
+      ],
+      "picture": "https://www.allaboutlean.com/wp-content/uploads/2018/11/Toyota-Logo-2.jpg",
+      "email": "humanrelations@toyota.com",
+      "role": "company",
+      "owner": "humanrelations@toyota.com"
+    },
+    {
+      "firstName": "Sephora",
+      "lastName": "",
+      "bio": "Sephora is a French multinational retailer of personal care and beauty products.",
+      "title": "Company",
+      "webpage": "https://sephora.com",
+      "locations": [
+        "US",
+        "Paris"
+      ],
+      "picture": "https://i2.wp.com/www.growyourbrands.co.uk/wp-content/uploads/2020/10/Sephora-Logo.png?ssl=1",
+      "email": "contact@sephora.com",
+      "role": "company",
+      "owner": "contact@sephora.com"
+    },
+    {
+      "firstName": "Microsoft",
+      "lastName": "",
+      "bio": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "title": "Company",
+      "webpage": "https://microsoft.com",
+      "locations": [
+        "US",
+        "Washington D.C"
+      ],
+      "picture": "https://authy.com/wp-content/uploads/new-microsoft-logo-SIZED-SQUARE-300x297.jpg",
+      "email": "student.hr@microsoft.com",
+      "role": "company",
+      "owner": "student.hr@microsoft.com"
+    },
+    {
+      "firstName": "Tesla",
+      "lastName": "",
+      "bio": "Tesla, Inc. is an American electric vehicle and clean energy company based in Austin, Texas, United States.",
+      "title": "Company",
+      "webpage": "https://tesla.com",
+      "locations": [
+        "US",
+        "Texas"
+      ],
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png",
+      "email": "musk@tesla.com",
+      "role": "company",
+      "owner": "musk@tesla.com"
+    },
+    {
+      "firstName": "NASA",
+      "lastName": "",
+      "bio": "The National Aeronautics and Space Administration is an independent agency of the U.S. federal government responsible for the civilian space program, as well as aeronautics and space research.",
+      "title": "Company",
+      "webpage": "https://nasa.com",
+      "locations": [
+        "US",
+        "Washington D.C"
+      ],
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png",
+      "email": "studentinfo@nasa.com",
+      "role": "company",
+      "owner": "studentinfo@nasa.com"
+    },
+    {
+      "firstName": "Sony",
+      "lastName": "",
+      "bio": "Sony Group Corporation, commonly known as Sony and stylized as SONY is a Japanese multinational conglomerate corporation headquartered in Kōnan, Minato, Tokyo, Japan",
+      "title": "Company",
+      "webpage": "https://sony.com",
+      "locations": [
+        "US",
+        "Japan"
+      ],
+      "picture": "https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo-1961-1962.png",
+      "email": "careers@sony.com",
+      "role": "company",
+      "owner": "careers@sony.com"
+    },
+    {
+      "firstName": "Lenovo",
+      "lastName": "",
+      "bio": "Lenovo Group Limited, often shortened to Lenovo, is a Chinese -American multinational technology company specializing in designing, manufacturing, and marketing consumer electronics, personal computers, software, business solutions, and related services.",
+      "title": "Company",
+      "webpage": "https://lenovo.com",
+      "locations": [
+        "US",
+        "Beijing"
+      ],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfvYLZUfBv02s3tJhZhC0h71_mC_CwT4dCDwTabgA6m9oP0BB3aJhtLO-M37p5NPLpKs&usqp=CAU",
+      "email": "careers@lenovo.com",
+      "role": "company",
+      "owner": "careers@lenovo.com"
+    },
+    {
+      "firstName": "AirBnb",
+      "lastName": "Inc. ",
+      "bio": "Airbnb, Inc. is an American company that operates an online marketplace for lodging, primarily homestays for vacation rentals, and tourism activities. ",
+      "title": "Company",
+      "webpage": "https://airbnb.com",
+      "locations": [
+        "US",
+        "California"
+      ],
+      "picture": "",
+      "email": "hr@airbnb.com",
+      "role": "company",
+      "owner": "hr@airbnb.com"
     },
     {
       "firstName": "Philip",
