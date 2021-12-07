@@ -4,9 +4,7 @@ import { Container, Loader, Button, Icon, Item } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import { Events } from '../../api/events/Events';
 import { Jobs } from '../../api/job/Jobs';
-import { Link } from 'react-router-dom';
 
 /** Gets the Event-data. */
 function getJobData(jobTitle) {
@@ -14,13 +12,13 @@ function getJobData(jobTitle) {
   return _.extend({ }, data);
 }
 
-/*jobTitle: String,
+/* jobTitle: String,
     location: String,
     salary: String,
     industry: String,
     image: { type: String, optional: true },
 description: String,
-    owner: String,*/
+    owner: String, */
 const MakeItem = (props) => (
   <Item>
     <Item.Image size="small" src={props.job.image}/>

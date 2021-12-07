@@ -7,10 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import PropTypes from 'prop-types';
-import { addJobMethod } from '../../startup/both/Methods';
 import { Jobs } from '../../api/job/Jobs';
-
-
 
 /** Renders the Page for adding a document. */
 class AddJob extends React.Component {
