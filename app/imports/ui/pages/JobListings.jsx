@@ -56,7 +56,6 @@ class JobsPage extends React.Component {
   renderPage() {
     const jobs = _.pluck(Jobs.collection.find().fetch(), 'jobTitle');
     const jobData = jobs.map(job => getJobData(job));
-    console.log(jobData);
     return (
       <Container id="jobs-page">
         <Item.Group>

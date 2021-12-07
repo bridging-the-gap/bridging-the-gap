@@ -168,7 +168,9 @@ class Home extends React.Component {
               <Header as="h2" textAlign="center" inverted>Your upcoming events</Header>
               <Segment>
                 <Card.Group>
-                  {this.props.events.map((event, index2) => { if (event.owner === email) { return <Event key={index2} event={event} />; } })}
+                  {this.props.events.map((event, index2) => {
+                    if (event.owner === email) { return <Event key={index2} event={event} />; } return '';
+                  })}
                 </Card.Group>
               </Segment>
             </Grid.Column>
