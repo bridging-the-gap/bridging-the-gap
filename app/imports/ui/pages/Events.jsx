@@ -22,9 +22,8 @@ const MakeItem = (props) => (
       </Item.Meta>
       <Item.Description>{props.event.description}</Item.Description>
       <Item.Extra>
-        <Button primary floated='right'>
-          Register for event
-          <Icon name='right chevron' />
+        <Button white floated='right' className="ui blue icon button">
+          <i className="heart icon"></i>
         </Button>
       </Item.Extra>
     </Item.Content>
