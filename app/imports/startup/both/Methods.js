@@ -6,6 +6,8 @@ import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Skills } from '../../api/skills/Skills';
 import { Locations } from '../../api/locations/Locations';
+import { Events } from '../../api/events/Events';
+import { Jobs } from '../../api/job/Jobs';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -17,7 +19,7 @@ import { Locations } from '../../api/locations/Locations';
  *   2. For update and removal, we can only provide a docID as the selector on the client-side, making bulk deletes
  *      hard to do via nested callbacks.
  *
- * A simple solution to this is to use Meteor Methods (https://guide.meteor.com/methods.html). By defining and
+ * A simple solution to this is to use Meteor Methods (httpsx://guide.meteor.com/methods.html). By defining and
  * calling a Meteor Method, we can specify code to be run on the server-side but invoked by clients. We don't need
  * to use callbacks, because any errors are thrown and sent back to the client. Also, the restrictions on the selectors
  * are removed for server-side code.
@@ -81,6 +83,15 @@ Meteor.methods({
 });
 
 
+const addJobMethod = 'Jobs.add';
+
+/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
+Meteor.methods({
+  'Jobs.add'({ jobTitle, location, salary, industry, image, description, link, owner }) {
+    Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, link, owner });
+  },
+});
+
 const addRoleMethod = 'Roles.add';
 
 /**
@@ -142,4 +153,5 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod, addCategoryMethod, addSpecificInfoMethod };
+export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addEventMethod, addRoleMethod,
+  addCategoryMethod, addSpecificInfoMethod, addJobMethod };

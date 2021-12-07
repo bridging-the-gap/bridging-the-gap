@@ -162,6 +162,16 @@ class Signup extends React.Component {
                       key='input-company-name'
                       onChange={this.handleChange}
                     />,
+                    <Form.Input required
+                      label="Industry"
+                      id="signup-form-industry-title"
+                      name="title"
+                      type="title"
+                      autoComplete="on"
+                      placeholder="Associated industry (ex. Manufacturing)"
+                      key='signup-industry'
+                      onChange={this.handleChange}
+                    />,
                     <Form.Select required
                       label="Location"
                       id="signup-form-locations"

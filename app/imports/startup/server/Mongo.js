@@ -84,9 +84,9 @@ function addEvent({ eventName, company, date, location, description, picture, ow
   Events.collection.insert({ eventName, company, date, location, description, picture, owner });
 }
 
-function addJob({ jobTitle, location, salary, industry, image, description, owner }) {
+function addJob({ jobTitle, location, salary, industry, image, description, link, owner }) {
   console.log(`Defining job ${jobTitle}`);
-  Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, owner });
+  Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, link, owner });
 }
 
 /** Define a new report. Error if report already exists.  */
