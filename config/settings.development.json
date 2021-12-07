@@ -73,6 +73,35 @@
       "owner": "fhb@fhb.com"
     },
     {
+      "firstName": "Hawaii Pacific Health",
+      "lastName": "",
+      "bio": "Hawaii Pacific Health is a nonprofit health care network of hospitals, clinics, physicians and care providers covering Hawaii and the Pacific Region. At Hawaii Pacific Health, our mission is to create a healthier Hawaii. We believe that working together, we can make the greatest impact on individuals, families and our communities.",
+      "title": "Company",
+      "webpage": "https://www.hawaiipacifichealth.org",
+      "locations": [
+        "US",
+        "Hawaii"
+      ],
+      "picture": "https://www.hawaiipacifichealth.org/media/4413/hawaii-pacific-health.png",
+      "email": "jobs@hawaiipacifichealth.org",
+      "role": "company",
+      "owner": "jobs@hawaiipacifichealth.org"
+    },{
+      "firstName": "Hawaiian Airlines",
+      "lastName": "",
+      "bio": "Hawaiian Airlines is the largest operator of commercial flights to and from the U.S. state of Hawaii. It is the tenth-largest commercial airline in the United States, and is based at Honolulu, Hawaii. Hawaiian Airlines, Hawaii's largest and longest-serving airline, is looking for exceptional people. People with experience. People with ambition. People who love Hawaii. We have one of the newest, most advanced fleets in the industry. We've added exciting international and mainland routes. And we continue to grow. This is an airline that's going places—and you can, too.",
+      "title": "Company",
+      "webpage": "https://www.hawaiianairlines.com",
+      "locations": [
+        "US",
+        "Hawaii"
+      ],
+      "picture": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "email": "jobs@HawaiianAir.com",
+      "role": "company",
+      "owner": "jobs@HawaiianAir.com"
+    },
+    {
       "firstName": "Samsung",
       "lastName": "Electronics",
       "bio": "Samsung is a major manufacturer of electronic components such as lithium-ion batteries, semiconductors, image sensors, camera modules and displays for clients such as Apple, Sony, HTC and Nokia. It is the world's largest manufacturer of mobile phones and smartphones, started with the original Samsung Solstice and later, the popularity of its Samsung Galaxy line of devices.",
@@ -399,6 +428,26 @@
       "link": "https://jobs.apple.com/en-us/details/200253195/software-engineering-internship?team=STDNT"
     },
     {
+      "jobTitle": "Student Training in Engineering Program (STEP) Intern, 2022",
+      "location": "China",
+      "salary": "$3,000/month",
+      "industry": "Technology",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
+      "description": "Google is invested in increasing the number of future computer scientists and software developers, particularly those who are historically underrepresented in the field. Many aspiring computer scientists could benefit from a program that bridges the gap between academic study and a professional internship. Google aims to inspire these underrepresented students to continue in the field with such a program. With this in mind, Google is pleased to announce the 2022 STEP internship in China. It will be open to under-represented groups who will be in the second year of their university studies by the Summer of 2022 and are studying Computer Science or a related subject. This program includes three main components: a software project, skills-based training, and professional development.",
+      "owner": "google@google.com",
+      "link": "https://careers.google.com/jobs/results/79899759344526022-student-training-in-engineering-program-step-intern-2022/?category=DATA_CENTER_OPERATIONS&category=DEVELOPER_RELATIONS&category=HARDWARE_ENGINEERING&category=INFORMATION_TECHNOLOGY&category=MANUFACTURING_SUPPLY_CHAIN&category=NETWORK_ENGINEERING&category=PRODUCT_MANAGEMENT&category=PROGRAM_MANAGEMENT&category=SOFTWARE_ENGINEERING&category=TECHNICAL_INFRASTRUCTURE_ENGINEERING&category=TECHNICAL_SOLUTIONS&category=TECHNICAL_WRITING&category=USER_EXPERIENCE&company=Google&distance=50&employment_type=INTERN&jex=ENTRY_LEVEL"
+    },
+    {
+      "jobTitle": "MBA Intern, 2022",
+      "location": "Taiwan",
+      "salary": "$3,000/month",
+      "industry": "Business",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
+      "description": "Google invites you to join us for a unique summer experience in a 10-week paid internship for MBA students. Our MBA interns work on projects handling some of the most cutting-edge business challenges in the tech industry. Our graduate interns have joined us in areas across the business, such as Marketing, Advertising Sales and Operations, Cloud and more.",
+      "owner": "google@google.com",
+      "link": "https://careers.google.com/jobs/results/96290980056965830-mba-intern-2022/?category=ADMINISTRATIVE&category=BUSINESS_STRATEGY&category=FINANCE&category=LEGAL&category=MARKETING&category=PARTNERSHIPS&category=PEOPLEOPS&category=PRODUCT_SUPPORT&category=PROGRAM_MANAGEMENT&category=REAL_ESTATE&category=SALES&category=SALES_OPERATIONS&company=Google&company=YouTube&employment_type=INTERN&jex=ENTRY_LEVEL"
+    },
+    {
       "jobTitle": "Full Stack Engineer Summer 2022 Internship, Bachelors",
       "location": "San Fransisco, California",
       "salary": "$3,000/month",
@@ -409,25 +458,74 @@
       "link": "https://jobs.cisco.com/jobs/ProjectDetail/Full-Stack-Engineer-Summer-2022-Internship-Bachelors-Meraki/1353180"
     },
     {
-      "jobTitle": "Account Service Representative",
+      "jobTitle": "Personal Banker",
       "location": "Hawaii",
-      "salary": "$30,000",
+      "salary": "$42,000",
       "industry": "Banking",
       "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
-      "description": "Assist with curing delinquent First Hawaiian Bank loans by contacting customers via phone or written correspondence.  Recognize accounts/relationships that pose a credit risk and recommend or take prudent actions to reduce the bank's exposure.  Responsible for providing excellent service to delinquent customers and to work in concert with the relationship officers to best service our delinquent loans.",
+      "description": "Frequently consults with portfolio clients via needs based, financial planning conversations.  Solves clients problems and achieves their goal by applying knowledge of bank products.  Leverages financial acumen to refer prospects to Private Banking, Business Banking, Wealth Management, and Mortgage Department/Teams.  Responsible for retention and growth of assigned Personal Banker portfolio.",
       "owner": "fhb@fhb.com",
-      "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4208"
-    }
-  ,
+      "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4046"
+    },
     {
       "jobTitle": "Business Banking Associate",
       "location": "Hawaii",
-      "salary": "$30,000",
+      "salary": "$40,000",
       "industry": "Banking",
       "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
       "description": "Under the direction of the Retail Banking Regional Manager, Business Banking Market Manager or Team Leader, provide client servicing, credit support for the Business Banking Team including the preparation of client correspondence, credit requests, financial analysis and loan administration.  Assist in credit administration, along with the sale and servicing of related products and services.  Emphasis on learning credit skills including financial analysis of business and personal income statements, balance sheets, and cash flow, risk ratings, and compliance.",
       "owner": "fhb@fhb.com",
       "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4136"
+    },
+    {
+      "jobTitle": "Help Desk Technician I",
+      "location": "Hawaii",
+      "salary": "$35,000",
+      "industry": "Banking",
+      "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
+      "description": "Responsible for providing technical phone support while monitoring and maintaining FHB systems (e.g., ATM, Servers, Backups, etc.) in a 24x7x365 high availability production environment. Troubleshoot issues and failures related to hardware, services, and network.",
+      "owner": "fhb@fhb.com",
+      "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4292"
+    },
+    {
+      "jobTitle": "Health Careers Summer Internship",
+      "location": "Hawaii",
+      "salary": "$2,000/month",
+      "industry": "Health",
+      "image": "https://www.hawaiipacifichealth.org/media/4413/hawaii-pacific-health.png",
+      "description": "Since its inception in 2004, over 900 students have participated in Hawaii Pacific Health's, Health Careers Summer Internship. This 6 week, paid internship program is designed to provide high school juniors, seniors and college students a rare opportunity to gain first-hand experience in the health care industry. Interns have the opportunity to learn more about hospital systems, interact with experienced health care professionals, and explore a variety of different health care professions. Internships are offered at Hawaii Pacific Health and our network of medical centers in Hawaii, including Kapiolani Medical Center for Women & Children, Pali Momi Medical Center, Straub Medical Center, Wilcox Medical Center, and Kauai Medical Clinic.",
+      "owner": "jobs@hawaiipacifichealth.org",
+      "link": "https://www.hawaiipacifichealth.org/careers/find-your-career/students/health-careers-summer-internship/"
+    },
+    {
+      "jobTitle": "Software Developer Engineer, IT - DevOps",
+      "location": "Hawaii",
+      "salary": "$48,000",
+      "industry": "Technology",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "description": "The DevOps team at Hawaiian Airlines has a mission to provide development teams the tools they need to effectively and easily deliver features to production through the practice of continuous integration and continuous delivery.  We believe in managing our systems from idea all the way to production optimization.As a team we strive to better ourselves and development practices here at Hawaiian Airlines.  We believe in continuous improvement in ourselves, our team, and in how we work as a technology organization.",
+      "owner": "jobs@HawaiianAir.com",
+      "link": "https://rn11.ultipro.com/HAW1000/JobBoard/JobDetails.aspx?__ID=*90D6981DCFB2361F"
+    },
+    {
+      "jobTitle": "Engineer - Avionics",
+      "location": "Hawaii",
+      "salary": "$39,000",
+      "industry": "Technology",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "description": "Serves as a primary avionics engineer, with experience in parameter analysis, ACMS/AOC/CMF/ACMF databases, SATCOM, ADS-B, weather radar, TCAS, ATC and transponder systems.  Performs data analysis and validation for DFDR, FDIMU/DFDAU.  Assists with troubleshooting systems, building and maintaining aircraft and component software configurations, and all digital platform interfaces, often working with Flight Operations and Flight Crews.",
+      "owner": "jobs@HawaiianAir.com",
+      "link": "https://rn11.ultipro.com/HAW1000/JobBoard/JobDetails.aspx?__ID=*3CCDE458B428CD86"
+    },
+    {
+      "jobTitle": "Analyst, Domestic Pricing",
+      "location": "Hawaii",
+      "salary": "$40,000",
+      "industry": "Finance",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "description": "At Hawaiian Airlines, we are all about welcoming our guests with Hawaiian hospitality and aloha, and taking care of our people, our home and the communities we serve.  Join our ‘ohana and be a part of an exciting team of professionals dedicated to serving our kama‘āina and introducing our islands to the world!",
+      "owner": "jobs@HawaiianAir.com",
+      "link": "https://rn11.ultipro.com/HAW1000/JobBoard/JobDetails.aspx?__ID=*23284C7F22C9A133"
     }
   ],
   "loadAssetsFile":  false
