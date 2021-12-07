@@ -16,6 +16,7 @@ class JobsCollection {
       industry: String,
       image: { type: String, optional: true },
       description: String,
+      link: String,
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.

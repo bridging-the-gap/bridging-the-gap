@@ -95,8 +95,8 @@ const addJobMethod = 'Jobs.add';
 
 /** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
 Meteor.methods({
-  'Jobs.add'({ jobTitle, location, salary, industry, image, description, owner }) {
-    Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, owner });
+  'Jobs.add'({ jobTitle, location, salary, industry, image, description, link, owner }) {
+    Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, link, owner });
   },
 });
 

@@ -16,9 +16,9 @@ import { Jobs } from '../../api/job/Jobs';
 class AddJob extends React.Component {
   // On submit, insert the data.
   submit(data, formRef) {
-    const { jobTitle, location, salary, industry, image, description } = data;
+    const { jobTitle, location, salary, industry, image, description, link } = data;
     const owner = Meteor.user().username;
-    Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, owner },
+    Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, link, owner },
       (error) => {
       // Meteor.call(addJobMethod, data, (error) => {
         if (error) {
@@ -40,6 +40,7 @@ class AddJob extends React.Component {
       industry: String,
       image: { type: String, optional: true },
       description: String,
+      link: String,
     });
 
     const bridge = new SimpleSchema2Bridge(formSchema);
@@ -54,6 +55,7 @@ class AddJob extends React.Component {
               <TextField id="salary" name='salary'/>
               <TextField id="industry" name='industry'/>
               <TextField id="image" name='image'/>
+              <TextField id="link" name='link'/>
               <LongTextField id="description" name='description'/>
               <SubmitField id="submit" value='Submit'/>
               <ErrorsField/>
