@@ -20,8 +20,6 @@ class ProfilesCollection {
       picture: { type: String, optional: true },
       role: { type: String },
       owner: { type: String, unique: true, optional: true },
-      skills: { type: String, optional: true },
-      locations: { type: String, optional: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

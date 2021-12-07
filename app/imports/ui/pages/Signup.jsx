@@ -36,6 +36,8 @@ class Signup extends React.Component {
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
     const { email, password, role, firstName, lastName, title, skills, locations, bio, webpage, picture } = this.state;
+    console.log('skill?:', skills);
+    console.log('locations?:', locations);
     if (role.trim() === '') {
       swal('Error', 'You must choose a role to sign up', 'error');
     } else {
@@ -43,7 +45,7 @@ class Signup extends React.Component {
         if (err) {
           this.setState({ error: err.reason });
         } else {
-          Profiles.collection.insert({ email, role, firstName, lastName, title, skills, locations, bio, webpage, picture }, (err2) => {
+          Profiles.collection.insert({ email, role, firstName, lastName, title, bio, webpage, picture }, (err2) => {
             if (err2) {
               this.setState({ error: err2.reason });
             } else {
