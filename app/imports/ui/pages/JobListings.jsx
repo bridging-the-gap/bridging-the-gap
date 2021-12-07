@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Events } from '../../api/events/Events';
 import { Jobs } from '../../api/job/Jobs';
+import { Link } from 'react-router-dom';
 
 /** Gets the Event-data. */
 function getJobData(jobTitle) {
@@ -26,12 +27,14 @@ const MakeItem = (props) => (
     <Item.Content verticalAlign='middle'>
       <Item.Header as='a'>{props.job.jobTitle}</Item.Header>
       <Item.Meta>
-        <span className='date'>{props.job.industry} {'at'} {props.job.location}</span>
+        <span className='owner'>{props.job.owner}{' - '}{props.job.industry}</span>
       </Item.Meta>
+      <Item><span className='salary'>{'Salary: '}{props.job.salary}</span></Item>
+      <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
       <Item.Description>{props.job.description}</Item.Description>
       <Item.Extra>
-        <Button primary floated='right'>
-            Apply
+        <Button white floated='right'>
+          <a href={props.job.link}>Apply</a>
           <Icon name='right chevron' />
         </Button>
       </Item.Extra>
