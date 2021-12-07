@@ -11,7 +11,7 @@ import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
-import Job from '../components/Job';
+import Job from '../components/JobPro';
 import { Jobs } from '../../api/job/Jobs';
 
 /** Returns the Profile and associated Projects and Locations associated with the passed user email. */
