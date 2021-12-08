@@ -14,7 +14,7 @@ class ProfilesJobsCollection {
       // profile is the user's email.
       profile: String,
       // job is the jobTitle.
-      job: String,
+      job: { type: String, index: true, unique: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
