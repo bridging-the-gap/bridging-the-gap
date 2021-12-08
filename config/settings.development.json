@@ -646,7 +646,26 @@
         "Phsycology"
       ],
       "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
-      "email": "kennyj@hawaii.edu",
+      "email": "kimy@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Karen",
+      "lastName": "Obrian",
+      "bio": "I'm a Physics student in Philadelphia.",
+      "title": "Physics Student",
+      "locations": [
+        "Philadelphia",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Physics"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "kareno@hawaii.edu",
       "role": "student"
     }
   ],
