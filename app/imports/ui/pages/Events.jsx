@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Button, Icon, Item } from 'semantic-ui-react';
+import { Container, Loader, Button, Item } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -22,9 +22,8 @@ const MakeItem = (props) => (
       </Item.Meta>
       <Item.Description>{props.event.description}</Item.Description>
       <Item.Extra>
-        <Button primary floated='right'>
-          Register for event
-          <Icon name='right chevron' />
+        <Button white floated='right' className="ui blue icon button">
+          <i className="heart icon"></i>
         </Button>
       </Item.Extra>
     </Item.Content>

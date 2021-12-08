@@ -150,11 +150,7 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              {Profiles.collection.find({ owner: Meteor.user().username }).fetch().length === 0 ?
-                <Button attached='top' id="addCompany" ><Link to={'/addCompany'}>Create Profile</Link></Button> :
-                <Button attached='top'>Profile</Button>
-              }
-              <Company company={companyData} />)
+              <Company company={companyData} />
             </Grid.Column>
             <Grid.Column width={10}>
               <Button attached={'top'} id="addJob" ><Link to={'/addJob'}>Add Job Listing</Link></Button>
