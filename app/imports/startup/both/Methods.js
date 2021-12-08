@@ -6,7 +6,6 @@ import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Skills } from '../../api/skills/Skills';
 import { Locations } from '../../api/locations/Locations';
-import { Events } from '../../api/events/Events';
 import { Jobs } from '../../api/job/Jobs';
 
 /**
@@ -81,7 +80,6 @@ Meteor.methods({
     Meteor.users.remove({ username: email });
   },
 });
-
 
 const addJobMethod = 'Jobs.add';
 
