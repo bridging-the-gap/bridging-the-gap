@@ -572,6 +572,82 @@
       "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
       "email": "bobbym@hawaii.edu",
       "role": "student"
+    },
+    {
+      "firstName": "Ola",
+      "lastName": "Nordmann",
+      "bio": "I'm a MIX exchange student from Norway. My major is Nanotechnology.",
+      "title": "Engineering Student",
+      "locations": [
+        "Trondheim",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "olan@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Kari",
+      "lastName": "Nordmann",
+      "bio": "I'm a MIX exchange student from Norway. My major is Nanotechnology.",
+      "title": "Engineering Student",
+      "locations": [
+        "Trondheim",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "karin@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Kenny",
+      "lastName": "Jenn",
+      "bio": "I'm a Phsycology Student from Texas.",
+      "title": "Phsycology Student",
+      "locations": [
+        "Texas",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Phsycology"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "kennyj@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Kim",
+      "lastName": "Ye",
+      "bio": "I'm a exchange student from Japan. My major is Biology.",
+      "title": "Biology Student",
+      "locations": [
+        "Japan",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Phsycology"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "kennyj@hawaii.edu",
+      "role": "student"
     }
   ],
   "defaultReports": [
