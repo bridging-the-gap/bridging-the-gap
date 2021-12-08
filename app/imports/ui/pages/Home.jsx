@@ -130,6 +130,7 @@ class Home extends React.Component {
                 <Item.Group divided>
                   <Item>
                     <Item.Content>
+                      {_.map(this.props.favoritejobs, (job, index2) => <Job key={index2} job={job} />)}
                       <Item.Header>Create Job Agent</Item.Header>
                       <Item.Meta>
                         <Button primary>Submit CV</Button>
@@ -175,6 +176,7 @@ Home.propTypes = {
   reports: PropTypes.array.isRequired,
   profiles: PropTypes.array.isRequired,
   jobs: PropTypes.array.isRequired,
+  favoritejobs: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -195,12 +197,14 @@ export default withTracker(() => {
   const profiles = Profiles.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
+  const favoritejobs = ProfilesJobs.collection.find({}).fetch();
   const events = Events.collection.find({}).fetch();
   return {
     reports,
     profiles,
     jobs,
     events,
+    favoritejobs,
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready(),
   };
 })(Home);
