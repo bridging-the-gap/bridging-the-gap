@@ -14,7 +14,7 @@ function getJobData(jobTitle) {
   return _.extend({ }, data);
 }
 
-function handleClick(job) {
+const handleClick = (job) => {
   const profile = Meteor.user().username;
   ProfilesJobs.collection.insert({ job, profile },
     (error) => {
@@ -24,7 +24,7 @@ function handleClick(job) {
         swal('Success', 'Job favorited successfully', 'success');
       }
     });
-}
+};
 
 /* jobTitle: String,
     location: String,
@@ -45,7 +45,7 @@ const MakeItem = (props) => (
       <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
       <Item.Description>{props.job.description}</Item.Description>
       <Item.Extra>
-        <Button floated='right' onClick={handleClick(props.job.jobTitle)}>
+        <Button floated='right' onClick={handleClick.bind(this, props.job.jobTitle)}>
           <Icon name='heart' />
         </Button>
         <Button floated='right'>
