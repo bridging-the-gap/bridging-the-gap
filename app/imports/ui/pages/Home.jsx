@@ -21,6 +21,7 @@ import Event from '../components/Event';
 import NewCategory from '../components/NewCategory';
 import ReportFilter from '../components/ReportFilter';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
+import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 // import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 // import { Projects } from '../../api/projects/Projects';
@@ -186,6 +187,7 @@ export default withTracker(() => {
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
   const sub5 = Meteor.subscribe(Jobs.userPublicationName);
   const sub6 = Meteor.subscribe(Events.userPublicationName);
+  const sub7 = Meteor.subscribe(ProfilesJobs.userPublicationName);
 
   // Get the Reports documents
   const reports = Reports.collection.find({}).fetch();
@@ -199,6 +201,6 @@ export default withTracker(() => {
     profiles,
     jobs,
     events,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready(),
   };
 })(Home);

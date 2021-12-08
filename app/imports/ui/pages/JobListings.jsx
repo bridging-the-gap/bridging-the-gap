@@ -4,7 +4,9 @@ import { Container, Loader, Button, Icon, Item } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
+import swal from 'sweetalert';
 import { Jobs } from '../../api/job/Jobs';
+import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 
 /** Gets the Event-data. */
 function getJobData(jobTitle) {
@@ -31,6 +33,9 @@ const MakeItem = (props) => (
       <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
       <Item.Description>{props.job.description}</Item.Description>
       <Item.Extra>
+        <Button floated='right' onClick={job => this.handle(job)}>
+          <Icon name='heart' />
+        </Button>
         <Button floated='right'>
           <a href={props.job.link}>Apply</a>
           <Icon name='right chevron' />
@@ -46,7 +51,19 @@ MakeItem.propTypes = {
 
 /** Renders the Event Collection as a set of Cards. */
 class JobsPage extends React.Component {
-
+  handle(data) {
+    const job = data;
+    const profile = Meteor.user().username;
+    ProfilesJobs.collection.insert({ job, profile },
+      (error) => {
+      // Meteor.call(addJobMethod, data, (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Job favorited successfully', 'success');
+        }
+      });
+  }
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
