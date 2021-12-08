@@ -33,7 +33,7 @@ const MakeItem = (props) => (
       <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
       <Item.Description>{props.job.description}</Item.Description>
       <Item.Extra>
-        <Button floated='right' onClick={job => this.handle(job)}>
+        <Button floated='right' onClick={ this.handle(props.job.jobTitle)}>
           <Icon name='heart' />
         </Button>
         <Button floated='right'>
