@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Divider, Container, Loader, Card, Image, Label, Header, Grid, Item, Segment, Button, Icon } from 'semantic-ui-react';
+import { Container, Loader, Card, Image, Label, Header, Grid, Segment, List } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -11,6 +11,8 @@ import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
+import Job from '../components/JobPro';
+import { Jobs } from '../../api/job/Jobs';
 
 /** Returns the Profile and associated Projects and Locations associated with the passed user email. */
 // function getProfileData(email) {
@@ -26,9 +28,9 @@ function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  return _.extend({ }, data, { locations, skills, projects: projectPictures });
+  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
+  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
+  return _.extend({ }, data, { locations, skills });
 }
 
 /** Component for layout out a Profile Card. */
@@ -77,6 +79,7 @@ class ProfilesPage extends React.Component {
     // const emails = _.pluck(Profiles.collection.find().fetch(), 'email');
     // const profileData = emails.map(email => getProfileData(email));
     const email = Meteor.user().username;
+    const companyData = getProfileData(email);
     // const profileData = Profiles.collection.findOne({ email });
     const profileData = getProfileData(email);
     // console.log(profileData);
@@ -93,90 +96,34 @@ class ProfilesPage extends React.Component {
         {/* Start of company page */}
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <div className={'home-background'} id="company-profile" >
-            <Grid stackable columns={3}>
-              <Grid.Row/>
-              <Grid.Row/>
-              <Grid.Row/>
-              <Grid.Row/>
-              <Grid.Row>
-                <Grid.Column/>
-                <Grid.Column textAlign={'center'}>University of Hawaii at Manoa</Grid.Column>
-                <Grid.Column/>
-              </Grid.Row>
-            </Grid>
-            <Grid columns={2}>
+            <Segment padded size='massive'>
+              <Header as={'h1'} textAlign='center'>{companyData.firstName}</Header>
+            </Segment>
+            <Grid id='company-home' columns={2}>
               <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
                 <Segment>
-                  <Header as={'h3'}>Location</Header>
-                  <p>Hawaii</p>
-                  <Divider section />
-                  <Header as={'h3'}>Contact Info</Header>
-                  <p>Contact@hawaii.edu</p>
-                  <Divider section />
-                  <Header as={'h3'}>Industry</Header>
-                  <Label as='a' color='teal' tag>
-                    Liberal Arts
-                  </Label>
-                  <Label as='a' color='teal' tag>
-                    Psychology
-                  </Label>
-                  <Divider section />
-                  <Header as={'h3'}>Description</Header>
-                  <p> Founded in 1907, the University of Hawaiʻi at Mānoa is a destination of choice for students and faculty
-                    from across the nation and the world. UH Mānoa offers unique research opportunities, a diverse community,
-                    a nationally-ranked Division I athletics program and much more. </p>
-                  <Divider section />
+                  <List size={'large'}>
+                    <List.Item icon={'mail'} content={companyData.email}/>
+                    <List.Item/>
+                    <List.Item icon={'marker'} content={_.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location')}/>
+                    <List.Item/>
+                    <List.Item>
+                      <List.Icon name={'address card outline'}/>
+                      <List.Content>
+                        <List.Header>Description:</List.Header>
+                        <List.Description>{companyData.bio}</List.Description>
+                      </List.Content>
+                    </List.Item>
+                  </List>
                 </Segment>
               </Grid.Column>
-              <Grid.Column width={10} style={{ backgroundColor: 'black' }}>
+              <Grid.Column width={10} style={{ backgroundColor: 'blue' }}>
+                <Header as="h2" textAlign="center" inverted> Job listings</Header>
                 <Segment>
-                  <Item.Group divided>
-                    <Item>
-                      <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
-
-                      <Item.Content>
-                        <Item.Header>Public Safety</Item.Header>
-                        <Item.Meta>
-                          <span className='price'>$1200</span>
-                          <span className='stay'>Semester</span>
-                        </Item.Meta>
-                        <Item.Extra>
-                          <Label>Hawaii</Label>
-                        </Item.Extra>
-                        <Item.Extra>
-                          <Label>Liberal Arts</Label>
-                        </Item.Extra>
-                        <Item.Description> Walk around and look intimidating </Item.Description>
-                        <Button primary floated='right'>
-                        Apply
-                          <Icon name='right chevron' />
-                        </Button>
-                      </Item.Content>
-                    </Item>
-
-                    <Item>
-                      <Item.Image size='tiny' src='https://www.pngfind.com/pngs/m/183-1834345_uh-manoa-seal-logo-university-of-hawaii-hd.png'/>
-
-                      <Item.Content>
-                        <Item.Header> Dorm RA </Item.Header>
-                        <Item.Meta>
-                          <span className='price'>$1000</span>
-                          <span className='stay'>Semester</span>
-                        </Item.Meta>
-                        <Item.Extra>
-                          <Label>Hawaii</Label>
-                        </Item.Extra>
-                        <Item.Extra>
-                          <Label>Psychology</Label>
-                        </Item.Extra>
-                        <Item.Description>Deal with drunk students</Item.Description>
-                        <Button primary floated='right'>
-                          Apply
-                          <Icon name='right chevron' />
-                        </Button>
-                      </Item.Content>
-                    </Item>
-                  </Item.Group></Segment>
+                  <Card.Group>
+                    {this.props.jobs.map((job, index2) => { if (job.owner === email) { return <Job key={index2} job={job} />; } return ''; })}
+                  </Card.Group>
+                </Segment>
               </Grid.Column>
             </Grid>
           </div> : ''}
@@ -188,6 +135,8 @@ class ProfilesPage extends React.Component {
 
 ProfilesPage.propTypes = {
   ready: PropTypes.bool.isRequired,
+  jobs: PropTypes.array.isRequired,
+  // company: PropTypes.object.isRequired,
   // profile: PropTypes.object.isRequired,
 };
 
@@ -199,7 +148,10 @@ export default withTracker(() => {
   const sub3 = Meteor.subscribe(ProfilesSkills.userPublicationName);
   const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
   const sub5 = Meteor.subscribe(Projects.userPublicationName);
+  const sub6 = Meteor.subscribe(Jobs.userPublicationName);
+  const jobs = Jobs.collection.find({}).fetch();
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    jobs,
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
   };
 })(ProfilesPage);

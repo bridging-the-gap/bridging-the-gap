@@ -22,16 +22,16 @@ import NewCategory from '../components/NewCategory';
 import ReportFilter from '../components/ReportFilter';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
+// import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
+// import { Projects } from '../../api/projects/Projects';
 
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  return _.extend({ }, data, { locations, skills, projects: projectPictures });
+  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
+  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
+  return _.extend({ }, data, { locations, skills });
 }
 
 const MakeItem = (props) => (
@@ -112,26 +112,19 @@ class Home extends React.Component {
         {/* Start of student page */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           <Grid id='student-home' columns={2}>
-            <Grid.Column width={6} style={{ backgroundColor: 'white' }}>
-              <Header as="h3" textAlign="center">Make Student Profile</Header>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge1} onSubmit={data => this.submit(data, fRef)}>
-                <Segment>
-                  <TextField name='firstName'/>
-                  <TextField name='lastName'/>
-                  <TextField name='email'/>
-                  <TextField name='title'/>
-                  <TextField name='locations'/>
-                  <TextField name='skills'/>
-                  <TextField name='projects'/>
-                  <TextField name='picture'/>
-                  <LongTextField name='bio'/>
-                  <SubmitField value='Submit'/>
-                  <ErrorsField/>
-                </Segment>
-              </AutoForm>
+            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Your Events</Header>
+              <Segment>
+                <Item.Group divided>
+                  <Item>
+                    <Item.Content>
+                      <Item.Header>Favorite event</Item.Header>
+                    </Item.Content>
+                  </Item>
+                </Item.Group></Segment>
             </Grid.Column>
-            <Grid.Column width={10} style={{ backgroundColor: 'white' }}>
-              <Header as="h3" textAlign="center">Suggested for you</Header>
+            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Your Job Listings</Header>
               <Segment>
                 <Item.Group divided>
                   <Item>
@@ -150,11 +143,7 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              {Profiles.collection.find({ owner: Meteor.user().username }).fetch().length === 0 ?
-                <Button attached='top' id="addCompany" ><Link to={'/addCompany'}>Create Profile</Link></Button> :
-                <Button attached='top'>Profile</Button>
-              }
-              <Company company={companyData} />)
+              <Company company={companyData} />
             </Grid.Column>
             <Grid.Column width={10}>
               <Button attached={'top'} id="addJob" ><Link to={'/addJob'}>Add Job Listing</Link></Button>

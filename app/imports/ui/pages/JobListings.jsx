@@ -31,7 +31,7 @@ const MakeItem = (props) => (
       <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
       <Item.Description>{props.job.description}</Item.Description>
       <Item.Extra>
-        <Button white floated='right'>
+        <Button floated='right'>
           <a href={props.job.link}>Apply</a>
           <Icon name='right chevron' />
         </Button>

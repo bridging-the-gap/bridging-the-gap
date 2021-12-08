@@ -1,11 +1,15 @@
 import React from 'react';
-import { Header, Grid, List } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { _ } from 'meteor/underscore';
+import { Header, Grid, List, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Company extends React.Component {
   render() {
+    const email = Meteor.user().username;
     return (
       <Grid container columns={1} style={{ backgroundColor: 'white', marginTop: '10px' }}>
         <Grid.Column>
@@ -16,6 +20,12 @@ class Company extends React.Component {
           <List>
             <List.Item><Header as={'h4'}>Contact:</Header> </List.Item>
             <List.Item>{this.props.company.email}</List.Item>
+          </List>
+          <List>
+            <List.Item><Header as={'h4'}>Location:</Header> </List.Item>
+            <List.Item>
+              <Label tag>{_.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location')}</Label>
+            </List.Item>
           </List>
           <List>
             <List.Item><Header as={'h4'}>Description:</Header></List.Item>

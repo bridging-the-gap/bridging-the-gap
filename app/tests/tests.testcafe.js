@@ -10,14 +10,15 @@ import { navBar } from './navbar.component';
 import { browseCompaniesPage } from './browsecompanies.page';
 import { browseStudentsPage } from './browsestudents.page';
 import { companyPage } from './company.page';
+import { jobsPage } from './jobs.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const student = { username: 'johnson@hawaii.edu', password: 'foo', role: 'student',
   firstName: 'Philip', lastName: 'Johnson' };
-const company = { username: 'apple@apple.com', password: 'foo', role: 'company',
-  firstName: 'Apple', lastName: 'Inc.' };
+const company = { username: 'hr@google.com', password: 'foo', role: 'company',
+  firstName: 'Google', lastName: '' };
 const admin = { username: 'sin8@hawaii.edu', password: 'foo', role: 'admin',
   firstName: 'Serge', lastName: 'Negrashov' };
 
@@ -80,6 +81,7 @@ test('Test that projects page displays', async (testController) => {
   await projectsPage.hasDefaultProjects(testController);
 });
 */
+
 // For the Bridging The Gap Home page (separate for student, company, and admin).
 test('Test that home page displays and works for users in student, company, and admin roles',
   async (testController) => {
@@ -141,6 +143,16 @@ test('Test that event page displays', async (testController) => {
   await navBar.goToEventsPage(testController);
   await eventsPage.isDisplayed(testController);
   await eventsPage.hasDefaultEvents(testController);
+});
+
+// For the Bridging The Gap Job page.
+test('Test that job page displays', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.isDisplayed(testController);
+  await jobsPage.hasDefaultJobs(testController);
 });
 
 // For the Bridging The Gap BrowseCompanies page.
@@ -206,6 +218,14 @@ test('Test Edit company works', async (testController) => {
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyHomePage(testController);
   await companyPage.editCompany(testController);
+});
+
+test('Test Edit event works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.editEvent(testController);
 });
 
 test('Test that the company profile works', async (testController) => {

@@ -26,9 +26,9 @@ function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  return _.extend({ }, data, { locations, skills, projects: projectPictures });
+  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
+  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
+  return _.extend({ }, data, { locations, skills });
 }
 
 /** Component for layout out a Profile Card. */
