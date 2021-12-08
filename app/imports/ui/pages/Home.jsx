@@ -1,8 +1,5 @@
 import React from 'react';
 import { Container, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
 import { _ } from 'meteor/underscore';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
@@ -24,9 +21,6 @@ import ReportFilter from '../components/ReportFilter';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
-// import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-// import { Projects } from '../../api/projects/Projects';
 
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
@@ -79,11 +73,11 @@ class Home extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    let fRef = null;
+    // let fRef = null;
     const email = Meteor.user().username;
     // const profileData = Profiles.collection.findOne({ email });
     const companyData = getProfileData(email);
-    const profileData = getProfileData(email);
+    // const profileData = getProfileData(email);
     const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
     const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
     const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
