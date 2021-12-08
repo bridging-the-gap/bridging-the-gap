@@ -33,7 +33,7 @@ class Company extends React.Component {
           </List>
           <List>
             <List.Item><Header as={'h4'}>Industry:</Header> </List.Item>
-            <List.Item>{this.props.company.industry}</List.Item>
+            <List.Item>{this.props.company.title}</List.Item>
           </List>
           <List>
             <List.Item><Header as={'h4'}>Description:</Header></List.Item>

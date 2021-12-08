@@ -17,7 +17,6 @@ class ProfilesCollection {
       title: { type: String, optional: true },
       bio: { type: String },
       webpage: { type: String, optional: true },
-      industry: { type: String, optional: true },
       picture: { type: String, optional: true },
       role: { type: String },
       owner: { type: String, unique: true, optional: true },
