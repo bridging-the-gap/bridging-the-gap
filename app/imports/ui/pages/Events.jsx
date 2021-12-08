@@ -42,7 +42,7 @@ class EventsPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const email = Meteor.user().username;
+    // const email = Meteor.user().username;
     const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
     console.log(eventData);
