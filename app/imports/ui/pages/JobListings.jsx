@@ -19,7 +19,7 @@ const handleClick = (job) => {
   ProfilesJobs.collection.insert({ job, profile },
     (error) => {
       if (error) {
-        swal('Error', error.message, 'error');
+        swal('Error', 'Cannot favorite a message multiple times', 'error');
       } else {
         swal('Success', 'Job favorited successfully', 'success');
       }
