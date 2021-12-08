@@ -8,6 +8,8 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
 import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
+import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Jobs } from '../../api/job/Jobs';
@@ -34,6 +36,9 @@ Meteor.publish(Projects.userPublicationName, () => Projects.collection.find());
 Meteor.publish(ProjectsLocations.userPublicationName, () => ProjectsLocations.collection.find());
 
 Meteor.publish(ProjectsSkills.userPublicationName, () => ProjectsSkills.collection.find());
+
+Meteor.publish(ProfilesJobs.userPublicationName, () => ProfilesJobs.collection.find());
+Meteor.publish(ProfilesEvents.userPublicationName, () => ProfilesEvents.collection.find());
 
 Meteor.publish(Events.userPublicationName, () => Events.collection.find());
 Meteor.publish(Jobs.userPublicationName, () => Jobs.collection.find());
