@@ -14,6 +14,18 @@ function getJobData(jobTitle) {
   return _.extend({ }, data);
 }
 
+function handleClick(job) {
+  const profile = Meteor.user().username;
+  ProfilesJobs.collection.insert({ job, profile },
+    (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Job favorited successfully', 'success');
+      }
+    });
+}
+
 /* jobTitle: String,
     location: String,
     salary: String,
@@ -33,7 +45,7 @@ const MakeItem = (props) => (
       <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
       <Item.Description>{props.job.description}</Item.Description>
       <Item.Extra>
-        <Button floated='right' onClick={ this.handle(props.job.jobTitle)}>
+        <Button floated='right' onClick={handleClick(props.job.jobTitle)}>
           <Icon name='heart' />
         </Button>
         <Button floated='right'>
@@ -51,19 +63,6 @@ MakeItem.propTypes = {
 
 /** Renders the Event Collection as a set of Cards. */
 class JobsPage extends React.Component {
-  handle(data) {
-    const job = data;
-    const profile = Meteor.user().username;
-    ProfilesJobs.collection.insert({ job, profile },
-      (error) => {
-      // Meteor.call(addJobMethod, data, (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Job favorited successfully', 'success');
-        }
-      });
-  }
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
