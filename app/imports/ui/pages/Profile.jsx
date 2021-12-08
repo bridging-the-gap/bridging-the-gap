@@ -136,7 +136,7 @@ class ProfilesPage extends React.Component {
 ProfilesPage.propTypes = {
   ready: PropTypes.bool.isRequired,
   jobs: PropTypes.array.isRequired,
-  company: PropTypes.object.isRequired,
+  // company: PropTypes.object.isRequired,
   // profile: PropTypes.object.isRequired,
 };
 

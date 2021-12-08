@@ -22,7 +22,7 @@ const MakeItem = (props) => (
       </Item.Meta>
       <Item.Description>{props.event.description}</Item.Description>
       <Item.Extra>
-        <Button white floated='right' className="ui blue icon button">
+        <Button floated='right' className="ui blue icon button">
           <i className="heart icon"></i>
         </Button>
       </Item.Extra>

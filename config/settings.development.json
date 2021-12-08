@@ -605,9 +605,6 @@
         "Field hockey",
         "Science"
       ],
-      "projects":[
-        ""
-      ],
       "picture": "https://images.generated.photos/yPQCFmTQmN6xsCx6boE9MUD8c9jU5kS5krk-heuemo4/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvOWRkNjBl/ODAtNWFiNi00NWRi/LWExMDgtMmM3Nzhh/NjYzYTNjLmpwZw.jpg",
       "email": "erish@hawaii.edu",
       "role": "student"
@@ -620,15 +617,12 @@
       "locations": [
         "Hawaii",
         "California",
-        "Washington, D.C."
+        "Washington D.C"
       ],
       "webpage": "http://techfolios.github.io/template/",
       "skills": [
         "Aerospace Engineering",
-        "Math"
-      ],
-      "projects":[
-        "None"
+        "Mathematics"
       ],
       "picture": "https://images.generated.photos/3qwE_PF4MwJwP5_B6r8wfHSMCLblths1FTE7KDGbL98/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNjkzZTdi/NmYtZjYzNC00YjI0/LWEyMDMtNDhjNWEz/MDlhNzFmLmpwZw.jpg",
       "email": "samr@hawaii.edu",
@@ -647,9 +641,6 @@
       "skills": [
         "Aerospace Engineering",
         "Math"
-      ],
-      "projects":[
-        ""
       ],
       "picture": "https://images.generated.photos/hw9Co43qynDxlR-JJ7hLjHUYbaqzFYPOSer1uWk9SBo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZTRlZjA1/OGUtZWMzNS00ZTYy/LTk0ZDctNDYwNTIy/MmU5MTJkLmpwZw.jpg",
       "email": "ryanpage@hawaii.edu",
