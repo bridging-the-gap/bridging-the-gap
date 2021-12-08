@@ -366,122 +366,6 @@
       "owner": "hr@airbnb.com"
     },
     {
-      "firstName": "Philip",
-      "lastName": "Johnson",
-      "bio": "I like to paddle outrigger canoes.",
-      "title": "",
-      "locations": [
-        "US",
-        "Hawaii"
-      ],
-      "skills": [
-        "Programming",
-        "Software Engineering"
-      ],
-      "projects":[
-        "RadGrad",
-        "Open Power Quality"
-      ],
-      "picture": "https://philipmjohnson.github.io/images/philip2.jpeg",
-      "email": "johnson@hawaii.edu",
-      "role": "student"
-    },
-    {
-      "firstName": "Henri",
-      "lastName": "Casanova",
-      "bio": "In my spare time, I like to scuba dive.",
-      "title": "",
-      "locations": [
-        "US",
-        "Hawaii"
-      ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "WRENCH"
-      ],
-      "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Henri_Casanova1.jpg",
-      "email": "henric@hawaii.edu",
-      "role": "student"
-    },
-    {
-      "firstName": "Carleton",
-      "lastName": "Moore",
-      "bio": "Every summer, I enjoy visiting Portland, Oregon.",
-      "title": "",
-      "webpage": "https://cammoore.github.io",
-      "locations": [
-        "US",
-        "Hawaii"
-      ],
-      "skills": [
-        "Programming",
-        "Software Engineering"
-      ],
-      "projects":[
-        "RadGrad"
-      ],
-      "picture": "https://cammoore.github.io/images/cam-moore.jpg",
-      "email": "cmoore@hawaii.edu",
-      "role": "admin"
-    },
-    {
-      "firstName": "Anthony",
-      "lastName": "Christe",
-      "bio": "I enjoy competitive bicycle racing.",
-      "title": "Ph.D. (2020))",
-      "webpage": "https://anthonyjchriste.github.io",
-      "locations": [
-        "US"
-      ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "Open Power Quality"
-      ],
-      "picture": "https://anthonyjchriste.github.io/images/me.png",
-      "email": "achriste@hawaii.edu",
-      "role": "student"
-    },
-    {
-      "firstName": "Jason",
-      "lastName": "Leigh",
-      "bio": "I escaped from Chicago and moved to Hawaii in 2014.",
-      "locations": [
-        "Hawaii"
-      ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "Cyber Canoe"
-      ],
-      "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Jason_Leigh-2014.jpg",
-      "email": "leighj@hawaii.edu",
-      "role": "student"
-    },
-    {
-      "firstName": "Serge",
-      "lastName": "Negrashov",
-      "bio": "Most weekends, you can find me on my 8 foot dinghy.",
-      "title": "Ph.D. (2020)",
-      "locations": [
-        "US"
-      ],
-      "webpage": "https://sergey-negrashov.github.io",
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "Open Power Quality"
-      ],
-      "picture": "https://sergey-negrashov.github.io/images/serge.jpg",
-      "email": "sin8@hawaii.edu",
-      "role": "admin"
-    },
-    {
       "firstName": "Helene",
       "lastName": "Haugen",
       "bio": "Exchange student from Norway.",
@@ -495,9 +379,6 @@
         "Software Engineering",
         "Machine Learning",
         "Robotics"
-      ],
-      "projects":[
-        "Open Power Quality"
       ],
       "picture": "https://heleeha.github.io/images/heleeha.JPG",
       "email": "heleneeh@hawaii.edu",
@@ -518,9 +399,6 @@
         "Machine Learning",
         "Robotics"
       ],
-      "projects":[
-        "Open Power Quality"
-      ],
       "picture": "https://ninanye.github.io/images/nina.jpg",
       "email": "ninavn@hawaii.edu",
       "role": "student"
@@ -539,9 +417,6 @@
         "Software Engineering",
         "Machine Learning",
         "Robotics"
-      ],
-      "projects":[
-        "Open Power Quality"
       ],
       "picture": "https://martkaa.github.io/images/cv.jpeg",
       "email": "aaberge@hawaii.edu",
@@ -562,9 +437,6 @@
         "Machine Learning",
         "Data Science"
       ],
-      "projects":[
-        "Open Power Quality"
-      ],
       "picture": "https://leilani-reich.github.io/images/Profile_Pic.jpg",
       "email": "reichld@hawaii.edu",
       "role": "student"
@@ -583,9 +455,6 @@
         "Machine Learning",
         "Data Science",
         "Mathematics"
-      ],
-      "projects":[
-        "Open Power Quality"
       ],
       "picture": "",
       "email": "bryanyagi@hawaii.edu",
@@ -644,6 +513,64 @@
       ],
       "picture": "https://images.generated.photos/hw9Co43qynDxlR-JJ7hLjHUYbaqzFYPOSer1uWk9SBo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZTRlZjA1/OGUtZWMzNS00ZTYy/LTk0ZDctNDYwNTIy/MmU5MTJkLmpwZw.jpg",
       "email": "ryanpage@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Richard",
+      "lastName": "Grey",
+      "bio": "I am a senior at University of Hawaii majoring in Marine Biology. I enjoy field work and researching marine life.",
+      "title": "Aspiring Marine Biologist",
+      "locations": [
+        "Hawaii",
+        "Honolulu",
+        "Alaska",
+        "Maui"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/OAOniVTrLzT1RofvWSk4lWZlyulG4xnQ3Vl-ueSWJVo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZjYwYzll/YTUtNTA0Ny00ZGNm/LThlNzAtNmE4Yjdl/NDEyNjVmLmpwZw.jpg",
+      "email": "richardgrey@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Maria",
+      "lastName": "Celene",
+      "bio": "I am a senior majoring in Electronic Engineering. I hope to graduate by Spring 2024.",
+      "title": "Engineering student",
+      "locations": [
+        "California",
+        "Arizona",
+        "Hawaii"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Engineering",
+        "Creating circuits"
+      ],
+      "picture": "https://images.generated.photos/QMKKxLsqrriaiFGOJi0REAml5s0ELLUuFK5Oo7VbLxc/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMTRhMTAw/ZDEtN2U5OS00NGZh/LWE4ZjMtZWZhNjhh/ZTNiMjMxLmpwZw.jpg",
+      "email": "mariac@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Bobby",
+      "lastName": "Maxwell",
+      "bio": "I'm a senior taking classes online on UH while living in Virginia. I am a double major in Psychology and Economics.",
+      "title": "Social Sciences Student",
+      "locations": [
+        "Virginia",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "bobbym@hawaii.edu",
       "role": "student"
     }
   ],
