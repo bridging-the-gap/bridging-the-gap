@@ -15,6 +15,7 @@ class ProfilesEventsCollection {
       profile: String,
       // event is the eventName.
       event: String,
+      profEvent: { type: String, unique: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
