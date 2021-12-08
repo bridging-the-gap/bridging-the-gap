@@ -108,7 +108,8 @@ class ProfilesPage extends React.Component {
                     <List.Item icon={'industry'} content={companyData.title}/>
                     <List.Item/>
                     <List.Item icon={'map marker alternate'}
-                      content={_.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location')}/>
+                      content={_.map(companyData.locations,
+                        (interest, index) => <Label key={index} size='tiny' color='teal' tag>{interest}</Label>)}/>
                     <List.Item/>
                     <List.Item>
                       <List.Icon name={'address card outline'}/>
