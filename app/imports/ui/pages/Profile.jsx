@@ -105,6 +105,10 @@ class ProfilesPage extends React.Component {
                   <List size={'large'}>
                     <List.Item icon={'mail'} content={companyData.email}/>
                     <List.Item/>
+                    <List.Item icon={'globe'} content={companyData.webpage}/>
+                    <List.Item/>
+                    <List.Item icon={'industry'} content={companyData.webpage}/>
+                    <List.Item/>
                     <List.Item icon={'marker'} content={_.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location')}/>
                     <List.Item/>
                     <List.Item>

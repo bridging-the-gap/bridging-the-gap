@@ -21,6 +21,8 @@ const makeSchema = (allLocations) => new SimpleSchema({
   bio: { type: String, label: 'Biographical statement', optional: true },
   title: { type: String, label: 'Title', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
+  webpage: { type: String, label: 'Company URL', optional: true },
+  industry: { type: String, label: 'Industry', optional: true },
   locations: { type: Array, label: 'Locations', optional: true },
   'locations.$': { type: String, allowedValues: allLocations },
 });
@@ -62,8 +64,10 @@ class EditCompany extends React.Component {
               <TextField label="Company Name" id="companyName" name='firstName' unique='true'/>
               <TextField id="contact" name='email' unique='true'/>
               <TextField id="image" name='picture'/>
-              <LongTextField id="description" name='bio'/>
+              <TextField id="webpage" name='webpage'/>
+              <TextField id="industry" name='industry'/>
               <MultiSelectField name='locations' id='multi-select-locations' showInlineError={true} placeholder={'Locations'}/>
+              <LongTextField id="description" name='bio'/>
               <SubmitField id="submit" value='Submit'/>
               <ErrorsField/>
             </Segment>
