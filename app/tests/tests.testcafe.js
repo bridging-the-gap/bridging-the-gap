@@ -10,6 +10,7 @@ import { navBar } from './navbar.component';
 import { browseCompaniesPage } from './browsecompanies.page';
 import { browseStudentsPage } from './browsestudents.page';
 import { companyPage } from './company.page';
+import { jobsPage } from './jobs.page';
 
 /* global fixture:false, test:false */
 
@@ -80,6 +81,7 @@ test('Test that projects page displays', async (testController) => {
   await projectsPage.hasDefaultProjects(testController);
 });
 */
+
 // For the Bridging The Gap Home page (separate for student, company, and admin).
 test('Test that home page displays and works for users in student, company, and admin roles',
   async (testController) => {
@@ -141,6 +143,16 @@ test('Test that event page displays', async (testController) => {
   await navBar.goToEventsPage(testController);
   await eventsPage.isDisplayed(testController);
   await eventsPage.hasDefaultEvents(testController);
+});
+
+// For the Bridging The Gap Job page.
+test('Test that job page displays', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.isDisplayed(testController);
+  await jobsPage.hasDefaultJobs(testController);
 });
 
 // For the Bridging The Gap BrowseCompanies page.

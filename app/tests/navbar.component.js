@@ -46,6 +46,10 @@ class NavBar {
     await testController.click('#eventItem');
   }
 
+  async goToJobsPage(testController) {
+    await testController.click('#jobItem');
+  }
+
   async gotoBrowseCompaniesPage(testController) {
     await testController.click('#browseCompaniesItem');
   }
