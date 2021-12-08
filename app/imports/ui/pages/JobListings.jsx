@@ -89,8 +89,9 @@ JobsPage.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
-  const sub = Meteor.subscribe(Jobs.userPublicationName);
+  const sub1 = Meteor.subscribe(Jobs.userPublicationName);
+  const sub2 = Meteor.subscribe(ProfilesJobs.userPublicationName);
   return {
-    ready: sub.ready(),
+    ready: sub1.ready() && sub2.ready(),
   };
 })(JobsPage);
