@@ -22,9 +22,7 @@ const MakeItem = (props) => (
       </Item.Meta>
       <Item.Description>{props.event.description}</Item.Description>
       <Item.Extra>
-        <Button floated='right' className="ui blue icon button">
-          <i className="heart icon"></i>
-        </Button>
+        <Button floated='right' className="ui blue icon button"> <i className="heart icon"></i></Button>
       </Item.Extra>
     </Item.Content>
   </Item>
@@ -44,6 +42,7 @@ class EventsPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const email = Meteor.user().username;
     const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
     console.log(eventData);
