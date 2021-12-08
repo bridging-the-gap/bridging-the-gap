@@ -8,6 +8,8 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
+import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
@@ -82,11 +84,13 @@ function addProject({ name, homepage, description, locations, skills, picture, r
 function addEvent({ eventName, company, date, location, description, picture, owner }) {
   console.log(`Defining event ${eventName}`);
   Events.collection.insert({ eventName, company, date, location, description, picture, owner });
+  ProfilesEvents.collection.insert({ profile: owner, event: eventName });
 }
 
 function addJob({ jobTitle, location, salary, industry, image, description, link, owner }) {
   console.log(`Defining job ${jobTitle}`);
   Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, link, owner });
+  ProfilesJobs.collection.insert({ profile: owner, job: jobTitle });
 }
 
 /** Define a new report. Error if report already exists.  */
