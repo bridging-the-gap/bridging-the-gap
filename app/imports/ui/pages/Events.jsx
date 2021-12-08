@@ -5,12 +5,17 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Events } from '../../api/events/Events';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
 /** Gets the Event-data. */
 function getEventData(eventName) {
   const data = Events.collection.findOne({ eventName });
   return _.extend({ }, data);
 }
+
+const handleClick = () => {
+  ProfilesEvents.collection.insert({ profile: ({ email }), event: ({ eventName }) });
+};
 
 const MakeItem = (props) => (
   <Item>
@@ -22,7 +27,7 @@ const MakeItem = (props) => (
       </Item.Meta>
       <Item.Description>{props.event.description}</Item.Description>
       <Item.Extra>
-        <Button floated='right' className="ui blue icon button"> <i className="heart icon"></i></Button>
+        <Button floated='right' className="ui blue icon button"> onClick={handleClick} <i className="heart icon"></i></Button>
       </Item.Extra>
     </Item.Content>
   </Item>
