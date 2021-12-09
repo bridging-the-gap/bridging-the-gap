@@ -5,12 +5,12 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
+import { Link } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
-import { Link } from 'react-router-dom';
 
 /** Returns the Profile and associated Projects and Locations associated with the passed user email. */
 // function getProfileData(email) {
@@ -36,7 +36,7 @@ const MakeCard = (props) => (
   <Card centered>
     <Card.Content>
       <Image floated='center' size='big' src={props.profile.picture} />
-      <Card.Header>{props.profile.firstName} {props.profile.lastName}</Card.Header>
+      <Card.Header>{props.profile.firstName} {props.profile.lastName} </Card.Header>
       <Card.Meta>
         <span className='date'>{props.profile.title}</span>
       </Card.Meta>
@@ -67,7 +67,8 @@ const MakeProfile = (props) => (
         <Image floated='center' size='big' src={props.profile.picture} />
       </div>
       <div className="thirteen wide column">
-        <h2>{props.profile.firstName} {props.profile.lastName}</h2>
+        <h2>{props.profile.firstName} {props.profile.lastName}<Link to={`/editProfile/${props.profile._id}`}>Edit</Link> </h2>
+        <p><i className="edit icon"></i></p>
         <p><span className='date'>{props.profile.title}</span></p>
         <p><a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a></p>
       </div>
@@ -102,21 +103,21 @@ class ProfilesPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const email = Meteor.user().username;
+    const profileData = getProfileData(email);
     // const emails = _.pluck(Profiles.collection.find().fetch(), 'email');
     // const profileData = emails.map(email => getProfileData(email));
-    const email = Meteor.user().username;
     // const profileData = Profiles.collection.findOne({ email });
-    const profileData = getProfileData(email);
-    console.log(profileData);
     return (
       <Container>
         {/* Start of student page */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           // const profileData = emails.map(email => getProfileData(email));
           <Container id="profiles-page">
-            <MakeCard profile={profileData}/>
+            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
+              <MakeCard profile={profileData}/>
+            </Grid.Column>
             <MakeProfile profile={profileData}/>
-            <Link to={`/editProfile/${profileData._id}`}>Edit</Link>
           </Container> : ''}
         {/* End of student page */}
         {/* Start of company page */}
