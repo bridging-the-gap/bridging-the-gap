@@ -21,9 +21,6 @@ import ReportFilter from '../components/ReportFilter';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
-// import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-// import { Projects } from '../../api/projects/Projects';
 
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
@@ -115,14 +112,20 @@ class Home extends React.Component {
               <Header as="h3" textAlign="center">Your Events</Header>
               <Segment>
                 <Item.Group divided>
-                  {_.map(profilesEventsData, (event, index) => <MakeItem key={index} project={event}/>)}
                 </Item.Group></Segment>
             </Grid.Column>
             <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
               <Header as="h3" textAlign="center">Your Job Listings</Header>
               <Segment>
                 <Item.Group divided>
-                  {_.map(profilesJobsData, (job, index) => <MakeItem key={index} project={job}/>)}
+                  <Item>
+                    <Item.Content>
+                      <Item.Header>Create Job Agent</Item.Header>
+                      <Item.Meta>
+                        <Button primary>Submit CV</Button>
+                      </Item.Meta>
+                    </Item.Content>
+                  </Item>
                 </Item.Group></Segment>
             </Grid.Column>
           </Grid> : ''}
@@ -194,3 +197,4 @@ export default withTracker(() => {
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready() && sub8.ready(),
   };
 })(Home);
+
