@@ -121,14 +121,12 @@ class Home extends React.Component {
                 <Item.Group divided>
                   <Item>
                     <Item.Content>
-                      {_.map(this.props.favoritejobs, (job, index2) => <Job key={index2} job={job} />)}
                       <Item.Header>Create Job Agent</Item.Header>
                       <Item.Meta>
                         <Button primary>Submit CV</Button>
                       </Item.Meta>
                     </Item.Content>
                   </Item>
-                  {_.map(profilesJobsData, (job, index) => <MakeItem key={index} project={job}/>)}
                 </Item.Group></Segment>
             </Grid.Column>
           </Grid> : ''}
