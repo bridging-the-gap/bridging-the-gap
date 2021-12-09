@@ -8,7 +8,7 @@ import { Locations } from './Locations';
 if (Meteor.isServer) {
   describe('LocationsCollection', function testSuite() {
     it('Check that a new interest can be defined and retrieved', function test() {
-      const name = `test-interest-${new Date().getTime()}`;
+      const name = `test-location-${new Date().getTime()}`;
       Locations.collection.insert({ name });
       expect(Locations.collection.findOne({ name }).name).to.equal(name);
     });

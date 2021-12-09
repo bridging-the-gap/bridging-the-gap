@@ -14,7 +14,7 @@ class ReportItem extends React.Component {
     return (
       <Table.Row>
         <Table.Cell>{this.props.report.email}</Table.Cell>
-        <Table.Cell>{this.props.report.reportName}</Table.Cell>
+        <Table.Cell>{this.props.report.reportType}</Table.Cell>
         <Table.Cell>{this.props.report.description}</Table.Cell>
         <Table.Cell onClick={ () => this.removeItem(this.props.report._id) }><Icon name='delete'/></Table.Cell>
       </Table.Row>
@@ -25,7 +25,7 @@ class ReportItem extends React.Component {
 // Require a document to be passed to this component.
 ReportItem.propTypes = {
   report: PropTypes.shape({
-    reportName: PropTypes.string,
+    reportType: PropTypes.string,
     email: PropTypes.string,
     description: PropTypes.string,
     _id: PropTypes.string,

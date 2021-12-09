@@ -13,13 +13,15 @@ class AddReportPage {
 
   /** Checks this page is displayed, then adds a new report. */
   async addReport(testController) {
-    const reportName = `my-new-report-${new Date().getTime()}`;
+    // Test using the "Bug" option.
     const description = 'This is a new report used for testing purposes.';
     await this.isDisplayed(testController);
     // Define the new report.
-    await testController.typeText('#reportName', reportName);
+    const reportTypeSelector = Selector('#reportType');
+    const bugOption = reportTypeSelector.child().withExactText('Bug');
+    await testController.click(reportTypeSelector);
+    await testController.click(bugOption);
     await testController.typeText('#reportDescription', description);
-
     await testController.click('#reportSubmit');
     await testController.click(Selector('.swal-button--confirm'));
   }

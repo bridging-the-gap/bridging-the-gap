@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Table, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
+import { Container, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -11,17 +11,38 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
-import ReportItem from '../components/ReportItem';
 import { Profiles } from '../../api/profiles/Profiles';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
-import { Companies } from '../../api/company/Companies';
 import Company from '../components/Company';
 import { Jobs } from '../../api/job/Jobs';
 import Job from '../components/Job';
+import Event from '../components/Event';
+import NewCategory from '../components/NewCategory';
+import ReportFilter from '../components/ReportFilter';
+import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
+import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
+import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
+// import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
+// import { Projects } from '../../api/projects/Projects';
 
-function getEventData(eventName) {
-  const data = Events.collection.findOne({ eventName });
+function getProfileData(email) {
+  const data = Profiles.collection.findOne({ email });
+  const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
+  const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
+  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
+  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
+  return _.extend({ }, data, { locations, skills });
+}
+
+function getProfileEventsData(email) {
+  const data = ProfilesEvents.collection.findOne({ email });
+  return _.extend({ }, data);
+}
+
+function getProfileJobsData(email) {
+  const data = ProfilesJobs.collection.findOne({ email });
   return _.extend({ }, data);
 }
 
@@ -48,31 +69,6 @@ MakeItem.propTypes = {
   event: PropTypes.object.isRequired,
 };
 
-// Create a schema to specify the structure of the data to appear in the form.
-// For admin page: create new category section.
-const formSchema1 = new SimpleSchema({
-  name: String,
-  description: String,
-});
-
-// Create a schema to specify the structure of the data to appear in the form.
-// For admin page: email section.
-const studentSchema = new SimpleSchema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  title: String,
-  locations: String,
-  skills: String,
-  projects: String,
-  picture: String,
-  bio: String,
-});
-
-const bridge1 = new SimpleSchema2Bridge(formSchema1);
-
-const bridge2 = new SimpleSchema2Bridge(studentSchema);
-
 class Home extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -83,8 +79,14 @@ class Home extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     let fRef = null;
-    const events = _.pluck(Events.collection.find().fetch(), 'eventName');
-    const eventData = events.map(event => getEventData(event));
+    const email = Meteor.user().username;
+    // const profileData = Profiles.collection.findOne({ email });
+    const companyData = getProfileData(email);
+    const profileData = getProfileData(email);
+    const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
+    const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
+    const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
+    const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
     // const email = Meteor.user().username;
     // const profile = Profiles.collection.findOne({ email });
     return (
@@ -94,38 +96,11 @@ class Home extends React.Component {
           <div id='admin-page'>
             <div style={{ paddingBottom: '50px' }}>
               <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Create New Categories</Header>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge1} onSubmit={data => this.submit(data, fRef)}
-                style={{ backgroundColor: 'blue', padding: '50px 20px 70px 20px' }}>
-                <Segment>
-                  <Form.Group widths={'equal'}>
-                    <TextField id='name' name='name' placeholder='Category name'/>
-                  </Form.Group>
-                  <Form.Group widths={'equal'}>
-                    <LongTextField id='description' name='description' placeholder='Describe the new category here'/>
-                  </Form.Group>
-                  <SubmitField id='submit' value='Submit' style={{ float: 'right', marginTop: '20px', marginRight: '-15px' }}/>
-                  <ErrorsField/>
-                </Segment>
-              </AutoForm>
+              <NewCategory/>
             </div>
             <div style={{ paddingBottom: '50px' }}>
-              <Header as="h2" textAlign="center" style={{ color: 'red' }}>Inappropriate Content Reports</Header>
-              <div style={{ maxHeight: '400px', overflowX: 'scroll' }}>
-                <Table celled color='red' inverted>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>From</Table.HeaderCell>
-                      <Table.HeaderCell>About</Table.HeaderCell>
-                      <Table.HeaderCell>Description</Table.HeaderCell>
-                      <Table.HeaderCell>Delete</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {this.props.reports.map((report) => <ReportItem key={report._id} report={report}
-                      Reports={Reports}/>)}
-                  </Table.Body>
-                </Table>
-              </div>
+              <Header as="h2" textAlign="center" style={{ color: 'red' }}>User Problem Reports</Header>
+              <ReportFilter Reports={Reports}/>
               <Grid container style={{ border: '1px solid red', width: '510px', paddingTop: '30px', marginTop: '-10px' }} centered>
                 <Header as="h3" style={{ paddingTop: '10px' }}>Delete Offending User</Header>
                 <DeleteUser/>
@@ -138,36 +113,18 @@ class Home extends React.Component {
         {/* Start of student page */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           <Grid id='student-home' columns={2}>
-            <Grid.Column width={6} style={{ backgroundColor: 'white' }}>
-              <Header as="h3" textAlign="center">Make Student Profile</Header>
-              <AutoForm ref={ref => { fRef = ref; }} schema={bridge2} onSubmit={data => this.submit(data, fRef)}>
-                <Segment>
-                  <TextField name='firstName'/>
-                  <TextField name='lastName'/>
-                  <TextField name='email'/>
-                  <TextField name='title'/>
-                  <TextField name='locations'/>
-                  <TextField name='skills'/>
-                  <TextField name='projects'/>
-                  <TextField name='picture'/>
-                  <LongTextField name='bio'/>
-                  <SubmitField value='Submit'/>
-                  <ErrorsField/>
-                </Segment>
-              </AutoForm>
-            </Grid.Column>
-            <Grid.Column width={10} style={{ backgroundColor: 'white' }}>
-              <Header as="h3" textAlign="center">Suggested for you</Header>
+            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Your Events</Header>
               <Segment>
                 <Item.Group divided>
-                  <Item>
-                    <Item.Content>
-                      <Item.Header>Create Job Agent</Item.Header>
-                      <Item.Meta>
-                        <Button primary>Submit CV</Button>
-                      </Item.Meta>
-                    </Item.Content>
-                  </Item>
+                  {_.map(profilesEventsData, (event, index) => <MakeItem key={index} project={event}/>)}
+                </Item.Group></Segment>
+            </Grid.Column>
+            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Your Job Listings</Header>
+              <Segment>
+                <Item.Group divided>
+                  {_.map(profilesJobsData, (job, index) => <MakeItem key={index} project={job}/>)}
                 </Item.Group></Segment>
             </Grid.Column>
           </Grid> : ''}
@@ -176,24 +133,25 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'company') ?
           <Grid id='company-home' columns={2}>
             <Grid.Column width={6} style={{ backgroundColor: 'blue' }}>
-              <Button attached='top'><Link to={'/addCompany'}>Create Profile</Link></Button>
-              <Segment>
-                {this.props.companies.map((company, index1) => <Company key={index1} company={company} />)}
-              </Segment>
+              <Company company={companyData} />
             </Grid.Column>
             <Grid.Column width={10}>
-              <Button attached={'top'}><Link to={'/addJob'}>Add Job Listing</Link></Button>
+              <Button attached={'top'} id="addJob" ><Link to={'/addJob'}>Add Job Listing</Link></Button>
               <Header as="h2" textAlign="center" inverted>Your job listings</Header>
               <Segment>
                 <Card.Group>
-                  {this.props.jobs.map((job, index2) => <Job key={index2} job={job} />)}
+                  {this.props.jobs.map((job, index2) => { if (job.owner === email) { return <Job key={index2} job={job} />; } return ''; })}
                 </Card.Group>
               </Segment>
-              <Button attached={'top'}><Link to={'/addEvent'}>Add Event</Link></Button>
+              <Button attached={'top'} id="home-addEvent"><Link to={'/addEvent'}>Add Event</Link></Button>
               <Header as="h2" textAlign="center" inverted>Your upcoming events</Header>
-              <Item.Group divided>
-                {_.map(eventData, (event, index) => <MakeItem key={index} event={event}/>)}
-              </Item.Group>
+              <Segment>
+                <Card.Group>
+                  {this.props.events.map((event, index2) => {
+                    if (event.owner === email) { return <Event key={index2} event={event} />; } return '';
+                  })}
+                </Card.Group>
+              </Segment>
             </Grid.Column>
           </Grid> : ''}
         {/* End of company page */}
@@ -205,8 +163,8 @@ class Home extends React.Component {
 Home.propTypes = {
   reports: PropTypes.array.isRequired,
   profiles: PropTypes.array.isRequired,
-  companies: PropTypes.array.isRequired,
   jobs: PropTypes.array.isRequired,
+  events: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -216,7 +174,6 @@ export default withTracker(() => {
   const sub1 = Roles.subscription;
   const sub2 = Meteor.subscribe(Reports.userPublicationName);
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub4 = Meteor.subscribe(Companies.userPublicationName);
   const sub5 = Meteor.subscribe(Jobs.userPublicationName);
   const sub6 = Meteor.subscribe(Events.userPublicationName);
 
@@ -224,15 +181,14 @@ export default withTracker(() => {
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
-  // Get access to Companies documents
-  const companies = Companies.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
+  const events = Events.collection.find({}).fetch();
   return {
     reports,
     profiles,
-    companies,
     jobs,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
+    events,
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready(),
   };
 })(Home);

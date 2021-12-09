@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class Job extends React.Component {
+class JobPro extends React.Component {
   render() {
     return (
       <Card fluid color={'blue'}>
@@ -16,18 +16,15 @@ class Job extends React.Component {
           <Card.Meta>Industry: {this.props.job.industry}</Card.Meta>
           <Card.Description>{this.props.job.description}</Card.Description>
         </Card.Content>
-        <Card.Content extra>
-          <Link to={`/editJob/${this.props.job._id}`} id="editJob" >Edit</Link>
-        </Card.Content>
       </Card>
     );
   }
 }
 
 // Require a document to be passed to this component.
-Job.propTypes = {
+JobPro.propTypes = {
   job: PropTypes.object.isRequired,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(Job);
+export default withRouter(JobPro);

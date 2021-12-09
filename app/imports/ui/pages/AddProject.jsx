@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header, Form } from 'semantic-ui-react';
 import { AutoForm, TextField, LongTextField, SubmitField, ErrorsField } from 'uniforms-semantic';
-import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
@@ -9,7 +8,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
-import { addProjectMethod } from '../../startup/both/Methods';
 import { Locations } from '../../api/locations/Locations';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
@@ -30,8 +28,8 @@ const makeSchema = (allLocations, allParticipants) => new SimpleSchema({
 
 /** Renders the Page for adding a document. */
 class AddProject extends React.Component {
-
   /** On submit, insert the data. */
+  /*
   submit(data, formRef) {
     Meteor.call(addProjectMethod, data, (error) => {
       if (error) {
@@ -41,6 +39,7 @@ class AddProject extends React.Component {
       }
     });
   }
+*/
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {

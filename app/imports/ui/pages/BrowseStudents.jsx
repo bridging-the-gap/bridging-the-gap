@@ -26,9 +26,9 @@ function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  return _.extend({ }, data, { locations, skills, projects: projectPictures });
+  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
+  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
+  return _.extend({ }, data, { locations, skills });
 }
 
 /** Component for layout out a Profile Card. */
@@ -40,12 +40,19 @@ const MakeCard = (props) => (
       <Card.Meta>
         <span className='date'>{props.profile.title}</span>
       </Card.Meta>
-      <Card.Meta>
-        <a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a>
-      </Card.Meta>
       <Card.Description>
         {props.profile.bio}
       </Card.Description>
+      <Card.Meta>
+        <span>Contact email:</span>
+        {/* If I split the lines up, there is extra space between the word 'user' and the e-mailer's username. */ }
+        {/* eslint-disable-next-line max-len */}
+        <a style={{ color: 'blue' }} href={`mailto:${props.profile.email}?subject=Message from BTG user ${Meteor.user().username}`}>{props.profile.email} </a>
+      </Card.Meta>
+      <Card.Meta>
+        <span>Webpage:</span>
+        <a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a>
+      </Card.Meta>
     </Card.Content>
     <Card.Content extra>
       <Header as='h5'>Skills</Header>
@@ -90,7 +97,6 @@ class BrowseStudents extends React.Component {
     const emails = _.pluck(ProfilesSkills.collection.find({ skill: { $in: this.state.skills } }).fetch(), 'profile');
     const profileData = _.uniq(emails).map(email => getProfileData(email));
     const studentData = _.filter(profileData, function (oneprofile) {
-      console.log(oneprofile);
       return oneprofile.role === 'student';
     });
     return (

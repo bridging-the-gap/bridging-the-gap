@@ -23,29 +23,32 @@ const makeSchema = (allLocations) => new SimpleSchema({
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
-  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  return _.extend({ }, data, { locations, projects: projectPictures });
+  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
+  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
+  return _.extend({ }, data, { locations });
 }
 
 /** Component for layout out a Profile Card. */
 const MakeCard = (props) => (
   <Card>
     <Card.Content>
-      <Image floated='right' size='mini' src={props.profile.picture} />
+      <Image floated='right' size='mini' src={props.profile.picture}/>
       <Card.Header>{props.profile.firstName} {props.profile.lastName}</Card.Header>
       <Card.Meta>
         <span className='date'>{props.profile.title}</span>
-      </Card.Meta>
-      <Card.Meta>
-        <a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a>
       </Card.Meta>
       <Card.Description>
         {props.profile.bio}
       </Card.Description>
       <Card.Meta>
-        <a>Contact email: </a>
-        <a style={{ color: 'blue' }} href={props.profile.email}>{props.profile.email} </a>
+        <span>Contact email:</span>
+        {/* If I split the lines up, there is extra space between the word 'user' and the e-mailer's username. */ }
+        {/* eslint-disable-next-line max-len */}
+        <a style={{ color: 'blue' }} href={`mailto:${props.profile.email}?subject=Message from BTG user ${Meteor.user().username}`}>{props.profile.email}</a>
+      </Card.Meta>
+      <Card.Meta>
+        <span>Webpage:</span>
+        <a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage}</a>
       </Card.Meta>
     </Card.Content>
     <Card.Content extra>
@@ -86,7 +89,6 @@ class BrowseCompanies extends React.Component {
     const emails = _.pluck(ProfilesLocations.collection.find({ location: { $in: this.state.locations } }).fetch(), 'profile');
     const profileData = _.uniq(emails).map(email => getProfileData(email));
     const companyData = _.filter(profileData, function (oneprofile) {
-      console.log(oneprofile);
       return oneprofile.role === 'company';
     });
     return (

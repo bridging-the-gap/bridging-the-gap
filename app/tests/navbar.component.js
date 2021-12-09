@@ -42,12 +42,36 @@ class NavBar {
     await testController.click('#filterMenuItem');
   }
 
+  async goToEventsPage(testController) {
+    await testController.click('#eventItem');
+  }
+
+  async goToJobsPage(testController) {
+    await testController.click('#jobItem');
+  }
+
   async gotoBrowseCompaniesPage(testController) {
     await testController.click('#browseCompaniesItem');
   }
 
   async gotoBrowseStudentsPage(testController) {
     await testController.click('#browseStudentsItem');
+  }
+
+  async gotoStudentHomePage(testController) {
+    await testController.click('#homeMenuItem');
+  }
+
+  async gotoStudentProfilePage(testController) {
+    await testController.click('#profileMenuItem');
+  }
+
+  async gotoCompanyHomePage(testController) {
+    await testController.click('#homeMenuItem');
+  }
+
+  async gotoCompanyProfilePage(testController) {
+    await testController.click('#profileMenuItem');
   }
 
   /** Check that the specified user is currently logged in. */

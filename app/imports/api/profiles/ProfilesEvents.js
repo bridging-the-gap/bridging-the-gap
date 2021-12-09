@@ -3,20 +3,18 @@ import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /** Encapsulates state and variable values for this collection. */
-class ReportsCollection {
+class ProfilesEventsCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'ReportsCollection';
+    this.name = 'ProfilesEventsCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      reportType: {
-        type: String,
-        allowedValues: ['bug', 'user-abuse', 'other'],
-      },
-      email: { type: String },
-      description: { type: String, index: true },
+      // profile is the user's email.
+      profile: String,
+      // event is the eventName.
+      event: String,
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
@@ -26,4 +24,4 @@ class ReportsCollection {
   }
 }
 
-export const Reports = new ReportsCollection();
+export const ProfilesEvents = new ProfilesEventsCollection();

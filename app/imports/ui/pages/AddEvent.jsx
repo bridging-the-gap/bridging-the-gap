@@ -7,7 +7,6 @@ import { Form, Grid, Header, Segment } from 'semantic-ui-react';
 import SimpleSchema from 'simpl-schema';
 import { AutoForm, ErrorsField, LongTextField, SubmitField, TextField } from 'uniforms-semantic';
 import PropTypes from 'prop-types';
-import { addEventMethod } from '../../startup/both/Methods';
 import { Events } from '../../api/events/Events';
 
 /** Renders the Page for adding a document. */
@@ -15,13 +14,17 @@ class AddEvent extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    Meteor.call(addEventMethod, data, (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
-      } else {
-        swal('Success', 'Event added successfully', 'success').then(() => formRef.reset());
-      }
-    });
+    const { eventName, date, location, description, picture } = data;
+    const owner = Meteor.user().username;
+    Events.collection.insert({ eventName, date, location, description, picture, owner },
+      (error) => {
+        // Meteor.call(addJobMethod, data, (error) => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Event added successfully', 'success').then(() => formRef.reset());
+        }
+      });
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -29,7 +32,6 @@ class AddEvent extends React.Component {
     let fRef = null;
     const formSchema = new SimpleSchema({
       eventName: { type: String },
-      company: { type: String, defaultValue: 'Company' },
       date: { type: String },
       location: { type: String },
       description: { type: String },
@@ -37,14 +39,13 @@ class AddEvent extends React.Component {
     });
     const bridge = new SimpleSchema2Bridge(formSchema);
     return (
-      <Grid id="add-project-page" container centered>
+      <Grid id="add-event-page" container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Add Event</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
             <Segment>
               <Form.Group widths={'equal'}>
                 <TextField id='eventName' name='eventName' showInlineError={true} placeholder='Event name'/>
-                <TextField id='company' name='company' showInlineError={true} placeholder='Company'/>
                 <TextField id='date' name='date' showInlineError={true} placeholder='Date'/>
                 <TextField id='location' name='location' showInlineError={true} placeholder='Location'/>
                 <TextField id='picture' name='picture' showInlineError={true} placeholder='Picture'/>

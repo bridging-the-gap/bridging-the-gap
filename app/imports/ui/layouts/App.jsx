@@ -26,7 +26,9 @@ import AddJob from '../pages/AddJob';
 import AddCompany from '../pages/AddCompany';
 import EditCompany from '../pages/EditCompany';
 import EditProfile from '../pages/EditProfile';
+import EditEvent from '../pages/EditEvent';
 import EditJob from '../pages/EditJob';
+import JobListings from '../pages/JobListings';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -43,6 +45,7 @@ class App extends React.Component {
               <ProtectedRoute path="/projects" component={Projects}/>
               <ProtectedRoute path="/locations" component={Locations}/>
               <ProtectedRoute path="/events" component={Events}/>
+              <ProtectedRoute path="/jobs" component={JobListings}/>
               <ProtectedRoute path="/addReport" component={AddReport}/>
               <ProtectedRoute path="/addEvent" component={AddEvent}/>
               <ProtectedRoute path="/browseCompanies" component={BrowseCompanies}/>
@@ -54,6 +57,7 @@ class App extends React.Component {
               <ProtectedRoute path="/editCompany/:_id" component={EditCompany}/>
               <ProtectedRoute path="/editProfile/:_id" component={EditProfile}/>
               <ProtectedRoute path="/editJob/:_id" component={EditJob}/>
+              <ProtectedRoute path="/editEvent/:_id" component={EditEvent}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>

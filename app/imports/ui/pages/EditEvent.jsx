@@ -6,17 +6,17 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { Jobs } from '../../api/job/Jobs';
+import { Events } from '../../api/events/Events';
 
-const bridge = new SimpleSchema2Bridge(Jobs.schema);
+const bridge = new SimpleSchema2Bridge(Events.schema);
 
 /** Renders the Page for editing a single document. */
-class EditJob extends React.Component {
+class EditEvent extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { companyName, location, contact, industry, image, description, _id, salary, jobTitle } = data;
-    Jobs.collection.update(_id, { $set: { companyName, location, contact, industry, image, description, salary, jobTitle } }, (error) => (error ?
+    const { eventName, date, location, description, picture, _id } = data;
+    Events.collection.update(_id, { $set: { eventName, date, location, description, picture } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -29,17 +29,16 @@ class EditJob extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
     return (
-      <Grid container centered id="editJobPage">
+      <Grid container centered id="editEventPage">
         <Grid.Column>
-          <Header as="h2" textAlign="center">Edit Job</Header>
+          <Header as="h2" textAlign="center">Edit Event</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField id="jobTitle" name='jobTitle'/>
+              <TextField id="eventName" name='eventName'/>
+              <TextField id="date" name='date'/>
               <TextField id="location" name='location'/>
-              <TextField id="salary" name='salary'/>
-              <TextField id="industry" name='industry'/>
-              <TextField id="image" name='image'/>
               <LongTextField id="description" name='description'/>
+              <TextField id="picture" name='picture'/>
               <SubmitField id="submit" value='Submit'/>
               <ErrorsField/>
               <HiddenField name='owner' />
@@ -52,7 +51,7 @@ class EditJob extends React.Component {
 }
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
-EditJob.propTypes = {
+EditEvent.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
@@ -63,13 +62,13 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Jobs.userPublicationName);
+  const subscription = Meteor.subscribe(Events.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the document
-  const doc = Jobs.collection.findOne(documentId);
+  const doc = Events.collection.findOne(documentId);
   return {
     doc,
     ready,
   };
-})(EditJob);
+})(EditEvent);

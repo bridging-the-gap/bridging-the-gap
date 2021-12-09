@@ -2,27 +2,67 @@
   "defaultEvents": [
     {
       "eventName": "The Future Of Technology conference",
-      "company": "Apple",
-      "date": "2021-06-12",
+      "date": "2021-12-10",
       "location": "Hilton Waikiki",
       "description": "What is the future of technology? AI? Death? Come join us for a seminar with the heads of Apple stationed in Hawaii.",
-      "picture": "https://miro.medium.com/max/348/0*Q1oTOLWGbSnl9aXC.png"
+      "picture": "https://cdn.icon-icons.com/icons2/2699/PNG/512/apple_logo_icon_168588.png",
+      "owner": "humanrelations@apple.com"
     },
     {
       "eventName": "Hackathon with Google",
-      "company": "Google",
-      "date": "2021-12-10",
+      "date": "2021-12-15",
       "location": "UH Campus",
       "description": "Come meet us in the cafeteria for a chat and hackathon with the possibility to win a summer internship in Silicon Valley. Google is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware.",
-      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png"
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
+      "owner": "hr@google.com"
     },
     {
       "eventName": "Brunch with Samsung",
-      "company": "Samsung",
-      "date": "2021-10-10",
+      "date": "2021-12-20",
       "location": "Heavenly, Waikiki",
       "description": "Lets eat brunch and talk about electronics! Everyone who attends this event will receive a free brunch from Heavenly.",
-      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png"
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png",
+      "owner": "yin.k@samsung.com"
+    },
+    {
+      "eventName": "T-Mobile Hacker-Conference",
+      "date": "2022-01-10",
+      "location": "Royal Hawaiian",
+      "description": "T-Mobile is pleased to invite a limited amount of UH-student to attend their yearly hacker conference in January. There will be big speakers, big prizes and an opportunity to learn about the newest hacker-features on the market. ",
+      "picture": "https://www.t-mobile.com/news/_admin/uploads/2020/04/T-Mobile20logo20single20T20magenta20on20white.png",
+      "owner": "contact@tmobile.com"
+    },
+    {
+      "eventName": "Tesla visits campus",
+      "date": "2022-01-15",
+      "location": "UH Manoa",
+      "description": "Come talk to the heads of Tesla Hawaii in the cafeteria on campus. This event is intented for computer science students only.  ",
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png",
+      "owner": "musk@tesla.com"
+    },
+    {
+      "eventName": "AirBnb - DIY Apps",
+      "date": "2022-01-20",
+      "location": "UH Manoa",
+      "description": "Come talk with AirBnb and learn how to make a basic app in Javascript. There will be representatives from AirBnb that can offer you an internship of summer 2022.",
+      "picture": "https://www.doz.com/cms/wp-content/uploads/2015/03/airbnb-logo.png",
+      "owner": "hr@airbnb.com"
+    },
+    {
+      "eventName": "Go to Mars with NASA!",
+      "date": "2022-02-05",
+      "location": "Prince Waikiki",
+      "description": "NASA invites UH student to attend the yearly NASA conference at Prince Waikiki February,2022. There will be the possibility to try a NASA-simulator to March, as well as applying for internships at NASA's headquarters.",
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png",
+      "owner": "studentinfo@nasa.com"
+    },
+    {
+      "eventName": "Test Toyota's future vehicles",
+      "date": "2022-02-10",
+      "location": "UH Manoa",
+      "description": "Toyota presents the new designs of 2022. Go for a test-run or talk to the representatives from Toyota about applying for an internship in Tokyo, Japan beginning June, 2022",
+      "picture": "https://www.allaboutlean.com/wp-content/uploads/2018/11/Toyota-Logo-2.jpg",
+      "owner": "humanrelations@toyota.com"
     }
   ],
   "defaultProfiles": [
@@ -37,8 +77,69 @@
         "California"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
-      "email": "google@google.com",
-      "role": "company"
+      "email": "hr@google.com",
+      "role": "company",
+      "owner": "hr@google.com"
+    },
+    {
+      "firstName": "Cisco",
+      "lastName": "",
+      "bio": "Cisco Systems, Inc. is an American multinational technology conglomerate corporation headquartered in San Jose, California. Integral to the growth of Silicon Valley, Cisco develops, manufactures and sells networking hardware, software, telecommunications equipment and other high-technology services and products.",
+      "title": "Company",
+      "webpage": "https://cisco.com",
+      "locations": [
+        "US",
+        "California",
+        "San Jose"
+      ],
+      "picture": "https://jobs.cisco.com/portal/4/images/logo.svg",
+      "email": "anna_b@cisco.com",
+      "role": "company",
+      "owner": "anna_b@cisco.com"
+    },
+    {
+      "firstName": "First Hawaiian Bank",
+      "lastName": "",
+      "bio": "First Hawaiian, Inc. is a bank holding company headquartered in Honolulu, Hawaiʻi. Its principal subsidiary, First Hawaiian Bank, founded in 1858, is Hawaiʻi’s oldest and largest financial institution headquartered in Honolulu, Hawaiʻi, at the First Hawaiian Center. The bank has 57 branches throughout Hawaiʻi, three in Guam and two in Saipan. It offers banking services to consumer and commercial customers, including deposit products, lending services and wealth management, insurance, private banking and trust services.",
+      "title": "Company",
+      "webpage": "https://fhb.com",
+      "locations": [
+        "US",
+        "Hawaii"
+      ],
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/First_Hawaiian_Bank_logo.svg/440px-First_Hawaiian_Bank_logo.svg.png",
+      "email": "alex.m@fhb.com",
+      "role": "company",
+      "owner": "alex.m@fhb.com"
+    },
+    {
+      "firstName": "Hawaii Pacific Health",
+      "lastName": "",
+      "bio": "Hawaii Pacific Health is a nonprofit health care network of hospitals, clinics, physicians and care providers covering Hawaii and the Pacific Region. At Hawaii Pacific Health, our mission is to create a healthier Hawaii. We believe that working together, we can make the greatest impact on individuals, families and our communities.",
+      "title": "Company",
+      "webpage": "https://www.hawaiipacifichealth.org",
+      "locations": [
+        "US",
+        "Hawaii"
+      ],
+      "picture": "https://www.hawaiipacifichealth.org/media/4413/hawaii-pacific-health.png",
+      "email": "jobs@hawaiipacifichealth.org",
+      "role": "company",
+      "owner": "jobs@hawaiipacifichealth.org"
+    },{
+      "firstName": "Hawaiian Airlines",
+      "lastName": "",
+      "bio": "Hawaiian Airlines is the largest operator of commercial flights to and from the U.S. state of Hawaii. It is the tenth-largest commercial airline in the United States, and is based at Honolulu, Hawaii. Hawaiian Airlines, Hawaii's largest and longest-serving airline, is looking for exceptional people. People with experience. People with ambition. People who love Hawaii. We have one of the newest, most advanced fleets in the industry. We've added exciting international and mainland routes. And we continue to grow. This is an airline that's going places—and you can, too.",
+      "title": "Company",
+      "webpage": "https://www.hawaiianairlines.com",
+      "locations": [
+        "US",
+        "Hawaii"
+      ],
+      "picture": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "email": "jobs@HawaiianAir.com",
+      "role": "company",
+      "owner": "jobs@HawaiianAir.com"
     },
     {
       "firstName": "Samsung",
@@ -51,8 +152,9 @@
         "Seoul"
       ],
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png",
-      "email": "samsung@samsung.com",
-      "role": "company"
+      "email": "yin.k@samsung.com",
+      "role": "company",
+      "owner": "yin.k@samsung.com"
     },
     {
       "firstName": "Apple",
@@ -63,125 +165,205 @@
       "locations": [
         "US"
       ],
-      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png",
-      "email": "apple@apple.com",
-      "role": "company"
+      "picture": "https://cdn.icon-icons.com/icons2/2699/PNG/512/apple_logo_icon_168588.png",
+      "email": "humanrelations@apple.com",
+      "role": "company",
+      "owner": "humanrelations@apple.com"
     },
     {
-      "firstName": "Philip",
-      "lastName": "Johnson",
-      "bio": "I like to paddle outrigger canoes.",
-      "title": "",
+      "firstName": "Walmart",
+      "lastName": "Inc. ",
+      "bio": "Walmart Inc is an American multinational retail corporation that operates a chain of hypermarkets (also called supercenters), discount department stores, and grocery stores from the United States, headquartered in Bentonville, Arkansas.",
+      "title": "Company",
+      "webpage": "https://walmart.com",
       "locations": [
         "US",
-        "Hawaii"
+        "Arkansas"
       ],
-      "skills": [
-        "Programming",
-        "Software Engineering"
-      ],
-      "projects":[
-        "RadGrad",
-        "Open Power Quality"
-      ],
-      "picture": "https://philipmjohnson.github.io/images/philip2.jpeg",
-      "email": "johnson@hawaii.edu",
-      "role": "student"
+      "picture": "https://www.freepnglogos.com/uploads/walmart-logo-24.jpg",
+      "email": "jenny.hr@walmart.com",
+      "role": "company",
+      "owner": "jenny.hr@walmart.com"
     },
     {
-      "firstName": "Henri",
-      "lastName": "Casanova",
-      "bio": "In my spare time, I like to scuba dive.",
-      "title": "",
+      "firstName": "Amazon",
+      "lastName": "",
+      "bio": "Amazon.com, Inc. is an American multinational technology company which focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+      "title": "Company",
+      "webpage": "https://amazon.com",
       "locations": [
         "US",
-        "Hawaii"
+        "Seattle"
       ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "WRENCH"
-      ],
-      "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Henri_Casanova1.jpg",
-      "email": "henric@hawaii.edu",
-      "role": "student"
+      "picture": "https://1000logos.net/wp-content/uploads/2016/10/Amazon-logo-meaning.jpg",
+      "email": "management@amazon.com",
+      "role": "company",
+      "owner": "management@amazon.com"
     },
     {
-      "firstName": "Carleton",
-      "lastName": "Moore",
-      "bio": "Every summer, I enjoy visiting Portland, Oregon.",
-      "title": "",
-      "webpage": "https://cammoore.github.io",
+      "firstName": "Netflix",
+      "lastName": "",
+      "bio": "Netflix, Inc. is an American subscription streaming service and production company",
+      "title": "Company",
+      "webpage": "https://netflix.com",
       "locations": [
         "US",
-        "Hawaii"
+        "California"
       ],
-      "skills": [
-        "Programming",
-        "Software Engineering"
-      ],
-      "projects":[
-        "RadGrad"
-      ],
-      "picture": "https://cammoore.github.io/images/cam-moore.jpg",
-      "email": "cmoore@hawaii.edu",
-      "role": "admin"
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Netflix_2015_N_logo.svg/1200px-Netflix_2015_N_logo.svg.png",
+      "email": "info@netflix.com",
+      "role": "company",
+      "owner": "info@netflix.com"
     },
     {
-      "firstName": "Anthony",
-      "lastName": "Christe",
-      "bio": "I enjoy competitive bicycle racing.",
-      "title": "Ph.D. (2020))",
-      "webpage": "https://anthonyjchriste.github.io",
+      "firstName": "Target",
+      "lastName": "Cooperation",
+      "bio": "Target Corporation is an American retail corporation.",
+      "title": "Company",
+      "webpage": "https://target.com",
       "locations": [
-        "US"
+        "US",
+        "Minneapolis"
       ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "Open Power Quality"
-      ],
-      "picture": "https://anthonyjchriste.github.io/images/me.png",
-      "email": "achriste@hawaii.edu",
-      "role": "student"
+      "picture": "https://logos-world.net/wp-content/uploads/2020/10/Target-Logo.png",
+      "email": "hr@target.com",
+      "role": "company",
+      "owner": "hr@target.com"
     },
     {
-      "firstName": "Jason",
-      "lastName": "Leigh",
-      "bio": "I escaped from Chicago and moved to Hawaii in 2014.",
+      "firstName": "TMobile",
+      "lastName": "",
+      "bio": "T-Mobile is the brand name used by the mobile communications subsidiaries of the German telecommunications company Deutsche Telekom AG.",
+      "title": "Company",
+      "webpage": "https://t-mobile.com",
       "locations": [
-        "Hawaii"
+        "US",
+        "Germany"
       ],
-      "skills": [
-        "Programming"
-      ],
-      "projects":[
-        "Cyber Canoe"
-      ],
-      "picture": "http://www.ics.hawaii.edu/wp-content/uploads/2013/08/Jason_Leigh-2014.jpg",
-      "email": "leighj@hawaii.edu",
-      "role": "student"
+      "picture": "https://www.t-mobile.com/news/_admin/uploads/2020/04/T-Mobile20logo20single20T20magenta20on20white.png",
+      "email": "contact@tmobile.com",
+      "role": "company",
+      "owner": "contact@tmobile.com"
     },
     {
-      "firstName": "Serge",
-      "lastName": "Negrashov",
-      "bio": "Most weekends, you can find me on my 8 foot dinghy.",
-      "title": "Ph.D. (2020)",
+      "firstName": "Toyota",
+      "lastName": "",
+      "bio": "Toyota Motor Corporation, commonly known as simply Toyota) is a Japanese multinational automotive manufacturer headquartered in Toyota City, Aichi, Japan.",
+      "title": "Company",
+      "webpage": "https://toyota.com",
       "locations": [
-        "US"
+        "US",
+        "Japan"
       ],
-      "webpage": "https://sergey-negrashov.github.io",
-      "skills": [
-        "Programming"
+      "picture": "https://www.allaboutlean.com/wp-content/uploads/2018/11/Toyota-Logo-2.jpg",
+      "email": "humanrelations@toyota.com",
+      "role": "company",
+      "owner": "humanrelations@toyota.com"
+    },
+    {
+      "firstName": "Sephora",
+      "lastName": "",
+      "bio": "Sephora is a French multinational retailer of personal care and beauty products.",
+      "title": "Company",
+      "webpage": "https://sephora.com",
+      "locations": [
+        "US",
+        "Paris"
       ],
-      "projects":[
-        "Open Power Quality"
+      "picture": "https://i2.wp.com/www.growyourbrands.co.uk/wp-content/uploads/2020/10/Sephora-Logo.png?ssl=1",
+      "email": "contact@sephora.com",
+      "role": "company",
+      "owner": "contact@sephora.com"
+    },
+    {
+      "firstName": "Microsoft",
+      "lastName": "",
+      "bio": "Microsoft Corporation is an American multinational technology corporation which produces computer software, consumer electronics, personal computers, and related services.",
+      "title": "Company",
+      "webpage": "https://microsoft.com",
+      "locations": [
+        "US",
+        "Washington D.C"
       ],
-      "picture": "https://sergey-negrashov.github.io/images/serge.jpg",
-      "email": "sin8@hawaii.edu",
-      "role": "admin"
+      "picture": "https://authy.com/wp-content/uploads/new-microsoft-logo-SIZED-SQUARE-300x297.jpg",
+      "email": "student.hr@microsoft.com",
+      "role": "company",
+      "owner": "student.hr@microsoft.com"
+    },
+    {
+      "firstName": "Tesla",
+      "lastName": "",
+      "bio": "Tesla, Inc. is an American electric vehicle and clean energy company based in Austin, Texas, United States.",
+      "title": "Company",
+      "webpage": "https://tesla.com",
+      "locations": [
+        "US",
+        "Texas"
+      ],
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png",
+      "email": "musk@tesla.com",
+      "role": "company",
+      "owner": "musk@tesla.com"
+    },
+    {
+      "firstName": "NASA",
+      "lastName": "",
+      "bio": "The National Aeronautics and Space Administration is an independent agency of the U.S. federal government responsible for the civilian space program, as well as aeronautics and space research.",
+      "title": "Company",
+      "webpage": "https://nasa.com",
+      "locations": [
+        "US",
+        "Washington D.C"
+      ],
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/2449px-NASA_logo.svg.png",
+      "email": "studentinfo@nasa.com",
+      "role": "company",
+      "owner": "studentinfo@nasa.com"
+    },
+    {
+      "firstName": "Sony",
+      "lastName": "",
+      "bio": "Sony Group Corporation, commonly known as Sony and stylized as SONY is a Japanese multinational conglomerate corporation headquartered in Kōnan, Minato, Tokyo, Japan",
+      "title": "Company",
+      "webpage": "https://sony.com",
+      "locations": [
+        "US",
+        "Japan"
+      ],
+      "picture": "https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo-1961-1962.png",
+      "email": "careers@sony.com",
+      "role": "company",
+      "owner": "careers@sony.com"
+    },
+    {
+      "firstName": "Lenovo",
+      "lastName": "",
+      "bio": "Lenovo Group Limited, often shortened to Lenovo, is a Chinese -American multinational technology company specializing in designing, manufacturing, and marketing consumer electronics, personal computers, software, business solutions, and related services.",
+      "title": "Company",
+      "webpage": "https://lenovo.com",
+      "locations": [
+        "US",
+        "Beijing"
+      ],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfvYLZUfBv02s3tJhZhC0h71_mC_CwT4dCDwTabgA6m9oP0BB3aJhtLO-M37p5NPLpKs&usqp=CAU",
+      "email": "careers@lenovo.com",
+      "role": "company",
+      "owner": "careers@lenovo.com"
+    },
+    {
+      "firstName": "AirBnb",
+      "lastName": "Inc. ",
+      "bio": "Airbnb, Inc. is an American company that operates an online marketplace for lodging, primarily homestays for vacation rentals, and tourism activities. ",
+      "title": "Company",
+      "webpage": "https://airbnb.com",
+      "locations": [
+        "US",
+        "California"
+      ],
+      "picture": "https://www.doz.com/cms/wp-content/uploads/2015/03/airbnb-logo.png",
+      "email": "hr@airbnb.com",
+      "role": "company",
+      "owner": "hr@airbnb.com"
     },
     {
       "firstName": "Helene",
@@ -197,9 +379,6 @@
         "Software Engineering",
         "Machine Learning",
         "Robotics"
-      ],
-      "projects":[
-        "Open Power Quality"
       ],
       "picture": "https://heleeha.github.io/images/heleeha.JPG",
       "email": "heleneeh@hawaii.edu",
@@ -220,9 +399,6 @@
         "Machine Learning",
         "Robotics"
       ],
-      "projects":[
-        "Open Power Quality"
-      ],
       "picture": "https://ninanye.github.io/images/nina.jpg",
       "email": "ninavn@hawaii.edu",
       "role": "student"
@@ -241,9 +417,6 @@
         "Software Engineering",
         "Machine Learning",
         "Robotics"
-      ],
-      "projects":[
-        "Open Power Quality"
       ],
       "picture": "https://martkaa.github.io/images/cv.jpeg",
       "email": "aaberge@hawaii.edu",
@@ -264,9 +437,6 @@
         "Machine Learning",
         "Data Science"
       ],
-      "projects":[
-        "Open Power Quality"
-      ],
       "picture": "https://leilani-reich.github.io/images/Profile_Pic.jpg",
       "email": "reichld@hawaii.edu",
       "role": "student"
@@ -286,34 +456,319 @@
         "Data Science",
         "Mathematics"
       ],
-      "projects":[
-        "Open Power Quality"
-      ],
       "picture": "",
       "email": "bryanyagi@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Eris",
+      "lastName": "Hunter",
+      "bio": "I love field hockey and sports in general. I'm also interested in biotechnology.",
+      "title": "Student Athlete",
+      "locations": [
+        "US",
+        "California"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Field hockey",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/yPQCFmTQmN6xsCx6boE9MUD8c9jU5kS5krk-heuemo4/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvOWRkNjBl/ODAtNWFiNi00NWRi/LWExMDgtMmM3Nzhh/NjYzYTNjLmpwZw.jpg",
+      "email": "erish@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Sam",
+      "lastName": "Robinson",
+      "bio": "Working on a master's in Aerospace engineering. I aspire to work for NASA someday.",
+      "title": "Future NASA employee",
+      "locations": [
+        "Hawaii",
+        "California",
+        "Washington D.C"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Aerospace Engineering",
+        "Mathematics"
+      ],
+      "picture": "https://images.generated.photos/3qwE_PF4MwJwP5_B6r8wfHSMCLblths1FTE7KDGbL98/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNjkzZTdi/NmYtZjYzNC00YjI0/LWEyMDMtNDhjNWEz/MDlhNzFmLmpwZw.jpg",
+      "email": "samr@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Ryan",
+      "lastName": "Page",
+      "bio": "I am a business and economics major and a sophomore at the University of Hawaii.",
+      "title": "Business Major",
+      "locations": [
+        "Hawaii",
+        "Honolulu"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Aerospace Engineering",
+        "Math"
+      ],
+      "picture": "https://images.generated.photos/hw9Co43qynDxlR-JJ7hLjHUYbaqzFYPOSer1uWk9SBo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZTRlZjA1/OGUtZWMzNS00ZTYy/LTk0ZDctNDYwNTIy/MmU5MTJkLmpwZw.jpg",
+      "email": "ryanpage@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Richard",
+      "lastName": "Grey",
+      "bio": "I am a senior at University of Hawaii majoring in Marine Biology. I enjoy field work and researching marine life.",
+      "title": "Aspiring Marine Biologist",
+      "locations": [
+        "Hawaii",
+        "Honolulu",
+        "Alaska",
+        "Maui"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/OAOniVTrLzT1RofvWSk4lWZlyulG4xnQ3Vl-ueSWJVo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZjYwYzll/YTUtNTA0Ny00ZGNm/LThlNzAtNmE4Yjdl/NDEyNjVmLmpwZw.jpg",
+      "email": "richardgrey@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Maria",
+      "lastName": "Celene",
+      "bio": "I am a senior majoring in Electronic Engineering. I hope to graduate by Spring 2024.",
+      "title": "Engineering student",
+      "locations": [
+        "California",
+        "Arizona",
+        "Hawaii"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Engineering",
+        "Creating circuits"
+      ],
+      "picture": "https://images.generated.photos/QMKKxLsqrriaiFGOJi0REAml5s0ELLUuFK5Oo7VbLxc/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMTRhMTAw/ZDEtN2U5OS00NGZh/LWE4ZjMtZWZhNjhh/ZTNiMjMxLmpwZw.jpg",
+      "email": "mariac@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Bobby",
+      "lastName": "Maxwell",
+      "bio": "I'm a senior taking classes online on UH while living in Virginia. I am a double major in Psychology and Economics.",
+      "title": "Social Sciences Student",
+      "locations": [
+        "Virginia",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "bobbym@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Ola",
+      "lastName": "Nordmann",
+      "bio": "I'm a MIX exchange student from Norway. My major is Nanotechnology.",
+      "title": "Engineering Student",
+      "locations": [
+        "Trondheim",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "olan@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Kari",
+      "lastName": "Nordmann",
+      "bio": "I'm a MIX exchange student from Norway. My major is Nanotechnology.",
+      "title": "Engineering Student",
+      "locations": [
+        "Trondheim",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Science"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "karin@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Kenny",
+      "lastName": "Jenn",
+      "bio": "I'm a Phsycology Student from Texas.",
+      "title": "Phsycology Student",
+      "locations": [
+        "Texas",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Phsycology"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "kennyj@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Kim",
+      "lastName": "Ye",
+      "bio": "I'm a exchange student from Japan. My major is Biology.",
+      "title": "Biology Student",
+      "locations": [
+        "Japan",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Phsycology"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "kimy@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Karen",
+      "lastName": "Obrian",
+      "bio": "I'm a Physics student in Philadelphia.",
+      "title": "Physics Student",
+      "locations": [
+        "Philadelphia",
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Physics"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "kareno@hawaii.edu",
       "role": "student"
     }
   ],
   "defaultReports": [
     {
-      "reportName": "Inappropriate student",
-      "email": "johnson@hawaii.edu",
-      "description": "fake-person@hawaii.edu has included vulgar content in her profile page."
+      "reportType": "bug",
+      "email": "ninavn@hawaii.edu",
+      "description": "The Browse Students and Browse Companies pages are not loading on my end. There may be an issue with the database. I know several others who've had similar issues. Please look into this."
     },
     {
-      "reportName": "A bad apple",
-      "email": "apple@apple.com",
-      "description": "app1e@app1e.com is masquerading as my company on the site. They are posting events that do not exist and are slandering my company's name on the page they've made. Please take them down."
+      "reportType": "bug",
+      "email": "bryanyagi@hawaii.edu",
+      "description": "There seems to be a problem loading user data on the Browse Companies and Browse Students pages. When I go to these pages, all I see is a loading icon that says 'getting data,' even after waiting five minutes."
     },
     {
-      "reportName": "Offensive User",
-      "email": "reichld@hawaii.edu",
-      "description": "I came across the user (fake-person2@gmail.com) who has put rather offensive content in their profile description."
+      "reportType": "bug",
+      "email": "samsung@samsung.com",
+      "description": "I was attempting to log into Bridging the Gap last night, December 4th at 10:00pm, but the site was completely down. It works fine today, however. I'm not sure if maintenance was going on, but if not, it's something your team should look into."
     },
     {
-      "reportName": "Suspicious link",
+      "reportType": "bug",
+      "email": "erish@hawaii.edu",
+      "description": "I was testing the functionality of the site and came across something concerning. When I inserted a long description into my student profile, the height of the card increased dramatically. And when I went to the Browse Students page, every profile on the same row as my card became the same long height. I think there should be a limit put on the number of words you can have in your profile description."
+    },
+    {
+      "reportType": "other",
+      "email": "fedex@fedex.com",
+      "description": "I have a suggestion regarding the company homepage. Upon signing up, I tried adding a job listing but nothing happened when I clicked the button. It took me a while to realize that I had to click directly on the 'Add Job Listing' text to go and add a job listing. Is there a way you can change the ui so that you can simply click on the grey button surrounding the 'Add Job Listing' text to go to the link? And the same goes for the events page."
+    },
+    {
+      "reportType": "other",
+      "email": "google@google.com",
+      "description": "My team and I have noticed the range of locations to search by is very limited. Is there a way we could add our own categories? If not, is it possible you could add Canada, Dublin, London, Singapore, Hyderabad, Sydney, and Tokyo to the locations list? These are some of our global headquarters. Actually, it'd be best if there were more global locations in general for all the companies registered on this site."
+    },
+    {
+      "reportType": "other",
       "email": "samsung@samsung.com",
       "description": "While searching through students' profiles for potential job candidates, I came across a user by the name Jason Leigh (leighj@hawaii.edu). When I clicked the link to his portfolio page, I was sent somewhere unexpected and I think I may have downloaded a virus. Please look into the matter and contact us when you know more."
+    },
+    {
+      "reportType": "user-abuse",
+      "email": "aaberge@hawaii.edu",
+      "description": "kylietompson@hawaii.edu has included vulgar content in her profile description."
+    },
+    {
+      "reportType": "user-abuse",
+      "email": "apple@apple.com",
+      "description": "app1e@app1e.com is masquerading as my company on the site. They are posting Apple events and creating fake job listings. Please take them down."
+    },
+    {
+      "reportType": "user-abuse",
+      "email": "reichld@hawaii.edu",
+      "description": "I came across the user bgray@gmail.com who has set an inappropriate image as his profile picture instead of a normal headshot."
+    },
+    {
+      "reportType": "bug",
+      "email": "heleneeh@hawaii.edu",
+      "description": "The links to the events in the events page are not working. By links, I am referring to the title of the events, such as Apple's 'The Future of Technology conference,' which should redirect to the external event page, but does nothing when I click on it."
+    },
+    {
+      "reportType": "other",
+      "email": "ryanpage@hawaii.edu",
+      "description": "There are only 6 skill options to filter by in the Browse Students page, but students can type whatever skills they want in their profile. Can you add skill categories for filtering that match more of our skills?"
+    },
+    {
+      "reportType": "other",
+      "email": "samr@hawaii.edu",
+      "description": "The search categories for both companies and students is very limited and needs to be expanded upon. For instance, the skills we can search by for students is limited to people in computer science/the STEM field but it should be more inclusive."
+    },
+    {
+      "reportType": "user-abuse",
+      "email": "mariac@hawaii.edu",
+      "description": "Someone is pretending to be Apple. They're using the contact email app1e@app1e.com, and their job listings look like scams."
+    },
+    {
+      "reportType": "bug",
+      "email": "erictompson@hawaii.edu",
+      "description": "I am trying to submit my CV but when I click the link to do so (in the student homepage) nothing happens."
+    },
+    {
+      "reportType": "other",
+      "email": "richardgrey@hawaii.edu",
+      "description": "Not sure if this constitutes user abuse, but Walmart, Toyota, and FedEx have added a lot of job listings in the past hour, so it was a little frustrating looking through the job listings to find ones that match my computer-science interests. I think there should be a limit on how many job listings a company can add a day, or at least a way to filter job listings by what type they are."
+    },
+    {
+      "reportType": "user-abuse",
+      "email": "bobbym@hawaii.edu",
+      "description": "I've noticed that bgray@gmail.com and kylietompson@hawaii.edu have inappropriate/vulgar content in their profiles. Also, bgray@gmail.com is one of the only users I've seen without a UH email."
+    },
+    {
+      "reportType": "user-abuse",
+      "email": "ninavn@hawaii.edu",
+      "description": "This may have been an accident, I'm not sure, but Loren Parker has made multiple accounts on Bridging the Gap. In her first account, she uses the email 'lorenP@gmail.com' and in the second she uses 'lorenP@hawaii.edu'."
+    },
+    {
+      "reportType": "bug",
+      "email": "google@google.com",
+      "description": "I added two events to the events page yesterday, but when I logged back in today. one of them seem to have disappeared. The event that disappeared was called 'Spend a day at the Google Headquarters'. Please look into this issue and contact us when you know what happened."
+    },
+    {
+      "reportType": "bug",
+      "email": "walmart@walmart.com",
+      "description": "There is an issue with adding events. They seem to disappear after I create them in my homepage, which is unfortunate because our team has an event coming up in a week for college students. Please look into this problem as soon as possible."
     }
   ],
   "defaultProjects": [
@@ -355,13 +810,114 @@
   ],
   "defaultJob": [
     {
-      "jobTitle": "Default Title",
-      "location": "Earth",
-      "salary": "$50,000",
-      "industry": "Default Industry",
-      "image": "http://www.photos-public-domain.com/wp-content/uploads/2016/02/cirrus-clouds.jpg",
-      "description": "Default Description",
-      "owner": "apple@apple.com"
+      "jobTitle": "Software Engineering Internship at Apple",
+      "location": "California",
+      "salary": "$3,000/month",
+      "industry": "Tech Industry",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/160px-Apple_logo_black.svg.png",
+      "description": "Imagine what you could do here. At Apple, extraordinary ideas have a way of becoming phenomenal products, services, and customer experiences very quickly. Bring passion and dedication to your job and there's no telling what you could accomplish. Apple’s University Recruiting team is looking for a highly motivated, engineering students with a strong background in Back-End Engineering, Core OS, and Web Development to join its team of highly skilled software engineers.",
+      "owner": "humanrelations@apple.com",
+      "link": "https://jobs.apple.com/en-us/details/200253195/software-engineering-internship?team=STDNT"
+    },
+    {
+      "jobTitle": "Student Training in Engineering Program (STEP) Intern, 2022",
+      "location": "China",
+      "salary": "$3,000/month",
+      "industry": "Technology",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
+      "description": "Google is invested in increasing the number of future computer scientists and software developers, particularly those who are historically underrepresented in the field. Many aspiring computer scientists could benefit from a program that bridges the gap between academic study and a professional internship. Google aims to inspire these underrepresented students to continue in the field with such a program. With this in mind, Google is pleased to announce the 2022 STEP internship in China. It will be open to under-represented groups who will be in the second year of their university studies by the Summer of 2022 and are studying Computer Science or a related subject. This program includes three main components: a software project, skills-based training, and professional development.",
+      "owner": "hr@google.com",
+      "link": "https://careers.google.com/jobs/results/79899759344526022-student-training-in-engineering-program-step-intern-2022/?category=DATA_CENTER_OPERATIONS&category=DEVELOPER_RELATIONS&category=HARDWARE_ENGINEERING&category=INFORMATION_TECHNOLOGY&category=MANUFACTURING_SUPPLY_CHAIN&category=NETWORK_ENGINEERING&category=PRODUCT_MANAGEMENT&category=PROGRAM_MANAGEMENT&category=SOFTWARE_ENGINEERING&category=TECHNICAL_INFRASTRUCTURE_ENGINEERING&category=TECHNICAL_SOLUTIONS&category=TECHNICAL_WRITING&category=USER_EXPERIENCE&company=Google&distance=50&employment_type=INTERN&jex=ENTRY_LEVEL"
+    },
+    {
+      "jobTitle": "MBA Intern, 2022",
+      "location": "Taiwan",
+      "salary": "$3,000/month",
+      "industry": "Business",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/500px-Google_2015_logo.svg.png",
+      "description": "Google invites you to join us for a unique summer experience in a 10-week paid internship for MBA students. Our MBA interns work on projects handling some of the most cutting-edge business challenges in the tech industry. Our graduate interns have joined us in areas across the business, such as Marketing, Advertising Sales and Operations, Cloud and more.",
+      "owner": "hr@google.com",
+      "link": "https://careers.google.com/jobs/results/96290980056965830-mba-intern-2022/?category=ADMINISTRATIVE&category=BUSINESS_STRATEGY&category=FINANCE&category=LEGAL&category=MARKETING&category=PARTNERSHIPS&category=PEOPLEOPS&category=PRODUCT_SUPPORT&category=PROGRAM_MANAGEMENT&category=REAL_ESTATE&category=SALES&category=SALES_OPERATIONS&company=Google&company=YouTube&employment_type=INTERN&jex=ENTRY_LEVEL"
+    },
+    {
+      "jobTitle": "Full Stack Engineer Summer 2022 Internship, Bachelors",
+      "location": "San Fransisco, California",
+      "salary": "$3,000/month",
+      "industry": "Tech Industry",
+      "image": "https://jobs.cisco.com/portal/4/images/logo.svg",
+      "description": "Summer Internship (May - August 2022), full-time work schedule, Monday- Friday 40 hours per week.  As a Full Stack Engineer at Meraki, you will help craft and build features for Meraki's Dashboard - the window to the entire Meraki experience. From Dashboard, our customers can control their entire Meraki stack: access points, switches, firewalls, client devices, cameras, and more. You will work across the stack with other developers, UX designers, and product management to build and improve the Dashboard web application. Meraki engineers put the customer experience first, own projects from beginning to end, and are empowered to make impactful decisions.",
+      "owner": "anna_b@cisco.com",
+      "link": "https://jobs.cisco.com/jobs/ProjectDetail/Full-Stack-Engineer-Summer-2022-Internship-Bachelors-Meraki/1353180"
+    },
+    {
+      "jobTitle": "Personal Banker",
+      "location": "Hawaii",
+      "salary": "$42,000",
+      "industry": "Banking",
+      "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
+      "description": "Frequently consults with portfolio clients via needs based, financial planning conversations.  Solves clients problems and achieves their goal by applying knowledge of bank products.  Leverages financial acumen to refer prospects to Private Banking, Business Banking, Wealth Management, and Mortgage Department/Teams.  Responsible for retention and growth of assigned Personal Banker portfolio.",
+      "owner": "alex.m@fhb.com",
+      "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4046"
+    },
+    {
+      "jobTitle": "Business Banking Associate",
+      "location": "Hawaii",
+      "salary": "$40,000",
+      "industry": "Banking",
+      "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
+      "description": "Under the direction of the Retail Banking Regional Manager, Business Banking Market Manager or Team Leader, provide client servicing, credit support for the Business Banking Team including the preparation of client correspondence, credit requests, financial analysis and loan administration.  Assist in credit administration, along with the sale and servicing of related products and services.  Emphasis on learning credit skills including financial analysis of business and personal income statements, balance sheets, and cash flow, risk ratings, and compliance.",
+      "owner": "alex.m@fhb.com",
+      "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4136"
+    },
+    {
+      "jobTitle": "Help Desk Technician I",
+      "location": "Hawaii",
+      "salary": "$35,000",
+      "industry": "Banking",
+      "image": "https://staticphg.tbe.taleo.net/phg02/ats/cacheable/R21D20_21-12-01-09-00-47-21.D_prod/servlet/dynamic/images/imge_1039.png?lastUploaded=1428095192000&org=FHB",
+      "description": "Responsible for providing technical phone support while monitoring and maintaining FHB systems (e.g., ATM, Servers, Backups, etc.) in a 24x7x365 high availability production environment. Troubleshoot issues and failures related to hardware, services, and network.",
+      "owner": "alex.m@fhb.com",
+      "link": "https://phg.tbe.taleo.net/phg02/ats/careers/v2/viewRequisition?org=FHB&cws=38&rid=4292"
+    },
+    {
+      "jobTitle": "Health Careers Summer Internship",
+      "location": "Hawaii",
+      "salary": "$2,000/month",
+      "industry": "Health",
+      "image": "https://www.hawaiipacifichealth.org/media/4413/hawaii-pacific-health.png",
+      "description": "Since its inception in 2004, over 900 students have participated in Hawaii Pacific Health's, Health Careers Summer Internship. This 6 week, paid internship program is designed to provide high school juniors, seniors and college students a rare opportunity to gain first-hand experience in the health care industry. Interns have the opportunity to learn more about hospital systems, interact with experienced health care professionals, and explore a variety of different health care professions. Internships are offered at Hawaii Pacific Health and our network of medical centers in Hawaii, including Kapiolani Medical Center for Women & Children, Pali Momi Medical Center, Straub Medical Center, Wilcox Medical Center, and Kauai Medical Clinic.",
+      "owner": "jobs@hawaiipacifichealth.org",
+      "link": "https://www.hawaiipacifichealth.org/careers/find-your-career/students/health-careers-summer-internship/"
+    },
+    {
+      "jobTitle": "Software Developer Engineer, IT - DevOps",
+      "location": "Hawaii",
+      "salary": "$48,000",
+      "industry": "Technology",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "description": "The DevOps team at Hawaiian Airlines has a mission to provide development teams the tools they need to effectively and easily deliver features to production through the practice of continuous integration and continuous delivery.  We believe in managing our systems from idea all the way to production optimization.As a team we strive to better ourselves and development practices here at Hawaiian Airlines.  We believe in continuous improvement in ourselves, our team, and in how we work as a technology organization.",
+      "owner": "jobs@HawaiianAir.com",
+      "link": "https://rn11.ultipro.com/HAW1000/JobBoard/JobDetails.aspx?__ID=*90D6981DCFB2361F"
+    },
+    {
+      "jobTitle": "Engineer - Avionics",
+      "location": "Hawaii",
+      "salary": "$39,000",
+      "industry": "Technology",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "description": "Serves as a primary avionics engineer, with experience in parameter analysis, ACMS/AOC/CMF/ACMF databases, SATCOM, ADS-B, weather radar, TCAS, ATC and transponder systems.  Performs data analysis and validation for DFDR, FDIMU/DFDAU.  Assists with troubleshooting systems, building and maintaining aircraft and component software configurations, and all digital platform interfaces, often working with Flight Operations and Flight Crews.",
+      "owner": "jobs@HawaiianAir.com",
+      "link": "https://rn11.ultipro.com/HAW1000/JobBoard/JobDetails.aspx?__ID=*3CCDE458B428CD86"
+    },
+    {
+      "jobTitle": "Analyst, Domestic Pricing",
+      "location": "Hawaii",
+      "salary": "$40,000",
+      "industry": "Finance",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "description": "At Hawaiian Airlines, we are all about welcoming our guests with Hawaiian hospitality and aloha, and taking care of our people, our home and the communities we serve.  Join our ‘ohana and be a part of an exciting team of professionals dedicated to serving our kama‘āina and introducing our islands to the world!",
+      "owner": "jobs@HawaiianAir.com",
+      "link": "https://rn11.ultipro.com/HAW1000/JobBoard/JobDetails.aspx?__ID=*23284C7F22C9A133"
     }
   ],
   "loadAssetsFile":  false

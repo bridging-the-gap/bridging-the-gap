@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
+import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 
 function Feedback() {
@@ -37,11 +38,7 @@ function Feedback() {
       )
         .then((response) => {
           console.log('SUCCESS!', response.status, response.text);
-          Swal.fire({
-            title: 'Message Received',
-            text: 'Thank you for your feedback!',
-            icon: 'success',
-          });
+          swal('Message received!', 'Thank you for your feedback!', 'success');
         })
         .catch((err) => {
           console.log('FAILED...', err);
@@ -85,8 +82,9 @@ function Feedback() {
         </Form.Group>
         <Form.Group>
           <TextArea required id='feedback' name='feedback' placeholder='Let us know what you think!'
-            style={{ width: '500px' }} type='text' value={toSend.feedback} onChange={handleChange} onKeyPress={keypress} />
-          <Button type='submit' size='huge' style={{ float: 'right' }}>Send</Button>
+            style={{ width: '500px', maxHeight: '200px', minHeight: '100px' }}
+            type='text' value={toSend.feedback} onChange={handleChange} onKeyPress={keypress} />
+          <Button id='feedback-button' type='submit' size='huge' style={{ float: 'right' }}>Send</Button>
         </Form.Group>
       </Form>
     </Grid.Row>

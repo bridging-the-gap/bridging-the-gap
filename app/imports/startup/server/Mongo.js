@@ -8,11 +8,12 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
+import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
 import { Reports } from '../../api/reports/Reports';
-import { Companies } from '../../api/company/Companies';
 import { Jobs } from '../../api/job/Jobs';
 
 /* eslint-disable no-console */
@@ -80,36 +81,41 @@ function addProject({ name, homepage, description, locations, skills, picture, r
 }
 
 /** Define a new event. Error if event already exists.  */
-function addEvent({ eventName, company, date, location, description, picture }) {
+function addEvent({ eventName, company, date, location, description, picture, owner }) {
   console.log(`Defining event ${eventName}`);
-  Events.collection.insert({ eventName, company, date, location, description, picture });
+  Events.collection.insert({ eventName, company, date, location, description, picture, owner });
+  ProfilesEvents.collection.insert({ profile: owner, event: eventName });
+}
+
+function addJob({ jobTitle, location, salary, industry, image, description, link, owner }) {
+  console.log(`Defining job ${jobTitle}`);
+  Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, link, owner });
+  ProfilesJobs.collection.insert({ profile: owner, job: jobTitle });
 }
 
 /** Define a new report. Error if report already exists.  */
-function addReport({ reportName, email, description }) {
-  console.log(`Defining report ${reportName}`);
+function addReport({ reportType, email, description }) {
+  console.log(`Defining report from ${email} of type ${reportType}`);
   // Create the report.
-  Reports.collection.insert({ reportName, email, description });
+  Reports.collection.insert({ reportType, email, description });
 }
 
 /** Initialize the database with default company info  */
-function addCompany(companyData) {
+/** function addCompany(companyData) {
   console.log(` Adding: ${companyData.companyName}`);
   Companies.collection.insert(companyData);
 }
 /** Initialize company database if empty */
+/**
 if (Companies.collection.find().count() === 0) {
   if (Meteor.settings.defaultCompany) {
     console.log('Creating default company.');
     Meteor.settings.defaultCompany.map(companyData => addCompany(companyData));
   }
-}
+} */
 
 /** Initialize the database with default Job info  */
-function addJob(jobData) {
-  console.log(` Adding: ${jobData.jobTitle}`);
-  Jobs.collection.insert(jobData);
-}
+
 /** Initialize company database if empty */
 if (Jobs.collection.find().count() === 0) {
   if (Meteor.settings.defaultJob) {
