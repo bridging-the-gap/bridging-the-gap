@@ -35,13 +35,13 @@ function getProfileData(email) {
   const data = Events.collection.findOne({ eventName: event });
   // const data = Events.collection.find({ eventName: event }).fetch();
   // console.log('data', data);
-  const specificData = _.pluck(ProfilesEvents.collection.find({ profile: email }).fetch(), 'event');
+  // const specificData = _.pluck(ProfilesEvents.collection.find({ profile: email }).fetch(), 'event');
   // console.log('specificdata', specificData);
   // const myData = _.filter(data, function (myEvent) { return _.contains(specificData, myEvent.eventName); });
   // console.log('mydata', myData);
 } */
-function getProfileEventsData(email) {
-  const data = ProfilesEvents.collection.findOne({ email });
+function getProfileEventsData(event) {
+  const data = Events.collection.findOne({ eventName: event });
   return _.extend({ }, data);
 }
 
@@ -156,7 +156,8 @@ class Home extends React.Component {
                   {_.map(profilesEventsData, (event, index) => {
                     if (ProfilesEvents.collection.find({ profile: Meteor.user().username, event: event.eventName }).fetch().length === 1) {
                       return <MakeItem key={index} event={event}/>;
-                    } return '';
+                    }
+                    return '';
                   })
                   }
                 </Item.Group></Segment>
