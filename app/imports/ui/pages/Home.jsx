@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
-// import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
 import Company from '../components/Company';
@@ -31,15 +31,15 @@ function getProfileData(email) {
   return _.extend({ }, data, { locations, skills });
 }
 
-function getProfileEventsData(event) {
+/* function getProfileEventsData(event) {
   const data = Events.collection.findOne({ eventName: event });
   // const data = Events.collection.find({ eventName: event }).fetch();
   // console.log('data', data);
-  // const specificData = _.pluck(ProfilesEvents.collection.find({ profile: email }).fetch(), 'event');
+  const specificData = _.pluck(ProfilesEvents.collection.find({ profile: email }).fetch(), 'event');
   // console.log('specificdata', specificData);
   // const myData = _.filter(data, function (myEvent) { return _.contains(specificData, myEvent.eventName); });
   // console.log('mydata', myData);
-
+} */
 function getProfileEventsData(email) {
   const data = ProfilesEvents.collection.findOne({ email });
   return _.extend({ }, data);
