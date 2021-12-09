@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
+// import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
 import Company from '../components/Company';
@@ -30,7 +30,7 @@ function getProfileData(email) {
   // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
   return _.extend({ }, data, { locations, skills });
 }
-
+/*
 function getProfileEventsData(email) {
   const data = ProfilesEvents.collection.findOne({ email });
   return _.extend({ }, data);
@@ -40,7 +40,7 @@ function getProfileJobsData(email) {
   const data = ProfilesJobs.collection.findOne({ email });
   return _.extend({ }, data);
 }
-
+*/
 const MakeItem = (props) => (
   <Item>
     <Item.Image size="small" src={props.event.picture}/>
@@ -78,10 +78,10 @@ class Home extends React.Component {
     // const profileData = Profiles.collection.findOne({ email });
     const companyData = getProfileData(email);
     // const profileData = getProfileData(email);
-    const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
-    const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
-    const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
-    const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
+    // const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
+    // const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
+    // const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
+    /// const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
     // const email = Meteor.user().username;
     // const profile = Profiles.collection.findOne({ email });
     return (
@@ -197,4 +197,3 @@ export default withTracker(() => {
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready() && sub8.ready(),
   };
 })(Home);
-
