@@ -68,6 +68,31 @@ const MakeItem = (props) => (
   </Item>
 );
 
+const MakeJobItem = (props) => (
+  <Item>
+    <Item.Image size="small" src={props.job.image}/>
+    <Item.Content verticalAlign='middle'>
+      <Item.Header as='a'>{props.job.jobTitle}</Item.Header>
+      <Item.Meta>
+        <span className='owner'>{props.job.owner}{' - '}{props.job.industry}</span>
+      </Item.Meta>
+      <Item><span className='salary'>{'Salary: '}{props.job.salary}</span></Item>
+      <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
+      <Item.Description>{props.job.description}</Item.Description>
+      <Item.Extra>
+        <Button floated='right'>
+          <a href={props.job.link}>Apply</a>
+          <Icon name='right chevron' />
+        </Button>
+      </Item.Extra>
+    </Item.Content>
+  </Item>
+);
+
+MakeJobItem.propTypes = {
+  job: PropTypes.object.isRequired,
+};
+
 MakeItem.propTypes = {
   event: PropTypes.object.isRequired,
 };
@@ -135,7 +160,12 @@ class Home extends React.Component {
               <Header as="h3" textAlign="center">Your Job Listings</Header>
               <Segment>
                 <Item.Group divided>
-                  {_.map(profilesJobsData, (job, index) => <MakeItem key={index} job={job}/>)}
+                  {_.map(profilesJobsData, (job, index) => {
+                    if (ProfilesJobs.collection.find({ profile: Meteor.user().username, job: job.jobTitle }).fetch().length === 1) {
+                      return <MakeJobItem key={index} job={job}/>;
+                    } return '';
+                  })
+                  }
                 </Item.Group></Segment>
             </Grid.Column>
           </Grid> : ''}
