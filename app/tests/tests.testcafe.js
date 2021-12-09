@@ -15,12 +15,12 @@ import { jobsPage } from './jobs.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const student = { username: 'johnson@hawaii.edu', password: 'foo', role: 'student',
-  firstName: 'Philip', lastName: 'Johnson' };
+const student = { username: 'reichld@hawaii.edu', password: 'foo', role: 'student',
+  firstName: 'Leilani', lastName: 'Reich' };
 const company = { username: 'hr@google.com', password: 'foo', role: 'company',
   firstName: 'Google', lastName: '' };
-const admin = { username: 'sin8@hawaii.edu', password: 'foo', role: 'admin',
-  firstName: 'Serge', lastName: 'Negrashov' };
+const admin = { username: 'johnson@hawaii.edu', password: 'foo', role: 'admin',
+  firstName: 'Philip', lastName: 'Johnson' };
 
 fixture('Bridging the Gap localhost test with default db')
   .page('http://localhost:3000');
