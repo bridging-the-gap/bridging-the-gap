@@ -28,8 +28,6 @@ function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
   return _.extend({ }, data, { locations, skills });
 }
 
@@ -105,7 +103,13 @@ class ProfilesPage extends React.Component {
                   <List size={'large'}>
                     <List.Item icon={'mail'} content={companyData.email}/>
                     <List.Item/>
-                    <List.Item icon={'marker'} content={_.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location')}/>
+                    <List.Item icon={'globe'} content={companyData.webpage}/>
+                    <List.Item/>
+                    <List.Item icon={'industry'} content={companyData.title}/>
+                    <List.Item/>
+                    <List.Item icon={'map marker alternate'}
+                      content={_.map(companyData.locations,
+                        (interest, index) => <Label key={index} size='tiny' color='teal' tag>{interest}</Label>)}/>
                     <List.Item/>
                     <List.Item>
                       <List.Icon name={'address card outline'}/>

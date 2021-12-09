@@ -16,7 +16,8 @@ function getJobData(jobTitle) {
 
 const handleClick = (job) => {
   const profile = Meteor.user().username;
-  ProfilesJobs.collection.insert({ job, profile },
+  const profJob = `${profile} ${job}`;
+  ProfilesJobs.collection.insert({ job, profile, profJob },
     (error) => {
       if (error) {
         swal('Error', 'Cannot favorite a message multiple times', 'error');

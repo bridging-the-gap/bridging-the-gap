@@ -1,8 +1,5 @@
 import React from 'react';
 import { Container, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
 import { _ } from 'meteor/underscore';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
@@ -12,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
 import Company from '../components/Company';
@@ -23,8 +21,6 @@ import ReportFilter from '../components/ReportFilter';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-// import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-// import { Projects } from '../../api/projects/Projects';
 
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
@@ -33,6 +29,16 @@ function getProfileData(email) {
   // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
   // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
   return _.extend({ }, data, { locations, skills });
+}
+
+function getProfileEventsData(email) {
+  const data = ProfilesEvents.collection.findOne({ email });
+  return _.extend({ }, data);
+}
+
+function getProfileJobsData(email) {
+  const data = ProfilesJobs.collection.findOne({ email });
+  return _.extend({ }, data);
 }
 
 const MakeItem = (props) => (
@@ -58,22 +64,6 @@ MakeItem.propTypes = {
   event: PropTypes.object.isRequired,
 };
 
-// Create a schema to specify the structure of the data to appear in the form.
-// For admin page: email section.
-const studentSchema = new SimpleSchema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  title: String,
-  locations: String,
-  skills: String,
-  projects: String,
-  picture: String,
-  bio: String,
-});
-
-const bridge1 = new SimpleSchema2Bridge(studentSchema);
-
 class Home extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -83,10 +73,15 @@ class Home extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    let fRef = null;
+    // let fRef = null;
     const email = Meteor.user().username;
     // const profileData = Profiles.collection.findOne({ email });
     const companyData = getProfileData(email);
+    // const profileData = getProfileData(email);
+    const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
+    const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
+    const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
+    const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
     // const email = Meteor.user().username;
     // const profile = Profiles.collection.findOne({ email });
     return (
@@ -117,11 +112,7 @@ class Home extends React.Component {
               <Header as="h3" textAlign="center">Your Events</Header>
               <Segment>
                 <Item.Group divided>
-                  <Item>
-                    <Item.Content>
-                      <Item.Header>Favorite event</Item.Header>
-                    </Item.Content>
-                  </Item>
+                  {_.map(profilesEventsData, (event, index) => <MakeItem key={index} project={event}/>)}
                 </Item.Group></Segment>
             </Grid.Column>
             <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
@@ -137,6 +128,7 @@ class Home extends React.Component {
                       </Item.Meta>
                     </Item.Content>
                   </Item>
+                  {_.map(profilesJobsData, (job, index) => <MakeItem key={index} project={job}/>)}
                 </Item.Group></Segment>
             </Grid.Column>
           </Grid> : ''}
