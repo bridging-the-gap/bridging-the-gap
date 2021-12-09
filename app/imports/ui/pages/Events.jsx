@@ -1,13 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Button, Item } from 'semantic-ui-react';
+import { Container, Loader, Item } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import swal from 'sweetalert';
-import { Roles } from 'meteor/alanning:roles';
 import { Events } from '../../api/events/Events';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
+import MakeEvent from '../components/MakeEvent';
 
 /** Gets the Event-data. */
 function getEventData(eventName) {
@@ -15,7 +14,7 @@ function getEventData(eventName) {
   return _.extend({ }, data);
 }
 
-const handleClick = (event) => {
+/* const handleClick = (event) => {
   const profile = Meteor.user().username;
   const profEvent = `${event} ${profile}`;
   ProfilesEvents.collection.insert({ event, profile, profEvent },
@@ -48,7 +47,7 @@ const MakeItem = (props) => (
 
 MakeItem.propTypes = {
   event: PropTypes.object.isRequired,
-};
+}; */
 
 /** Renders the Event Collection as a set of Cards. */
 class EventsPage extends React.Component {
@@ -60,15 +59,13 @@ class EventsPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    // const email = Meteor.user().username;
     const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
     console.log(eventData);
     return (
       <Container id="events-page">
         <Item.Group>
-          {_.map(eventData, (event, index) => (Roles.userIsInRole(Meteor.userId(), 'student') ?
-            <MakeItem key={index} event={event}/> : ''))}
+          {_.map(eventData, (event, index) => <MakeEvent key={index} event={event}/>)}
         </Item.Group>
       </Container>
     );

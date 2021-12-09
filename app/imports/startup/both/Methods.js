@@ -4,6 +4,8 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
+import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Skills } from '../../api/skills/Skills';
 import { Locations } from '../../api/locations/Locations';
 import { Jobs } from '../../api/job/Jobs';
@@ -151,5 +153,33 @@ Meteor.methods({
   },
 });
 
+const removeProfileJobMethod = 'ProfileJob.remove';
+
+/**
+ * The server-side ProfileJob.remove Meteor Method is called by MakeJob.jsx
+ * after pushing the favorite button again to unfavorite a job in JobListings.jsx or Home.jsx.
+ * Its purpose is to update the ProfilesJobs collection to reflect the
+ * updated situation specified by the student.
+ */
+Meteor.methods({
+  'ProfileJob.remove'({ profJob }) {
+    ProfilesJobs.collection.remove({ profJob: profJob });
+  },
+});
+
+const removeProfileEventMethod = 'ProfileEvent.remove';
+
+/**
+ * The server-side ProfileEvent.remove Meteor Method is called by MakeEvent.jsx
+ * after pushing the favorite button again to unfavorite an event in Events.jsx or Home.jsx.
+ * Its purpose is to update the ProfilesEvents collection to reflect the
+ * updated situation specified by the student.
+ */
+Meteor.methods({
+  'ProfileEvent.remove'({ profEvent }) {
+    ProfilesEvents.collection.remove({ profEvent: profEvent });
+  },
+});
+
 export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addRoleMethod,
-  addCategoryMethod, addSpecificInfoMethod, addJobMethod };
+  addCategoryMethod, addSpecificInfoMethod, addJobMethod, removeProfileJobMethod, removeProfileEventMethod };

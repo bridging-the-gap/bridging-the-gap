@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Button, Icon, Item } from 'semantic-ui-react';
+import { Container, Loader, Item } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import swal from 'sweetalert';
 import { Jobs } from '../../api/job/Jobs';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
+import MakeJob from '../components/MakeJob';
 
 /** Gets the Event-data. */
 function getJobData(jobTitle) {
@@ -14,7 +14,7 @@ function getJobData(jobTitle) {
   return _.extend({ }, data);
 }
 
-const handleClick = (job) => {
+/* const handleClick = (job) => {
   const profile = Meteor.user().username;
   const profJob = `${profile} ${job}`;
   ProfilesJobs.collection.insert({ job, profile, profJob },
@@ -25,7 +25,7 @@ const handleClick = (job) => {
         swal('Success', 'Job favorited successfully', 'success');
       }
     });
-};
+}; */
 
 /* jobTitle: String,
     location: String,
@@ -34,7 +34,7 @@ const handleClick = (job) => {
     image: { type: String, optional: true },
 description: String,
     owner: String, */
-const MakeItem = (props) => (
+/* const MakeItem = (props) => (
   <Item>
     <Item.Image size="small" src={props.job.image}/>
     <Item.Content verticalAlign='middle'>
@@ -60,7 +60,7 @@ const MakeItem = (props) => (
 
 MakeItem.propTypes = {
   job: PropTypes.object.isRequired,
-};
+}; */
 
 /** Renders the Event Collection as a set of Cards. */
 class JobsPage extends React.Component {
@@ -76,7 +76,7 @@ class JobsPage extends React.Component {
     return (
       <Container id="jobs-page">
         <Item.Group>
-          {_.map(jobData, (job, index) => <MakeItem key={index} job={job}/>)}
+          {_.map(jobData, (job, index) => <MakeJob key={index} job={job}/>)}
         </Item.Group>
       </Container>
     );
