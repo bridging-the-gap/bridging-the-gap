@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
+// import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
 import Company from '../components/Company';
@@ -21,8 +21,6 @@ import ReportFilter from '../components/ReportFilter';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-// import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-// import { Projects } from '../../api/projects/Projects';
 
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
@@ -41,6 +39,9 @@ function getProfileEventsData(event) {
   // console.log('specificdata', specificData);
   // const myData = _.filter(data, function (myEvent) { return _.contains(specificData, myEvent.eventName); });
   // console.log('mydata', myData);
+
+function getProfileEventsData(email) {
+  const data = ProfilesEvents.collection.findOne({ email });
   return _.extend({ }, data);
 }
 
@@ -118,6 +119,10 @@ class Home extends React.Component {
     // console.log(profilesEvents);
     const profilesJobs = _.pluck(ProfilesJobs.collection.find({ profile: email }).fetch(), 'job');
     const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
+    // const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
+    // const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
+    // const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
+    /// const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
     // const email = Meteor.user().username;
     // const profile = Profiles.collection.findOne({ email });
     return (
@@ -166,6 +171,14 @@ class Home extends React.Component {
                     } return '';
                   })
                   }
+                  <Item>
+                    <Item.Content>
+                      <Item.Header>Create Job Agent</Item.Header>
+                      <Item.Meta>
+                        <Button primary>Submit CV</Button>
+                      </Item.Meta>
+                    </Item.Content>
+                  </Item>
                 </Item.Group></Segment>
             </Grid.Column>
           </Grid> : ''}
@@ -221,10 +234,12 @@ export default withTracker(() => {
   const sub6 = Meteor.subscribe(Events.userPublicationName);
   const sub7 = Meteor.subscribe(ProfilesEvents.userPublicationName);
   const sub8 = Meteor.subscribe(ProfilesJobs.userPublicationName);
+  const sub9 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   // Get the Reports documents
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
+  const profilesLocations = ProfilesLocations.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
   const events = Events.collection.find({}).fetch();
@@ -235,8 +250,9 @@ export default withTracker(() => {
     profiles,
     profilesEvents,
     profilesJobs,
+    profilesLocations,
     jobs,
     events,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready() && sub8.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready() && sub8.ready() && sub9.ready(),
   };
 })(Home);

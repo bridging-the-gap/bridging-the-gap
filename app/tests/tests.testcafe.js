@@ -15,12 +15,12 @@ import { jobsPage } from './jobs.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const student = { username: 'johnson@hawaii.edu', password: 'foo', role: 'student',
-  firstName: 'Philip', lastName: 'Johnson' };
+const student = { username: 'reichld@hawaii.edu', password: 'foo', role: 'student',
+  firstName: 'Leilani', lastName: 'Reich' };
 const company = { username: 'hr@google.com', password: 'foo', role: 'company',
   firstName: 'Google', lastName: '' };
-const admin = { username: 'sin8@hawaii.edu', password: 'foo', role: 'admin',
-  firstName: 'Serge', lastName: 'Negrashov' };
+const admin = { username: 'johnson@hawaii.edu', password: 'foo', role: 'admin',
+  firstName: 'Philip', lastName: 'Johnson' };
 
 fixture('Bridging the Gap localhost test with default db')
   .page('http://localhost:3000');
@@ -188,11 +188,11 @@ test('Test that student home page works', async (testController) => {
   await navBar.gotoStudentHomePage(testController);
 });
 
+// Company Page Tests
 test('Test that the company homepage works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await navBar.gotoCompanyHomePage(testController);
   await companyPage.isDisplayed(testController);
 });
 
@@ -200,7 +200,6 @@ test('Test Add jobs works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await navBar.gotoCompanyHomePage(testController);
   await companyPage.gotoAddJob(testController);
 });
 
@@ -208,7 +207,6 @@ test('Test Edit jobs works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await navBar.gotoCompanyHomePage(testController);
   await companyPage.editJob(testController);
 });
 
@@ -216,7 +214,6 @@ test('Test Edit company works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await navBar.gotoCompanyHomePage(testController);
   await companyPage.editCompany(testController);
 });
 
