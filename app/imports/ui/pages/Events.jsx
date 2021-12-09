@@ -61,10 +61,9 @@ class EventsPage extends React.Component {
   renderPage() {
     const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
-    console.log(eventData);
     return (
       <Container id="events-page">
-        <Item.Group>
+        <Item.Group divided>
           {_.map(eventData, (event, index) => <MakeEvent key={index} event={event}/>)}
         </Item.Group>
       </Container>

@@ -75,7 +75,7 @@ class JobsPage extends React.Component {
     const jobData = jobs.map(job => getJobData(job));
     return (
       <Container id="jobs-page">
-        <Item.Group>
+        <Item.Group divided>
           {_.map(jobData, (job, index) => <MakeJob key={index} job={job}/>)}
         </Item.Group>
       </Container>

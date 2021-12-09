@@ -4,6 +4,7 @@ import { Button, Icon, Item } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
+import { Roles } from 'meteor/alanning:roles';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { removeProfileJobMethod } from '../../startup/both/Methods';
 
@@ -11,7 +12,7 @@ import { removeProfileJobMethod } from '../../startup/both/Methods';
 class MakeJob extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { color: 'grey' };
+    this.state = { color: 'teal' };
   }
 
   handleClick = (job) => {
@@ -33,7 +34,7 @@ class MakeJob extends React.Component {
           swal('Error', error.message, 'error');
         }
       });
-      this.setState({ color: 'grey' });
+      this.setState({ color: 'teal' });
     }
   };
 
@@ -51,15 +52,17 @@ class MakeJob extends React.Component {
           <Item><span className='location'>{'Location: '}{this.props.job.location}</span></Item>
           <Item.Description>{this.props.job.description}</Item.Description>
           <Item.Extra>
-            <Button floated='right' onClick={this.handleClick.bind(this, this.props.job.jobTitle)}>
-              <Icon name='heart'
-                color={ProfilesJobs.collection.find(
-                  { profile: Meteor.user().username, job: this.props.job.jobTitle }).fetch().length === 1
-                  ? 'red' : this.state.color}/>
-            </Button>
-            <Button floated='right'>
+            {Roles.userIsInRole(Meteor.userId(), 'student') ?
+              <Button floated='right' onClick={this.handleClick.bind(this, this.props.job.jobTitle)} key='job-favorite-button'>
+                <Icon name='heart'
+                  color={ProfilesJobs.collection.find(
+                    { profile: Meteor.user().username, job: this.props.job.jobTitle },
+                  ).fetch().length === 1
+                    ? 'red' : this.state.color}/>
+              </Button> : ''}
+            <Button floated='right' key='job-apply-button'>
               <a href={this.props.job.link}>Apply</a>
-              <Icon name='right chevron' />
+              <Icon name='right chevron'/>
             </Button>
           </Item.Extra>
         </Item.Content>

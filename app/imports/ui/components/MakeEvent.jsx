@@ -4,6 +4,7 @@ import { Button, Icon, Item } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
+import { Roles } from 'meteor/alanning:roles';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { removeProfileEventMethod } from '../../startup/both/Methods';
 
@@ -11,7 +12,7 @@ import { removeProfileEventMethod } from '../../startup/both/Methods';
 class MakeEvent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { color: 'black' };
+    this.state = { color: 'teal' };
   }
 
   handleClick = (event) => {
@@ -33,7 +34,7 @@ class MakeEvent extends React.Component {
           swal('Error', error.message, 'error');
         }
       });
-      this.setState({ color: 'white' });
+      this.setState({ color: 'teal' });
     }
   };
 
@@ -49,14 +50,15 @@ class MakeEvent extends React.Component {
           </Item.Meta>
           <Item.Description>{this.props.event.description}</Item.Description>
           <Item.Extra>
-            <Button floated='right' className="ui blue icon button"
-              onClick={this.handleClick.bind(this, this.props.event.eventName)}>
-              <Icon className="heart icon"
-                color={ProfilesEvents.collection.find({
-                  profile: Meteor.user().username, event: this.props.event.eventName }).fetch().length === 1 ?
-                  'red' : this.state.color}
-              />
-            </Button>
+            {Roles.userIsInRole(Meteor.userId(), 'student') ?
+              <Button floated='right' className="ui blue icon button"
+                onClick={this.handleClick.bind(this, this.props.event.eventName)}>
+                <Icon className="heart icon"
+                  color={ProfilesEvents.collection.find({
+                    profile: Meteor.user().username, event: this.props.event.eventName }).fetch().length === 1 ?
+                    'red' : this.state.color}
+                />
+              </Button> : ''}
           </Item.Extra>
         </Item.Content>
       </Item>

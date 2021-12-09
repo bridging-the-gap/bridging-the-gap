@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
+import { Container, Header, Segment, Grid, Button, Card, Loader, Item } from 'semantic-ui-react';
 import { _ } from 'meteor/underscore';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
@@ -21,6 +21,8 @@ import ReportFilter from '../components/ReportFilter';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
+import MakeEvent from '../components/MakeEvent';
+import MakeJob from '../components/MakeJob';
 
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
@@ -50,7 +52,7 @@ function getProfileJobsData(jobTitle) {
   return _.extend({ }, data);
 }
 
-const MakeItem = (props) => (
+/* const MakeItem = (props) => (
   <Item>
     <Item.Image size="small" src={props.event.picture}/>
     <Item.Content verticalAlign='middle'>
@@ -88,15 +90,15 @@ const MakeJobItem = (props) => (
       </Item.Extra>
     </Item.Content>
   </Item>
-);
+); */
 
-MakeJobItem.propTypes = {
+/* MakeJobItem.propTypes = {
   job: PropTypes.object.isRequired,
 };
 
 MakeItem.propTypes = {
   event: PropTypes.object.isRequired,
-};
+}; */
 
 class Home extends React.Component {
 
@@ -155,7 +157,7 @@ class Home extends React.Component {
                 <Item.Group divided>
                   {_.map(profilesEventsData, (event, index) => {
                     if (ProfilesEvents.collection.find({ profile: Meteor.user().username, event: event.eventName }).fetch().length === 1) {
-                      return <MakeItem key={index} event={event}/>;
+                      return <MakeEvent key={index} event={event}/>;
                     }
                     return '';
                   })
@@ -168,7 +170,7 @@ class Home extends React.Component {
                 <Item.Group divided>
                   {_.map(profilesJobsData, (job, index) => {
                     if (ProfilesJobs.collection.find({ profile: Meteor.user().username, job: job.jobTitle }).fetch().length === 1) {
-                      return <MakeJobItem key={index} job={job}/>;
+                      return <MakeJob key={index} job={job}/>;
                     } return '';
                   })
                   }
