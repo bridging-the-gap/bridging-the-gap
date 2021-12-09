@@ -61,6 +61,7 @@ const MakeCard = (props) => (
 );
 
 const MakeProfile = (props) => (
+  /*
   <div className="ui celled grid">
     <div className="row">
       <div className="two wide column">
@@ -83,6 +84,41 @@ const MakeProfile = (props) => (
       </div>
     </div>
   </div>
+  */
+  <Grid id='student-profile' columns={2}>
+    <Grid.Column width={6} style={{ backgroundColor: 'white' }}>
+      <Segment>
+        <List size={'large'}>
+          <List.Item icon={'mail'} content={props.profile.email}/>
+          <List.Item/>
+          <List.Item/>
+          <List.Item>
+            <List.Icon name={'address card outline'}/>
+            <List.Content>
+              <List.Header>Description:</List.Header>
+              <List.Description>{props.profile.bio}</List.Description>
+            </List.Content>
+          </List.Item>
+        </List>
+      </Segment>
+    </Grid.Column>
+    <Grid.Column width={6} style={{ backgroundColor: 'white' }}>
+      <Segment>
+        <List size={'large'}>
+          <List.Item icon={'mail'} content={props.profile.email}/>
+          <List.Item/>
+          <List.Item/>
+          <List.Item>
+            <List.Icon name={'address card outline'}/>
+            <List.Content>
+              <List.Header>Description:</List.Header>
+              <List.Description>{props.profile.bio}</List.Description>
+            </List.Content>
+          </List.Item>
+        </List>
+      </Segment>
+    </Grid.Column>
+  </Grid>
 );
 
 MakeCard.propTypes = {
@@ -107,10 +143,8 @@ class ProfilesPage extends React.Component {
     const profileData = getProfileData(email);
     // const emails = _.pluck(Profiles.collection.find().fetch(), 'email');
     // const profileData = emails.map(email => getProfileData(email));
-    const email = Meteor.user().username;
     const companyData = getProfileData(email);
     // const profileData = Profiles.collection.findOne({ email });
-    const profileData = getProfileData(email);
     // console.log(profileData);
     return (
       <Container>
