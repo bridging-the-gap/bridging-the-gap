@@ -45,8 +45,8 @@ function getProfileEventsData(event) {
   return _.extend({ }, data);
 }
 
-function getProfileJobsData(email) {
-  const data = ProfilesJobs.collection.findOne({ email });
+function getProfileJobsData(jobTitle) {
+  const data = Jobs.collection.findOne({ jobTitle });
   return _.extend({ }, data);
 }
 
@@ -172,14 +172,6 @@ class Home extends React.Component {
                     } return '';
                   })
                   }
-                  <Item>
-                    <Item.Content>
-                      <Item.Header>Create Job Agent</Item.Header>
-                      <Item.Meta>
-                        <Button primary>Submit CV</Button>
-                      </Item.Meta>
-                    </Item.Content>
-                  </Item>
                 </Item.Group></Segment>
             </Grid.Column>
           </Grid> : ''}
