@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import swal from 'sweetalert';
+import { Roles } from 'meteor/alanning:roles';
 import { Events } from '../../api/events/Events';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 
@@ -16,7 +17,8 @@ function getEventData(eventName) {
 
 const handleClick = (event) => {
   const profile = Meteor.user().username;
-  ProfilesEvents.collection.insert({ event, profile },
+  const profEvent = `${event} ${profile}`;
+  ProfilesEvents.collection.insert({ event, profile, profEvent },
     (error) => {
       if (error) {
         swal('Error', 'Cannot favorite a message multiple times', 'error');
@@ -65,7 +67,8 @@ class EventsPage extends React.Component {
     return (
       <Container id="events-page">
         <Item.Group>
-          {_.map(eventData, (event, index) => <MakeItem key={index} event={event}/>)}
+          {_.map(eventData, (event, index) => (Roles.userIsInRole(Meteor.userId(), 'student') ?
+            <MakeItem key={index} event={event}/> : ''))}
         </Item.Group>
       </Container>
     );

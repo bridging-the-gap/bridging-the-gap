@@ -14,7 +14,8 @@ class ProfilesEventsCollection {
       // profile is the user's email.
       profile: String,
       // event is the eventName.
-      event: { type: String, unique: true, index: true },
+      event: String,
+      profEvent: { type: String, unique: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

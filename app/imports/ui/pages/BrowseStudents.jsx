@@ -15,6 +15,7 @@ import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
+import { Reports } from '../../api/reports/Reports';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allSkills) => new SimpleSchema({
