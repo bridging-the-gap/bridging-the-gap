@@ -1,4 +1,9 @@
 {
+  "defaultAdmin": [
+    {
+      "email": "johnson@hawaii.edu"
+    }
+  ],
   "defaultEvents": [
     {
       "eventName": "The Future Of Technology conference",

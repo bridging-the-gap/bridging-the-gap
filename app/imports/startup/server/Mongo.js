@@ -123,7 +123,9 @@ if (Jobs.collection.find().count() === 0) {
 }
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
-  if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
+  if (Meteor.settings.defaultAdmin && Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
+    console.log('Creating the default admin');
+    createUser('johnson@hawaii.edu', 'admin');
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
     console.log('Creating the default projects');

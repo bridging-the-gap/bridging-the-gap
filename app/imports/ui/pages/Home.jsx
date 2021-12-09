@@ -1,8 +1,5 @@
 import React from 'react';
 import { Container, Header, Segment, Grid, Button, Card, Loader, Icon, Item } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
 import { _ } from 'meteor/underscore';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
@@ -79,11 +76,11 @@ class Home extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    let fRef = null;
+    // const fRef = null;
     const email = Meteor.user().username;
     // const profileData = Profiles.collection.findOne({ email });
     const companyData = getProfileData(email);
-    const profileData = getProfileData(email);
+    // const profileData = getProfileData(email);
     const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
     const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
     const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
@@ -178,19 +175,22 @@ export default withTracker(() => {
   const sub5 = Meteor.subscribe(Jobs.userPublicationName);
   const sub6 = Meteor.subscribe(Events.userPublicationName);
   const sub7 = Meteor.subscribe(ProfilesJobs.userPublicationName);
+  const sub8 = Meteor.subscribe(ProfilesLocations.userPublicationName);
 
   // Get the Reports documents
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
+  const profilesLocations = ProfilesLocations.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
   const events = Events.collection.find({}).fetch();
   return {
     reports,
     profiles,
+    profilesLocations,
     jobs,
     events,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready() && sub8.ready(),
   };
 })(Home);
