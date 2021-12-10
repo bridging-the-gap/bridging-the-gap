@@ -678,6 +678,79 @@
       "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
       "email": "kareno@hawaii.edu",
       "role": "student"
+    },
+    {
+      "firstName": "Walter",
+      "lastName": "Varnum",
+      "bio": "I am a Professor in Biology. I graduated from UH Manoa in 2005.",
+      "title": "Professor",
+      "locations": [
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Physics"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "walterv@hawaii.edu",
+      "role": "professor"
+    },
+    {
+      "firstName": "Kimberly",
+      "lastName": "Gilliand",
+      "bio": "I am a Science student at UH. My interests are surf and mindfullness.",
+      "title": "Future Yogi.",
+      "locations": [
+        "Hawaii",
+        "US",
+        "Bali"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Computer Science"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "kimberlyg@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Gail",
+      "lastName": "Otero",
+      "bio": "I'm a student at UH. My major is Phsycology.",
+      "title": "Student.",
+      "locations": [
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Phsycology"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "gailo@hawaii.edu",
+      "role": "student"
+    },
+    {
+      "firstName": "Walter",
+      "lastName": "Hernandez",
+      "bio": "I'm a student at UH. My major is Computer Science",
+      "title": "Student.",
+      "locations": [
+        "Hawaii",
+        "US"
+      ],
+      "webpage": "http://techfolios.github.io/template/",
+      "skills": [
+        "Research",
+        "Computer Science"
+      ],
+      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "email": "walterh@hawaii.edu",
+      "role": "student"
     }
   ],
   "defaultReports": [
