@@ -152,7 +152,21 @@ class Home extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           <Grid id='student-home' columns={2}>
             <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
-              <Header as="h3" textAlign="center">Your Events</Header>
+              <Header as="h3" textAlign="center">Your Favourite Job Listings</Header>
+              <Item.Meta>The job listings you ave favourited from the Jobs page will show up here.</Item.Meta>
+              <Segment>
+                <Item.Group divided>
+                  {_.map(profilesJobsData, (job, index) => {
+                    if (ProfilesJobs.collection.find({ profile: Meteor.user().username, job: job.jobTitle }).fetch().length === 1) {
+                      return <MakeJob key={index} job={job}/>;
+                    } return '';
+                  })
+                  }
+                </Item.Group></Segment>
+            </Grid.Column>
+            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
+              <Header as="h3" textAlign="center">Your Favourite Events</Header>
+              <Item.Meta>The events you ave favourited from the Events page will show up here.</Item.Meta>
               <Segment>
                 <Item.Group divided>
                   {_.map(profilesEventsData, (event, index) => {
@@ -160,18 +174,6 @@ class Home extends React.Component {
                       return <MakeEvent key={index} event={event}/>;
                     }
                     return '';
-                  })
-                  }
-                </Item.Group></Segment>
-            </Grid.Column>
-            <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
-              <Header as="h3" textAlign="center">Your Job Listings</Header>
-              <Segment>
-                <Item.Group divided>
-                  {_.map(profilesJobsData, (job, index) => {
-                    if (ProfilesJobs.collection.find({ profile: Meteor.user().username, job: job.jobTitle }).fetch().length === 1) {
-                      return <MakeJob key={index} job={job}/>;
-                    } return '';
                   })
                   }
                 </Item.Group></Segment>
