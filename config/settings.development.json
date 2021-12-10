@@ -68,6 +68,46 @@
       "description": "Toyota presents the new designs of 2022. Go for a test-run or talk to the representatives from Toyota about applying for an internship in Tokyo, Japan beginning June, 2022",
       "picture": "https://www.allaboutlean.com/wp-content/uploads/2018/11/Toyota-Logo-2.jpg",
       "owner": "humanrelations@toyota.com"
+    },
+    {
+      "eventName": "Come talk with us - Amazon!",
+      "date": "2022-02-15",
+      "location": "Come to A la Moana centre to learn more about a potential career in Amazon. We also want to learn more about the students at UH Manoa! Head over for a free coffee and a chat.",
+      "description": "",
+      "picture": "https://1000logos.net/wp-content/uploads/2016/10/Amazon-logo-meaning.jpg",
+      "owner": "management@amaon.com"
+    },
+    {
+      "eventName": "Sony want you!",
+      "date": "2022-02-20",
+      "location": "UH Manoa",
+      "description": "Do you want to contribute into creating PS6? Come to campus the 20th of February to chat with Sony about potential improvements for the next PlayStation. Maybe we will spill the tea about when we will release the PlayStation?",
+      "picture": "https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo-1961-1962.png",
+      "owner": "careers@sony.com"
+    },
+    {
+      "eventName": "Sephora Event",
+      "date": "2022-02-25",
+      "location": "A La Moana",
+      "description": "Sephora invites students from UH Manoa and HPU to come visit Sephora for a chat about the future of make-up and how we can use technology to improve the environmental and economical impact of the make-up industry.",
+      "picture": "https://i2.wp.com/www.growyourbrands.co.uk/wp-content/uploads/2020/10/Sephora-Logo.png?ssl=1g",
+      "owner": "contact@sephora.com"
+    },
+    {
+      "eventName": "Come fly with Hawaiian Airlines",
+      "date": "2022-02-27",
+      "location": "Terminal 1, Airport",
+      "description": "Are you studying to have a career in the aviation industry? Hawaiian Airlines invites you to the airport to come look at our Airbus 1 planes, talk to the cabin crew and have a coffee with the pilots. Maybe you will get the opportunity to try out our new Hawaiian Airlines flight simulator?",
+      "picture": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/300px-Hawaiian_Airlines_logo_2017.svg.png",
+      "owner": "jobs@HawaiianAir.com"
+    },
+    {
+      "eventName": "Try out the new AR technology of Cisco",
+      "date": "2022-02-28",
+      "location": "Cisco office, Honolulu",
+      "description": "Come learn more about the technology of Cisco and try out the new AR conference solution that Cisco provides to important business clients.",
+      "picture": "https://jobs.cisco.com/portal/4/images/logo.svg",
+      "owner": "anna_b@cisco.com"
     }
   ],
   "defaultProfiles": [
