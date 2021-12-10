@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Card, Image, Label, Header, Grid, Segment, List } from 'semantic-ui-react';
+import { Container, Loader, Card, Image, Label, Header, Grid, Segment, List, Icon, Button } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -30,7 +30,7 @@ function getProfileData(email) {
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
   return _.extend({ }, data, { locations, skills });
 }
-
+// <Card.Item><Link to={`/editProfile/${props.profile._id}`} id="editProfile"> <Icon name='edit'/>Edit</Link></Card.Item>
 /** Component for layout out a Profile Card. */
 const MakeCard = (props) => (
   <Card centered>
@@ -146,6 +146,7 @@ class ProfilesPage extends React.Component {
     const companyData = getProfileData(email);
     // const profileData = Profiles.collection.findOne({ email });
     // console.log(profileData);
+    // <MakeCard profile={profileData}/>
     return (
       <Container>
         {/* Start of student page */}
@@ -154,8 +155,10 @@ class ProfilesPage extends React.Component {
           <Container id="profiles-page">
             <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
               <MakeCard profile={profileData}/>
+              <List>
+                <List.Item><Link to={`/editProfile/${profileData._id}`} id="editProfile"> <Icon name='edit'/>Edit</Link></List.Item>
+              </List>
             </Grid.Column>
-            <MakeProfile profile={profileData}/>
           </Container> : ''}
         {/* End of student page */}
         {/* Start of company page */}
