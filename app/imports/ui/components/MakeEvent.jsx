@@ -41,7 +41,7 @@ class MakeEvent extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (
-      <Item>
+      <Item className='makeEventClass'>
         <Item.Image size="small" src={this.props.event.picture}/>
         <Item.Content verticalAlign='middle'>
           <Item.Header as='a'>{this.props.event.eventName}</Item.Header>

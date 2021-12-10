@@ -21,7 +21,7 @@ class Job extends React.Component {
       <Card fluid color={'blue'}>
         <Card.Content>
           <Card.Header style={{ float: 'right' }}>
-            <Button basic compact size='mini' icon='times' style={{ boxShadow: 'none' }}
+            <Button basic compact id='companyRemoveJob' size='mini' icon='times' style={{ boxShadow: 'none' }}
               onClick={this.handleClick.bind(this, this.props.job)}/>
           </Card.Header>
           <Image floated={'left'} size={'small'} src={this.props.job.image}/>

@@ -208,6 +208,8 @@ test('Test Edit jobs works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
   await companyPage.editJob(testController);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.removeJob(testController);
 });
 
 test('Test Edit company works', async (testController) => {
@@ -223,6 +225,8 @@ test('Test Edit event works', async (testController) => {
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyHomePage(testController);
   await companyPage.editEvent(testController);
+  await navBar.gotoCompanyHomePage(testController);
+  await companyPage.removeEvent(testController);
 });
 
 test('Test that the company profile works', async (testController) => {

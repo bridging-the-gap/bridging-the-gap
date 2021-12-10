@@ -41,7 +41,7 @@ class MakeJob extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (
-      <Item>
+      <Item className='makeJobClass'>
         <Item.Image size="small" src={this.props.job.image}/>
         <Item.Content verticalAlign='middle'>
           <Item.Header as='a'>{this.props.job.jobTitle}</Item.Header>
