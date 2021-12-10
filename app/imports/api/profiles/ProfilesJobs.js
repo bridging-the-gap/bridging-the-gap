@@ -15,6 +15,7 @@ class ProfilesJobsCollection {
       profile: String,
       // job is the jobTitle.
       job: String,
+      profJob: { type: String, unique: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

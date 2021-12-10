@@ -27,7 +27,7 @@ class NewCategory extends React.Component {
   submit = (data) => {
     Meteor.call(addCategoryMethod, data, (error) => {
       if (error) {
-        swal('Error', error.message, 'error');
+        swal('Error', 'This category is already a search filter!', 'error');
       } else {
         swal('New category added successfully.',
           'This category should now be available for users to filter by.', 'success');

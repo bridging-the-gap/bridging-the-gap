@@ -50,8 +50,11 @@ const MakeCard = (props) => (
         <a style={{ color: 'blue' }} href={`mailto:${props.profile.email}?subject=Message from BTG user ${Meteor.user().username}`}>{props.profile.email} </a>
       </Card.Meta>
       <Card.Meta>
-        <span>Webpage:</span>
-        <a style={{ color: 'blue' }} href={props.profile.webpage}>{props.profile.webpage} </a>
+        { props.profile.webpage !== undefined ?
+          [<span key='webpage-in-student-browse-card'>Webpage:</span>,
+            <a style={{ color: 'blue' }} href={props.profile.webpage} key='webpage-link-in-student-card'>
+              {props.profile.webpage}</a>] : ''
+        }
       </Card.Meta>
     </Card.Content>
     <Card.Content extra>

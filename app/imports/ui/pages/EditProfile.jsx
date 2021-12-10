@@ -23,6 +23,7 @@ const makeSchema = (allLocations, allSkills) => new SimpleSchema({
   bio: { type: String, label: 'Biographical statement', optional: true },
   title: { type: String, label: 'Title', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
+  webpage: { type: String, label: 'Webpage URL', optional: true },
   locations: { type: Array, label: 'Locations', optional: true },
   'locations.$': { type: String, allowedValues: allLocations },
   skills: { type: Array, label: 'Skills', optional: true },
@@ -76,6 +77,7 @@ class EditProfile extends React.Component {
               <Form.Group widths={'equal'}>
                 <TextField name='title' showInlineError={true} placeholder={'Title'}/>
                 <TextField name='picture' showInlineError={true} placeholder={'URL to picture'}/>
+                <TextField name='webpage' showInlineError={true} placeholder={'URL to webpage'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
                 <MultiSelectField name='locations' showInlineError={true} placeholder={'Locations'}/>

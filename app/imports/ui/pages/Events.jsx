@@ -1,16 +1,31 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Button, Item } from 'semantic-ui-react';
+import { Container, Loader, Item } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Events } from '../../api/events/Events';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
+import MakeEvent from '../components/MakeEvent';
 
 /** Gets the Event-data. */
 function getEventData(eventName) {
   const data = Events.collection.findOne({ eventName });
   return _.extend({ }, data);
 }
+
+/* const handleClick = (event) => {
+  const profile = Meteor.user().username;
+  const profEvent = `${event} ${profile}`;
+  ProfilesEvents.collection.insert({ event, profile, profEvent },
+    (error) => {
+      if (error) {
+        swal('Error', 'Cannot favorite a message multiple times', 'error');
+      } else {
+        swal('Success', 'Event favorited successfully', 'success');
+      }
+    });
+};
 
 const MakeItem = (props) => (
   <Item>
@@ -22,7 +37,9 @@ const MakeItem = (props) => (
       </Item.Meta>
       <Item.Description>{props.event.description}</Item.Description>
       <Item.Extra>
-        <Button floated='right' className="ui blue icon button"> <i className="heart icon"></i></Button>
+        <Button floated='right' className="ui blue icon button"
+          onClick={handleClick.bind(this, props.event.eventName)}> <i className="heart icon"></i>
+        </Button>
       </Item.Extra>
     </Item.Content>
   </Item>
@@ -30,7 +47,7 @@ const MakeItem = (props) => (
 
 MakeItem.propTypes = {
   event: PropTypes.object.isRequired,
-};
+}; */
 
 /** Renders the Event Collection as a set of Cards. */
 class EventsPage extends React.Component {
@@ -42,14 +59,12 @@ class EventsPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const email = Meteor.user().username;
     const events = _.pluck(Events.collection.find().fetch(), 'eventName');
     const eventData = events.map(event => getEventData(event));
-    console.log(eventData);
     return (
       <Container id="events-page">
-        <Item.Group>
-          {_.map(eventData, (event, index) => <MakeItem key={index} event={event}/>)}
+        <Item.Group divided>
+          {_.map(eventData, (event, index) => <MakeEvent key={index} event={event}/>)}
         </Item.Group>
       </Container>
     );
@@ -64,7 +79,8 @@ EventsPage.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub = Meteor.subscribe(Events.userPublicationName);
+  const sub2 = Meteor.subscribe(ProfilesEvents.userPublicationName);
   return {
-    ready: sub.ready(),
+    ready: sub.ready() && sub2.ready(),
   };
 })(EventsPage);

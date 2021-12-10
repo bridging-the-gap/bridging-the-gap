@@ -1,4 +1,5 @@
 import { Selector } from 'testcafe';
+import { navBar } from './navbar.component';
 
 class Company {
   constructor() {
@@ -13,17 +14,33 @@ class Company {
 
   /** Asserts if add job works */
   async gotoAddJob(testController) {
+    const addTitle = 'a';
+    const location = 'a';
+    const pay = '$2';
+    const industry = 'a';
+    const image = 'https://www.pbs.org/wnet/nature/files/2017/07/fish-1534844_1920.jpg';
+    const weblink = 'https://courses.ics.hawaii.edu/ics314f21/';
+    const description = 'a';
     await testController.wait(25000).click('#addJob');
+    await testController.typeText('#jobTitle', addTitle);
+    await testController.typeText('#location', location);
+    await testController.typeText('#salary', pay);
+    await testController.typeText('#industry', industry);
+    await testController.typeText('#image', image);
+    await testController.typeText('#link', weblink);
+    await testController.typeText('#description', description);
+    await testController.click('#submit');
+    await testController.click(Selector('.swal-button--confirm'));
   }
 
   /** Asserts if edit Job works */
   async editJob(testController) {
-    const editTitle = 'default name 2';
-    const location = 'Earth 2';
+    const editTitle = '1';
+    const location = '1';
     const pay = '$1';
-    const industry = 'Liberal Arts';
+    const industry = '1';
     const image = 'https://www.pbs.org/wnet/nature/files/2017/07/fish-1534844_1920.jpg';
-    const description = 'This is not a job';
+    const description = '1';
     await testController.click('#editJob');
     await testController.selectText('#jobTitle').pressKey('delete');
     await testController.typeText('#jobTitle', editTitle);
@@ -39,6 +56,18 @@ class Company {
     await testController.typeText('#description', description);
     await testController.click('#submit');
     await testController.click(Selector('.swal-button--confirm'));
+  }
+
+  async removeJob(testController) {
+    await testController.click('#companyRemoveJob');
+    const cardSelector = Selector('.card');
+    const cardCount = await cardSelector.count;
+    await testController.expect(cardCount).eql(4);
+    // Check job is removed from job listings page.
+    await navBar.goToJobsPage(testController);
+    const jobSelector = Selector('.makeJobClass');
+    const jobCount = await jobSelector.count;
+    await testController.expect(jobCount).eql(11);
   }
 
   /** Asserts if edit Event works */
@@ -61,6 +90,18 @@ class Company {
     await testController.typeText('#picture', picture);
     await testController.click('#submit');
     await testController.click(Selector('.swal-button--confirm'));
+  }
+
+  async removeEvent(testController) {
+    await testController.click('#companyRemoveEvent');
+    const cardSelector = Selector('.card');
+    const cardCount = await cardSelector.count;
+    await testController.expect(cardCount).eql(3);
+    // Check event is removed from events page.
+    await navBar.goToEventsPage(testController);
+    const eventSelector = Selector('.makeEventClass');
+    const eventCount = await eventSelector.count;
+    await testController.expect(eventCount).eql(8);
   }
 
   /** Asserts if add Company works */
@@ -98,25 +139,26 @@ class Company {
     const title = 'cafe';
     const location = 'Hawaii';
     const contact = 'bob@foo.com';
-    // Add back later
-    // const industry = 'Liberal Arts';
+    const website = 'https://courses.ics.hawaii.edu/ics314f21/';
+    const industry = 'Computer Engineering';
     const image = 'https://www.pbs.org/wnet/nature/files/2017/07/fish-1534844_1920.jpg';
     const description = 'This is not a company';
     await testController.click('#editCompany');
     await testController.selectText('#companyName').pressKey('delete');
     await testController.typeText('#companyName', title);
+    await testController.selectText('#contact').pressKey('delete');
+    await testController.typeText('#contact', contact);
+    await testController.selectText('#image').pressKey('delete');
+    await testController.typeText('#image', image);
+    await testController.selectText('#webpage').pressKey('delete');
+    await testController.typeText('#webpage', website);
+    await testController.selectText('#industry').pressKey('delete');
+    await testController.typeText('#industry', industry);
     const locationSelector = Selector('#multi-select-locations');
     const locationOptionToAdd = locationSelector.find(`#${location}`);
     await testController.click(locationSelector);
     await testController.click(locationOptionToAdd);
     await testController.click(locationSelector);
-    await testController.selectText('#contact').pressKey('delete');
-    await testController.typeText('#contact', contact);
-    // Add back later
-    // await testController.selectText('#industry').pressKey('delete');
-    // await testController.typeText('#industry', industry);
-    await testController.selectText('#image').pressKey('delete');
-    await testController.typeText('#image', image);
     await testController.selectText('#description').pressKey('delete');
     await testController.typeText('#description', description);
     await testController.click('#submit');

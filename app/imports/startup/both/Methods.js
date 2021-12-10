@@ -4,9 +4,12 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
+import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
+import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Skills } from '../../api/skills/Skills';
 import { Locations } from '../../api/locations/Locations';
 import { Jobs } from '../../api/job/Jobs';
+import { Events } from '../../api/events/Events';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -151,5 +154,62 @@ Meteor.methods({
   },
 });
 
+const removeProfileJobMethod = 'ProfileJob.remove';
+
+/**
+ * The server-side ProfileJob.remove Meteor Method is called by MakeJob.jsx
+ * after pushing the favorite button again to unfavorite a job in JobListings.jsx or Home.jsx.
+ * Its purpose is to update the ProfilesJobs collection to reflect the
+ * updated situation specified by the student.
+ */
+Meteor.methods({
+  'ProfileJob.remove'({ profJob }) {
+    ProfilesJobs.collection.remove({ profJob: profJob });
+  },
+});
+
+const removeProfileEventMethod = 'ProfileEvent.remove';
+
+/**
+ * The server-side ProfileEvent.remove Meteor Method is called by MakeEvent.jsx
+ * after pushing the favorite button again to unfavorite an event in Events.jsx or Home.jsx.
+ * Its purpose is to update the ProfilesEvents collection to reflect the
+ * updated situation specified by the student.
+ */
+Meteor.methods({
+  'ProfileEvent.remove'({ profEvent }) {
+    ProfilesEvents.collection.remove({ profEvent: profEvent });
+  },
+});
+
+const removeJobMethod = 'Job.remove';
+
+/**
+ * Removes job on server side for company user when they click the 'x' button
+ * for a job in their home page in Home.jsx. Also removes job for students in
+ * the ProfilesJobs collection.
+ */
+Meteor.methods({
+  'Job.remove'({ jobTitle }) {
+    Jobs.collection.remove({ jobTitle: jobTitle });
+    ProfilesJobs.collection.remove({ job: jobTitle });
+  },
+});
+
+const removeEventMethod = 'Events.remove';
+
+/**
+ * Removes event on server side for company user when they click the 'x' button
+ * for an event in their home page in Home.jsx. Also removes event for students in
+ * the ProfilesEvents collection.
+ */
+Meteor.methods({
+  'Events.remove'({ eventName }) {
+    Events.collection.remove({ eventName: eventName });
+    ProfilesEvents.collection.remove({ event: eventName });
+  },
+});
+
 export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addRoleMethod,
-  addCategoryMethod, addSpecificInfoMethod, addJobMethod };
+  addCategoryMethod, addSpecificInfoMethod, addJobMethod, removeProfileJobMethod, removeProfileEventMethod,
+  removeJobMethod, removeEventMethod };

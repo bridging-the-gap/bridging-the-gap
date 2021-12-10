@@ -8,8 +8,6 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
-import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Locations } from '../../api/locations/Locations';
 import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
@@ -84,13 +82,11 @@ function addProject({ name, homepage, description, locations, skills, picture, r
 function addEvent({ eventName, company, date, location, description, picture, owner }) {
   console.log(`Defining event ${eventName}`);
   Events.collection.insert({ eventName, company, date, location, description, picture, owner });
-  ProfilesEvents.collection.insert({ profile: owner, event: eventName });
 }
 
 function addJob({ jobTitle, location, salary, industry, image, description, link, owner }) {
   console.log(`Defining job ${jobTitle}`);
   Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, link, owner });
-  ProfilesJobs.collection.insert({ profile: owner, job: jobTitle });
 }
 
 /** Define a new report. Error if report already exists.  */
@@ -125,7 +121,9 @@ if (Jobs.collection.find().count() === 0) {
 }
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
-  if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
+  if (Meteor.settings.defaultAdmin && Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
+    console.log('Creating the default admin');
+    createUser('johnson@hawaii.edu', 'admin');
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
     console.log('Creating the default projects');
