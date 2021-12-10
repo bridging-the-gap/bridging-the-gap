@@ -433,7 +433,10 @@
       "bio": "I am studying for a B.S. in Computer Science in the Department of Information and Computer Sciences at the University of Hawaii. I expect to graduate in Spring, 2023.",
       "title": "Student",
       "locations": [
-        "Hawaii"
+        "Hawaii",
+        "Oahu",
+        "Honolulu",
+        "US"
       ],
       "webpage": "https://leilani-reich.github.io",
       "skills": [
@@ -509,7 +512,9 @@
       "title": "Business Major",
       "locations": [
         "Hawaii",
-        "Honolulu"
+        "Honolulu",
+        "Hawaii (The Big Island)",
+        "Kauai"
       ],
       "webpage": "http://techfolios.github.io/template/",
       "skills": [
@@ -546,6 +551,7 @@
       "bio": "I am a senior majoring in Electronic Engineering. I hope to graduate by Spring 2024.",
       "title": "Engineering student",
       "locations": [
+        "Oahu",
         "California",
         "Arizona",
         "Hawaii"
@@ -629,7 +635,7 @@
       "webpage": "http://techfolios.github.io/template/",
       "skills": [
         "Research",
-        "Phsycology"
+        "Psychology"
       ],
       "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
       "email": "kennyj@hawaii.edu",
@@ -648,7 +654,7 @@
       "webpage": "http://techfolios.github.io/template/",
       "skills": [
         "Research",
-        "Phsycology"
+        "Psychology"
       ],
       "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
       "email": "kimy@hawaii.edu",

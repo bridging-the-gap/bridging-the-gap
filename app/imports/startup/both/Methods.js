@@ -9,6 +9,7 @@ import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Skills } from '../../api/skills/Skills';
 import { Locations } from '../../api/locations/Locations';
 import { Jobs } from '../../api/job/Jobs';
+import { Events } from '../../api/events/Events';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -181,5 +182,34 @@ Meteor.methods({
   },
 });
 
+const removeJobMethod = 'Job.remove';
+
+/**
+ * Removes job on server side for company user when they click the 'x' button
+ * for a job in their home page in Home.jsx. Also removes job for students in
+ * the ProfilesJobs collection.
+ */
+Meteor.methods({
+  'Job.remove'({ jobTitle }) {
+    Jobs.collection.remove({ jobTitle: jobTitle });
+    ProfilesJobs.collection.remove({ job: jobTitle });
+  },
+});
+
+const removeEventMethod = 'Events.remove';
+
+/**
+ * Removes event on server side for company user when they click the 'x' button
+ * for an event in their home page in Home.jsx. Also removes event for students in
+ * the ProfilesEvents collection.
+ */
+Meteor.methods({
+  'Events.remove'({ eventName }) {
+    Events.collection.remove({ eventName: eventName });
+    ProfilesEvents.collection.remove({ event: eventName });
+  },
+});
+
 export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addRoleMethod,
-  addCategoryMethod, addSpecificInfoMethod, addJobMethod, removeProfileJobMethod, removeProfileEventMethod };
+  addCategoryMethod, addSpecificInfoMethod, addJobMethod, removeProfileJobMethod, removeProfileEventMethod,
+  removeJobMethod, removeEventMethod };
