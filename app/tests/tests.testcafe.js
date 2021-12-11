@@ -200,7 +200,7 @@ test('Test Edit company works', async (testController) => {
   await companyPage.editCompany(testController);
 });
 
-test.only('Test Edit event works', async (testController) => {
+test('Test Edit event works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
