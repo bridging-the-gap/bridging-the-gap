@@ -77,7 +77,7 @@ class Company {
     const date = '2022-03-02';
     const description = 'Test to edit event';
     const picture = 'https://www.pbs.org/wnet/nature/files/2017/07/fish-1534844_1920.jpg';
-    await testController.click('#editEvent');
+    await testController.wait(25000).click('#editEvent');
     await testController.selectText('#eventName').pressKey('delete');
     await testController.typeText('#eventName', eventName);
     await testController.selectText('#location').pressKey('delete');
