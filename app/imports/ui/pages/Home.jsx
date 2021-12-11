@@ -33,15 +33,6 @@ function getProfileData(email) {
   return _.extend({ }, data, { locations, skills });
 }
 
-/* function getProfileEventsData(event) {
-  const data = Events.collection.findOne({ eventName: event });
-  // const data = Events.collection.find({ eventName: event }).fetch();
-  // console.log('data', data);
-  // const specificData = _.pluck(ProfilesEvents.collection.find({ profile: email }).fetch(), 'event');
-  // console.log('specificdata', specificData);
-  // const myData = _.filter(data, function (myEvent) { return _.contains(specificData, myEvent.eventName); });
-  // console.log('mydata', myData);
-} */
 function getProfileEventsData(event) {
   const data = Events.collection.findOne({ eventName: event });
   return _.extend({ }, data);
@@ -51,54 +42,6 @@ function getProfileJobsData(jobTitle) {
   const data = Jobs.collection.findOne({ jobTitle });
   return _.extend({ }, data);
 }
-
-/* const MakeItem = (props) => (
-  <Item>
-    <Item.Image size="small" src={props.event.picture}/>
-    <Item.Content verticalAlign='middle'>
-      <Item.Header as='a'>{props.event.eventName}</Item.Header>
-      <Item.Meta>
-        <span className='date'>{props.event.date} {'at'} {props.event.location}</span>
-      </Item.Meta>
-      <Item.Description>{props.event.description}</Item.Description>
-      <Item.Extra>
-        <Button primary floated='right'>
-          Register for event
-          <Icon name='right chevron' />
-        </Button>
-      </Item.Extra>
-    </Item.Content>
-  </Item>
-);
-
-const MakeJobItem = (props) => (
-  <Item>
-    <Item.Image size="small" src={props.job.image}/>
-    <Item.Content verticalAlign='middle'>
-      <Item.Header as='a'>{props.job.jobTitle}</Item.Header>
-      <Item.Meta>
-        <span className='owner'>{props.job.owner}{' - '}{props.job.industry}</span>
-      </Item.Meta>
-      <Item><span className='salary'>{'Salary: '}{props.job.salary}</span></Item>
-      <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
-      <Item.Description>{props.job.description}</Item.Description>
-      <Item.Extra>
-        <Button floated='right'>
-          <a href={props.job.link}>Apply</a>
-          <Icon name='right chevron' />
-        </Button>
-      </Item.Extra>
-    </Item.Content>
-  </Item>
-); */
-
-/* MakeJobItem.propTypes = {
-  job: PropTypes.object.isRequired,
-};
-
-MakeItem.propTypes = {
-  event: PropTypes.object.isRequired,
-}; */
 
 class Home extends React.Component {
 

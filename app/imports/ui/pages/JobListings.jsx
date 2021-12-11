@@ -14,54 +14,6 @@ function getJobData(jobTitle) {
   return _.extend({ }, data);
 }
 
-/* const handleClick = (job) => {
-  const profile = Meteor.user().username;
-  const profJob = `${profile} ${job}`;
-  ProfilesJobs.collection.insert({ job, profile, profJob },
-    (error) => {
-      if (error) {
-        swal('Error', 'Cannot favorite a message multiple times', 'error');
-      } else {
-        swal('Success', 'Job favorited successfully', 'success');
-      }
-    });
-}; */
-
-/* jobTitle: String,
-    location: String,
-    salary: String,
-    industry: String,
-    image: { type: String, optional: true },
-description: String,
-    owner: String, */
-/* const MakeItem = (props) => (
-  <Item>
-    <Item.Image size="small" src={props.job.image}/>
-    <Item.Content verticalAlign='middle'>
-      <Item.Header as='a'>{props.job.jobTitle}</Item.Header>
-      <Item.Meta>
-        <span className='owner'>{props.job.owner}{' - '}{props.job.industry}</span>
-      </Item.Meta>
-      <Item><span className='salary'>{'Salary: '}{props.job.salary}</span></Item>
-      <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
-      <Item.Description>{props.job.description}</Item.Description>
-      <Item.Extra>
-        <Button floated='right' onClick={handleClick.bind(this, props.job.jobTitle)}>
-          <Icon name='heart' />
-        </Button>
-        <Button floated='right'>
-          <a href={props.job.link}>Apply</a>
-          <Icon name='right chevron' />
-        </Button>
-      </Item.Extra>
-    </Item.Content>
-  </Item>
-);
-
-MakeItem.propTypes = {
-  job: PropTypes.object.isRequired,
-}; */
-
 /** Renders the Event Collection as a set of Cards. */
 class JobsPage extends React.Component {
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */

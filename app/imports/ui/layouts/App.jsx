@@ -23,7 +23,6 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import AddJob from '../pages/AddJob';
-import AddCompany from '../pages/AddCompany';
 import EditCompany from '../pages/EditCompany';
 import EditProfile from '../pages/EditProfile';
 import EditEvent from '../pages/EditEvent';
@@ -53,7 +52,6 @@ class App extends React.Component {
               <ProtectedRoute path="/studentHomePage" component={StudentHomePage}/>
               <ProtectedRoute path="/studentProfilePage" component={StudentProfilePage}/>
               <ProtectedRoute path="/addJob" component={AddJob}/>
-              <ProtectedRoute path="/addCompany" component={AddCompany}/>
               <ProtectedRoute path="/editCompany/:_id" component={EditCompany}/>
               <ProtectedRoute path="/editProfile/:_id" component={EditProfile}/>
               <ProtectedRoute path="/editJob/:_id" component={EditJob}/>

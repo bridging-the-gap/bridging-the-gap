@@ -28,19 +28,6 @@ const makeSchema = (allLocations, allParticipants) => new SimpleSchema({
 
 /** Renders the Page for adding a document. */
 class AddProject extends React.Component {
-  /** On submit, insert the data. */
-  /*
-  submit(data, formRef) {
-    Meteor.call(addProjectMethod, data, (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
-      } else {
-        swal('Success', 'Project added successfully', 'success').then(() => formRef.reset());
-      }
-    });
-  }
-*/
-
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;

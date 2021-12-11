@@ -15,15 +15,6 @@ import Job from '../components/JobPro';
 import { Jobs } from '../../api/job/Jobs';
 
 /** Returns the Profile and associated Projects and Locations associated with the passed user email. */
-// function getProfileData(email) {
-// const data = Profiles.collection.findOne({ email });
-// const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
-// const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-// const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-// const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-// console.log(_.extend({ }, data, { locations, projects: projectPictures }));
-// return _.extend({}, data, { locations, skills, projects: projectPictures });}
-
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
