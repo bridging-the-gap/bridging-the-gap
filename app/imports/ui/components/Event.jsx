@@ -31,7 +31,7 @@ class Event extends React.Component {
           <Card.Description>{this.props.event.description}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/editEvent/${this.props.event._id}`} id="editEvent" >Edit</Link>
+          <Link id="editEvent" to={`/editEvent/${this.props.event._id}`} >Edit</Link>
         </Card.Content>
       </Card>
     );
