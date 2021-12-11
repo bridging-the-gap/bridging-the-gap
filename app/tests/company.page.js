@@ -104,36 +104,6 @@ class Company {
     await testController.expect(eventCount).eql(8);
   }
 
-  /** Asserts if add Company works */
-  /* async addCompany(testController) {
-    const title = 'fireworksRus';
-    const location = 'North Pole';
-    const contact = 'santa@foo.com';
-    const industry = 'Explosions';
-    const image = 'https://www.pbs.org/wnet/nature/files/2017/07/fish-1534844_1920.jpg';
-    const description = 'This is  a company';
-    await testController.click('#addCompany');
-    await testController.typeText('#companyName', title);
-    await testController.typeText('#location', location);
-    await testController.typeText('#contact', contact);
-    await testController.typeText('#industry', industry);
-    await testController.typeText('#image', image);
-    await testController.typeText('#description', description);
-    await testController.click('#submit');
-    await testController.click(Selector('.swal-button--confirm'));
-  } */
-
-  // Not needed, can use signup test page method.
-  /** Creates new company account */
-  /* async signupCompany(testController, username, role, password) {
-    await testController.typeText('#signup-form-email', username);
-    await testController.typeText('#signup-form-password', password);
-    await testController.click('#company-button');
-    await testController.click('#signup-form-submit');
-    await navBar.isLoggedIn(testController, username);
-    await testController.click(Selector('.swal-button--confirm'));
-  } */
-
   /** Asserts if edit Company works */
   async editCompany(testController) {
     const title = 'cafe';
