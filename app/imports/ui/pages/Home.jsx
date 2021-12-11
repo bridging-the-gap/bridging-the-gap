@@ -131,14 +131,14 @@ class Home extends React.Component {
             </Grid.Column>
             <Grid.Column width={10}>
               <Button attached={'top'} id="addJob" ><Link to={'/addJob'}>Add Job Listing</Link></Button>
-              <Header as="h2" textAlign="center" inverted>Your job listings</Header>
+              <Header as="h2" textAlign="center">Your job listings</Header>
               <Segment>
                 <Card.Group>
                   {this.props.jobs.map((job, index2) => { if (job.owner === email) { return <Job key={index2} job={job} />; } return ''; })}
                 </Card.Group>
               </Segment>
               <Button attached={'top'} id="home-addEvent"><Link to={'/addEvent'}>Add Event</Link></Button>
-              <Header as="h2" textAlign="center" inverted>Your upcoming events</Header>
+              <Header as="h2" textAlign="center">Your upcoming events</Header>
               <Segment>
                 <Card.Group>
                   {this.props.events.map((event, index2) => {
