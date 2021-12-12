@@ -96,7 +96,7 @@ class Home extends React.Component {
           <Grid id='student-home' columns={2}>
             <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
               <Header as="h3" textAlign="center">Your Favourite Job Listings</Header>
-              <Item.Meta>The job listings you ave favourited from the Jobs page will show up here.</Item.Meta>
+              <Item.Meta>The job listings you have favourited from the Jobs page will show up here.</Item.Meta>
               <Segment>
                 <Item.Group divided>
                   {_.map(profilesJobsData, (job, index) => {
@@ -109,7 +109,7 @@ class Home extends React.Component {
             </Grid.Column>
             <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
               <Header as="h3" textAlign="center">Your Favourite Events</Header>
-              <Item.Meta>The events you ave favourited from the Events page will show up here.</Item.Meta>
+              <Item.Meta>The events you have favourited from the Events page will show up here.</Item.Meta>
               <Segment>
                 <Item.Group divided>
                   {_.map(profilesEventsData, (event, index) => {

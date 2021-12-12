@@ -51,7 +51,6 @@ function addProfile({ firstName, lastName, bio, title, webpage, locations, skill
   Profiles.collection.insert({ firstName, lastName, bio, title, webpage, picture, email, role });
   // Add locations and projects.
   if (typeof skills !== 'undefined') {
-    console.log(typeof skills);
     skills.map(skill => ProfilesSkills.collection.insert({ profile: email, skill }));
     skills.map(skill => addSkill(skill));
   }
