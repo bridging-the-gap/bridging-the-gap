@@ -1,9 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
-import { Projects } from '../../api/projects/Projects';
-import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
-import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
@@ -63,20 +60,6 @@ function addProfile({ firstName, lastName, bio, title, webpage, locations, skill
   }
 }
 
-/** Define a new project. Error if project already exists.  */
-function addProject({ name, homepage, description, locations, skills, picture, role }) {
-  console.log(`Defining project ${name}`);
-  Projects.collection.insert({ name, homepage, description, picture, role });
-  if (typeof skills !== 'undefined') {
-    skills.map(skill => ProjectsSkills.collection.insert({ project: name, skill }));
-    skills.map(skill => addSkill(skill));
-  }
-  if (typeof locations !== 'undefined') {
-    locations.map(location => ProjectsLocations.collection.insert({ project: name, location }));
-    locations.map(location => addLocation(location));
-  }
-}
-
 /** Define a new event. Error if event already exists.  */
 function addEvent({ eventName, company, date, location, description, picture, owner }) {
   console.log(`Defining event ${eventName}`);
@@ -125,8 +108,6 @@ if (Meteor.users.find().count() === 0) {
     createUser('johnson@hawaii.edu', 'admin');
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
-    console.log('Creating the default projects');
-    Meteor.settings.defaultProjects.map(project => addProject(project));
     console.log('Creating the default events');
     Meteor.settings.defaultEvents.map(event => addEvent(event));
     console.log('Creating the default reports');
@@ -149,5 +130,4 @@ if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() < 7)) {
   console.log(`Loading data from private/${assetsFileName}`);
   const jsonData = JSON.parse(Assets.getText(assetsFileName));
   jsonData.profiles.map(profile => addProfile(profile));
-  jsonData.projects.map(project => addProject(project));
 }

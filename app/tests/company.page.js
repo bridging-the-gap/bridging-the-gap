@@ -41,7 +41,7 @@ class Company {
     const industry = '1';
     const image = 'https://www.pbs.org/wnet/nature/files/2017/07/fish-1534844_1920.jpg';
     const description = '1';
-    await testController.click('#editJob');
+    await testController.wait(20000).click('#editJob');
     await testController.selectText('#jobTitle').pressKey('delete');
     await testController.typeText('#jobTitle', editTitle);
     await testController.selectText('#location').pressKey('delete');

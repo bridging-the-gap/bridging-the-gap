@@ -10,7 +10,6 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
 import Job from '../components/JobPro';
 import { Jobs } from '../../api/job/Jobs';
 
@@ -135,11 +134,10 @@ export default withTracker(() => {
   const sub2 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   const sub3 = Meteor.subscribe(ProfilesSkills.userPublicationName);
   const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Projects.userPublicationName);
   const sub6 = Meteor.subscribe(Jobs.userPublicationName);
   const jobs = Jobs.collection.find({}).fetch();
   return {
     jobs,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub6.ready(),
   };
 })(ProfilesPage);

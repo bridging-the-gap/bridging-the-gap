@@ -10,7 +10,6 @@ import Landing from '../pages/Landing';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import AddEvent from '../pages/AddEvent';
-import Projects from '../pages/Projects';
 import BrowseCompanies from '../pages/BrowseCompanies';
 import BrowseStudents from '../pages/BrowseStudents';
 import StudentProfilePage from '../pages/StudentProfilePage';
@@ -41,7 +40,6 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/profile" component={Profile}/>
-              <ProtectedRoute path="/projects" component={Projects}/>
               <ProtectedRoute path="/locations" component={Locations}/>
               <ProtectedRoute path="/events" component={Events}/>
               <ProtectedRoute path="/jobs" component={JobListings}/>

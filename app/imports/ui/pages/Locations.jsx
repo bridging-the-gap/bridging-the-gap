@@ -8,16 +8,12 @@ import { Locations } from '../../api/locations/Locations';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
-import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
 
 /** Returns the Profiles and Projects associated with the passed Location. */
 function getLocationData(name) {
   const profiles = _.pluck(ProfilesLocations.collection.find({ location: name }).fetch(), 'profile');
   const profilePictures = profiles.map(profile => Profiles.collection.findOne({ email: profile }).picture);
-  const projects = _.pluck(ProjectsLocations.collection.find({ location: name }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  return _.extend({ }, { name, profiles: profilePictures, projects: projectPictures });
+  return _.extend({ }, { name, profiles: profilePictures });
 }
 
 /** Component for layout out an Location Card. */
@@ -67,12 +63,10 @@ LocationsPage.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub2 = Meteor.subscribe(Projects.userPublicationName);
-  const sub3 = Meteor.subscribe(ProjectsLocations.userPublicationName);
   const sub4 = Meteor.subscribe(Profiles.userPublicationName);
   const sub5 = Meteor.subscribe(Locations.userPublicationName);
   const sub6 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
+    ready: sub1.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
   };
 })(LocationsPage);
