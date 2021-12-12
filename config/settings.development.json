@@ -846,7 +846,7 @@
     },
     {
       "reportType": "bug",
-      "email": "samsung@samsung.com",
+      "email": "yin.k@samsung.com",
       "description": "I was attempting to log into Bridging the Gap last night, December 4th at 10:00pm, but the site was completely down. It works fine today, however. I'm not sure if maintenance was going on, but if not, it's something your team should look into."
     },
     {
@@ -856,17 +856,17 @@
     },
     {
       "reportType": "other",
-      "email": "fedex@fedex.com",
+      "email": "hr@google.com",
       "description": "I have a suggestion regarding the company homepage. Upon signing up, I tried adding a job listing but nothing happened when I clicked the button. It took me a while to realize that I had to click directly on the 'Add Job Listing' text to go and add a job listing. Is there a way you can change the ui so that you can simply click on the grey button surrounding the 'Add Job Listing' text to go to the link? And the same goes for the events page."
     },
     {
       "reportType": "other",
-      "email": "google@google.com",
+      "email": "hr@google.com",
       "description": "My team and I have noticed the range of locations to search by is very limited. Is there a way we could add our own categories? If not, is it possible you could add Canada, Dublin, London, Singapore, Hyderabad, Sydney, and Tokyo to the locations list? These are some of our global headquarters. Actually, it'd be best if there were more global locations in general for all the companies registered on this site."
     },
     {
       "reportType": "other",
-      "email": "samsung@samsung.com",
+      "email": "yin.k@samsung.com",
       "description": "While searching through students' profiles for potential job candidates, I came across a user by the name Jason Leigh (leighj@hawaii.edu). When I clicked the link to his portfolio page, I was sent somewhere unexpected and I think I may have downloaded a virus. Please look into the matter and contact us when you know more."
     },
     {
@@ -876,7 +876,7 @@
     },
     {
       "reportType": "user-abuse",
-      "email": "apple@apple.com",
+      "email": "humanrelations@apple.com",
       "description": "app1e@app1e.com is masquerading as my company on the site. They are posting Apple events and creating fake job listings. Please take them down."
     },
     {
@@ -912,7 +912,7 @@
     {
       "reportType": "other",
       "email": "richardgrey@hawaii.edu",
-      "description": "Not sure if this constitutes user abuse, but Walmart, Toyota, and FedEx have added a lot of job listings in the past hour, so it was a little frustrating looking through the job listings to find ones that match my computer-science interests. I think there should be a limit on how many job listings a company can add a day, or at least a way to filter job listings by what type they are."
+      "description": "Hawaiian Airlines has added a lot of job listings in the past hour, so it was a little frustrating looking through the job listings to find ones that match my computer-science interests. I think there should be a limit on how many job listings a company can add a day, or at least a way to filter job listings by what type they are."
     },
     {
       "reportType": "user-abuse",
@@ -926,12 +926,12 @@
     },
     {
       "reportType": "bug",
-      "email": "google@google.com",
+      "email": "hr@google.com",
       "description": "I added two events to the events page yesterday, but when I logged back in today. one of them seem to have disappeared. The event that disappeared was called 'Spend a day at the Google Headquarters'. Please look into this issue and contact us when you know what happened."
     },
     {
       "reportType": "bug",
-      "email": "walmart@walmart.com",
+      "email": "jenny.hr@walmart.com",
       "description": "There is an issue with adding events. They seem to disappear after I create them in my homepage, which is unfortunate because our team has an event coming up in a week for college students. Please look into this problem as soon as possible."
     }
   ],
