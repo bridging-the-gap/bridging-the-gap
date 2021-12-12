@@ -6,7 +6,8 @@ import { Container, Form, Grid, Header, Loader, Message, Segment } from 'semanti
 import swal from 'sweetalert';
 import { Accounts } from 'meteor/accounts-base';
 import { withTracker } from 'meteor/react-meteor-data';
-import { addRoleMethod, addSpecificInfoMethod } from '../../startup/both/Methods';
+import { addRoleMethod, addSpecificInfoMethod, addLocationMethod, addSkillMethod }
+  from '../../startup/both/Methods';
 import { Profiles } from '../../api/profiles/Profiles';
 import { Locations } from '../../api/locations/Locations';
 
@@ -57,6 +58,22 @@ class Signup extends React.Component {
                   swal('You have registered successfully.', 'Welcome to Bridging the Gap!', 'success');
                 }
               });
+              if (role === 'student') {
+                Meteor.call(addSkillMethod, this.state, (error) => {
+                  if (error) {
+                    swal('Error', 'An error has occurred while trying to add the location you chose.'
+                      + ' Please let the admin know by filing a report in the report a problem page.', 'error');
+                  }
+                });
+              }
+              if (role === 'company') {
+                Meteor.call(addLocationMethod, this.state, (error) => {
+                  if (error) {
+                    swal('Error', 'An error has occurred while trying to add the location you chose.'
+                      + ' Please let the admin know by filing a report in the report a problem page.', 'error');
+                  }
+                });
+              }
               /** Calling the addSpecificInfoMethod to add user's skills to ProfilesSkills collection if they're a student
                * or add user's locations to ProfilesLocations collection if they're a student or company. */
               Meteor.call(addSpecificInfoMethod, this.state, (error) => {
