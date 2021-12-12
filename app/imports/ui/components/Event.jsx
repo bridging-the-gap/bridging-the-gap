@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Button, Card, Image, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
@@ -30,9 +30,9 @@ class Event extends React.Component {
           <Card.Meta>Date:  {this.props.event.date}</Card.Meta>
           <Card.Description>{this.props.event.description}</Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        <Segment>
           <Link to={`/editEvent/${this.props.event._id}`} id="editEvent" >Edit</Link>
-        </Card.Content>
+        </Segment>
       </Card>
     );
   }
