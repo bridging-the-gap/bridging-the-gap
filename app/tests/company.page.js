@@ -67,7 +67,7 @@ class Company {
     await navBar.goToJobsPage(testController);
     const jobSelector = Selector('.makeJobClass');
     const jobCount = await jobSelector.count;
-    await testController.expect(jobCount).eql(9);
+    await testController.expect(jobCount).eql(14);
   }
 
   /** Asserts if edit Event works */

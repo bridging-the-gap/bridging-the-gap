@@ -83,7 +83,7 @@ class HomePage {
     await testController.click(reportTypeSelector);
     await testController.click(otherOption);
     const rowCount = Selector('tr').count; // select <tr>
-    await testController.expect(rowCount).eql(7);
+    await testController.expect(rowCount).eql(8);
   }
 
   // For Bridging the Gap Admin section of Home page.
