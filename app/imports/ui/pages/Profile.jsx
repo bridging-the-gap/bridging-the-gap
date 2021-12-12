@@ -65,18 +65,13 @@ class ProfilesPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    // const emails = _.pluck(Profiles.collection.find().fetch(), 'email');
-    // const profileData = emails.map(email => getProfileData(email));
     const email = Meteor.user().username;
     const companyData = getProfileData(email);
-    // const profileData = Profiles.collection.findOne({ email });
     const profileData = getProfileData(email);
-    // console.log(profileData);
     return (
       <Container>
         {/* Start of student page */}
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
-          // const profileData = emails.map(email => getProfileData(email));
           <Container id="profiles-page">
             <MakeCard profile={profileData}/>
             <Link to={`/editProfile/${profileData._id}`}>Edit</Link>
@@ -131,8 +126,6 @@ class ProfilesPage extends React.Component {
 ProfilesPage.propTypes = {
   ready: PropTypes.bool.isRequired,
   jobs: PropTypes.array.isRequired,
-  // company: PropTypes.object.isRequired,
-  // profile: PropTypes.object.isRequired,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */

@@ -23,8 +23,6 @@ const makeSchema = (allLocations) => new SimpleSchema({
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
-  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
   return _.extend({ }, data, { locations });
 }
 

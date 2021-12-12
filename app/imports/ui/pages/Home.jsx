@@ -28,8 +28,6 @@ function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
   return _.extend({ }, data, { locations, skills });
 }
 
@@ -52,24 +50,12 @@ class Home extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    // const fRef = null;
     const email = Meteor.user().username;
     const events = _.pluck(ProfilesEvents.collection.find({ }).fetch(), 'event');
     const profilesEventsData = _.uniq(events).map(event => getProfileEventsData(event, email));
-    // const profileData = Profiles.collection.findOne({ email });
     const companyData = getProfileData(email);
-    // const profileData = getProfileData(email);
-    // const profilesEvents = _.pluck(ProfilesEvents.collection.find({ profile: email }).fetch(), 'event');
-    // const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
-    // console.log(profilesEvents);
     const profilesJobs = _.pluck(ProfilesJobs.collection.find({ profile: email }).fetch(), 'job');
     const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
-    // const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
-    // const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
-    // const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
-    /// const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
-    // const email = Meteor.user().username;
-    // const profile = Profiles.collection.findOne({ email });
     return (
       <Container id='home-page'>
         {/* Start of admin page */}

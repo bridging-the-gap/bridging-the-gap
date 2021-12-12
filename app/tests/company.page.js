@@ -62,12 +62,12 @@ class Company {
     await testController.click('#companyRemoveJob');
     const cardSelector = Selector('.card');
     const cardCount = await cardSelector.count;
-    await testController.expect(cardCount).eql(4);
+    await testController.expect(cardCount).eql(2);
     // Check job is removed from job listings page.
     await navBar.goToJobsPage(testController);
     const jobSelector = Selector('.makeJobClass');
     const jobCount = await jobSelector.count;
-    await testController.expect(jobCount).eql(11);
+    await testController.expect(jobCount).eql(9);
   }
 
   /** Asserts if edit Event works */
@@ -96,12 +96,12 @@ class Company {
     await testController.click('#companyRemoveEvent');
     const cardSelector = Selector('.card');
     const cardCount = await cardSelector.count;
-    await testController.expect(cardCount).eql(3);
+    await testController.expect(cardCount).eql(1);
     // Check event is removed from events page.
     await navBar.goToEventsPage(testController);
     const eventSelector = Selector('.makeEventClass');
     const eventCount = await eventSelector.count;
-    await testController.expect(eventCount).eql(8);
+    await testController.expect(eventCount).eql(18);
   }
 
   /** Asserts if edit Company works */

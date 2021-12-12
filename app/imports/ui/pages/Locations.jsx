@@ -17,7 +17,6 @@ function getLocationData(name) {
   const profilePictures = profiles.map(profile => Profiles.collection.findOne({ email: profile }).picture);
   const projects = _.pluck(ProjectsLocations.collection.find({ location: name }).fetch(), 'project');
   const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  // console.log(_.extend({ }, data, { locations, projects: projectPictures }));
   return _.extend({ }, { name, profiles: profilePictures, projects: projectPictures });
 }
 
