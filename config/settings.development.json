@@ -537,6 +537,7 @@
       "locations": [
         "Hawaii"
       ],
+      "webpage": "https://bryanyagi.github.io/",
       "skills": [
         "Programming",
         "Software Engineering",
@@ -544,7 +545,7 @@
         "Data Science",
         "Mathematics"
       ],
-      "picture": "",
+      "picture": "https://avatars.githubusercontent.com/u/89876467?v=4",
       "email": "bryanyagi@hawaii.edu",
       "role": "student"
     },
@@ -557,10 +558,11 @@
         "US",
         "California"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://huntere.github.io/",
       "skills": [
         "Field hockey",
-        "Science"
+        "Science",
+        "Biology"
       ],
       "picture": "https://images.generated.photos/yPQCFmTQmN6xsCx6boE9MUD8c9jU5kS5krk-heuemo4/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvOWRkNjBl/ODAtNWFiNi00NWRi/LWExMDgtMmM3Nzhh/NjYzYTNjLmpwZw.jpg",
       "email": "erish@hawaii.edu",
@@ -576,7 +578,7 @@
         "California",
         "Washington D.C"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://sam-robinson.github.io/",
       "skills": [
         "Aerospace Engineering",
         "Mathematics"
@@ -596,10 +598,11 @@
         "Hawaii (The Big Island)",
         "Kauai"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://rpage.github.io/",
       "skills": [
-        "Aerospace Engineering",
-        "Math"
+        "Business",
+        "Economics",
+        "Accounting"
       ],
       "picture": "https://images.generated.photos/hw9Co43qynDxlR-JJ7hLjHUYbaqzFYPOSer1uWk9SBo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZTRlZjA1/OGUtZWMzNS00ZTYy/LTk0ZDctNDYwNTIy/MmU5MTJkLmpwZw.jpg",
       "email": "ryanpage@hawaii.edu",
@@ -616,10 +619,11 @@
         "Alaska",
         "Maui"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://rich-grey.github.io/",
       "skills": [
         "Research",
-        "Science"
+        "Science",
+        "Marine Biology"
       ],
       "picture": "https://images.generated.photos/OAOniVTrLzT1RofvWSk4lWZlyulG4xnQ3Vl-ueSWJVo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZjYwYzll/YTUtNTA0Ny00ZGNm/LThlNzAtNmE4Yjdl/NDEyNjVmLmpwZw.jpg",
       "email": "richardgrey@hawaii.edu",
@@ -636,10 +640,10 @@
         "Arizona",
         "Hawaii"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://maria-celene.github.io/",
       "skills": [
         "Engineering",
-        "Creating circuits"
+        "Circuit-making"
       ],
       "picture": "https://images.generated.photos/QMKKxLsqrriaiFGOJi0REAml5s0ELLUuFK5Oo7VbLxc/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMTRhMTAw/ZDEtN2U5OS00NGZh/LWE4ZjMtZWZhNjhh/ZTNiMjMxLmpwZw.jpg",
       "email": "mariac@hawaii.edu",
@@ -655,10 +659,11 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://bobby-maxwell.github.io/",
       "skills": [
-        "Research",
-        "Science"
+        "Economics",
+        "Business",
+        "Psychology"
       ],
       "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
       "email": "bobbym@hawaii.edu",
@@ -674,12 +679,14 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://olan.github.io/",
       "skills": [
+        "Nanotechnology",
+        "Machine Learning",
         "Research",
         "Science"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/i5OAsYHBIyY7cMZALCdpRv00fWrnhwf7z997BjoyW20/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMTFiMjFj/MzEtZjY3OC00ZjZl/LWE1MjctODkyNzY0/NGU4YjEzLmpwZw.jpg",
       "email": "olan@hawaii.edu",
       "role": "student"
     },
@@ -693,31 +700,32 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://kardin.github.io/",
       "skills": [
-        "Research",
+        "Nanotechnology",
+        "Engineering",
         "Science"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/QdWQve4YdjZl_3O7DJ7XoOYfd-BoLkBbElN8KTrbrqE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNTU4NGFm/YWQtM2FjYS00Y2U1/LThhMGUtMjY5OTAy/MzIxN2VjLmpwZw.jpg",
       "email": "karin@hawaii.edu",
       "role": "student"
     },
     {
       "firstName": "Kenny",
       "lastName": "Jenn",
-      "bio": "I'm a Phsycology Student from Texas.",
-      "title": "Phsycology Student",
+      "bio": "I'm a Psychology Student from Texas.",
+      "title": "Psychology Student",
       "locations": [
         "Texas",
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://jenn-ken.github.io/",
       "skills": [
         "Research",
         "Psychology"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/SjXrvMDAcCmHBglHjRT535b09KyVmfhYU6fTxJm3AQ0/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMjk4Nzky/MzUtODBkOS00MTIx/LTk0N2EtNjBhOTU0/OGJmNmUzLmpwZw.jpg",
       "email": "kennyj@hawaii.edu",
       "role": "student"
     },
@@ -731,86 +739,90 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://kimye.github.io/",
       "skills": [
         "Research",
-        "Psychology"
+        "Biology",
+        "Science"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/5EuiKU-UnhrD7hsRkxiyTNdAxuriSO9hhK_bC6UoocI/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNjk4MDg5/NDAtZTQ5NS00ODNl/LWJlNzYtYTQzM2Ex/MTQ3ODk4LmpwZw.jpg",
       "email": "kimy@hawaii.edu",
       "role": "student"
     },
     {
       "firstName": "Karen",
       "lastName": "Obrian",
-      "bio": "I'm a Physics student in Philadelphia.",
+      "bio": "I'm a Physics student in Philadelphia. I'm planning to move to Hawaii in December.",
       "title": "Physics Student",
       "locations": [
         "Philadelphia",
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://kareno.github.io/",
       "skills": [
-        "Research",
-        "Physics"
+        "Physics",
+        "Science"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/Po6QTHVg0bN91BBR72rmzQLURzQNSKinABviSwEEOxM/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMmU2YmY1/OGYtOTRkZC00ODk4/LWJlMGUtMDJkMjQx/NjQ1N2ZlLmpwZw.jpg",
       "email": "kareno@hawaii.edu",
       "role": "student"
     },
     {
       "firstName": "Walter",
       "lastName": "Varnum",
-      "bio": "I am a Professor in Biology. I graduated from UH Manoa in 2005.",
-      "title": "Professor",
+      "bio": "I'm a graduate student at UH Manoa and I'm working on my Ph.D. in Biology.",
+      "title": "Graduate Student",
       "locations": [
         "Hawaii",
-        "US"
+        "US",
+        "Paris",
+        "Japan"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://walter-varnum.github.io/",
       "skills": [
         "Research",
-        "Physics"
+        "Biology"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/xOFwXdzyi_aGLTBfykqw2blrankOi8jSWLmox5C7iSQ/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZDRhODdh/NjAtODhkMC00ZmM5/LWI0OTUtODQ3OTE3/MTA1MGIyLmpwZw.jpg",
       "email": "walterv@hawaii.edu",
-      "role": "professor"
+      "role": "student"
     },
     {
       "firstName": "Kimberly",
       "lastName": "Gilliand",
-      "bio": "I am a Science student at UH. My interests are surf and mindfullness.",
+      "bio": "I am a Science student at UH. My interests are surf and mindfulness.",
       "title": "Future Yogi.",
       "locations": [
         "Hawaii",
         "US",
         "Bali"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://kim-gilli.github.io/",
       "skills": [
-        "Research",
-        "Computer Science"
+        "Yoga",
+        "Science",
+        "Surfing"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/2C6kQO2-5SG8o6X5bIl5Tst_aP11_0157egFf_yKUKI/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvY2NhMTg4/ZjAtNmQ5MC00YTBj/LTk0OTItZGJkMzhj/MmI3MzUzLmpwZw.jpg",
       "email": "kimberlyg@hawaii.edu",
       "role": "student"
     },
     {
       "firstName": "Gail",
       "lastName": "Otero",
-      "bio": "I'm a student at UH. My major is Phsycology.",
+      "bio": "I'm a student at UH. My major is Psychology.",
       "title": "Student.",
       "locations": [
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://otero-gail.github.io/",
       "skills": [
         "Research",
-        "Phsycology"
+        "Psychology"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/YHjKkkfF4A-bUDlWrUJwVVFvWRgd5lSNU6LPjffVZRw/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNWRmYWZh/NzktYzVlOC00NmEw/LWFjMjYtY2FlZDk4/NTQ2NGE3LmpwZw.jpg",
       "email": "gailo@hawaii.edu",
       "role": "student"
     },
@@ -823,12 +835,13 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://walterh.github.io/",
       "skills": [
         "Research",
-        "Computer Science"
+        "Computer Science",
+        "Software Engineering"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/R0pmmeqe52aneJNPVdPpox7Xon2FszxElxCdNXQiAOg/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvODlmODQ3/MzctZmU2My00YzNi/LTllOWUtODczYTQ0/Mjc3OWEyLmpwZw.jpg",
       "email": "walterh@hawaii.edu",
       "role": "student"
     }
@@ -905,9 +918,9 @@
       "description": "Someone is pretending to be Apple. They're using the contact email app1e@app1e.com, and their job listings look like scams."
     },
     {
-      "reportType": "bug",
-      "email": "erictompson@hawaii.edu",
-      "description": "I am trying to submit my CV but when I click the link to do so (in the student homepage) nothing happens."
+      "reportType": "other",
+      "email": "walterv@hawaii.edu",
+      "description": "There are many categories of locations to browse by and I don't really have a preference, so it is a bit tedious adding all the locations to get every company to appear on the Browse Companies page. Can you edit the filtering to include an 'all' option if possible?"
     },
     {
       "reportType": "other",
