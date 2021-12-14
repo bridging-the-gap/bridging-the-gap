@@ -8,17 +8,13 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
 
 /** Returns the Profile and associated Projects and Locations associated with the passed user email. */
 function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  // console.log(_.extend({ }, data, { locations, projects: projectPictures }));
-  return _.extend({ }, data, { locations, skills, projects: projectPictures });
+  return _.extend({ }, data, { locations, skills });
 }
 
 /** Component for layout out a Profile Card. */
@@ -66,7 +62,6 @@ class StudentProfilePage extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     const emails = _.pluck(Profiles.collection.find().fetch(), 'email');
-    // const userEmail = _.pluck(Profiles.collection.find({ email: this.props.currentUser.email }).fetch(), 'email');
     const profileData = emails.map(email => getProfileData(email));
     return (
       <Container id="profiles-page">
@@ -90,8 +85,7 @@ export default withTracker(() => {
   const sub2 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   const sub3 = Meteor.subscribe(ProfilesSkills.userPublicationName);
   const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Projects.userPublicationName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
   };
 })(StudentProfilePage);

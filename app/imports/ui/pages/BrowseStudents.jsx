@@ -13,7 +13,6 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
@@ -26,8 +25,6 @@ function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
   return _.extend({ }, data, { locations, skills });
 }
 
@@ -130,10 +127,9 @@ export default withTracker(() => {
   const sub2 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   const sub3 = Meteor.subscribe(ProfilesSkills.userPublicationName);
   const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Projects.userPublicationName);
   const sub6 = Meteor.subscribe(Locations.userPublicationName);
   const sub7 = Meteor.subscribe(Skills.userPublicationName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready() && sub7.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub6.ready() && sub7.ready(),
   };
 })(BrowseStudents);

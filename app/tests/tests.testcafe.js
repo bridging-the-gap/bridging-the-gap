@@ -62,25 +62,6 @@ test('Test that signup page, then logout works', async (testController) => {
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
-/*
-test('Test that profiles page displays', async (testController) => {
-  await navBar.gotoProfilesPage(testController);
-  await profilesPage.isDisplayed(testController);
-  await profilesPage.hasDefaultProfiles(testController);
-});
-
-test('Test that interests page displays', async (testController) => {
-  await navBar.gotoInterestsPage(testController);
-  await interestsPage.isDisplayed(testController);
-  await interestsPage.hasDefaultInterests(testController);
-});
-
-test('Test that projects page displays', async (testController) => {
-  await navBar.gotoProjectsPage(testController);
-  await projectsPage.isDisplayed(testController);
-  await projectsPage.hasDefaultProjects(testController);
-});
-*/
 
 // For the Bridging The Gap Home page (separate for student, company, and admin).
 test('Test that home page displays and works for users in student, company, and admin roles',
@@ -224,7 +205,6 @@ test('Test Edit event works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await navBar.gotoCompanyHomePage(testController);
   await companyPage.editEvent(testController);
   await navBar.gotoCompanyHomePage(testController);
   await companyPage.removeEvent(testController);
@@ -236,36 +216,3 @@ test('Test that the company profile works', async (testController) => {
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyProfilePage(testController);
 });
-
-// Shouldn't be necessary now since signup page takes care of adding company profile.
-/* test.only('Test that add company works', async (testController) => {
-  // Create a new user email address that's guaranteed to be unique.
-  const newUserCompanyName = `user-${new Date().getTime()}`;
-  const newUser = `${newUserCompanyName}@foo.com`;
-  await navBar.gotoSignupPage(testController);
-  await signupPage.isDisplayed(testController);
-  await signupPage.signupUser(testController, newUser, newUserCompanyName, '', company.role, company.password);
-  await navBar.gotoCompanyHomePage(testController);
-  await companyPage.addCompany(testController);
-  await navBar.logout(testController);
-  await signoutPage.isDisplayed(testController);
-}); */
-/*
-test('Test that addProject page works', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.gotoAddProjectPage(testController);
-  await addProjectPage.isDisplayed(testController);
-  await addProjectPage.addProject(testController);
-});
-
-test('Test that filter page works', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.gotoFilterPage(testController);
-  await filterPage.isDisplayed(testController);
-  await filterPage.filter(testController);
-});
-*/

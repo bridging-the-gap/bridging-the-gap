@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Image } from 'semantic-ui-react';
+import { Button, Card, Image, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
@@ -31,9 +31,9 @@ class Job extends React.Component {
           <Card.Meta>Industry: {this.props.job.industry}</Card.Meta>
           <Card.Description>{this.props.job.description}</Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        <Segment>
           <Link to={`/editJob/${this.props.job._id}`} id="editJob" >Edit</Link>
-        </Card.Content>
+        </Segment>
       </Card>
     );
   }

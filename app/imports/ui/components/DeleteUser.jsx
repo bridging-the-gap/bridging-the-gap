@@ -8,6 +8,7 @@ import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import { _ } from 'meteor/underscore';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Admins } from '../../api/admin/Admins';
 import { deleteProfileMethod } from '../../startup/both/Methods';
 
 /** Renders a single row in the profile table in the admin page. See pages/Home.jsx. */
@@ -26,7 +27,9 @@ class DeleteUser extends React.Component {
   submit = () => {
     const isStudent = _.findWhere(this.props.profiles, { email: this.state.email, role: 'student' });
     const isCompany = _.findWhere(this.props.profiles, { email: this.state.email, role: 'company' });
-    const isAdmin = _.findWhere(this.props.profiles, { email: this.state.email, role: 'admin' });
+    console.log('email', this.state.email);
+    const isAdmin = _.findWhere(this.props.admins, { admin: this.state.email });
+    console.log('isAdmin', isAdmin);
     const userRole = (isStudent !== undefined) ? 'student' : 'company';
     const data = { email: this.state.email, role: userRole, error: '' };
     const match = ((isStudent !== undefined && userRole === isStudent.role) ||
@@ -76,6 +79,7 @@ class DeleteUser extends React.Component {
 // Require a document to be passed to this component.
 DeleteUser.propTypes = {
   profiles: PropTypes.array.isRequired,
+  admins: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -84,10 +88,14 @@ export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Roles.subscription;
   const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-  // Get the Profiles documents
+  const sub3 = Meteor.subscribe(Admins.adminPublicationName);
+  // Get the Profiles documents.
   const profiles = Profiles.collection.find({}).fetch();
+  // Get the Admins documents.
+  const admins = Admins.collection.find({}).fetch();
   return {
     profiles,
-    ready: sub1.ready() && sub2.ready(),
+    admins,
+    ready: sub1.ready() && sub2.ready() && sub3.ready(),
   };
 })(DeleteUser);

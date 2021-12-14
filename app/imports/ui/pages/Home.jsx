@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Admins } from '../../api/admin/Admins';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
@@ -28,20 +29,9 @@ function getProfileData(email) {
   const data = Profiles.collection.findOne({ email });
   const locations = _.pluck(ProfilesLocations.collection.find({ profile: email }).fetch(), 'location');
   const skills = _.pluck(ProfilesSkills.collection.find({ profile: email }).fetch(), 'skill');
-  // const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  // const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
   return _.extend({ }, data, { locations, skills });
 }
 
-/* function getProfileEventsData(event) {
-  const data = Events.collection.findOne({ eventName: event });
-  // const data = Events.collection.find({ eventName: event }).fetch();
-  // console.log('data', data);
-  // const specificData = _.pluck(ProfilesEvents.collection.find({ profile: email }).fetch(), 'event');
-  // console.log('specificdata', specificData);
-  // const myData = _.filter(data, function (myEvent) { return _.contains(specificData, myEvent.eventName); });
-  // console.log('mydata', myData);
-} */
 function getProfileEventsData(event) {
   const data = Events.collection.findOne({ eventName: event });
   return _.extend({ }, data);
@@ -52,54 +42,6 @@ function getProfileJobsData(jobTitle) {
   return _.extend({ }, data);
 }
 
-/* const MakeItem = (props) => (
-  <Item>
-    <Item.Image size="small" src={props.event.picture}/>
-    <Item.Content verticalAlign='middle'>
-      <Item.Header as='a'>{props.event.eventName}</Item.Header>
-      <Item.Meta>
-        <span className='date'>{props.event.date} {'at'} {props.event.location}</span>
-      </Item.Meta>
-      <Item.Description>{props.event.description}</Item.Description>
-      <Item.Extra>
-        <Button primary floated='right'>
-          Register for event
-          <Icon name='right chevron' />
-        </Button>
-      </Item.Extra>
-    </Item.Content>
-  </Item>
-);
-
-const MakeJobItem = (props) => (
-  <Item>
-    <Item.Image size="small" src={props.job.image}/>
-    <Item.Content verticalAlign='middle'>
-      <Item.Header as='a'>{props.job.jobTitle}</Item.Header>
-      <Item.Meta>
-        <span className='owner'>{props.job.owner}{' - '}{props.job.industry}</span>
-      </Item.Meta>
-      <Item><span className='salary'>{'Salary: '}{props.job.salary}</span></Item>
-      <Item><span className='location'>{'Location: '}{props.job.location}</span></Item>
-      <Item.Description>{props.job.description}</Item.Description>
-      <Item.Extra>
-        <Button floated='right'>
-          <a href={props.job.link}>Apply</a>
-          <Icon name='right chevron' />
-        </Button>
-      </Item.Extra>
-    </Item.Content>
-  </Item>
-); */
-
-/* MakeJobItem.propTypes = {
-  job: PropTypes.object.isRequired,
-};
-
-MakeItem.propTypes = {
-  event: PropTypes.object.isRequired,
-}; */
-
 class Home extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
@@ -109,24 +51,12 @@ class Home extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    // const fRef = null;
     const email = Meteor.user().username;
     const events = _.pluck(ProfilesEvents.collection.find({ }).fetch(), 'event');
     const profilesEventsData = _.uniq(events).map(event => getProfileEventsData(event, email));
-    // const profileData = Profiles.collection.findOne({ email });
     const companyData = getProfileData(email);
-    // const profileData = getProfileData(email);
-    // const profilesEvents = _.pluck(ProfilesEvents.collection.find({ profile: email }).fetch(), 'event');
-    // const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
-    // console.log(profilesEvents);
     const profilesJobs = _.pluck(ProfilesJobs.collection.find({ profile: email }).fetch(), 'job');
     const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
-    // const profilesEvents = _.pluck(ProfilesEvents.collection.find().fetch(), { email });
-    // const profilesEventsData = profilesEvents.map(events => getProfileEventsData(events));
-    // const profilesJobs = _.pluck(ProfilesJobs.collection.find().fetch(), { email });
-    /// const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
-    // const email = Meteor.user().username;
-    // const profile = Profiles.collection.findOne({ email });
     return (
       <Container id='home-page'>
         {/* Start of admin page */}
@@ -153,7 +83,7 @@ class Home extends React.Component {
           <Grid id='student-home' columns={2}>
             <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
               <Header as="h3" textAlign="center">Your Favourite Job Listings</Header>
-              <Item.Meta>The job listings you ave favourited from the Jobs page will show up here.</Item.Meta>
+              <Item.Meta>The job listings you have favourited from the Jobs page will show up here.</Item.Meta>
               <Segment>
                 <Item.Group divided>
                   {_.map(profilesJobsData, (job, index) => {
@@ -166,7 +96,7 @@ class Home extends React.Component {
             </Grid.Column>
             <Grid.Column width={8} style={{ backgroundColor: 'white' }}>
               <Header as="h3" textAlign="center">Your Favourite Events</Header>
-              <Item.Meta>The events you ave favourited from the Events page will show up here.</Item.Meta>
+              <Item.Meta>The events you have favourited from the Events page will show up here.</Item.Meta>
               <Segment>
                 <Item.Group divided>
                   {_.map(profilesEventsData, (event, index) => {
@@ -188,14 +118,14 @@ class Home extends React.Component {
             </Grid.Column>
             <Grid.Column width={10}>
               <Button attached={'top'} id="addJob" ><Link to={'/addJob'}>Add Job Listing</Link></Button>
-              <Header as="h2" textAlign="center" inverted>Your job listings</Header>
+              <Header as="h2" textAlign="center">Your job listings</Header>
               <Segment>
                 <Card.Group>
                   {this.props.jobs.map((job, index2) => { if (job.owner === email) { return <Job key={index2} job={job} />; } return ''; })}
                 </Card.Group>
               </Segment>
               <Button attached={'top'} id="home-addEvent"><Link to={'/addEvent'}>Add Event</Link></Button>
-              <Header as="h2" textAlign="center" inverted>Your upcoming events</Header>
+              <Header as="h2" textAlign="center">Your upcoming events</Header>
               <Segment>
                 <Card.Group>
                   {this.props.events.map((event, index2) => {
@@ -218,6 +148,7 @@ Home.propTypes = {
   profilesJobs: PropTypes.array.isRequired,
   jobs: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
+  admins: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -225,23 +156,30 @@ Home.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Roles.subscription;
-  const sub2 = Meteor.subscribe(Reports.userPublicationName);
+  const sub2 = Meteor.subscribe(Reports.adminPublicationName);
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
   const sub5 = Meteor.subscribe(Jobs.userPublicationName);
   const sub6 = Meteor.subscribe(Events.userPublicationName);
   const sub7 = Meteor.subscribe(ProfilesEvents.userPublicationName);
   const sub8 = Meteor.subscribe(ProfilesJobs.userPublicationName);
   const sub9 = Meteor.subscribe(ProfilesLocations.userPublicationName);
+  const sub10 = Meteor.subscribe(Admins.adminPublicationName);
   // Get the Reports documents
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
+  // Get the ProfilesLocations documents
   const profilesLocations = ProfilesLocations.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
+  // Get access to Events documents
   const events = Events.collection.find({}).fetch();
+  // Get access to ProfilesEvents documents
   const profilesEvents = ProfilesEvents.collection.find({}).fetch();
+  // Get access to ProfilesJobs documents
   const profilesJobs = ProfilesJobs.collection.find({}).fetch();
+  // Get access to Admins documents
+  const admins = Admins.collection.find({}).fetch();
   return {
     reports,
     profiles,
@@ -250,6 +188,8 @@ export default withTracker(() => {
     profilesLocations,
     jobs,
     events,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready() && sub8.ready() && sub9.ready(),
+    admins,
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready()
+      && sub7.ready() && sub8.ready() && sub9.ready() && sub10.ready(),
   };
 })(Home);

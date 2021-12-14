@@ -1,7 +1,10 @@
 {
-  "defaultAdmin": [
+  "defaultAdmins": [
     {
-      "email": "johnson@hawaii.edu"
+      "admin": "bridging.the.gap.uhm@gmail.com"
+    },
+    {
+      "admin": "johnson@hawaii.edu"
     }
   ],
   "defaultEvents": [
@@ -75,7 +78,7 @@
       "location": "Come to A la Moana centre to learn more about a potential career in Amazon. We also want to learn more about the students at UH Manoa! Head over for a free coffee and a chat.",
       "description": "",
       "picture": "https://1000logos.net/wp-content/uploads/2016/10/Amazon-logo-meaning.jpg",
-      "owner": "management@amaon.com"
+      "owner": "management@amazon.com"
     },
     {
       "eventName": "Sony wants you!",
@@ -537,6 +540,7 @@
       "locations": [
         "Hawaii"
       ],
+      "webpage": "https://bryanyagi.github.io/",
       "skills": [
         "Programming",
         "Software Engineering",
@@ -544,7 +548,7 @@
         "Data Science",
         "Mathematics"
       ],
-      "picture": "",
+      "picture": "https://avatars.githubusercontent.com/u/89876467?v=4",
       "email": "bryanyagi@hawaii.edu",
       "role": "student"
     },
@@ -557,10 +561,11 @@
         "US",
         "California"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://huntere.github.io/",
       "skills": [
         "Field hockey",
-        "Science"
+        "Science",
+        "Biology"
       ],
       "picture": "https://images.generated.photos/yPQCFmTQmN6xsCx6boE9MUD8c9jU5kS5krk-heuemo4/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvOWRkNjBl/ODAtNWFiNi00NWRi/LWExMDgtMmM3Nzhh/NjYzYTNjLmpwZw.jpg",
       "email": "erish@hawaii.edu",
@@ -576,7 +581,7 @@
         "California",
         "Washington D.C"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://sam-robinson.github.io/",
       "skills": [
         "Aerospace Engineering",
         "Mathematics"
@@ -596,10 +601,11 @@
         "Hawaii (The Big Island)",
         "Kauai"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://rpage.github.io/",
       "skills": [
-        "Aerospace Engineering",
-        "Math"
+        "Business",
+        "Economics",
+        "Accounting"
       ],
       "picture": "https://images.generated.photos/hw9Co43qynDxlR-JJ7hLjHUYbaqzFYPOSer1uWk9SBo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZTRlZjA1/OGUtZWMzNS00ZTYy/LTk0ZDctNDYwNTIy/MmU5MTJkLmpwZw.jpg",
       "email": "ryanpage@hawaii.edu",
@@ -616,10 +622,11 @@
         "Alaska",
         "Maui"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://rich-grey.github.io/",
       "skills": [
         "Research",
-        "Science"
+        "Science",
+        "Marine Biology"
       ],
       "picture": "https://images.generated.photos/OAOniVTrLzT1RofvWSk4lWZlyulG4xnQ3Vl-ueSWJVo/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZjYwYzll/YTUtNTA0Ny00ZGNm/LThlNzAtNmE4Yjdl/NDEyNjVmLmpwZw.jpg",
       "email": "richardgrey@hawaii.edu",
@@ -636,10 +643,10 @@
         "Arizona",
         "Hawaii"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://maria-celene.github.io/",
       "skills": [
         "Engineering",
-        "Creating circuits"
+        "Circuit-making"
       ],
       "picture": "https://images.generated.photos/QMKKxLsqrriaiFGOJi0REAml5s0ELLUuFK5Oo7VbLxc/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMTRhMTAw/ZDEtN2U5OS00NGZh/LWE4ZjMtZWZhNjhh/ZTNiMjMxLmpwZw.jpg",
       "email": "mariac@hawaii.edu",
@@ -655,10 +662,11 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://bobby-maxwell.github.io/",
       "skills": [
-        "Research",
-        "Science"
+        "Economics",
+        "Business",
+        "Psychology"
       ],
       "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
       "email": "bobbym@hawaii.edu",
@@ -674,12 +682,14 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://olan.github.io/",
       "skills": [
+        "Nanotechnology",
+        "Machine Learning",
         "Research",
         "Science"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/i5OAsYHBIyY7cMZALCdpRv00fWrnhwf7z997BjoyW20/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMTFiMjFj/MzEtZjY3OC00ZjZl/LWE1MjctODkyNzY0/NGU4YjEzLmpwZw.jpg",
       "email": "olan@hawaii.edu",
       "role": "student"
     },
@@ -693,31 +703,32 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://kardin.github.io/",
       "skills": [
-        "Research",
+        "Nanotechnology",
+        "Engineering",
         "Science"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/QdWQve4YdjZl_3O7DJ7XoOYfd-BoLkBbElN8KTrbrqE/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNTU4NGFm/YWQtM2FjYS00Y2U1/LThhMGUtMjY5OTAy/MzIxN2VjLmpwZw.jpg",
       "email": "karin@hawaii.edu",
       "role": "student"
     },
     {
       "firstName": "Kenny",
       "lastName": "Jenn",
-      "bio": "I'm a Phsycology Student from Texas.",
-      "title": "Phsycology Student",
+      "bio": "I'm a Psychology Student from Texas.",
+      "title": "Psychology Student",
       "locations": [
         "Texas",
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://jenn-ken.github.io/",
       "skills": [
         "Research",
         "Psychology"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/SjXrvMDAcCmHBglHjRT535b09KyVmfhYU6fTxJm3AQ0/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMjk4Nzky/MzUtODBkOS00MTIx/LTk0N2EtNjBhOTU0/OGJmNmUzLmpwZw.jpg",
       "email": "kennyj@hawaii.edu",
       "role": "student"
     },
@@ -731,86 +742,90 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://kimye.github.io/",
       "skills": [
         "Research",
-        "Psychology"
+        "Biology",
+        "Science"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/5EuiKU-UnhrD7hsRkxiyTNdAxuriSO9hhK_bC6UoocI/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNjk4MDg5/NDAtZTQ5NS00ODNl/LWJlNzYtYTQzM2Ex/MTQ3ODk4LmpwZw.jpg",
       "email": "kimy@hawaii.edu",
       "role": "student"
     },
     {
       "firstName": "Karen",
       "lastName": "Obrian",
-      "bio": "I'm a Physics student in Philadelphia.",
+      "bio": "I'm a Physics student in Philadelphia. I'm planning to move to Hawaii in December.",
       "title": "Physics Student",
       "locations": [
         "Philadelphia",
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://kareno.github.io/",
       "skills": [
-        "Research",
-        "Physics"
+        "Physics",
+        "Science"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/Po6QTHVg0bN91BBR72rmzQLURzQNSKinABviSwEEOxM/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvMmU2YmY1/OGYtOTRkZC00ODk4/LWJlMGUtMDJkMjQx/NjQ1N2ZlLmpwZw.jpg",
       "email": "kareno@hawaii.edu",
       "role": "student"
     },
     {
       "firstName": "Walter",
       "lastName": "Varnum",
-      "bio": "I am a Professor in Biology. I graduated from UH Manoa in 2005.",
-      "title": "Professor",
+      "bio": "I'm a graduate student at UH Manoa and I'm working on my Ph.D. in Biology.",
+      "title": "Graduate Student",
       "locations": [
         "Hawaii",
-        "US"
+        "US",
+        "Paris",
+        "Japan"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://walter-varnum.github.io/",
       "skills": [
         "Research",
-        "Physics"
+        "Biology"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/xOFwXdzyi_aGLTBfykqw2blrankOi8jSWLmox5C7iSQ/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZDRhODdh/NjAtODhkMC00ZmM5/LWI0OTUtODQ3OTE3/MTA1MGIyLmpwZw.jpg",
       "email": "walterv@hawaii.edu",
-      "role": "professor"
+      "role": "student"
     },
     {
       "firstName": "Kimberly",
       "lastName": "Gilliand",
-      "bio": "I am a Science student at UH. My interests are surf and mindfullness.",
+      "bio": "I am a Science student at UH. My interests are surf and mindfulness.",
       "title": "Future Yogi.",
       "locations": [
         "Hawaii",
         "US",
         "Bali"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://kim-gilli.github.io/",
       "skills": [
-        "Research",
-        "Computer Science"
+        "Yoga",
+        "Science",
+        "Surfing"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/2C6kQO2-5SG8o6X5bIl5Tst_aP11_0157egFf_yKUKI/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvY2NhMTg4/ZjAtNmQ5MC00YTBj/LTk0OTItZGJkMzhj/MmI3MzUzLmpwZw.jpg",
       "email": "kimberlyg@hawaii.edu",
       "role": "student"
     },
     {
       "firstName": "Gail",
       "lastName": "Otero",
-      "bio": "I'm a student at UH. My major is Phsycology.",
+      "bio": "I'm a student at UH. My major is Psychology.",
       "title": "Student.",
       "locations": [
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://otero-gail.github.io/",
       "skills": [
         "Research",
-        "Phsycology"
+        "Psychology"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/YHjKkkfF4A-bUDlWrUJwVVFvWRgd5lSNU6LPjffVZRw/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvNWRmYWZh/NzktYzVlOC00NmEw/LWFjMjYtY2FlZDk4/NTQ2NGE3LmpwZw.jpg",
       "email": "gailo@hawaii.edu",
       "role": "student"
     },
@@ -823,12 +838,13 @@
         "Hawaii",
         "US"
       ],
-      "webpage": "http://techfolios.github.io/template/",
+      "webpage": "http://walterh.github.io/",
       "skills": [
         "Research",
-        "Computer Science"
+        "Computer Science",
+        "Software Engineering"
       ],
-      "picture": "https://images.generated.photos/0_Zl0LrlNYWLTxGym-GiXw4NL0fiRgqPh0RHvfRJS7U/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvZGZlZjY1/ZTItMmI5MC00MmQw/LTkwMjEtOGIxMzlk/MmViMTcyLmpwZw.jpg",
+      "picture": "https://images.generated.photos/R0pmmeqe52aneJNPVdPpox7Xon2FszxElxCdNXQiAOg/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LmNvbmQvODlmODQ3/MzctZmU2My00YzNi/LTllOWUtODczYTQ0/Mjc3OWEyLmpwZw.jpg",
       "email": "walterh@hawaii.edu",
       "role": "student"
     }
@@ -846,7 +862,7 @@
     },
     {
       "reportType": "bug",
-      "email": "samsung@samsung.com",
+      "email": "yin.k@samsung.com",
       "description": "I was attempting to log into Bridging the Gap last night, December 4th at 10:00pm, but the site was completely down. It works fine today, however. I'm not sure if maintenance was going on, but if not, it's something your team should look into."
     },
     {
@@ -856,17 +872,17 @@
     },
     {
       "reportType": "other",
-      "email": "fedex@fedex.com",
+      "email": "hr@google.com",
       "description": "I have a suggestion regarding the company homepage. Upon signing up, I tried adding a job listing but nothing happened when I clicked the button. It took me a while to realize that I had to click directly on the 'Add Job Listing' text to go and add a job listing. Is there a way you can change the ui so that you can simply click on the grey button surrounding the 'Add Job Listing' text to go to the link? And the same goes for the events page."
     },
     {
       "reportType": "other",
-      "email": "google@google.com",
+      "email": "hr@google.com",
       "description": "My team and I have noticed the range of locations to search by is very limited. Is there a way we could add our own categories? If not, is it possible you could add Canada, Dublin, London, Singapore, Hyderabad, Sydney, and Tokyo to the locations list? These are some of our global headquarters. Actually, it'd be best if there were more global locations in general for all the companies registered on this site."
     },
     {
       "reportType": "other",
-      "email": "samsung@samsung.com",
+      "email": "yin.k@samsung.com",
       "description": "While searching through students' profiles for potential job candidates, I came across a user by the name Jason Leigh (leighj@hawaii.edu). When I clicked the link to his portfolio page, I was sent somewhere unexpected and I think I may have downloaded a virus. Please look into the matter and contact us when you know more."
     },
     {
@@ -876,7 +892,7 @@
     },
     {
       "reportType": "user-abuse",
-      "email": "apple@apple.com",
+      "email": "humanrelations@apple.com",
       "description": "app1e@app1e.com is masquerading as my company on the site. They are posting Apple events and creating fake job listings. Please take them down."
     },
     {
@@ -905,14 +921,14 @@
       "description": "Someone is pretending to be Apple. They're using the contact email app1e@app1e.com, and their job listings look like scams."
     },
     {
-      "reportType": "bug",
-      "email": "erictompson@hawaii.edu",
-      "description": "I am trying to submit my CV but when I click the link to do so (in the student homepage) nothing happens."
+      "reportType": "other",
+      "email": "walterv@hawaii.edu",
+      "description": "There are many categories of locations to browse by and I don't really have a preference, so it is a bit tedious adding all the locations to get every company to appear on the Browse Companies page. Can you edit the filtering to include an 'all' option if possible?"
     },
     {
       "reportType": "other",
       "email": "richardgrey@hawaii.edu",
-      "description": "Not sure if this constitutes user abuse, but Walmart, Toyota, and FedEx have added a lot of job listings in the past hour, so it was a little frustrating looking through the job listings to find ones that match my computer-science interests. I think there should be a limit on how many job listings a company can add a day, or at least a way to filter job listings by what type they are."
+      "description": "Hawaiian Airlines has added a lot of job listings in the past hour, so it was a little frustrating looking through the job listings to find ones that match my computer-science interests. I think there should be a limit on how many job listings a company can add a day, or at least a way to filter job listings by what type they are."
     },
     {
       "reportType": "user-abuse",
@@ -926,12 +942,12 @@
     },
     {
       "reportType": "bug",
-      "email": "google@google.com",
+      "email": "hr@google.com",
       "description": "I added two events to the events page yesterday, but when I logged back in today. one of them seem to have disappeared. The event that disappeared was called 'Spend a day at the Google Headquarters'. Please look into this issue and contact us when you know what happened."
     },
     {
       "reportType": "bug",
-      "email": "walmart@walmart.com",
+      "email": "jenny.hr@walmart.com",
       "description": "There is an issue with adding events. They seem to disappear after I create them in my homepage, which is unfortunate because our team has an event coming up in a week for college students. Please look into this problem as soon as possible."
     }
   ],
@@ -1082,6 +1098,56 @@
       "description": "At Hawaiian Airlines, we are all about welcoming our guests with Hawaiian hospitality and aloha, and taking care of our people, our home and the communities we serve.  Join our ‘ohana and be a part of an exciting team of professionals dedicated to serving our kama‘āina and introducing our islands to the world!",
       "owner": "jobs@HawaiianAir.com",
       "link": "https://rn11.ultipro.com/HAW1000/JobBoard/JobDetails.aspx?__ID=*23284C7F22C9A133"
+    },
+    {
+      "jobTitle": "DCT Storage Software Development Intern",
+      "location": "San Jose, California",
+      "salary": "$30,000",
+      "industry": "Software Development",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png",
+      "description": "Samsung is looking for a Software Development Intern to assist in design and development of highly scalable storage solutions in Cloud and hybrid environments.  This individual will have an opportunity to design, implement and validate latest storage technologies.",
+      "owner": "yin.k@samsung.com",
+      "link": "https://boards.greenhouse.io/samsungsemiconductor/jobs/4755992003?t=c053d5053us"
+    },
+    {
+      "jobTitle": "Machine Learning Research Intern",
+      "location": "San Jose, California",
+      "salary": "$30,000",
+      "industry": "Machine Learning",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/440px-Samsung_wordmark.svg.png",
+      "description": "Samsung Display America Lab is looking for Machine Learning engineer intern who will have the opportunity to work with cutting-edge technologies for future generation of display systems and devices. As a Machine Learning engineer intern, you will help to build the next generation of machine learning systems by designing novel algorithms to solve industrial-AI problems. The team pursues research & development in the areas of machine learning (ML) with particular focus on deep learning, reinforcement learning, graph and optimization.",
+      "owner": "yin.k@samsung.com",
+      "link": "https://boards.greenhouse.io/samsungsemiconductor/jobs/4712951003?t=c053d5053us"
+    },
+    {
+      "jobTitle": "Temporary Beauty Advisor",
+      "location": "Cerritos, California",
+      "salary": "$30,000",
+      "industry": "Beauty",
+      "image": "https://i2.wp.com/www.growyourbrands.co.uk/wp-content/uploads/2020/10/Sephora-Logo.png?ssl=1",
+      "description": "As a Temporary Beauty Advisor, you are a key team member who inspires and helps our customers become the best version of themselves. You are encouraged to explore, create emotional connections, and help customers discover our amazing Beauty Selection. Best of all, you’ll love working with our diverse teams and leaders, who really care about you and help you evolve.",
+      "owner": "contact@sephora.com",
+      "link": "https://jobs.sephora.com/USA/job/California-CA-90703/800580500/"
+    },
+    {
+      "jobTitle": "Service Technician",
+      "location": "Los Angeles, California",
+      "salary": "$38,000",
+      "industry": "Technology",
+      "image": "https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo-1961-1962.png",
+      "description": "Sony Electronics, Inc.  look for the risk-takers, the collaborators, the inspired and the inspirational. We want the people who are brave enough to work at the cutting edge and create solutions that will enrich and improve the lives of people across the globe. So, if you want to make the world say wow, let's talk. The Service Technician is responsible to repair and refurbished drones, drone accessories, and provide Technical Support to end-user to prevent possible repair and better use of the product.  This role ensures high Customer service levels are delivered by successful troubleshooting failures, quick repair turn around time and high repair quality.",
+      "owner": "careers@sony.com",
+      "link": "https://sonyglobal.wd1.myworkdayjobs.com/en-US/SonyGlobalCareers/job/Los-Angeles/Service-Technician_JR-106475"
+    },
+    {
+      "jobTitle": "Engineering Intern for Twitch",
+      "location": "San Francisco, California",
+      "salary": "$10,000/month",
+      "industry": "Technology",
+      "image": "https://1000logos.net/wp-content/uploads/2016/10/Amazon-logo-meaning.jpg",
+      "description": "We deal with some of the most challenging problems in the industry. Our scale and speed of growth forces us to experiment with techniques and technologies only the very biggest websites ever need to use. If you would like to work in a challenging engineering environment where every new project is a learning opportunity, you've come to the right place. As an intern, you'll dive headfirst into the deep end of the pool. You'll own a project from start to finish and your dedicated Mentor, Manager, and Advisor will be beside you every step of the way. You'll also participate in leadership and interpersonal development curriculum and gain industry knowledge from top Twitch executives in fireside chats. Add to this cohort trips, weekly advisory, service opportunities and housing (yes housing!) and you've got a packed summer.",
+      "owner": "management@amazon.com",
+      "link": "https://www.amazon.jobs/es/jobs/1778606/engineering-intern"
     }
   ],
   "loadAssetsFile":  false

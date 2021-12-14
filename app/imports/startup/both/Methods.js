@@ -210,6 +210,34 @@ Meteor.methods({
   },
 });
 
+const addLocationMethod = 'Locations.add';
+
+/**
+ * For signup page, adds location to locations collection if user picks location
+ * that isn't already in the collection. This is done on the server side.
+ */
+Meteor.methods({
+  'Locations.add'({ locations }) {
+    if (Locations.collection.find({ name: locations }).fetch().length === 0) {
+      Locations.collection.insert({ name: locations });
+    }
+  },
+});
+
+const addSkillMethod = 'Skills.add';
+
+/**
+ * For signup page, adds skill to skills collection if user picks skill
+ * that isn't already in the collection. This is done on the server side.
+ */
+Meteor.methods({
+  'Skills.add'({ skills }) {
+    if (Skills.collection.find({ name: skills }).fetch().length === 0) {
+      Skills.collection.insert({ name: skills });
+    }
+  },
+});
+
 export { updateProfileMethod, updateCompanyMethod, deleteProfileMethod, addRoleMethod,
   addCategoryMethod, addSpecificInfoMethod, addJobMethod, removeProfileJobMethod, removeProfileEventMethod,
-  removeJobMethod, removeEventMethod };
+  removeJobMethod, removeEventMethod, addLocationMethod, addSkillMethod };

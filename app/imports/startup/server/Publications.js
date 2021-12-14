@@ -5,14 +5,12 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
-import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
-import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Jobs } from '../../api/job/Jobs';
+import { Admins } from '../../api/admin/Admins';
 
 /** Define a publication to publish all locations. */
 Meteor.publish(Locations.userPublicationName, () => Locations.collection.find());
@@ -29,14 +27,7 @@ Meteor.publish(ProfilesSkills.userPublicationName, () => ProfilesSkills.collecti
 /** Define a publication to publish this collection. */
 Meteor.publish(ProfilesProjects.userPublicationName, () => ProfilesProjects.collection.find());
 
-/** Define a publication to publish all projects. */
-Meteor.publish(Projects.userPublicationName, () => Projects.collection.find());
-
 /** Define a publication to publish this collection. */
-Meteor.publish(ProjectsLocations.userPublicationName, () => ProjectsLocations.collection.find());
-
-Meteor.publish(ProjectsSkills.userPublicationName, () => ProjectsSkills.collection.find());
-
 Meteor.publish(ProfilesJobs.userPublicationName, () => ProfilesJobs.collection.find());
 Meteor.publish(ProfilesEvents.userPublicationName, () => ProfilesEvents.collection.find());
 
@@ -44,7 +35,10 @@ Meteor.publish(Events.userPublicationName, () => Events.collection.find());
 Meteor.publish(Jobs.userPublicationName, () => Jobs.collection.find());
 
 /** Define a publication to publish all reports. */
-Meteor.publish(Reports.userPublicationName, () => Reports.collection.find());
+Meteor.publish(Reports.adminPublicationName, () => Reports.collection.find());
+
+/** Define a publication to publish all admins. */
+Meteor.publish(Admins.adminPublicationName, () => Admins.collection.find());
 
 /** If logged in, publish documents owned by this company. */
 /**

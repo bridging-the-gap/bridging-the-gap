@@ -1,9 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
-import { Projects } from '../../api/projects/Projects';
-import { ProjectsLocations } from '../../api/projects/ProjectsLocations';
-import { ProjectsSkills } from '../../api/projects/ProjectsSkills';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
@@ -13,6 +10,7 @@ import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
 import { Reports } from '../../api/reports/Reports';
 import { Jobs } from '../../api/job/Jobs';
+import { Admins } from '../../api/admin/Admins';
 
 /* eslint-disable no-console */
 
@@ -51,7 +49,6 @@ function addProfile({ firstName, lastName, bio, title, webpage, locations, skill
   Profiles.collection.insert({ firstName, lastName, bio, title, webpage, picture, email, role });
   // Add locations and projects.
   if (typeof skills !== 'undefined') {
-    console.log(typeof skills);
     skills.map(skill => ProfilesSkills.collection.insert({ profile: email, skill }));
     skills.map(skill => addSkill(skill));
   }
@@ -64,18 +61,13 @@ function addProfile({ firstName, lastName, bio, title, webpage, locations, skill
   }
 }
 
-/** Define a new project. Error if project already exists.  */
-function addProject({ name, homepage, description, locations, skills, picture, role }) {
-  console.log(`Defining project ${name}`);
-  Projects.collection.insert({ name, homepage, description, picture, role });
-  if (typeof skills !== 'undefined') {
-    skills.map(skill => ProjectsSkills.collection.insert({ project: name, skill }));
-    skills.map(skill => addSkill(skill));
-  }
-  if (typeof locations !== 'undefined') {
-    locations.map(location => ProjectsLocations.collection.insert({ project: name, location }));
-    locations.map(location => addLocation(location));
-  }
+/** Define a new admin. Error if admin already exists.  */
+function addAdmin({ admin }) {
+  // Define the user in the Meteor accounts package.
+  console.log(`Defining admin ${admin}`);
+  createUser(admin, 'admin');
+  // Create the admin.
+  Admins.collection.insert({ admin: admin });
 }
 
 /** Define a new event. Error if event already exists.  */
@@ -121,13 +113,11 @@ if (Jobs.collection.find().count() === 0) {
 }
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
-  if (Meteor.settings.defaultAdmin && Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
-    console.log('Creating the default admin');
-    createUser('johnson@hawaii.edu', 'admin');
+  if (Meteor.settings.defaultAdmins && Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
+    console.log('Creating the default admins');
+    Meteor.settings.defaultAdmins.map(admin => addAdmin(admin));
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
-    console.log('Creating the default projects');
-    Meteor.settings.defaultProjects.map(project => addProject(project));
     console.log('Creating the default events');
     Meteor.settings.defaultEvents.map(event => addEvent(event));
     console.log('Creating the default reports');
@@ -150,5 +140,4 @@ if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() < 7)) {
   console.log(`Loading data from private/${assetsFileName}`);
   const jsonData = JSON.parse(Assets.getText(assetsFileName));
   jsonData.profiles.map(profile => addProfile(profile));
-  jsonData.projects.map(project => addProject(project));
 }

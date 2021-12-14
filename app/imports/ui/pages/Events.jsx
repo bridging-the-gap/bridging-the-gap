@@ -14,41 +14,6 @@ function getEventData(eventName) {
   return _.extend({ }, data);
 }
 
-/* const handleClick = (event) => {
-  const profile = Meteor.user().username;
-  const profEvent = `${event} ${profile}`;
-  ProfilesEvents.collection.insert({ event, profile, profEvent },
-    (error) => {
-      if (error) {
-        swal('Error', 'Cannot favorite a message multiple times', 'error');
-      } else {
-        swal('Success', 'Event favorited successfully', 'success');
-      }
-    });
-};
-
-const MakeItem = (props) => (
-  <Item>
-    <Item.Image size="small" src={props.event.picture}/>
-    <Item.Content verticalAlign='middle'>
-      <Item.Header as='a'>{props.event.eventName}</Item.Header>
-      <Item.Meta>
-        <span className='date'>{props.event.date} {'at'} {props.event.location}</span>
-      </Item.Meta>
-      <Item.Description>{props.event.description}</Item.Description>
-      <Item.Extra>
-        <Button floated='right' className="ui blue icon button"
-          onClick={handleClick.bind(this, props.event.eventName)}> <i className="heart icon"></i>
-        </Button>
-      </Item.Extra>
-    </Item.Content>
-  </Item>
-);
-
-MakeItem.propTypes = {
-  event: PropTypes.object.isRequired,
-}; */
-
 /** Renders the Event Collection as a set of Cards. */
 class EventsPage extends React.Component {
 
