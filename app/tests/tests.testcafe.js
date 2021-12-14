@@ -108,6 +108,8 @@ test('Test that job page displays and can favorite', async (testController) => {
   await jobsPage.canFavoriteJobs(testController);
   await navBar.gotoStudentHomePage(testController);
   await homePage.favoriteJobDisplayed(testController);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.canFavoriteJobs(testController);
 });
 // For the Bridging The Gap AddReport page.
 test('Test that addReport page works', async (testController) => {
