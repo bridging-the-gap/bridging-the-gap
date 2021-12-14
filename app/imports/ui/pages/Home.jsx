@@ -57,14 +57,12 @@ class Home extends React.Component {
     const companyData = getProfileData(email);
     const profilesJobs = _.pluck(ProfilesJobs.collection.find({ profile: email }).fetch(), 'job');
     const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
-    const currentAdmin = Admins.collection.find({ admin: email }).fetch();
     return (
       <Container id='home-page'>
         {/* Start of admin page */}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ?
           <div id='admin-page'>
             <div style={{ paddingBottom: '50px' }}>
-              <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Welcome {currentAdmin.admin}!</Header>
               <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Create New Categories</Header>
               <NewCategory/>
             </div>
@@ -170,6 +168,7 @@ export default withTracker(() => {
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
   const profiles = Profiles.collection.find({}).fetch();
+  // Get the ProfilesLocations documents
   const profilesLocations = ProfilesLocations.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
