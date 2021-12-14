@@ -117,6 +117,17 @@ test('Test that home page displays and works for users in student, company, and 
     // For company section.
     // For student section.
   });
+test('Test that job page displays and can favorite', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.isDisplayed(testController);
+  await jobsPage.hasDefaultJobs(testController);
+  await jobsPage.canFavoriteJobs(testController);
+  await navBar.gotoStudentHomePage(testController);
+  await homePage.favoriteJobDisplayed(testController);
+});
 // For the Bridging The Gap AddReport page.
 test('Test that addReport page works', async (testController) => {
   await navBar.ensureLogout(testController);
@@ -143,16 +154,6 @@ test('Test that event page displays', async (testController) => {
   await navBar.goToEventsPage(testController);
   await eventsPage.isDisplayed(testController);
   await eventsPage.hasDefaultEvents(testController);
-});
-
-// For the Bridging The Gap Job page.
-test('Test that job page displays', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, company.username, company.password);
-  await navBar.goToJobsPage(testController);
-  await jobsPage.isDisplayed(testController);
-  await jobsPage.hasDefaultJobs(testController);
 });
 
 // For the Bridging The Gap BrowseCompanies page.

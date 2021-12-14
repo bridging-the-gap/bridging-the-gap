@@ -133,6 +133,12 @@ class HomePage {
     await testController.click(Selector('.swal-button--confirm'));
     await testController.expect(Selector('#firstName').value).eql(firstName);
   }
+
+  async favoriteJobDisplayed(testController) {
+    const jobSelector = Selector('.makeJobClass');
+    const jobCount = await jobSelector.count;
+    await testController.expect(jobCount).eql(1);
+  }
 }
 
 export const homePage = new HomePage();

@@ -16,6 +16,11 @@ class JobsPage {
     const cardCount = Selector('.ui .item').count;
     await testController.expect(cardCount).gte(3);
   }
+
+  async canFavoriteJobs(testController) {
+    const favorite = Selector('#favorite');
+    await testController.click(favorite);
+  }
 }
 
 export const jobsPage = new JobsPage();

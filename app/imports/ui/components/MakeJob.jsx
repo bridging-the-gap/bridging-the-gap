@@ -53,7 +53,7 @@ class MakeJob extends React.Component {
           <Item.Description>{this.props.job.description}</Item.Description>
           <Item.Extra>
             {Roles.userIsInRole(Meteor.userId(), 'student') ?
-              <Button floated='right' onClick={this.handleClick.bind(this, this.props.job.jobTitle)} key='job-favorite-button'>
+              <Button id='favorite' floated='right' onClick={this.handleClick.bind(this, this.props.job.jobTitle)} key='job-favorite-button'>
                 <Icon name='heart'
                   color={ProfilesJobs.collection.find(
                     { profile: Meteor.user().username, job: this.props.job.jobTitle },
