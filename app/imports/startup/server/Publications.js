@@ -10,6 +10,7 @@ import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Jobs } from '../../api/job/Jobs';
+import { Admins } from '../../api/admin/Admins';
 
 /** Define a publication to publish all locations. */
 Meteor.publish(Locations.userPublicationName, () => Locations.collection.find());
@@ -34,7 +35,10 @@ Meteor.publish(Events.userPublicationName, () => Events.collection.find());
 Meteor.publish(Jobs.userPublicationName, () => Jobs.collection.find());
 
 /** Define a publication to publish all reports. */
-Meteor.publish(Reports.userPublicationName, () => Reports.collection.find());
+Meteor.publish(Reports.adminPublicationName, () => Reports.collection.find());
+
+/** Define a publication to publish all admins. */
+Meteor.publish(Admins.adminPublicationName, () => Admins.collection.find());
 
 /** If logged in, publish documents owned by this company. */
 /**

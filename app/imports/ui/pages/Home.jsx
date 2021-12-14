@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { Events } from '../../api/events/Events';
 import { Reports } from '../../api/reports/Reports';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Admins } from '../../api/admin/Admins';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import Email from '../components/Email';
 import DeleteUser from '../components/DeleteUser';
@@ -56,12 +57,14 @@ class Home extends React.Component {
     const companyData = getProfileData(email);
     const profilesJobs = _.pluck(ProfilesJobs.collection.find({ profile: email }).fetch(), 'job');
     const profilesJobsData = profilesJobs.map(jobs => getProfileJobsData(jobs));
+    const currentAdmin = Admins.collection.find({ admin: email }).fetch();
     return (
       <Container id='home-page'>
         {/* Start of admin page */}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ?
           <div id='admin-page'>
             <div style={{ paddingBottom: '50px' }}>
+              <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Welcome {currentAdmin.admin}!</Header>
               <Header as="h2" textAlign="center" style={{ color: 'blue' }}>Create New Categories</Header>
               <NewCategory/>
             </div>
@@ -147,6 +150,7 @@ Home.propTypes = {
   profilesJobs: PropTypes.array.isRequired,
   jobs: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
+  admins: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -154,13 +158,14 @@ Home.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Roles.subscription;
-  const sub2 = Meteor.subscribe(Reports.userPublicationName);
+  const sub2 = Meteor.subscribe(Reports.adminPublicationName);
   const sub3 = Meteor.subscribe(Profiles.userPublicationName);
   const sub5 = Meteor.subscribe(Jobs.userPublicationName);
   const sub6 = Meteor.subscribe(Events.userPublicationName);
   const sub7 = Meteor.subscribe(ProfilesEvents.userPublicationName);
   const sub8 = Meteor.subscribe(ProfilesJobs.userPublicationName);
   const sub9 = Meteor.subscribe(ProfilesLocations.userPublicationName);
+  const sub10 = Meteor.subscribe(Admins.adminPublicationName);
   // Get the Reports documents
   const reports = Reports.collection.find({}).fetch();
   // Get the Profiles documents
@@ -168,9 +173,14 @@ export default withTracker(() => {
   const profilesLocations = ProfilesLocations.collection.find({}).fetch();
   // Get access to Jobs documents
   const jobs = Jobs.collection.find({}).fetch();
+  // Get access to Events documents
   const events = Events.collection.find({}).fetch();
+  // Get access to ProfilesEvents documents
   const profilesEvents = ProfilesEvents.collection.find({}).fetch();
+  // Get access to ProfilesJobs documents
   const profilesJobs = ProfilesJobs.collection.find({}).fetch();
+  // Get access to Admins documents
+  const admins = Admins.collection.find({}).fetch();
   return {
     reports,
     profiles,
@@ -179,6 +189,8 @@ export default withTracker(() => {
     profilesLocations,
     jobs,
     events,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready() && sub7.ready() && sub8.ready() && sub9.ready(),
+    admins,
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready() && sub6.ready()
+      && sub7.ready() && sub8.ready() && sub9.ready() && sub10.ready(),
   };
 })(Home);

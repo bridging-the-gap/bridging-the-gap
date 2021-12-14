@@ -1,7 +1,10 @@
 {
-  "defaultAdmin": [
+  "defaultAdmins": [
     {
-      "email": "johnson@hawaii.edu"
+      "admin": "bridging.the.gap.uhm@gmail.com"
+    },
+    {
+      "admin": "johnson@hawaii.edu"
     }
   ],
   "defaultEvents": [

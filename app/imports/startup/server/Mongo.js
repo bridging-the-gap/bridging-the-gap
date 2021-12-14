@@ -10,6 +10,7 @@ import { Events } from '../../api/events/Events';
 import { Skills } from '../../api/skills/Skills';
 import { Reports } from '../../api/reports/Reports';
 import { Jobs } from '../../api/job/Jobs';
+import { Admins } from '../../api/admin/Admins';
 
 /* eslint-disable no-console */
 
@@ -60,6 +61,15 @@ function addProfile({ firstName, lastName, bio, title, webpage, locations, skill
   }
 }
 
+/** Define a new admin. Error if admin already exists.  */
+function addAdmin({ admin }) {
+  // Define the user in the Meteor accounts package.
+  console.log(`Defining admin ${admin}`);
+  createUser(admin, 'admin');
+  // Create the admin.
+  Admins.collection.insert({ admin: admin });
+}
+
 /** Define a new event. Error if event already exists.  */
 function addEvent({ eventName, company, date, location, description, picture, owner }) {
   console.log(`Defining event ${eventName}`);
@@ -103,9 +113,9 @@ if (Jobs.collection.find().count() === 0) {
 }
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
-  if (Meteor.settings.defaultAdmin && Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
-    console.log('Creating the default admin');
-    createUser('johnson@hawaii.edu', 'admin');
+  if (Meteor.settings.defaultAdmins && Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
+    console.log('Creating the default admins');
+    Meteor.settings.defaultAdmins.map(admin => addAdmin(admin));
     console.log('Creating the default profiles');
     Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
     console.log('Creating the default events');
