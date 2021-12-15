@@ -30,7 +30,7 @@ const MakeCard = (props) => (
   <Card>
     <Card.Content>
       <Image floated='right' size='mini' src={props.profile.picture}/>
-      <Card.Header>{props.profile.firstName} {props.profile.lastName}</Card.Header>
+      <Card.Header href={props.profile.webpage}>{props.profile.firstName} {props.profile.lastName}</Card.Header>
       <Card.Meta>
         <span className='date'>{props.profile.title}</span>
       </Card.Meta>
@@ -42,13 +42,6 @@ const MakeCard = (props) => (
         {/* If I split the lines up, there is extra space between the word 'user' and the e-mailer's username. */ }
         {/* eslint-disable-next-line max-len */}
         <a style={{ color: 'blue' }} href={`mailto:${props.profile.email}?subject=Message from BTG user ${Meteor.user().username}`}>{props.profile.email}</a>
-      </Card.Meta>
-      <Card.Meta>
-        { props.profile.webpage !== undefined ?
-          [<span key='webpage-in-company-browse-card'>Webpage:</span>,
-            <a style={{ color: 'blue' }} href={props.profile.webpage} key='webpage-link-in-company-card'>
-              {props.profile.webpage}</a>] : ''
-        }
       </Card.Meta>
     </Card.Content>
     <Card.Content extra>
