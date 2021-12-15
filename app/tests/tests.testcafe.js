@@ -3,13 +3,20 @@ import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { signupPage } from './signup.page';
 import { addReportPage } from './addreport.page';
-import { homePage } from './home.page';
+import { adminHomePage } from './adminhome.page';
 import { addEventPage } from './addevent.page';
+import { addJobPage } from './addjob.page';
+import { editJobPage } from './editjob.page';
+import { editEventPage } from './editevent.page';
+import { editCompanyPage } from './editcompany.page';
 import { eventsPage } from './events.page';
 import { navBar } from './navbar.component';
 import { browseCompaniesPage } from './browsecompanies.page';
 import { browseStudentsPage } from './browsestudents.page';
-import { companyPage } from './company.page';
+import { studentHomePage } from './studenthome.page';
+import { studentProfilePage } from './studentprofile.page';
+import { companyHomePage } from './companyhome.page';
+import { companyProfilePage } from './companyprofile.page';
 import { jobsPage } from './jobs.page';
 
 /* global fixture:false, test:false */
@@ -63,8 +70,7 @@ test('Test that signup page, then logout works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-// For the Bridging The Gap Home page (separate for student, company, and admin).
-test('Test that home page displays and works for users in student, company, and admin roles',
+test('Test that admin homepage displays and works.',
   async (testController) => {
     // For admin section.
     // Create new student user to test delete user section on.
@@ -81,24 +87,22 @@ test('Test that home page displays and works for users in student, company, and 
     await navBar.ensureLogout(testController);
     await navBar.gotoSigninPage(testController);
     await signinPage.signin(testController, admin.username, admin.password);
-    await homePage.isDisplayed(testController);
+    await adminHomePage.isDisplayed(testController);
     // Checking if reports section displays properly.
-    await homePage.hasDefaultReports(testController);
+    await adminHomePage.hasDefaultReports(testController);
     // Checking if delete user component works.
-    await homePage.deleteUser(testController, newUser);
+    await adminHomePage.deleteUser(testController, newUser);
     // Checking if email component works:
     // Comment out for now because EmailJS limits emails.
     // const emailUser = { username: 'reichld@hawaii.edu', role: 'student', password: 'foo' };
     // await homePage.sendEmail(testController, emailUser);
-    await homePage.addCategories(testController);
-    await homePage.filterReportType(testController);
+    await adminHomePage.addCategories(testController);
+    await adminHomePage.filterReportType(testController);
     // Log out of admin account after finished.
     await navBar.ensureLogout(testController);
-
-    // For company section.
-    // For student section.
   });
-test('Test that job page displays and can favorite', async (testController) => {
+
+test('Test that job listings page displays and can favorite', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, student.username, student.password);
@@ -107,10 +111,11 @@ test('Test that job page displays and can favorite', async (testController) => {
   await jobsPage.hasDefaultJobs(testController);
   await jobsPage.canFavoriteJobs(testController);
   await navBar.gotoStudentHomePage(testController);
-  await homePage.favoriteJobDisplayed(testController);
+  await companyHomePage.favoriteJobDisplayed(testController);
   await navBar.goToJobsPage(testController);
   await jobsPage.canFavoriteJobs(testController);
 });
+
 // For the Bridging The Gap AddReport page.
 test('Test that addReport page works', async (testController) => {
   await navBar.ensureLogout(testController);
@@ -125,7 +130,7 @@ test('Test that addEvent page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await homePage.goToAddEventPage(testController);
+  await companyHomePage.goToAddEventPage(testController);
   await addEventPage.isDisplayed(testController);
   await addEventPage.addEvent(testController);
 });
@@ -158,18 +163,20 @@ test('Test that browse students page works', async (testController) => {
   await browseStudentsPage.filter(testController);
 });
 
+test('Test that student homepage works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.isDisplayed(testController);
+});
+
 test('Test that student profile page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, student.username, student.password);
   await navBar.gotoStudentProfilePage(testController);
-});
-
-test('Test that student home page works', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.gotoStudentHomePage(testController);
+  await studentProfilePage.isDisplayed(testController);
 });
 
 // Company Page Tests
@@ -177,39 +184,46 @@ test('Test that the company homepage works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await companyPage.isDisplayed(testController);
+  await companyHomePage.isDisplayed(testController);
 });
 
 test('Test Add jobs works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await companyPage.gotoAddJob(testController);
+  await companyHomePage.gotoAddJob(testController);
+  await addJobPage.isDisplayed(testController);
+  await addJobPage.addJob(testController);
 });
 
 test('Test Edit jobs works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await companyPage.editJob(testController);
+  await companyHomePage.gotoEditJob(testController);
+  await editJobPage.isDisplayed(testController);
+  await editJobPage.editJob(testController);
   await navBar.gotoCompanyHomePage(testController);
-  await companyPage.removeJob(testController);
+  await companyHomePage.removeJob(testController);
 });
 
 test('Test Edit company works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await companyPage.editCompany(testController);
+  await companyHomePage.gotoEditCompany(testController);
+  await editCompanyPage.editCompany(testController);
 });
 
 test('Test Edit event works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await companyPage.editEvent(testController);
+  await companyHomePage.gotoEditEvent(testController);
+  await editEventPage.isDisplayed(testController);
+  await editEventPage.editEvent(testController);
   await navBar.gotoCompanyHomePage(testController);
-  await companyPage.removeEvent(testController);
+  await companyHomePage.removeEvent(testController);
 });
 
 test('Test that the company profile works', async (testController) => {
@@ -217,4 +231,5 @@ test('Test that the company profile works', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyProfilePage(testController);
+  await companyProfilePage.isDisplayed(testController);
 });

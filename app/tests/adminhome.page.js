@@ -1,13 +1,9 @@
 import { Selector } from 'testcafe';
 
-class HomePage {
+class AdminHomePage {
   constructor() {
     this.pageId = '#home-page';
     this.pageSelector = Selector(this.pageId);
-  }
-
-  async goToAddEventPage(testController) {
-    await testController.click('#home-addEvent');
   }
 
   /** Checks that this page is currently displayed. */
@@ -133,12 +129,6 @@ class HomePage {
     await testController.click(Selector('.swal-button--confirm'));
     await testController.expect(Selector('#firstName').value).eql(firstName);
   }
-
-  async favoriteJobDisplayed(testController) {
-    const jobSelector = Selector('.makeJobClass');
-    const jobCount = await jobSelector.count;
-    await testController.expect(jobCount).eql(1);
-  }
 }
 
-export const homePage = new HomePage();
+export const adminHomePage = new AdminHomePage();
