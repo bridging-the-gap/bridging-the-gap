@@ -47,7 +47,7 @@ const MakeCard = (props) => (
         (skill, index) => <Label key={index} size='tiny' color='teal'>{skill}</Label>)}
     </Card.Content>
     <Card.Content extra>
-      <Link id='editProfile' to={`/editProfile/${props.profile._id}`} style={{ float: 'right' }}>Edit</Link>
+      <Link id='editProfile' to={`/editProfile/${props.profile._id}`}>Edit</Link>
     </Card.Content>
   </Card>
 );
@@ -75,7 +75,6 @@ class ProfilesPage extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           <Container id="profiles-page">
             <MakeCard profile={profileData}/>
-            <Link id='editProfile' to={`/editProfile/${profileData._id}`}>Edit</Link>
           </Container> : ''}
         {/* End of student page */}
         {/* Start of company page */}

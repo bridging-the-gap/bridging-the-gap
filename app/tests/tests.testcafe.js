@@ -33,12 +33,14 @@ const admin = { username: 'johnson@hawaii.edu', password: 'foo', role: 'admin',
 fixture('Bridging the Gap localhost test with default db')
   .page('http://localhost:3000');
 
+// Landing Page Tests
 test('Test that landing page shows up and works', async (testController) => {
   await landingPage.isDisplayed(testController);
   // Comment out for now because EmailJS limits emails
   // await landingPage.sendFeedback(testController, company);
 });
 
+// Signin & Signout Page Tests
 test('Test that signin and signout work', async (testController) => {
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, student.username, student.password);
@@ -46,6 +48,7 @@ test('Test that signin and signout work', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
+// Signup & Signout Page Tests
 test('Test that signup page, then logout works', async (testController) => {
   // For student user:
   // Create a new user email address that's guaranteed to be unique.
@@ -71,6 +74,7 @@ test('Test that signup page, then logout works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
+// Admin Page Tests
 test('Test that admin homepage displays and works.',
   async (testController) => {
     // For admin section.
@@ -103,21 +107,6 @@ test('Test that admin homepage displays and works.',
     await navBar.ensureLogout(testController);
   });
 
-test('Test that job listings page displays and can favorite', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.goToJobsPage(testController);
-  await jobsPage.isDisplayed(testController);
-  await jobsPage.hasDefaultJobs(testController);
-  await jobsPage.canFavoriteJobs(testController);
-  await navBar.gotoStudentHomePage(testController);
-  await studentHomePage.favoriteJobDisplayed(testController);
-  await navBar.goToJobsPage(testController);
-  await jobsPage.canFavoriteJobs(testController);
-});
-
-// For the Bridging The Gap AddReport page.
 test('Test that addReport page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
@@ -127,48 +116,7 @@ test('Test that addReport page works', async (testController) => {
   await addReportPage.addReport(testController);
 });
 
-test('Test that addEvent page works', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, company.username, company.password);
-  await companyHomePage.goToAddEventPage(testController);
-  await addEventPage.isDisplayed(testController);
-  await addEventPage.addEvent(testController);
-});
-
-test('Test that event page displays and can favorite events', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.goToEventsPage(testController);
-  await eventsPage.isDisplayed(testController);
-  await eventsPage.hasDefaultEvents(testController);
-  await eventsPage.canFavoriteEvents(testController);
-  await navBar.gotoStudentHomePage(testController);
-  await studentHomePage.favoriteEventDisplayed(testController);
-  await navBar.goToEventsPage(testController);
-  await eventsPage.canFavoriteEvents(testController);
-});
-
-// For the Bridging The Gap BrowseCompanies page.
-test('Test that browse companies page works', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.gotoBrowseCompaniesPage(testController);
-  await browseCompaniesPage.isDisplayed(testController);
-  await browseCompaniesPage.filter(testController);
-});
-// For the Bridging The Gap BrowseStudents page.
-test('Test that browse students page works', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.gotoBrowseStudentsPage(testController);
-  await browseStudentsPage.isDisplayed(testController);
-  await browseStudentsPage.filter(testController);
-});
-
+// Student Page Tests
 test('Test that student homepage works and favorited jobs/events appear', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
@@ -216,6 +164,14 @@ test('Test that the company homepage works', async (testController) => {
   await companyHomePage.isDisplayed(testController);
 });
 
+test('Test Edit company works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, company.username, company.password);
+  await companyHomePage.gotoEditCompany(testController);
+  await editCompanyPage.editCompany(testController);
+});
+
 test('Test Add jobs works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
@@ -236,12 +192,13 @@ test('Test Edit jobs works', async (testController) => {
   await companyHomePage.removeJob(testController);
 });
 
-test('Test Edit company works', async (testController) => {
+test('Test that addEvent page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, company.username, company.password);
-  await companyHomePage.gotoEditCompany(testController);
-  await editCompanyPage.editCompany(testController);
+  await companyHomePage.goToAddEventPage(testController);
+  await addEventPage.isDisplayed(testController);
+  await addEventPage.addEvent(testController);
 });
 
 test('Test Edit event works', async (testController) => {
@@ -261,4 +218,54 @@ test('Test that the company profile works', async (testController) => {
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyProfilePage(testController);
   await companyProfilePage.isDisplayed(testController);
+});
+
+// Job Listings Page Tests
+test('Test that job listings page displays and can favorite', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.isDisplayed(testController);
+  await jobsPage.hasDefaultJobs(testController);
+  await jobsPage.canFavoriteJobs(testController);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.favoriteJobDisplayed(testController);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.canFavoriteJobs(testController);
+});
+
+// Events Page Tests
+test('Test that event page displays and can favorite events', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.goToEventsPage(testController);
+  await eventsPage.isDisplayed(testController);
+  await eventsPage.hasDefaultEvents(testController);
+  await eventsPage.canFavoriteEvents(testController);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.favoriteEventDisplayed(testController);
+  await navBar.goToEventsPage(testController);
+  await eventsPage.canFavoriteEvents(testController);
+});
+
+// BrowseCompanies Page Tests.
+test('Test that browse companies page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.gotoBrowseCompaniesPage(testController);
+  await browseCompaniesPage.isDisplayed(testController);
+  await browseCompaniesPage.filter(testController);
+});
+
+// BrowseStudents Page Tests.
+test('Test that browse students page works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.gotoBrowseStudentsPage(testController);
+  await browseStudentsPage.isDisplayed(testController);
+  await browseStudentsPage.filter(testController);
 });

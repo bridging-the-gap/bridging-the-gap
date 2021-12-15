@@ -26,12 +26,12 @@ class CompanyHomePage {
     await testController.click('#companyRemoveJob');
     const cardSelector = Selector('.card');
     const cardCount = await cardSelector.count;
-    await testController.expect(cardCount).eql(4);
+    await testController.expect(cardCount).eql(3);
     // Check job is removed from job listings page.
     await navBar.goToJobsPage(testController);
     const jobSelector = Selector('.makeJobClass');
     const jobCount = await jobSelector.count;
-    await testController.expect(jobCount).gte(15);
+    await testController.expect(jobCount).gte(20);
   }
 
   async goToAddEventPage(testController) {
@@ -52,7 +52,7 @@ class CompanyHomePage {
     await navBar.goToEventsPage(testController);
     const eventSelector = Selector('.makeEventClass');
     const eventCount = await eventSelector.count;
-    await testController.expect(eventCount).eql(18);
+    await testController.expect(eventCount).eql(20);
   }
 
   /** Go to edit company page. */
