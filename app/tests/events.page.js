@@ -16,6 +16,11 @@ class EventsPage {
     const cardCount = Selector('.ui .item').count;
     await testController.expect(cardCount).gte(3);
   }
+
+  async canFavoriteEvents(testController) {
+    const favorite = Selector('#event-favorite');
+    await testController.click(favorite);
+  }
 }
 
 export const eventsPage = new EventsPage();

@@ -12,12 +12,6 @@ class CompanyHomePage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  async favoriteJobDisplayed(testController) {
-    const jobSelector = Selector('.makeJobClass');
-    const jobCount = await jobSelector.count;
-    await testController.expect(jobCount).eql(1);
-  }
-
   /** Go to add job page. */
   async gotoAddJob(testController) {
     await testController.wait(15000).click('#addJob');

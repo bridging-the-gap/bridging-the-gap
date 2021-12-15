@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import Job from '../components/JobPro';
 import { Jobs } from '../../api/job/Jobs';
 
@@ -47,6 +46,9 @@ const MakeCard = (props) => (
       {_.map(props.profile.locations,
         (skill, index) => <Label key={index} size='tiny' color='teal'>{skill}</Label>)}
     </Card.Content>
+    <Card.Content extra>
+      <Link id='editProfile' to={`/editProfile/${props.profile._id}`} style={{ float: 'right' }}>Edit</Link>
+    </Card.Content>
   </Card>
 );
 
@@ -73,7 +75,7 @@ class ProfilesPage extends React.Component {
         {Roles.userIsInRole(Meteor.userId(), 'student') ?
           <Container id="profiles-page">
             <MakeCard profile={profileData}/>
-            <Link to={`/editProfile/${profileData._id}`}>Edit</Link>
+            <Link id='editProfile' to={`/editProfile/${profileData._id}`}>Edit</Link>
           </Container> : ''}
         {/* End of student page */}
         {/* Start of company page */}
@@ -133,11 +135,10 @@ export default withTracker(() => {
   const sub1 = Meteor.subscribe(Profiles.userPublicationName);
   const sub2 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   const sub3 = Meteor.subscribe(ProfilesSkills.userPublicationName);
-  const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub6 = Meteor.subscribe(Jobs.userPublicationName);
+  const sub4 = Meteor.subscribe(Jobs.userPublicationName);
   const jobs = Jobs.collection.find({}).fetch();
   return {
     jobs,
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub6.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
   };
 })(ProfilesPage);

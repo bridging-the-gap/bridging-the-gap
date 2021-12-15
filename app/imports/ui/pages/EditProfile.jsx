@@ -63,7 +63,7 @@ class EditProfile extends React.Component {
     const profile = Profiles.collection.findOne({ email });
     const model = _.extend({}, profile, { skills, locations });
     return (
-      <Grid id="home-page" container centered>
+      <Grid id="edit-profile-page" container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Your Profile</Header>
           <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
@@ -75,15 +75,15 @@ class EditProfile extends React.Component {
               </Form.Group>
               <LongTextField id='bio' name='bio' placeholder='Write a little bit about yourself.'/>
               <Form.Group widths={'equal'}>
-                <TextField name='title' showInlineError={true} placeholder={'Title'}/>
-                <TextField name='picture' showInlineError={true} placeholder={'URL to picture'}/>
-                <TextField name='webpage' showInlineError={true} placeholder={'URL to webpage'}/>
+                <TextField id='title' name='title' showInlineError={true} placeholder={'Title'}/>
+                <TextField id='picture' name='picture' showInlineError={true} placeholder={'URL to picture'}/>
+                <TextField id='webpage' name='webpage' showInlineError={true} placeholder={'URL to webpage'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <MultiSelectField name='locations' showInlineError={true} placeholder={'Locations'}/>
-                <MultiSelectField name='skills' showInlineError={true} placeholder={'Skills'}/>
+                <MultiSelectField id='locations' name='locations' showInlineError={true} placeholder={'Locations'}/>
+                <MultiSelectField id='skills' name='skills' showInlineError={true} placeholder={'Skills'}/>
               </Form.Group>
-              <SubmitField id='home-page-submit' value='Update'/>
+              <SubmitField id='edit-profile-page-submit' value='Update'/>
             </Segment>
           </AutoForm>
         </Grid.Column>

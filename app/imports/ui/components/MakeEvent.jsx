@@ -51,7 +51,7 @@ class MakeEvent extends React.Component {
           <Item.Description>{this.props.event.description}</Item.Description>
           <Item.Extra>
             {Roles.userIsInRole(Meteor.userId(), 'student') ?
-              <Button floated='right' className="ui blue icon button"
+              <Button id='event-favorite' floated='right' className="ui blue icon button"
                 onClick={this.handleClick.bind(this, this.props.event.eventName)}>
                 <Icon className="heart icon"
                   color={ProfilesEvents.collection.find({
