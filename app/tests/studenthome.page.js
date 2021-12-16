@@ -14,25 +14,25 @@ class StudentHomePage {
   async favoriteJobDisplayed(testController) {
     const jobSelector = Selector('.makeJobClass');
     const jobCount = await jobSelector.count;
-    await testController.expect(jobCount).eql(1);
+    await testController.wait(20000).expect(jobCount).eql(1);
   }
 
   async favoriteEventDisplayed(testController) {
     const eventSelector = Selector('.makeEventClass');
     const eventCount = await eventSelector.count;
-    await testController.expect(eventCount).eql(1);
+    await testController.wait(20000).expect(eventCount).eql(1);
   }
 
   async favoriteJobDeleted(testController) {
     const jobSelector = Selector('.makeJobClass');
     const jobCount = await jobSelector.count;
-    await testController.expect(jobCount).eql(0);
+    await testController.wait(20000).expect(jobCount).eql(0);
   }
 
   async favoriteEventDeleted(testController) {
     const eventSelector = Selector('.makeEventClass');
     const eventCount = await eventSelector.count;
-    await testController.expect(eventCount).eql(0);
+    await testController.wait(20000).expect(eventCount).eql(0);
   }
 }
 

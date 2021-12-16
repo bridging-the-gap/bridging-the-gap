@@ -221,7 +221,7 @@ test('Test that the company profile works', async (testController) => {
 });
 
 // Job Listings Page Tests
-test('Test that job listings page displays and can favorite', async (testController) => {
+test('Test that job listings page displays and can favorite jobs', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, student.username, student.password);
