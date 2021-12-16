@@ -74,6 +74,76 @@ test('Test that signup page, then logout works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
+// Job Listings Page Tests
+test.only('Test that job listings page displays and can favorite jobs', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.isDisplayed(testController);
+  await jobsPage.hasDefaultJobs(testController);
+  await jobsPage.canFavoriteJobs(testController);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.favoriteJobDisplayed(testController);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.canFavoriteJobs(testController);
+});
+
+// Events Page Tests
+test.only('Test that event page displays and can favorite events', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.goToEventsPage(testController);
+  await eventsPage.isDisplayed(testController);
+  await eventsPage.hasDefaultEvents(testController);
+  await eventsPage.canFavoriteEvents(testController);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.favoriteEventDisplayed(testController);
+  await navBar.goToEventsPage(testController);
+  await eventsPage.canFavoriteEvents(testController);
+});
+
+// Student Page Tests
+test.only('Test that student homepage works and favorited jobs/events appear', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.isDisplayed(testController);
+  await navBar.goToJobsPage(testController);
+  await jobsPage.canFavoriteJobs(testController);
+  await navBar.goToEventsPage(testController);
+  await eventsPage.canFavoriteEvents(testController);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.favoriteJobDisplayed(testController);
+  await studentHomePage.favoriteEventDisplayed(testController);
+  // Remove favorited items
+  await jobsPage.canFavoriteJobs(testController);
+  await eventsPage.canFavoriteEvents(testController);
+  // Assert removal worked
+  await studentHomePage.favoriteJobDeleted(testController);
+  await studentHomePage.favoriteEventDeleted(testController);
+});
+
+test('Test that student profile page displays', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.gotoStudentProfilePage(testController);
+  await studentProfilePage.isDisplayed(testController);
+});
+
+test('Test Edit student profile works', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, student.username, student.password);
+  await navBar.gotoStudentProfilePage(testController);
+  await studentProfilePage.gotoEditProfile(testController);
+  await editProfilePage.isDisplayed(testController);
+  await editProfilePage.editProfile(testController);
+});
+
 // Admin Page Tests
 test('Test that admin homepage displays and works.',
   async (testController) => {
@@ -114,46 +184,6 @@ test('Test that addReport page works', async (testController) => {
   await navBar.gotoAddReportPage(testController);
   await addReportPage.isDisplayed(testController);
   await addReportPage.addReport(testController);
-});
-
-// Student Page Tests
-test('Test that student homepage works and favorited jobs/events appear', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.gotoStudentHomePage(testController);
-  await studentHomePage.isDisplayed(testController);
-  await navBar.goToJobsPage(testController);
-  await jobsPage.canFavoriteJobs(testController);
-  await navBar.goToEventsPage(testController);
-  await eventsPage.canFavoriteEvents(testController);
-  await navBar.gotoStudentHomePage(testController);
-  await studentHomePage.favoriteJobDisplayed(testController);
-  await studentHomePage.favoriteEventDisplayed(testController);
-  // Remove favorited items
-  await jobsPage.canFavoriteJobs(testController);
-  await eventsPage.canFavoriteEvents(testController);
-  // Assert removal worked
-  await studentHomePage.favoriteJobDeleted(testController);
-  await studentHomePage.favoriteEventDeleted(testController);
-});
-
-test('Test that student profile page displays', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.gotoStudentProfilePage(testController);
-  await studentProfilePage.isDisplayed(testController);
-});
-
-test('Test Edit student profile works', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.gotoStudentProfilePage(testController);
-  await studentProfilePage.gotoEditProfile(testController);
-  await editProfilePage.isDisplayed(testController);
-  await editProfilePage.editProfile(testController);
 });
 
 // Company Page Tests
@@ -218,36 +248,6 @@ test('Test that the company profile works', async (testController) => {
   await signinPage.signin(testController, company.username, company.password);
   await navBar.gotoCompanyProfilePage(testController);
   await companyProfilePage.isDisplayed(testController);
-});
-
-// Job Listings Page Tests
-test('Test that job listings page displays and can favorite jobs', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.goToJobsPage(testController);
-  await jobsPage.isDisplayed(testController);
-  await jobsPage.hasDefaultJobs(testController);
-  await jobsPage.canFavoriteJobs(testController);
-  await navBar.gotoStudentHomePage(testController);
-  await studentHomePage.favoriteJobDisplayed(testController);
-  await navBar.goToJobsPage(testController);
-  await jobsPage.canFavoriteJobs(testController);
-});
-
-// Events Page Tests
-test('Test that event page displays and can favorite events', async (testController) => {
-  await navBar.ensureLogout(testController);
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, student.username, student.password);
-  await navBar.goToEventsPage(testController);
-  await eventsPage.isDisplayed(testController);
-  await eventsPage.hasDefaultEvents(testController);
-  await eventsPage.canFavoriteEvents(testController);
-  await navBar.gotoStudentHomePage(testController);
-  await studentHomePage.favoriteEventDisplayed(testController);
-  await navBar.goToEventsPage(testController);
-  await eventsPage.canFavoriteEvents(testController);
 });
 
 // BrowseCompanies Page Tests.
