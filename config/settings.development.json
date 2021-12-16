@@ -961,43 +961,6 @@
       "description": "There is an issue with adding events. They seem to disappear after I create them in my homepage, which is unfortunate because our team has an event coming up in a week for college students. Please look into this problem as soon as possible."
     }
   ],
-  "defaultProjects": [
-    {
-      "name": "Open Power Quality",
-      "homepage": "https://openpowerquality.org",
-      "description": "Open source hardware and software for distributed power quality data collection, analysis, and visualization.",
-      "picture": "https://avatars0.githubusercontent.com/u/4641939"
-    },
-    {
-      "name": "RadGrad",
-      "homepage": "https://radgrad.org",
-      "description": "Growing awesome computer scientists, one graduate at a time.",
-      "picture": "https://www.radgrad.org/img/radgrad_logo.png"
-    },
-    {
-      "name": "WRENCH",
-      "homepage": "https://wrench-project.org",
-      "description": "WRENCH is an open-source library for developing simulators for large-scale scientific computation",
-      "picture": "https://wrench-project.org/images/logo-vertical.png"
-    },
-    {
-      "name": "Cyber Canoe",
-      "homepage": "http://lava.manoa.hawaii.edu/blog/2014/07/11/cyber-canoe-cyber-infrastructure-enabled-collaborative-analysis-navigation-and-observation-environment/",
-      "description": "Software for Unity projects involving stereoscopic resolution driven by 9 PCs with a GeForce 980 graphics card.",
-      "picture": "https://www.hawaii.edu/its/wp-content/uploads/sites/2/2019/01/LAVAlogo-300x192-300x192.png"
-    }
-  ],
-  "defaultCompany": [
-    {
-      "companyName": "Default Name",
-      "location": "Location",
-      "contact": "apple@apple.com",
-      "industry": "Default industry",
-      "image": "http://www.photos-public-domain.com/wp-content/uploads/2016/02/cirrus-clouds.jpg",
-      "description": "Default description",
-      "owner": "apple@apple.com"
-    }
-  ],
   "defaultJob": [
     {
       "jobTitle": "Software Engineering Internship at Apple",

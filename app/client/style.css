@@ -4,9 +4,6 @@
   color:  #376551;
 }
 
-.events {
-}
-
 .landing-blue-background {
   background-color: blue;
   color: white;
@@ -43,10 +40,4 @@ textarea::placeholder {
   background-color: white;
   background-size: cover;
   font-size: 20px;
-}
-
-.makeJobClass {
-}
-
-.makeEventClass {
 }

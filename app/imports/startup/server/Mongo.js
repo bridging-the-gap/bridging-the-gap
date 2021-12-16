@@ -88,22 +88,6 @@ function addReport({ reportType, email, description }) {
   Reports.collection.insert({ reportType, email, description });
 }
 
-/** Initialize the database with default company info  */
-/** function addCompany(companyData) {
-  console.log(` Adding: ${companyData.companyName}`);
-  Companies.collection.insert(companyData);
-}
-/** Initialize company database if empty */
-/**
-if (Companies.collection.find().count() === 0) {
-  if (Meteor.settings.defaultCompany) {
-    console.log('Creating default company.');
-    Meteor.settings.defaultCompany.map(companyData => addCompany(companyData));
-  }
-} */
-
-/** Initialize the database with default Job info  */
-
 /** Initialize company database if empty */
 if (Jobs.collection.find().count() === 0) {
   if (Meteor.settings.defaultJob) {
@@ -113,7 +97,7 @@ if (Jobs.collection.find().count() === 0) {
 }
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
-  if (Meteor.settings.defaultAdmins && Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
+  if (Meteor.settings.defaultAdmins && Meteor.settings.defaultProfiles && Meteor.settings.defaultEvents) {
     console.log('Creating the default admins');
     Meteor.settings.defaultAdmins.map(admin => addAdmin(admin));
     console.log('Creating the default profiles');
@@ -125,19 +109,4 @@ if (Meteor.users.find().count() === 0) {
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
-}
-
-/**
- * If the loadAssetsFile field in settings.development.json is true, then load the data in private/data.json.
- * This approach allows you to initialize your system with large amounts of data.
- * Note that settings.development.json is limited to 64,000 characters.
- * We use the "Assets" capability in Meteor.
- * For more info on assets, see https://docs.meteor.com/api/assets.html
- * User count check is to make sure we don't load the file twice, which would generate errors due to duplicate info.
- */
-if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() < 7)) {
-  const assetsFileName = 'data.json';
-  console.log(`Loading data from private/${assetsFileName}`);
-  const jsonData = JSON.parse(Assets.getText(assetsFileName));
-  jsonData.profiles.map(profile => addProfile(profile));
 }

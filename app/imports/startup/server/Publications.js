@@ -40,16 +40,6 @@ Meteor.publish(Reports.adminPublicationName, () => Reports.collection.find());
 /** Define a publication to publish all admins. */
 Meteor.publish(Admins.adminPublicationName, () => Admins.collection.find());
 
-/** If logged in, publish documents owned by this company. */
-/**
-Meteor.publish(Companies.userPublicationName, function () {
-  if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Companies.collection.find({ owner: username });
-  }
-  return this.ready();
-}); */
-
 // alanning:roles publication
 // Recommended code to publish roles for each user.
 Meteor.publish(null, function () {
