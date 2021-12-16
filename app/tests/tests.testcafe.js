@@ -84,8 +84,10 @@ test('Test that job listings page displays and can favorite jobs', async (testCo
   await jobsPage.hasDefaultJobs(testController);
   await jobsPage.canFavoriteJobs(testController);
   await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.isDisplayed(testController);
   await studentHomePage.favoriteJobDisplayed(testController);
   await navBar.goToJobsPage(testController);
+  await jobsPage.isDisplayed(testController);
   await jobsPage.canFavoriteJobs(testController);
 });
 
@@ -99,8 +101,10 @@ test('Test that event page displays and can favorite events', async (testControl
   await eventsPage.hasDefaultEvents(testController);
   await eventsPage.canFavoriteEvents(testController);
   await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.isDisplayed(testController);
   await studentHomePage.favoriteEventDisplayed(testController);
   await navBar.goToEventsPage(testController);
+  await eventsPage.isDisplayed(testController);
   await eventsPage.canFavoriteEvents(testController);
 });
 
