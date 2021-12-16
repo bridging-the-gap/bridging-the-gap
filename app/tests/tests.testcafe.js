@@ -113,16 +113,19 @@ test('Test that student homepage works and favorited jobs/events appear', async 
   await studentHomePage.isDisplayed(testController);
   await navBar.goToJobsPage(testController);
   await jobsPage.canFavoriteJobs(testController);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.favoriteJobDisplayed(testController);
+  // Remove favorited job
+  await jobsPage.canFavoriteJobs(testController);
+  // Assert removal worked
+  await studentHomePage.favoriteJobDeleted(testController);
   await navBar.goToEventsPage(testController);
   await eventsPage.canFavoriteEvents(testController);
   await navBar.gotoStudentHomePage(testController);
-  await studentHomePage.favoriteJobDisplayed(testController);
   await studentHomePage.favoriteEventDisplayed(testController);
-  // Remove favorited items
-  await jobsPage.canFavoriteJobs(testController);
+  // Remove favorited event
   await eventsPage.canFavoriteEvents(testController);
   // Assert removal worked
-  await studentHomePage.favoriteJobDeleted(testController);
   await studentHomePage.favoriteEventDeleted(testController);
 });
 
