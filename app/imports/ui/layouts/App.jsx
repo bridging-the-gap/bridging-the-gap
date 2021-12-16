@@ -12,9 +12,6 @@ import Profile from '../pages/Profile';
 import AddEvent from '../pages/AddEvent';
 import BrowseCompanies from '../pages/BrowseCompanies';
 import BrowseStudents from '../pages/BrowseStudents';
-import StudentProfilePage from '../pages/StudentProfilePage';
-import StudentHomePage from '../pages/StudentHomePage';
-import Locations from '../pages/Locations';
 import Events from '../pages/Events';
 import AddReport from '../pages/AddReport';
 import NotFound from '../pages/NotFound';
@@ -40,15 +37,12 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/home" component={Home}/>
               <ProtectedRoute path="/profile" component={Profile}/>
-              <ProtectedRoute path="/locations" component={Locations}/>
               <ProtectedRoute path="/events" component={Events}/>
               <ProtectedRoute path="/jobs" component={JobListings}/>
               <ProtectedRoute path="/addReport" component={AddReport}/>
               <ProtectedRoute path="/addEvent" component={AddEvent}/>
               <ProtectedRoute path="/browseCompanies" component={BrowseCompanies}/>
               <ProtectedRoute path="/browseStudents" component={BrowseStudents}/>
-              <ProtectedRoute path="/studentHomePage" component={StudentHomePage}/>
-              <ProtectedRoute path="/studentProfilePage" component={StudentProfilePage}/>
               <ProtectedRoute path="/addJob" component={AddJob}/>
               <ProtectedRoute path="/editCompany/:_id" component={EditCompany}/>
               <ProtectedRoute path="/editProfile/:_id" component={EditProfile}/>

@@ -3,7 +3,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Skills } from '../../api/skills/Skills';
@@ -39,7 +38,7 @@ const updateProfileMethod = 'Profiles.update';
 
 /**
  * The server-side Profiles.update Meteor Method is called by the client-side Home page after pushing the update button.
- * Its purpose is to update the Profiles, ProfilesLocations, and ProfilesProjects collections to reflect the
+ * Its purpose is to update the Profiles, ProfilesLocations, and ProfilesSkills collections to reflect the
  * updated situation specified by the user.
  */
 Meteor.methods({
@@ -47,10 +46,8 @@ Meteor.methods({
     Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, webpage, picture, role } });
     ProfilesLocations.collection.remove({ profile: email });
     ProfilesSkills.collection.remove({ profile: email });
-    // ProfilesProjects.collection.remove({ profile: email });
     locations.map((location) => ProfilesLocations.collection.insert({ profile: email, location }));
     skills.map((skill) => ProfilesSkills.collection.insert({ profile: email, skill }));
-    // projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
   },
 });
 
@@ -60,9 +57,7 @@ Meteor.methods({
     Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, webpage, picture, role } });
     ProfilesLocations.collection.remove({ profile: email });
     ProfilesSkills.collection.remove({ profile: email });
-    // ProfilesProjects.collection.remove({ profile: email });
     locations.map((location) => ProfilesLocations.collection.insert({ profile: email, location }));
-    // projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
   },
 });
 const deleteProfileMethod = 'Profiles.delete';
@@ -70,7 +65,7 @@ const deleteProfileMethod = 'Profiles.delete';
 /**
  * The server-side Profiles.delete Meteor Method is called by the client-side Admin Home page (in Home.jsx) after
  * pushing the "Delete User" button.
- * Its purpose is to update the Profiles, ProfilesLocations, and ProfilesProjects collections to reflect the
+ * Its purpose is to update the Profiles, ProfilesLocations, and ProfilesSkills collections to reflect the
  * the deletion of the user specified by the admin.
  */
 Meteor.methods({
@@ -79,14 +74,13 @@ Meteor.methods({
     Profiles.collection.remove({ email });
     ProfilesLocations.collection.remove({ profile: email });
     ProfilesSkills.collection.remove({ profile: email });
-    ProfilesProjects.collection.remove({ profile: email });
     Meteor.users.remove({ username: email });
   },
 });
 
 const addJobMethod = 'Jobs.add';
 
-/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsLocations. */
+/** Creates a new job in the Jobs collection. */
 Meteor.methods({
   'Jobs.add'({ jobTitle, location, salary, industry, image, description, link, owner }) {
     Jobs.collection.insert({ jobTitle, location, salary, industry, image, description, link, owner });

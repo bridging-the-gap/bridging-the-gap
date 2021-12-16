@@ -12,7 +12,6 @@ import { Skills } from '../../api/skills/Skills';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
@@ -119,10 +118,9 @@ export default withTracker(() => {
   const sub1 = Meteor.subscribe(Profiles.userPublicationName);
   const sub2 = Meteor.subscribe(ProfilesLocations.userPublicationName);
   const sub3 = Meteor.subscribe(ProfilesSkills.userPublicationName);
-  const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub6 = Meteor.subscribe(Locations.userPublicationName);
-  const sub7 = Meteor.subscribe(Skills.userPublicationName);
+  const sub4 = Meteor.subscribe(Locations.userPublicationName);
+  const sub5 = Meteor.subscribe(Skills.userPublicationName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub6.ready() && sub7.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
   };
 })(BrowseStudents);

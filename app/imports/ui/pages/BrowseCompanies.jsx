@@ -10,7 +10,6 @@ import { AutoForm, SubmitField } from 'uniforms-semantic';
 import { Locations } from '../../api/locations/Locations';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
@@ -110,9 +109,8 @@ export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(Profiles.userPublicationName);
   const sub2 = Meteor.subscribe(ProfilesLocations.userPublicationName);
-  const sub3 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Locations.userPublicationName);
+  const sub3 = Meteor.subscribe(Locations.userPublicationName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub5.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready(),
   };
 })(BrowseCompanies);
