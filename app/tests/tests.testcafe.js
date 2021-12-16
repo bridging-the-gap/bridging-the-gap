@@ -36,8 +36,8 @@ fixture('Bridging the Gap localhost test with default db')
 // Landing Page Tests
 test('Test that landing page shows up and works', async (testController) => {
   await landingPage.isDisplayed(testController);
-  // Comment out for now because EmailJS limits emails
-  // await landingPage.sendFeedback(testController, company);
+  // Commented out most of the time because EmailJS limits emails
+  await landingPage.sendFeedback(testController, company);
 });
 
 // Signin & Signout Page Tests
@@ -159,9 +159,9 @@ test('Test that admin homepage displays and works.',
     // Checking if delete user component works.
     await adminHomePage.deleteUser(testController, newUser);
     // Checking if email component works:
-    // Comment out for now because EmailJS limits emails.
-    // const emailUser = { username: 'reichld@hawaii.edu', role: 'student', password: 'foo' };
-    // await homePage.sendEmail(testController, emailUser);
+    // Commented out most of the time because EmailJS limits emails.
+    const emailUser = { username: 'reichld@hawaii.edu', role: 'student', password: 'foo' };
+    await adminHomePage.sendEmail(testController, emailUser);
     await adminHomePage.addCategories(testController);
     await adminHomePage.filterReportType(testController);
     // Log out of admin account after finished.
