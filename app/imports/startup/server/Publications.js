@@ -4,7 +4,6 @@ import { Skills } from '../../api/skills/Skills';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesJobs } from '../../api/profiles/ProfilesJobs';
 import { ProfilesEvents } from '../../api/profiles/ProfilesEvents';
 import { Events } from '../../api/events/Events';
@@ -23,9 +22,6 @@ Meteor.publish(Profiles.userPublicationName, () => Profiles.collection.find());
 Meteor.publish(ProfilesLocations.userPublicationName, () => ProfilesLocations.collection.find());
 
 Meteor.publish(ProfilesSkills.userPublicationName, () => ProfilesSkills.collection.find());
-
-/** Define a publication to publish this collection. */
-Meteor.publish(ProfilesProjects.userPublicationName, () => ProfilesProjects.collection.find());
 
 /** Define a publication to publish this collection. */
 Meteor.publish(ProfilesJobs.userPublicationName, () => ProfilesJobs.collection.find());

@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesLocations } from '../../api/profiles/ProfilesLocations';
 import { ProfilesSkills } from '../../api/profiles/ProfilesSkills';
 import { Locations } from '../../api/locations/Locations';
@@ -41,19 +40,16 @@ function addSkill(skill) {
 }
 
 /** Defines a new user and associated profile. Error if user already exists. */
-function addProfile({ firstName, lastName, bio, title, webpage, locations, skills, projects, picture, email, role }) {
+function addProfile({ firstName, lastName, bio, title, webpage, locations, skills, picture, email, role }) {
   console.log(`Defining profile ${email}`);
   // Define the user in the Meteor accounts package.
   createUser(email, role);
   // Create the profile.
   Profiles.collection.insert({ firstName, lastName, bio, title, webpage, picture, email, role });
-  // Add locations and projects.
+  // Add skills and locations.
   if (typeof skills !== 'undefined') {
     skills.map(skill => ProfilesSkills.collection.insert({ profile: email, skill }));
     skills.map(skill => addSkill(skill));
-  }
-  if (typeof projects !== 'undefined') {
-    projects.map(project => ProfilesProjects.collection.insert({ profile: email, project }));
   }
   if (typeof locations !== 'undefined') {
     locations.map(location => ProfilesLocations.collection.insert({ profile: email, location }));
