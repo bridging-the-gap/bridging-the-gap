@@ -14,13 +14,13 @@ class StudentHomePage {
   async favoriteJobDisplayed(testController) {
     const jobSelector = Selector('#favorite');
     const jobCount = await jobSelector.count;
-    await testController.wait(5000).expect(jobCount).eql(1);
+    await testController.wait(20000).expect(jobCount).eql(1);
   }
 
   async favoriteEventDisplayed(testController) {
     const eventSelector = Selector('#event-favorite');
     const eventCount = await eventSelector.count;
-    await testController.wait(5000).expect(eventCount).eql(1);
+    await testController.wait(20000).expect(eventCount).eql(1);
   }
 
   async favoriteJobDeleted(testController) {
