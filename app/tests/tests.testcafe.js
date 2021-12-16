@@ -117,7 +117,7 @@ test('Test that addReport page works', async (testController) => {
 });
 
 // Student Page Tests
-test('Test that student homepage works and favorited jobs/events appear', async (testController) => {
+test.only('Test that student homepage works and favorited jobs/events appear', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, student.username, student.password);
@@ -221,7 +221,7 @@ test('Test that the company profile works', async (testController) => {
 });
 
 // Job Listings Page Tests
-test('Test that job listings page displays and can favorite', async (testController) => {
+test.only('Test that job listings page displays and can favorite', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, student.username, student.password);
@@ -236,7 +236,7 @@ test('Test that job listings page displays and can favorite', async (testControl
 });
 
 // Events Page Tests
-test('Test that event page displays and can favorite events', async (testController) => {
+test.only('Test that event page displays and can favorite events', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, student.username, student.password);
